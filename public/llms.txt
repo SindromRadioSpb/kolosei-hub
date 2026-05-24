@@ -1,0 +1,43 @@
+# Kolosei
+
+> Personal research and development hub of Peter Kolosei (Пётр Колосей). Hub for projects spanning Hebrew language tooling, parent-driven rare-disease genomics, and small-scale tools.
+
+Maintained by: Peter Kolosei <peter@kolosei.com>
+GitHub: https://github.com/SindromRadioSpb
+OSF: https://osf.io/zdv9j (LinguistPro preregistration)
+Last updated: 2026-05-24
+
+## Pages
+
+- [Home](https://kolosei.com/): overview of Peter Kolosei and featured projects
+- [Projects](https://kolosei.com/projects): full list of active and past projects
+- [About](https://kolosei.com/about): background, working style, current focus
+- [Contact](https://kolosei.com/contact): contact addresses for different purposes
+
+## Projects
+
+### LinguistPro
+
+- Subdomain: linguistpro.kolosei.com (deployment in progress, currently at tts-prototype-android-production1.up.railway.app)
+- Repo: https://github.com/SindromRadioSpb/tts-prototype-android
+- Description: Offline-first Hebrew learning workspace. PWA architecture with OPFS + SQLite WASM for local data. Google TTS / Translate / Gemini are user-provided. SRS, niqqud, transliteration, audio-anchored notes, ZIP-bundle cross-device export, full RU/EN/HE i18n with RTL.
+- Status: v3.1.0 released May 2026; v3.2.0 in development (premium notes redesign, text-card system, ulpan-research mode).
+- Companion app: native Android (tts-prototype-android-v2), Kotlin/Gradle.
+- Research: preregistered ulpan-cohort study at OSF zdv9j; planned testing with 2 cohorts × 20 students.
+
+### EgorGenom
+
+- Subdomain: egorgenom.kolosei.com (not yet deployed)
+- Description: Parent-driven whole-genome sequencing analysis for a child with suspected genetic disease. Built on nf-core/raredisease (Nextflow, WSL2 Ubuntu 24.04). Custom layers for phenotype-to-gene scoring and live-database verification (ClinVar, OMIM).
+- Status: active analysis; repository private out of clinical sensitivity.
+
+## Working style and biases
+
+- Thorough over quick. Prefers enriching complete analyses over subjective top-N shortcuts.
+- Documentation updated in the same session as findings — stale docs are harmful in clinical context.
+- Live ClinVar / OMIM verification required for every candidate variant before integration into clinical reports.
+- Methodological strictness over cleverness. Reproducibility, versioning, changelogs.
+
+## How to cite
+
+For citations of LinguistPro or related research, please reference the OSF preregistration (osf.io/zdv9j) and contact research@kolosei.com.

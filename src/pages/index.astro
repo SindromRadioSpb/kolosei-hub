@@ -1,0 +1,40 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects'))
+  .filter((p) => p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+---
+<BaseLayout
+  title="Kolosei"
+  description="Peter Kolosei — indie researcher and developer. Hebrew NLP (LinguistPro), parent-driven rare-disease genomics (EgorGenom), and other projects."
+>
+  <h1>Peter Kolosei</h1>
+  <p class="lead">
+    Indie researcher and developer. I work on Hebrew language tooling, parent-driven rare-disease genomics, and adjacent things that need to exist but don't yet.
+  </p>
+
+  <p>
+    The hub lists my active and past projects. Each project links to its own subdomain or repository where the actual work happens. Reach me at <a href="mailto:peter@kolosei.com">peter@kolosei.com</a>.
+  </p>
+
+  <h2>Featured projects</h2>
+  <div class="grid-projects">
+    {projects.map((p) => (
+      <ProjectCard
+        title={p.data.title}
+        description={p.data.description}
+        status={p.data.status}
+        domain={p.data.domain}
+        url={p.data.url}
+        repo={p.data.repo}
+      />
+    ))}
+  </div>
+
+  <p class="small">
+    <a href="/projects">All projects →</a>
+  </p>
+</BaseLayout>

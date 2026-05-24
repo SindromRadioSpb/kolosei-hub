@@ -1,0 +1,56 @@
+---
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+const links = [
+  { href: '/', label: 'Home' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/about', label: 'About' },
+  { href: '/contact', label: 'Contact' },
+];
+---
+<header>
+  <nav>
+    <a href="/" class="brand">Kolosei</a>
+    <ul>
+      {links.filter((l) => l.href !== '/').map((l) => (
+        <li><a href={l.href} aria-current={pathname === l.href ? 'page' : undefined}>{l.label}</a></li>
+      ))}
+    </ul>
+  </nav>
+</header>
+
+<style>
+  header {
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+  }
+  nav {
+    max-width: var(--max-width-wide);
+    margin: 0 auto;
+    padding: 1rem 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+  .brand {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    font-size: 1.1rem;
+    color: var(--fg);
+    border-bottom: none;
+  }
+  ul {
+    list-style: none;
+    display: flex;
+    gap: 1.25rem;
+    padding: 0;
+    margin: 0;
+  }
+  ul a {
+    color: var(--fg-soft);
+    font-size: 0.95rem;
+    border-bottom: none;
+  }
+  ul a:hover { color: var(--fg); }
+  ul a[aria-current='page'] { color: var(--fg); font-weight: 500; }
+</style>

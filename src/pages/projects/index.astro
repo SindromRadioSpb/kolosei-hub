@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects'))
+  .sort((a, b) => a.data.order - b.data.order);
+---
+<BaseLayout
+  title="Projects"
+  description="All projects by Peter Kolosei — Hebrew NLP, rare-disease genomics, and experimental tools."
+  wide={true}
+>
+  <h1>Projects</h1>
+  <p class="lead">
+    A list of projects I'm currently working on or have worked on, in rough order of priority.
+  </p>
+
+  <div class="grid-projects">
+    {projects.map((p) => (
+      <ProjectCard
+        title={p.data.title}
+        description={p.data.description}
+        status={p.data.status}
+        domain={p.data.domain}
+        url={p.data.url}
+        repo={p.data.repo}
+      />
+    ))}
+  </div>
+
+  <hr />
+  <p class="small muted">
+    More projects to be added as they reach a state worth pointing to publicly. Smaller experiments live in <code>github.com/SindromRadioSpb</code> directly.
+  </p>
+</BaseLayout>

@@ -1,0 +1,76 @@
+:root {
+  --bg: #fafaf9;
+  --bg-soft: #f5f5f4;
+  --fg: #1c1917;
+  --fg-soft: #57534e;
+  --fg-muted: #a8a29e;
+  --accent: #0f766e;
+  --accent-soft: #14b8a6;
+  --border: #e7e5e4;
+  --max-width: 720px;
+  --max-width-wide: 920px;
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0c0a09;
+    --bg-soft: #1c1917;
+    --fg: #f5f5f4;
+    --fg-soft: #d6d3d1;
+    --fg-muted: #78716c;
+    --accent: #2dd4bf;
+    --accent-soft: #5eead4;
+    --border: #292524;
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--fg);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 1.25rem 4rem;
+}
+
+main.wide { max-width: var(--max-width-wide); }
+
+h1, h2, h3 { line-height: 1.25; font-weight: 600; letter-spacing: -0.01em; }
+h1 { font-size: 2.25rem; margin: 0 0 1rem; }
+h2 { font-size: 1.5rem; margin: 2.5rem 0 1rem; }
+h3 { font-size: 1.15rem; margin: 1.5rem 0 0.5rem; }
+
+p { margin: 0 0 1rem; color: var(--fg-soft); }
+
+a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color 0.15s; }
+a:hover { border-bottom-color: var(--accent); }
+
+code { font-family: var(--font-mono); font-size: 0.9em; background: var(--bg-soft); padding: 0.1em 0.35em; border-radius: 3px; }
+
+hr { border: none; border-top: 1px solid var(--border); margin: 3rem 0; }
+
+ul, ol { color: var(--fg-soft); padding-left: 1.5rem; }
+li { margin: 0.25rem 0; }
+
+.lead { font-size: 1.2rem; color: var(--fg-soft); margin: 0 0 2rem; }
+
+.muted { color: var(--fg-muted); }
+.small { font-size: 0.9rem; }
+.mono { font-family: var(--font-mono); }
+
+.grid-projects { display: grid; gap: 1.25rem; margin: 2rem 0; grid-template-columns: 1fr; }
+@media (min-width: 640px) { .grid-projects { grid-template-columns: 1fr 1fr; } }

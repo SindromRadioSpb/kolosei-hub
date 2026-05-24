@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="About"
+  description="About Peter Kolosei — background, interests, and current work."
+>
+  <h1>About</h1>
+
+  <p class="lead">
+    I'm an indie researcher and developer working at the intersection of language tooling, bioinformatics, and the kind of small-scale software that solves specific problems for specific people.
+  </p>
+
+  <h2>What I'm working on</h2>
+  <p>
+    <strong>LinguistPro</strong> is an offline-first Hebrew learning workspace built around a single conviction: a learner's data should stay with the learner. The architecture is unusual — SQLite WASM running in browser-local OPFS — and it lets the app deliver server-scale functionality without ever holding user data on a server. It's preparing for ulpan-cohort testing as part of a Hebrew-pedagogy diploma project.
+  </p>
+  <p>
+    <strong>EgorGenom</strong> is whole-genome sequencing analysis for my son, run in parallel with his clinical team. I built it on top of <a href="https://nf-co.re/raredisease">nf-core/raredisease</a> and have been gradually adding domain-specific layers — phenotype-to-gene scoring, transcript-aware variant prioritization, live-database verification. The project is methodologically strict because the cost of being wrong is real.
+  </p>
+  <p>
+    Smaller projects and experiments live alongside these in my projects folder. Most of them are tools I needed to build because nothing existing did the job well enough.
+  </p>
+
+  <h2>How I work</h2>
+  <p>
+    Thorough over quick. I prefer enriching, complete paths over subjective top-N shortcuts. I distrust local databases when live ones are available, prefer reproducibility over cleverness, and update documentation in the same session as the work it describes.
+  </p>
+  <p>
+    The stack I default to: Linux/WSL, Docker, Nextflow for bioinformatics, Node.js + vanilla JS for web (LinguistPro is intentionally framework-free for debuggability), Python for analysis scripts, Astro for static content like this hub.
+  </p>
+
+  <h2>Elsewhere</h2>
+  <ul>
+    <li><a href="https://github.com/SindromRadioSpb">GitHub</a></li>
+    <li><a href="https://osf.io/zdv9j">OSF (LinguistPro preregistration)</a></li>
+    <li><a href="mailto:peter@kolosei.com">peter@kolosei.com</a></li>
+  </ul>
+</BaseLayout>

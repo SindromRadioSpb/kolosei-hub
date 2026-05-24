@@ -1,0 +1,23 @@
+---
+const year = new Date().getFullYear();
+---
+<footer>
+  <div class="inner">
+    <p class="small muted">
+      © {year} Peter Kolosei · <a href="mailto:peter@kolosei.com">peter@kolosei.com</a> · <a href="https://github.com/SindromRadioSpb" rel="me">GitHub</a>
+    </p>
+  </div>
+</footer>
+
+<style>
+  footer {
+    border-top: 1px solid var(--border);
+    margin-top: 4rem;
+  }
+  .inner {
+    max-width: var(--max-width-wide);
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem;
+  }
+  p { margin: 0; }
+</style>
