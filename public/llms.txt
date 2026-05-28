@@ -5,7 +5,7 @@
 Maintained by: Peter Kolosei <peter@kolosei.com>
 GitHub: https://github.com/SindromRadioSpb
 OSF: https://osf.io/zdv9j (LinguistPro preregistration)
-Last updated: 2026-05-24
+Last updated: 2026-05-28
 
 ## Pages
 
@@ -18,10 +18,10 @@ Last updated: 2026-05-24
 
 ### LinguistPro
 
-- Subdomain: linguistpro.kolosei.com (deployment in progress, currently at tts-prototype-android-production1.up.railway.app)
+- URL: https://linguistpro.kolosei.com
 - Repo: https://github.com/SindromRadioSpb/tts-prototype-android
 - Description: Offline-first Hebrew learning workspace. PWA architecture with OPFS + SQLite WASM for local data. Google TTS / Translate / Gemini are user-provided. SRS, niqqud, transliteration, audio-anchored notes, ZIP-bundle cross-device export, full RU/EN/HE i18n with RTL.
-- Status: v3.1.0 released May 2026; v3.2.0 in development (premium notes redesign, text-card system, ulpan-research mode).
+- Status: v3.1.0 production on Hetzner CX23 + Coolify since 2026-05-28; v3.2.0 in development (premium notes redesign, text-card system, ulpan-research mode).
 - Companion app: native Android (tts-prototype-android-v2), Kotlin/Gradle.
 - Research: preregistered ulpan-cohort study at OSF zdv9j; planned testing with 2 cohorts × 20 students.
 
