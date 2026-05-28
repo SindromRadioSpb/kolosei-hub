@@ -6,6 +6,7 @@ publishDate: 2024-09-01
 updateDate: 2026-05-28
 domain: linguistpro.kolosei.com
 repo: https://github.com/SindromRadioSpb/tts-prototype-android
+statusPage: https://stats.uptimerobot.com/hzdU5PQBqp
 featured: true
 order: 1
 ---

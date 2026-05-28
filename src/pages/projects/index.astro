@@ -25,6 +25,7 @@ const projects = (await getCollection('projects'))
         domain={p.data.domain}
         url={p.data.url}
         repo={p.data.repo}
+        statusPage={p.data.statusPage}
       />
     ))}
   </div>

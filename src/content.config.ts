@@ -12,6 +12,7 @@ const projects = defineCollection({
     domain: z.string().optional(),
     url: z.string().optional(),
     repo: z.string().optional(),
+    statusPage: z.string().optional(),
     featured: z.boolean().default(false),
     order: z.number().default(100),
   }),

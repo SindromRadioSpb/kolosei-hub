@@ -6,9 +6,10 @@ interface Props {
   domain?: string;
   url?: string;
   repo?: string;
+  statusPage?: string;
 }
 
-const { title, description, status, domain, url, repo } = Astro.props;
+const { title, description, status, domain, url, repo, statusPage } = Astro.props;
 const statusLabel = { active: 'Active', paused: 'Paused', archived: 'Archived' }[status];
 ---
 <article class="card">
@@ -21,6 +22,7 @@ const statusLabel = { active: 'Active', paused: 'Paused', archived: 'Archived' }
     {domain && <a href={`https://${domain}`}>{domain}</a>}
     {url && !domain && <a href={url}>{url.replace(/^https?:\/\//, '')}</a>}
     {repo && <a href={repo}>GitHub</a>}
+    {statusPage && <a href={statusPage} title="Uptime status">↑ status</a>}
   </footer>
 </article>
 
