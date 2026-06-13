@@ -1,18 +1,33 @@
 ---
+const lang = (Astro.currentLocale ?? 'en') as 'en' | 'ru';
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+// Path without the locale prefix, used to build the EN/RU counterparts.
+const basePath = pathname.startsWith('/ru') ? (pathname.slice(3) || '/') : pathname;
+const enUrl = basePath;
+const ruUrl = basePath === '/' ? '/ru' : '/ru' + basePath;
+// Localize an EN href for the current locale.
+const p = (href: string) => (lang === 'ru' ? (href === '/' ? '/ru' : '/ru' + href) : href);
+
+const labels = {
+  en: { home: 'Home', products: 'Products', technology: 'Technology', about: 'About', contact: 'Contact' },
+  ru: { home: 'Главная', products: 'Продукты', technology: 'Технологии', about: 'О студии', contact: 'Контакты' },
+}[lang];
 const links = [
-  { href: '/', label: 'Home' },
-  { href: '/products', label: 'Products' },
-  { href: '/technology', label: 'Technology' },
-  { href: '/about', label: 'About' },
-  { href: '/contact', label: 'Contact' },
-];
-const isActive = (href: string) =>
-  href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(`${href}/`);
+  { key: 'home', href: '/' },
+  { key: 'products', href: '/products' },
+  { key: 'technology', href: '/technology' },
+  { key: 'about', href: '/about' },
+  { key: 'contact', href: '/contact' },
+] as const;
+const isActive = (href: string) => {
+  const target = p(href);
+  if (href === '/') return pathname === p('/');
+  return pathname === target || pathname.startsWith(`${target}/`);
+};
 ---
 <header>
   <nav>
-    <a href="/" class="brand">
+    <a href={p('/')} class="brand">
       <svg class="brand-mark" width="26" height="26" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
         <defs>
           <linearGradient id="kbrand" x1="0" y1="0" x2="1" y2="1">
@@ -27,8 +42,11 @@ const isActive = (href: string) =>
     </a>
     <ul>
       {links.filter((l) => l.href !== '/').map((l) => (
-        <li><a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a></li>
+        <li><a href={p(l.href)} aria-current={isActive(l.href) ? 'page' : undefined}>{labels[l.key]}</a></li>
       ))}
+      <li class="lang-switch" aria-label="Language">
+        <a href={enUrl} aria-current={lang === 'en' ? 'page' : undefined} hreflang="en">EN</a><span aria-hidden="true">·</span><a href={ruUrl} aria-current={lang === 'ru' ? 'page' : undefined} hreflang="ru">RU</a>
+      </li>
     </ul>
   </nav>
 </header>
@@ -61,6 +79,7 @@ const isActive = (href: string) =>
   ul {
     list-style: none;
     display: flex;
+    align-items: center;
     gap: 1.25rem;
     padding: 0;
     margin: 0;
@@ -72,4 +91,16 @@ const isActive = (href: string) =>
   }
   ul a:hover { color: var(--fg); }
   ul a[aria-current='page'] { color: var(--fg); font-weight: 500; }
+  .lang-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    padding-left: 0.5rem;
+    border-left: 1px solid var(--border);
+  }
+  .lang-switch span { color: var(--fg-muted); }
+  .lang-switch a { color: var(--fg-muted); }
+  .lang-switch a[aria-current='page'] { color: var(--accent); font-weight: 600; }
 </style>

@@ -1,0 +1,87 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import GcpStrip from '../../../components/GcpStrip.astro';
+import Changelog from '../../../components/Changelog.astro';
+import { getEntry } from 'astro:content';
+
+const entry = await getEntry('projects', 'linguistpro');
+const d = entry!.data;
+const changelog = [
+  { date: '2026-05-17', text: 'v3.6 «Smart Learning Graph» — офлайн-подсказки по общему корню/лемме и подтверждаемая учащимся панель «что ты знаешь» (без AI, без телеметрии).' },
+  { date: '2026-05', text: 'Продакшен переехал на Hetzner CX23 + Coolify; персональный ключ Gemini API хранится только в браузере, нулевое серверное хранение.' },
+  { date: '2026-04', text: 'v3.2 — премиум-редизайн заметок, система текст-карточек с обменом между пользователями, опциональная основа для исследований/аналитики.' },
+];
+---
+<BaseLayout title="LinguistPro" description={d.description_ru} wide={true}>
+  <p class="eyebrow mono small">Флагман · {d.version}</p>
+  <h1>LinguistPro</h1>
+  <p class="lead">{d.tagline_ru} — премиальная рабочая станция для иврита вокруг одной идеи: ваши данные остаются вашими.</p>
+
+  <div class="btn-row">
+    <a href={`https://${d.domain}`} class="btn btn-primary">Открыть LinguistPro</a>
+    <a href="https://linguistpro.kolosei.com/library.html" class="btn btn-secondary">Открыть Reading Room</a>
+    {d.statusPage && <a href={d.statusPage} class="btn btn-secondary">Статус аптайма</a>}
+  </div>
+
+  <video
+    class="demo-video"
+    src="/media/linguistpro-demo.mp4"
+    poster="/media/linguistpro-demo-poster.jpg"
+    autoplay
+    muted
+    loop
+    playsinline
+    controls
+    preload="metadata"
+    aria-label="Демо LinguistPro — как это работает, Google Cloud и Reading Room"
+  ></video>
+
+  <h2>Проблема</h2>
+  <p>
+    Учащийся иврита сталкивается сразу с двумя проблемами. Учебники-приложения ведут всех по
+    фиксированной программе, которая редко совпадает с текстом, который вы реально хотите прочитать —
+    песней, статьёй, стихом. А те приложения, что помогают, обычно забирают ваши тексты, заметки и
+    прогресс на свои серверы. LinguistPro решает обе: он работает с <em>любым</em> ивритским текстом,
+    который вы дадите, и держит всё на вашем устройстве.
+  </p>
+
+  <h2>Как это работает</h2>
+  <p>
+    Вставьте абзац на иврите — LinguistPro превратит его в построчную таблицу: никуд (огласовка),
+    транслитерация, перевод и аудио для каждой строки. Работайте строка за строкой, вытаскивайте сложные
+    предложения в карточки интервального повторения (SRS), тренируйтесь и отслеживайте прогресс со
+    временем.
+  </p>
+  <p>
+    Архитектура необычна: <strong>SQLite WASM работает в браузерном OPFS</strong>. Тексты, аудио,
+    прогресс и заметки живут в браузере — никогда на чужом сервере. Облако используется только для
+    тяжёлых вычислений (речь, нейроперевод, морфологический анализ), и там учащийся предоставляет
+    <strong>собственный ключ Google Cloud</strong>, хранимый только в браузере.
+  </p>
+
+  <GcpStrip services={d.gcpServices} planned={d.gcpPlanned} />
+
+  <h2>Reading Room</h2>
+  <p>
+    Самая амбициозная поверхность LinguistPro — <a href="/ru/products/reading-room">Reading Room</a>:
+    двуязычная библиотека из <strong>26 000+ произведений общественного достояния</strong> проекта
+    Бен-Иегуда, по периодам и авторам, с переводом и морфологией на каждом слове. Если редактор — это
+    «принеси любой текст», то Reading Room — «читай канон». Это самостоятельная учебная поверхность.
+  </p>
+  <p class="small"><a href="/ru/products/reading-room">Подробнее о Reading Room →</a></p>
+
+  <h2>Режим исследования</h2>
+  <p>
+    LinguistPro включает опциональный когортный режим исследования с IRB-style согласием, в поддержку
+    дипломного проекта по педагогике ульпана. Методология
+    <a href="https://osf.io/zdv9j">пререгистрирована на OSF</a>; ближайшая веха — две тестовые когорты по
+    20 студентов.
+  </p>
+
+  <Changelog entries={changelog} heading="Последние изменения" />
+
+  <div class="btn-row">
+    <a href={`https://${d.domain}`} class="btn btn-primary">Открыть LinguistPro</a>
+    <a href="/ru/technology" class="btn btn-secondary">Как мы используем Google Cloud</a>
+  </div>
+</BaseLayout>

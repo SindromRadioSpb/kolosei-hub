@@ -1,6 +1,8 @@
 ---
 title: HDLE Premium
 tagline: Desktop Hebrew lexicography & terminology extraction
+tagline_ru: Десктоп для ивритской лексикографии и извлечения терминологии
+description_ru: Десктоп-инструмент для ивритской лексикографии и извлечения терминологии. Импорт документов, построение референсных корпусов, извлечение многословных терминов через Stanza NLP и пакетный перевод через Google Cloud Translation v3 — с шифрованием учётных данных и полной переносимостью проектов.
 description: A desktop workbench for Hebrew lexicography and terminology extraction. Import documents, build reference corpora, extract multi-word terms with Stanza NLP, and batch-translate via Google Cloud Translation v3 — with encrypted credentials and full project portability.
 status: active
 productType: product

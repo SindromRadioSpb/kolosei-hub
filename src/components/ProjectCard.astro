@@ -11,23 +11,31 @@ interface Props {
   statusPage?: string;
   detailUrl?: string;
   gcpServices?: string[];
+  lang?: 'en' | 'ru';
 }
-const { title, description, status, tagline, partOf, domain, url, repo, statusPage, detailUrl, gcpServices = [] } = Astro.props;
-const statusLabel = { active: 'Active', paused: 'Paused', archived: 'Archived' }[status];
+const { title, description, status, tagline, partOf, domain, url, repo, statusPage, detailUrl, gcpServices = [], lang = 'en' } = Astro.props;
+const statusLabel = {
+  en: { active: 'Active', paused: 'Paused', archived: 'Archived' },
+  ru: { active: 'Активный', paused: 'Пауза', archived: 'Архив' },
+}[lang][status];
+const t = {
+  en: { more: 'Learn more →', partOf: 'Part of' },
+  ru: { more: 'Подробнее →', partOf: 'Входит в' },
+}[lang];
 ---
 <article class="card">
   <header>
     <h3>{detailUrl ? <a href={detailUrl}>{title}</a> : title}</h3>
     <span class={`status status-${status}`}>{statusLabel}</span>
   </header>
-  {partOf && <p class="card-partof">↳ Part of {partOf}</p>}
+  {partOf && <p class="card-partof">↳ {t.partOf} {partOf}</p>}
   {tagline && <p class="card-tagline">{tagline}</p>}
   <p>{description}</p>
   {gcpServices.length > 0 && (
     <p class="card-gcp">{gcpServices.join(' · ')}</p>
   )}
   <footer class="links">
-    {detailUrl && <a href={detailUrl} class="more">Learn more →</a>}
+    {detailUrl && <a href={detailUrl} class="more">{t.more}</a>}
     {domain && <a href={`https://${domain}`}>{domain}</a>}
     {url && !domain && <a href={url}>{url.replace(/^https?:\/\//, '')}</a>}
     {repo && <a href={repo}>GitHub</a>}

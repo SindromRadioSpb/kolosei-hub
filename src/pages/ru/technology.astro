@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GcpStrip from '../../components/GcpStrip.astro';
+---
+<BaseLayout
+  title="Технологии"
+  wide={true}
+  description="Как Kolosei использует Google Cloud — Gemini, Cloud Text-to-Speech и Cloud Translation v3 в продакшене сегодня; Vertex AI, BigQuery, Cloud Storage и Document AI запланированы для геномной вертикали."
+>
+  <h1>Построено на Google Cloud</h1>
+
+  <p class="lead">
+    AI — это ядро того, что выпускает Kolosei, а не довесок. Два продукта используют Google Cloud в
+    продакшене уже сегодня — и делают это под собственным ключом пользователя, поэтому мы никогда не
+    держим его учётные данные и контент на своих серверах.
+  </p>
+
+  <GcpStrip
+    services={['Gemini API', 'Cloud Text-to-Speech', 'Cloud Translation v3']}
+    compact={true}
+  />
+
+  <h2>В продакшене сегодня</h2>
+  <p>Каждый пункт — реальная зависимость в работающем коде; точная клиентская библиотека названа ниже.</p>
+  <table class="tbl">
+    <thead>
+      <tr><th>Сервис Google Cloud</th><th>Где</th><th>Что делает</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Gemini API</strong><br /><code>@google/generative-ai</code></td>
+        <td>LinguistPro</td>
+        <td>Морфологический анализ, помощь с переводом и объяснение текста для иврита. Работает под <strong>ключом конкретного пользователя, хранимым только в браузере</strong> — нулевое серверное хранение.</td>
+      </tr>
+      <tr>
+        <td><strong>Cloud Text-to-Speech</strong><br /><code>@google-cloud/text-to-speech</code></td>
+        <td>LinguistPro</td>
+        <td>Построчное аудио на иврите с произношением, учитывающим никуд — учащийся слышит любой вставленный текст.</td>
+      </tr>
+      <tr>
+        <td><strong>Cloud Translation v3</strong><br /><code>@google-cloud/translate</code> · <code>google-cloud-translate</code></td>
+        <td>LinguistPro и HDLE Premium</td>
+        <td>Нейросетевой перевод исходного ивритского текста. Официальный клиент v3, с бюджет-гардами и учётом расхода в десктоп-продукте.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Планируется / в оценке</h2>
+  <p>
+    Наша вторая вертикаль — <a href="/ru/products/egorgenom">EgorGenom</a>, геномика редких болезней —
+    это место, где мы рассчитываем масштабироваться на Google Cloud дальше. Это явно про будущее, а не
+    про продакшен сегодня.
+  </p>
+  <table class="tbl">
+    <thead>
+      <tr><th>Сервис</th><th>Вертикаль</th><th>Предполагаемое применение</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Vertex AI</strong></td><td>EgorGenom · LinguistPro</td><td>Модели фенотип→ген; дообученные модели морфологии / перевода для иврита.</td></tr>
+      <tr><td><strong>BigQuery</strong></td><td>EgorGenom</td><td>Запросы к датасетам частот в популяции (gnomAD) в масштабе вместо статичных локальных дампов.</td></tr>
+      <tr><td><strong>Cloud Storage</strong></td><td>EgorGenom</td><td>Обезличенные геномные данные и архивы длинных прочтений.</td></tr>
+      <tr><td><strong>Document AI</strong></td><td>EgorGenom</td><td>Разбор клинических отчётов и лабораторных PDF, которые сейчас обрабатываются вручную.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Почему именно Google Cloud</h2>
+  <p>
+    Две причины, конкретно. Первая — <strong>качество моделей для иврита и многоязычной работы</strong>:
+    Gemini справляется с ивритской морфологией, смешанным RTL/LTR текстом и переводом иврит↔русский/
+    английский лучше альтернатив, которые мы тестировали — а это важно, когда весь продукт про понимание
+    морфологически богатого языка. Вторая — наша архитектура <strong>offline-first и обращается к облаку
+    только за тяжёлыми вычислениями</strong> (синтез речи, нейроперевод, инференс моделей). Это по
+    умолчанию держит данные пользователя локально и делает Google Cloud естественным местом для тех
+    нагрузок, которым действительно нужна фронтир-модель — и местом, где мы хотим расти по мере роста
+    использования и геномной вертикали.
+  </p>
+
+  <h2>Дизайн приватности</h2>
+  <p>
+    LinguistPro хранит тексты, аудио, прогресс и заметки пользователя в браузерном хранилище (OPFS +
+    SQLite WASM). Когда нужно облако, пользователь предоставляет собственный ключ Google Cloud, который
+    хранится только в браузере — так Kolosei никогда не хранит учётные данные или контент пользователя
+    на сервере, а его использование Google Cloud регулируется его собственным аккаунтом и условиями
+    Google. HDLE Premium следует тому же принципу на десктопе, шифруя учётные данные на диске через
+    AES-256-GCM в системном keyring.
+  </p>
+
+  <div class="btn-row">
+    <a href="/ru/products/linguistpro" class="btn btn-primary">Смотреть LinguistPro</a>
+    <a href="/ru/contact" class="btn btn-secondary">Связаться с нами</a>
+  </div>
+</BaseLayout>

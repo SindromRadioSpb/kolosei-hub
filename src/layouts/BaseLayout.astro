@@ -12,12 +12,19 @@ interface Props {
 }
 
 const { title, description, wide = false, image = '/og-image.png', home = false } = Astro.props;
+const lang = (Astro.currentLocale ?? 'en') as 'en' | 'ru';
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const fullTitle = home ? 'Kolosei — AI-powered Hebrew language tools' : `${title} — Kolosei`;
 const ogImage = new URL(image, Astro.site);
+const homeTitle = { en: 'Kolosei — AI-powered Hebrew language tools', ru: 'Kolosei — AI-инструменты для иврита' }[lang];
+const fullTitle = home ? homeTitle : `${title} — Kolosei`;
+// hreflang alternates (path stripped of the /ru locale prefix)
+const pathNoSlash = Astro.url.pathname.replace(/\/$/, '') || '/';
+const basePath = pathNoSlash.startsWith('/ru') ? (pathNoSlash.slice(3) || '/') : pathNoSlash;
+const enHref = new URL(basePath, Astro.site);
+const ruHref = new URL(basePath === '/' ? '/ru' : '/ru' + basePath, Astro.site);
 ---
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -27,8 +34,12 @@ const ogImage = new URL(image, Astro.site);
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
+    <link rel="alternate" hreflang="en" href={enHref} />
+    <link rel="alternate" hreflang="ru" href={ruHref} />
+    <link rel="alternate" hreflang="x-default" href={enHref} />
 
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content={lang === 'ru' ? 'ru_RU' : 'en_US'} />
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />

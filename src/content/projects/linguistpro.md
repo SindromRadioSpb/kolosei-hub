@@ -1,6 +1,8 @@
 ---
 title: LinguistPro
 tagline: Offline-first Hebrew learning workspace
+tagline_ru: Offline-first среда для изучения иврита
+description_ru: Privacy-first среда для изучения иврита — превращает любой ивритский текст в построчную таблицу с никудом, транслитерацией, переводом и аудио. PWA на OPFS + SQLite WASM; Gemini и Google Cloud берут на себя тяжёлые вычисления под собственным ключом пользователя.
 description: A privacy-first Hebrew learning workspace — turn any Hebrew text into a line-by-line table with niqqud, transliteration, translation and audio. PWA with OPFS + SQLite WASM; Gemini and Google Cloud do the heavy compute under the learner's own key.
 status: active
 productType: product

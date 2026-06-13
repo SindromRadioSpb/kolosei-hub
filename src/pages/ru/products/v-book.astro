@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import GcpStrip from '../../../components/GcpStrip.astro';
+import Changelog from '../../../components/Changelog.astro';
+import { getEntry } from 'astro:content';
+
+const entry = await getEntry('projects', 'v-book');
+const d = entry!.data;
+const changelog = [
+  { date: '2026-05', text: 'Интеграция референсного корпуса (M12) в процессе; локальный офлайн-перевод NLLB и адаптивная пакетная обработка воркеров.' },
+  { date: '2026-04', text: 'Project Exchange — переносимые бандлы .hdleproj с проверкой целостности SHA256 для обмена между машинами.' },
+  { date: '2026-03', text: 'Усиление безопасности (P0): шифрование учётных данных AES-256-GCM, хранение в системном keyring, аудит-логирование.' },
+];
+---
+<BaseLayout title="HDLE Premium" description={d.description_ru} wide={true}>
+  <p class="eyebrow mono small">Десктоп-продукт · {d.version}</p>
+  <h1>HDLE Premium</h1>
+  <p class="lead">{d.tagline_ru} — то же ядро ивритского NLP, что и у LinguistPro, но для профессионалов.</p>
+
+  <div class="btn-row">
+    {d.repo && <a href={d.repo} class="btn btn-secondary">Смотреть на GitHub</a>}
+    <a href="/ru/technology" class="btn btn-secondary">Построено на Google Cloud</a>
+  </div>
+
+  <h2>Для чего это</h2>
+  <p>
+    HDLE Premium (Hebraic Dynamic Lexicon Engine) — десктоп-верстак для профессиональной ивритской
+    лексикографии и извлечения терминологии, нацеленный на переводчиков, терминологов и исследователей,
+    а не на учащихся. Импортируйте документы (TXT, DOCX, PDF с OCR), задавайте референсные корпусы и
+    извлекайте нужную терминологию из собственного материала.
+  </p>
+
+  <h2>Как это работает</h2>
+  <p>
+    В комплекте поставляется референсный корпус — базовая выборка из ивритской Википедии на 387 тыс.
+    документов. Движок извлекает многословные выражения и лемматизированные термины со скорингом PMI /
+    T-score, с конкордансным поиском FTS5 и памятью переводов. Пакетный перевод идёт через
+    <strong>Google Cloud Translation API v3</strong> (официальный клиент) с бюджет-гардами и учётом
+    расхода, с бесплатным резервным уровнем.
+  </p>
+  <p>
+    Построено на Python + PyQt6, SQLAlchemy + SQLite (WAL, FTS5) и Stanza для лемматизации и POS-разметки
+    иврита. Учётные данные шифруются на диске через <strong>AES-256-GCM</strong> в системном keyring —
+    ничего не уходит с машины, кроме обращений к выбранному пользователем провайдеру перевода. Проекты
+    экспортируются в переносимые бандлы <code>.hdleproj</code> (ZIP + SHA256) и в Excel, CSV, JSONL, TBX
+    и TMX.
+  </p>
+
+  <GcpStrip services={d.gcpServices} planned={d.gcpPlanned} />
+
+  <Changelog entries={changelog} heading="Последние изменения" />
+
+  <div class="btn-row">
+    {d.repo && <a href={d.repo} class="btn btn-primary">Смотреть на GitHub</a>}
+    <a href="/ru/products/linguistpro" class="btn btn-secondary">Смотреть LinguistPro</a>
+  </div>
+</BaseLayout>

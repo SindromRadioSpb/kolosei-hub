@@ -2,6 +2,8 @@
 title: Reading Room
 partOf: LinguistPro
 tagline: The Hebrew canon, translated
+tagline_ru: Канон иврита — в переводе
+description_ru: Двуязычная библиотека — канон иврита с морфологией по тапу. 26 000+ произведений из общественного достояния проекта Бен-Иегуда, по периодам и авторам; 796 уже готовы к чтению (перевод Gemini + никуд Dicta), остальные — в процессе. Градуированный путь от коротких текстов к полному канону.
 description: A bilingual library — the Hebrew canon with morphology on tap. 26,000+ public-domain works from Project Ben-Yehuda, organised by period and author; 796 ready to read (Gemini translation + Dicta niqqud), the rest in progress. A graded path from short texts to the full canon.
 status: active
 productType: product

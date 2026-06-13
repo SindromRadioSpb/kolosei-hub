@@ -1,5 +1,11 @@
 ---
 const year = new Date().getFullYear();
+const lang = (Astro.currentLocale ?? 'en') as 'en' | 'ru';
+const p = (href: string) => (lang === 'ru' ? '/ru' + href : href);
+const labels = {
+  en: { technology: 'Technology', privacy: 'Privacy', terms: 'Terms', imprint: 'Imprint' },
+  ru: { technology: 'Технологии', privacy: 'Конфиденциальность', terms: 'Условия', imprint: 'Импринт' },
+}[lang];
 ---
 <footer>
   <div class="inner">
@@ -7,10 +13,10 @@ const year = new Date().getFullYear();
       © {year} Kolosei · <a href="mailto:peter@kolosei.com">peter@kolosei.com</a> · <a href="https://github.com/SindromRadioSpb" rel="me">GitHub</a>
     </p>
     <p class="foot-links muted">
-      <a href="/technology">Technology</a>
-      <a href="/privacy">Privacy</a>
-      <a href="/terms">Terms</a>
-      <a href="/imprint">Imprint</a>
+      <a href={p('/technology')}>{labels.technology}</a>
+      <a href={p('/privacy')}>{labels.privacy}</a>
+      <a href={p('/terms')}>{labels.terms}</a>
+      <a href={p('/imprint')}>{labels.imprint}</a>
     </p>
   </div>
 </footer>

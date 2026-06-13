@@ -1,0 +1,82 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import Hero from '../../components/Hero.astro';
+import GcpStrip from '../../components/GcpStrip.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects'))
+  .filter((p) => p.data.featured)
+  .sort((a, b) => a.data.order - b.data.order);
+
+const gcpServices = [...new Set(projects.flatMap((p) => p.data.gcpServices))];
+---
+<BaseLayout
+  title="Kolosei"
+  home={true}
+  description="Kolosei — студия одного основателя, создающая AI-инструменты для иврита. Флагман LinguistPro превращает любой ивритский текст в учебное пространство; тяжёлые вычисления берёт на себя Google Gemini под собственным ключом пользователя."
+>
+  <Hero
+    eyebrow="AI-студия · инструменты для иврита"
+    title="AI-инструменты для иврита"
+    lead="Kolosei — студия одного основателя, создающая софт для изучения и понимания иврита. Наш флагман LinguistPro превращает любой ивритский текст в построчное учебное пространство — а тяжёлую работу делает Google Gemini, под собственным ключом пользователя, при этом его данные никогда не покидают устройство."
+    ctas={[
+      { href: '/ru/products/linguistpro', label: 'Открыть LinguistPro', primary: true },
+      { href: '/ru/technology', label: 'Построено на Google Cloud' },
+    ]}
+  />
+
+  <p>
+    Два работающих продукта для иврита и одна health-AI исследовательская вертикаль — всё создано и
+    поддерживается основателем <a href="/ru/about">Петром Колосеем</a>. Работа privacy-first по замыслу
+    и опирается на пререгистрированное исследование по педагогике языка.
+  </p>
+
+  <h2>Продукты</h2>
+  <div class="grid-projects">
+    {projects.map((p) => (
+      <ProjectCard
+        lang="ru"
+        title={p.data.title}
+        tagline={p.data.tagline_ru}
+        partOf={p.data.partOf}
+        description={p.data.description_ru}
+        status={p.data.status}
+        domain={p.data.domain}
+        url={p.data.url}
+        repo={p.data.repo}
+        statusPage={p.data.statusPage}
+        detailUrl={p.data.detailUrl ? '/ru' + p.data.detailUrl : undefined}
+        gcpServices={p.data.gcpServices}
+      />
+    ))}
+  </div>
+  <p class="small"><a href="/ru/products">Все продукты →</a></p>
+
+  <p class="reading-room-note small">
+    <strong>Новое — Reading Room.</strong> LinguistPro открывает весь канон иврита: двуязычная
+    библиотека из <strong>26 000+ произведений общественного достояния</strong> проекта Бен-Иегуда,
+    с навигацией по периодам и авторам, с переводом и морфологией на каждом слове.
+    <a href="/ru/products/reading-room">Подробнее →</a>
+  </p>
+
+  <section class="band">
+    <h2>Построено на Google Cloud</h2>
+    <p>
+      AI — это ядро того, что мы выпускаем, а не довесок. LinguistPro и HDLE Premium используют Google
+      Cloud уже сегодня — под собственным ключом пользователя, поэтому мы никогда не храним его учётные
+      данные и контент.
+    </p>
+    <GcpStrip services={gcpServices} compact={false} />
+  </section>
+
+  <section class="band">
+    <h2>Почему это убедительно</h2>
+    <ul class="traction">
+      <li><strong>В продакшене</strong><span>LinguistPro v3.6 работает на Hetzner + Coolify, с публичным мониторингом аптайма.</span></li>
+      <li><strong>Реальное использование Google Cloud</strong><span>Gemini API, Cloud Text-to-Speech и Cloud Translation v3 — в двух работающих продуктах.</span></li>
+      <li><strong>Privacy-first архитектура</strong><span>Данные пользователя остаются в браузере (OPFS + SQLite WASM); ключи — у пользователя, нулевое серверное хранение.</span></li>
+      <li><strong>Пререгистрированное исследование</strong><span>Когортное исследование ульпана, пререгистрированное на OSF (osf.io/zdv9j), в рамках диплома по педагогике иврита.</span></li>
+    </ul>
+  </section>
+</BaseLayout>

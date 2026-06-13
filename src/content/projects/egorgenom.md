@@ -1,6 +1,8 @@
 ---
 title: EgorGenom
 tagline: Health-AI research vertical — rare-disease genomics
+tagline_ru: Health-AI исследовательская вертикаль — геномика редких болезней
+description_ru: Полногеномный анализ, который ведёт родитель для ребёнка с подозрением на генетическое заболевание, параллельно с клинической командой. Health-AI исследовательская вертикаль на открытых пайплайнах nf-core — пока не коммерческий продукт.
 description: Parent-driven whole-genome sequencing analysis for a child with a suspected genetic disease, run in parallel with the clinical team. A health-AI research vertical built on the open-source nf-core pipelines — not yet a commercial product.
 status: active
 productType: research

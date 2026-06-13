@@ -5,13 +5,19 @@ interface Props {
   compact?: boolean;
   label?: string;
 }
-const { services = [], planned = [], compact = false, label = 'Built on Google Cloud' } = Astro.props;
+const lang = (Astro.currentLocale ?? 'en') as 'en' | 'ru';
+const T = {
+  en: { built: 'Built on Google Cloud', planned: 'Planned / in evaluation', link: 'How we use Google Cloud →', href: '/technology' },
+  ru: { built: 'Построено на Google Cloud', planned: 'Планируется / в оценке', link: 'Как мы используем Google Cloud →', href: '/ru/technology' },
+}[lang];
+const { services = [], planned = [], compact = false, label } = Astro.props;
+const builtLabel = label ?? T.built;
 ---
 {(services.length > 0 || planned.length > 0) && (
   <div class={`gcp ${compact ? 'gcp-compact' : ''}`}>
     {services.length > 0 && (
       <>
-        <p class="badge-label">{label}</p>
+        <p class="badge-label">{builtLabel}</p>
         <ul class="badge-row">
           {services.map((s) => <li class="badge">{s}</li>)}
         </ul>
@@ -19,14 +25,14 @@ const { services = [], planned = [], compact = false, label = 'Built on Google C
     )}
     {planned.length > 0 && (
       <>
-        <p class="badge-label">Planned / in evaluation</p>
+        <p class="badge-label">{T.planned}</p>
         <ul class="badge-row">
           {planned.map((s) => <li class="badge badge-planned">{s}</li>)}
         </ul>
       </>
     )}
     {!compact && (
-      <p class="small"><a href="/technology">How we use Google Cloud →</a></p>
+      <p class="small"><a href={T.href}>{T.link}</a></p>
     )}
   </div>
 )}

@@ -1,0 +1,45 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ProjectCard from '../../../components/ProjectCard.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects'))
+  .sort((a, b) => a.data.order - b.data.order);
+---
+<BaseLayout
+  title="Продукты"
+  description="Продукты Kolosei — LinguistPro (среда для изучения иврита), HDLE Premium (десктоп-лексикография) и EgorGenom (исследования геномики редких болезней)."
+  wide={true}
+>
+  <h1>Продукты</h1>
+  <p class="lead">
+    Два работающих продукта для иврита и одна health-AI исследовательская вертикаль. Всё создано и
+    поддерживается основателем Петром Колосеем, всё privacy-first, всё использует Google Cloud или
+    планирует его использовать.
+  </p>
+
+  <div class="grid-projects">
+    {projects.map((p) => (
+      <ProjectCard
+        lang="ru"
+        title={p.data.title}
+        tagline={p.data.tagline_ru}
+        partOf={p.data.partOf}
+        description={p.data.description_ru}
+        status={p.data.status}
+        domain={p.data.domain}
+        url={p.data.url}
+        repo={p.data.repo}
+        statusPage={p.data.statusPage}
+        detailUrl={p.data.detailUrl ? '/ru' + p.data.detailUrl : undefined}
+        gcpServices={p.data.gcpServices}
+      />
+    ))}
+  </div>
+
+  <hr />
+  <p class="small muted">
+    Меньшие эксперименты живут напрямую в <code>github.com/SindromRadioSpb</code>. Новые продукты
+    добавляются сюда, когда дойдут до состояния, на которое стоит указывать публично.
+  </p>
+</BaseLayout>
