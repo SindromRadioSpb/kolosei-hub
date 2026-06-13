@@ -12,7 +12,19 @@ const isActive = (href: string) =>
 ---
 <header>
   <nav>
-    <a href="/" class="brand">Kolosei</a>
+    <a href="/" class="brand">
+      <svg class="brand-mark" width="26" height="26" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="kbrand" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#2dd4bf" />
+            <stop offset="1" stop-color="#0f766e" />
+          </linearGradient>
+        </defs>
+        <rect width="64" height="64" rx="16" fill="url(#kbrand)" />
+        <path d="M23 15 V49 M23 32 L41 15 M28 30 L42 49" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+      <span>Kolosei</span>
+    </a>
     <ul>
       {links.filter((l) => l.href !== '/').map((l) => (
         <li><a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a></li>
@@ -36,12 +48,16 @@ const isActive = (href: string) =>
     gap: 1.5rem;
   }
   .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
     font-weight: 700;
     letter-spacing: -0.02em;
     font-size: 1.1rem;
     color: var(--fg);
     border-bottom: none;
   }
+  .brand-mark { display: block; flex: none; border-radius: 6px; }
   ul {
     list-style: none;
     display: flex;
