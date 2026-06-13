@@ -13,28 +13,86 @@ const d = entry!.data;
 
   <h2>What it is</h2>
   <p>
-    EgorGenom is parent-driven whole-genome sequencing analysis for a child with a suspected genetic
-    disease, run in parallel with a clinical team. It's built on the open-source
-    <strong>nf-core/sarek</strong> and <strong>nf-core/raredisease</strong> pipelines (Nextflow, WSL2
-    Ubuntu 24.04), with custom layers for phenotype-to-gene scoring, transcript-aware variant
-    prioritization and ACMG-style triage.
+    EgorGenom is a parent-driven whole-genome sequencing (WGS) re-analysis for a child with a suspected
+    genetic disease, run in parallel with the clinical team. It is, in effect, a home bioinformatics lab
+    built to the same standard a clinical genomics service would use — assembled to give one child the
+    depth of scrutiny that a high-throughput pipeline rarely affords a single case.
   </p>
 
-  <h2>Methodological standards</h2>
+  <h2>The stack</h2>
   <p>
-    Every candidate variant is validated against live ClinVar / OMIM before it enters a report — local
-    databases lag, sometimes severely. The analysis follows a blinded multi-expert review protocol, with
-    a reproducibility layer (runbook, pinned Docker digests) that makes the whole pipeline re-runnable.
-    Documentation is versioned in the same session as the findings, because stale documentation is
-    harmful in a clinical context.
+    Not a hobbyist setup — this is the industry-standard, open-source genomics toolchain that clinical
+    labs and national sequencing centres run, assembled end to end and pinned for reproducibility.
+  </p>
+  <table class="tbl">
+    <thead><tr><th>Layer</th><th>Tools</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Orchestration</strong></td><td><code>nf-core/sarek</code> 3.5.1 and <code>nf-core/raredisease</code> (Nextflow) — two independent pipelines for cross-validation.</td></tr>
+      <tr><td><strong>Alignment</strong></td><td>BWA-MEM2 (independent re-alignment from raw FASTQ; ~18 GB CRAM).</td></tr>
+      <tr><td><strong>SNV / indel calling</strong></td><td>DeepVariant, GATK4 HaplotypeCaller, Strelka2, bcftools — <strong>multi-caller consensus</strong>, not a single caller.</td></tr>
+      <tr><td><strong>Structural / CNV</strong></td><td>Manta, CNVkit, depth-based CNV screen.</td></tr>
+      <tr><td><strong>Repeat expansions (STR)</strong></td><td>ExpansionHunter + REViewer.</td></tr>
+      <tr><td><strong>Pseudogene / paralog</strong></td><td>Gauchian (GBA1), Paraphase — regions standard pipelines silently miss.</td></tr>
+      <tr><td><strong>Pharmacogenomics · mtDNA</strong></td><td>PharmCAT; dedicated mitochondrial-DNA analysis.</td></tr>
+      <tr><td><strong>Annotation &amp; pathogenicity</strong></td><td>VEP 112 with ClinVar, SpliceAI, CADD, REVEL, AlphaMissense, LOFTEE; gnomAD v4.1 population frequencies.</td></tr>
+      <tr><td><strong>Triage</strong></td><td>A 4-tier clinical triage with automated ACMG-criteria support.</td></tr>
+      <tr><td><strong>Evidence synthesis</strong></td><td>Live PubMed / ClinVar / OMIM, bioRxiv, Consensus, ClinicalTrials, ChEMBL (via the Bio-Research MCP layer).</td></tr>
+      <tr><td><strong>Infrastructure</strong></td><td>WSL2 Ubuntu 24.04, Docker (containers pinned by digest), SQLite metadata. ~500 GB disk, 32 GB RAM, optional RTX 3070 GPU for DeepVariant.</td></tr>
+      <tr><td><strong>Reproducibility</strong></td><td>End-to-end runbook (FASTQ → clinical report), SHA256 data manifests, FASTQ provenance, and pre-registered, immutable numeric thresholds.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Scope &amp; depth of work</h2>
+  <p>
+    The analysis ran in phases: a literature audit and a blinded six-expert review panel (clinical
+    geneticist, bioinformatician, paediatric neurologist, disease-specific and statistical-genetics
+    roles); a targeted multi-caller consensus; a full WGS re-call from raw reads (~21.5 h of compute);
+    a gap-closure pass for pseudogenes, repeat expansions and CNVs; and a clinical hand-off package —
+    <strong>82 documents, ~109,000 words, bilingual (EN + RU)</strong>, with methods, biomarker decision
+    trees and phased recommendations written for the treating physicians.
+  </p>
+  <p>
+    Headline result: <strong>seven independent caller-and-pipeline combinations</strong> agreed on every
+    candidate — the calling layer is, in the project's own words, bulletproof.
+  </p>
+
+  <h2>Why a parent-run lab can go deeper</h2>
+  <p>
+    A state diagnostic service processes many patients in a throughput pipeline and gives each case a
+    bounded number of passes. A parent-driven analysis is not on that clock — it can spend far more
+    iterations on one child: re-call the genome from raw reads, close the gaps a standard pipeline misses
+    (pseudogenes, repeat expansions, copy-number variants), and re-triage every candidate against the
+    newest database releases. More callers, more passes, more scrutiny — for a single patient.
+  </p>
+
+  <h2>What this is equivalent to</h2>
+  <p>
+    The software is free and open-source; what a comparable engagement costs elsewhere is expert time. A
+    clinical WGS re-analysis and interpretation of this depth — independent re-calling, pseudogene
+    resolution, multi-database triage, ACMG curation and a written clinical hand-off — is the kind of work
+    a diagnostic lab or bioinformatics consultancy would typically bill in the
+    <strong>thousands to tens of thousands of dollars per case</strong>, on top of the sequencing itself.
+    The compute is modest (one workstation, or a few hundred dollars of cloud per genome); the value is in
+    the depth and the number of passes. <span class="muted">(Figures are an order-of-magnitude estimate,
+    for context only.)</span>
+  </p>
+
+  <h2>Finding the variant is only half the work</h2>
+  <p>
+    Across those seven caller-and-pipeline combinations the calling layer was unanimous — the same
+    candidates were found every time. Every meaningful disagreement with the original analysis was on the
+    <strong>interpretation layer</strong>: disease mechanism, how well a gene fits the child's phenotype,
+    and how the literature and clinical databases should be weighed. That is precisely why this is run
+    <em>alongside</em> — not instead of — the clinical team. A confirmed variant is a starting point;
+    turning it into a diagnosis is a clinical judgement made together with the treating physicians.
   </p>
 
   <h2>Why the repository is private</h2>
   <p>
     The repository is <strong>private out of clinical sensitivity</strong> — it contains identifiable
     patient data. A de-identification plan governs any future public release of the generic pipeline and
-    methodology, with raw data deposited only to controlled-access archives. We treat patient privacy as
-    a hard constraint, not a preference.
+    methodology, with raw data deposited only to controlled-access archives. We treat patient privacy as a
+    hard constraint, not a preference.
   </p>
 
   <h2>Where Google Cloud fits (planned)</h2>
