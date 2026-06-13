@@ -1,0 +1,71 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GcpStrip from '../../components/GcpStrip.astro';
+import Changelog from '../../components/Changelog.astro';
+import Screenshot from '../../components/Screenshot.astro';
+import { getEntry } from 'astro:content';
+
+const entry = await getEntry('projects', 'linguistpro');
+const d = entry!.data;
+---
+<BaseLayout title="LinguistPro" description={d.description} wide={true}>
+  <p class="eyebrow mono small">Flagship product · {d.version}</p>
+  <h1>LinguistPro</h1>
+  <p class="lead">{d.tagline} — a premium learning workstation for Hebrew, built around one idea: your data stays yours.</p>
+
+  <div class="btn-row">
+    <a href={`https://${d.domain}`} class="btn btn-primary">Open LinguistPro</a>
+    <a href="https://linguistpro.kolosei.com/library.html" class="btn btn-secondary">Browse the Library</a>
+    {d.statusPage && <a href={d.statusPage} class="btn btn-secondary">Uptime status</a>}
+  </div>
+
+  {d.screenshots.length > 0 && d.screenshots.map((s) => (
+    <Screenshot src={s.src} alt={s.alt} />
+  ))}
+
+  <h2>The problem</h2>
+  <p>
+    Hebrew learners face two problems at once. Textbook apps march everyone through a fixed curriculum
+    that rarely matches the text you actually want to read — a song, an article, a verse. And the apps
+    that do help typically take your texts, notes and progress onto their servers. LinguistPro solves
+    both: it works with <em>any</em> Hebrew text you give it, and it keeps everything on your device.
+  </p>
+
+  <h2>How it works</h2>
+  <p>
+    Paste a paragraph of Hebrew and LinguistPro turns it into a line-by-line table: niqqud (vocalization),
+    transliteration, translation and audio for each line. Work through it line by line, pull complex
+    sentences into spaced-repetition (SRS) cards, train, and track progress over time.
+  </p>
+  <p>
+    The architecture is unusual: <strong>SQLite WASM running in browser-local OPFS</strong>. Texts, audio,
+    progress and notes live in the browser — never on someone else's server. The cloud is used only for
+    heavy compute (speech, neural translation, morphological analysis), and there the learner supplies
+    their <strong>own Google Cloud key</strong>, stored in the browser only.
+  </p>
+
+  <GcpStrip services={d.gcpServices} planned={d.gcpPlanned} />
+
+  <h2>New: the Library</h2>
+  <p>
+    The <a href="https://linguistpro.kolosei.com/library.html">Library</a> is building a corpus of
+    classical Hebrew texts organized by era, translated to Russian with deep morphological analysis,
+    drawing on <a href="https://benyehuda.org/">Project Ben-Yehuda</a>. It turns the workspace into a
+    guided reading path through the canon, not just an editor for one-off texts.
+  </p>
+
+  <h2>Research mode</h2>
+  <p>
+    LinguistPro includes an opt-in, cohort-based research mode with IRB-style consent, supporting a
+    Hebrew-ulpan pedagogy diploma project. The methodology is
+    <a href="https://osf.io/zdv9j">preregistered at OSF</a>; the next milestone is two testing cohorts of
+    20 students.
+  </p>
+
+  <Changelog entries={d.changelog} />
+
+  <div class="btn-row">
+    <a href={`https://${d.domain}`} class="btn btn-primary">Open LinguistPro</a>
+    <a href="/technology" class="btn btn-secondary">How we use Google Cloud</a>
+  </div>
+</BaseLayout>

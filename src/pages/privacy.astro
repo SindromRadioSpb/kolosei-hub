@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout
+  title="Privacy"
+  description="Kolosei privacy policy — how the website and our products handle data. The short version: your data stays with you."
+>
+  <h1>Privacy</h1>
+  <p class="lead">
+    The short version: your data stays with you. Kolosei's products are built privacy-first, and this
+    site collects as little as possible.
+  </p>
+
+  <h2>This website</h2>
+  <p>
+    kolosei.com is a static site. It sets no tracking cookies and runs no third-party analytics. Like any
+    web server, the hosting provider (Hetzner) records standard request logs (IP address, timestamp,
+    requested URL, user agent) for security and operations; these are not used to profile visitors.
+  </p>
+
+  <h2>LinguistPro</h2>
+  <p>
+    LinguistPro stores a learner's texts, audio, progress and notes in <strong>browser-local storage</strong>
+    (OPFS + SQLite WASM). That data is not transmitted to or stored on Kolosei's servers. When a feature
+    needs cloud compute (text-to-speech, neural translation, Gemini analysis), the learner supplies their
+    <strong>own Google Cloud / Gemini API key</strong>, which is held in the browser only and never sent to
+    Kolosei. Requests made with that key are processed by Google under the user's own account and Google's
+    terms. Opt-in research mode collects cohort data only with explicit, IRB-style consent.
+  </p>
+
+  <h2>HDLE Premium</h2>
+  <p>
+    HDLE Premium is a desktop application. Documents and corpora are processed locally. Any translation
+    credentials are encrypted at rest with AES-256-GCM and stored in the operating-system keyring; data is
+    sent only to the translation provider the user explicitly selects.
+  </p>
+
+  <h2>EgorGenom</h2>
+  <p>
+    EgorGenom is a private research project handling identifiable patient data. That data is never
+    published, and the repository is private. Any future public release is governed by a de-identification
+    plan, with raw data deposited only to controlled-access archives.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    For any privacy question or request, email <a href="mailto:peter@kolosei.com">peter@kolosei.com</a>.
+  </p>
+  <p class="small muted">Last updated: 13 June 2026.</p>
+</BaseLayout>

@@ -2,17 +2,20 @@
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 const links = [
   { href: '/', label: 'Home' },
-  { href: '/projects', label: 'Projects' },
+  { href: '/products', label: 'Products' },
+  { href: '/technology', label: 'Technology' },
   { href: '/about', label: 'About' },
   { href: '/contact', label: 'Contact' },
 ];
+const isActive = (href: string) =>
+  href === '/' ? pathname === '/' : pathname === href || pathname.startsWith(`${href}/`);
 ---
 <header>
   <nav>
     <a href="/" class="brand">Kolosei</a>
     <ul>
       {links.filter((l) => l.href !== '/').map((l) => (
-        <li><a href={l.href} aria-current={pathname === l.href ? 'page' : undefined}>{l.label}</a></li>
+        <li><a href={l.href} aria-current={isActive(l.href) ? 'page' : undefined}>{l.label}</a></li>
       ))}
     </ul>
   </nav>

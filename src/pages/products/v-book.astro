@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GcpStrip from '../../components/GcpStrip.astro';
+import Changelog from '../../components/Changelog.astro';
+import Screenshot from '../../components/Screenshot.astro';
+import { getEntry } from 'astro:content';
+
+const entry = await getEntry('projects', 'v-book');
+const d = entry!.data;
+---
+<BaseLayout title="HDLE Premium" description={d.description} wide={true}>
+  <p class="eyebrow mono small">Desktop product · {d.version}</p>
+  <h1>HDLE Premium</h1>
+  <p class="lead">{d.tagline} — the same Hebrew-NLP core as LinguistPro, built for professionals.</p>
+
+  <div class="btn-row">
+    {d.repo && <a href={d.repo} class="btn btn-secondary">View on GitHub</a>}
+    <a href="/technology" class="btn btn-secondary">Built on Google Cloud</a>
+  </div>
+
+  {d.screenshots.length > 0 && d.screenshots.map((s) => (
+    <Screenshot src={s.src} alt={s.alt} />
+  ))}
+
+  <h2>What it's for</h2>
+  <p>
+    HDLE Premium (Hebraic Dynamic Lexicon Engine) is a desktop workbench for professional Hebrew
+    lexicography and terminology extraction — aimed at translators, terminologists and researchers rather
+    than learners. Import documents (TXT, DOCX, PDF with OCR), define reference corpora, and extract the
+    terminology that matters from your own material.
+  </p>
+
+  <h2>How it works</h2>
+  <p>
+    A 387k-document Hebrew Wikipedia baseline ships as a reference corpus. The engine extracts multi-word
+    expressions and lemmatized terms with PMI / T-score scoring, backed by FTS5 concordance search and a
+    translation memory. Batch translation runs through <strong>Google Cloud Translation API v3</strong>
+    (the official client) with budget guards and usage tracking, with a free fallback tier.
+  </p>
+  <p>
+    Built with Python + PyQt6, SQLAlchemy + SQLite (WAL, FTS5), and Stanza for Hebrew lemmatization and
+    POS tagging. Credentials are encrypted at rest with <strong>AES-256-GCM</strong> in the OS keyring —
+    nothing leaves the machine except calls to the translation provider the user explicitly selects.
+    Projects export to portable <code>.hdleproj</code> bundles (ZIP + SHA256) and to Excel, CSV, JSONL,
+    TBX and TMX.
+  </p>
+
+  <GcpStrip services={d.gcpServices} planned={d.gcpPlanned} />
+
+  <Changelog entries={d.changelog} />
+
+  <div class="btn-row">
+    {d.repo && <a href={d.repo} class="btn btn-primary">View on GitHub</a>}
+    <a href="/products/linguistpro" class="btn btn-secondary">See LinguistPro</a>
+  </div>
+</BaseLayout>

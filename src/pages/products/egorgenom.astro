@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GcpStrip from '../../components/GcpStrip.astro';
+import { getEntry } from 'astro:content';
+
+const entry = await getEntry('projects', 'egorgenom');
+const d = entry!.data;
+---
+<BaseLayout title="EgorGenom" description={d.description} wide={true}>
+  <p class="eyebrow mono small">Research vertical · health-AI</p>
+  <h1>EgorGenom</h1>
+  <p class="lead">{d.tagline}. This is research held to clinical-grade standards — not a commercial product.</p>
+
+  <h2>What it is</h2>
+  <p>
+    EgorGenom is parent-driven whole-genome sequencing analysis for a child with a suspected genetic
+    disease, run in parallel with a clinical team. It's built on the open-source
+    <strong>nf-core/sarek</strong> and <strong>nf-core/raredisease</strong> pipelines (Nextflow, WSL2
+    Ubuntu 24.04), with custom layers for phenotype-to-gene scoring, transcript-aware variant
+    prioritization and ACMG-style triage.
+  </p>
+
+  <h2>Methodological standards</h2>
+  <p>
+    Every candidate variant is validated against live ClinVar / OMIM before it enters a report — local
+    databases lag, sometimes severely. The analysis follows a blinded multi-expert review protocol, with
+    a reproducibility layer (runbook, pinned Docker digests) that makes the whole pipeline re-runnable.
+    Documentation is versioned in the same session as the findings, because stale documentation is
+    harmful in a clinical context.
+  </p>
+
+  <h2>Why the repository is private</h2>
+  <p>
+    The repository is <strong>private out of clinical sensitivity</strong> — it contains identifiable
+    patient data. A de-identification plan governs any future public release of the generic pipeline and
+    methodology, with raw data deposited only to controlled-access archives. We treat patient privacy as
+    a hard constraint, not a preference.
+  </p>
+
+  <h2>Where Google Cloud fits (planned)</h2>
+  <p>
+    This vertical is where we expect to scale on Google Cloud next. It is explicitly forward-looking, not
+    yet in production:
+  </p>
+  <GcpStrip services={[]} planned={d.gcpPlanned} />
+  <ul>
+    <li><strong>Vertex AI</strong> — phenotype-to-gene scoring models.</li>
+    <li><strong>BigQuery</strong> — querying population-frequency datasets (gnomAD) at scale.</li>
+    <li><strong>Cloud Storage</strong> — de-identified genomic data and long-read archives.</li>
+    <li><strong>Document AI</strong> — parsing clinical reports and lab PDFs.</li>
+  </ul>
+
+  <div class="btn-row">
+    <a href="/technology" class="btn btn-primary">How we use Google Cloud</a>
+    <a href="/contact" class="btn btn-secondary">Clinical / research contact</a>
+  </div>
+</BaseLayout>

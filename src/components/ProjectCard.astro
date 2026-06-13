@@ -3,22 +3,29 @@ interface Props {
   title: string;
   description: string;
   status: 'active' | 'paused' | 'archived';
+  tagline?: string;
   domain?: string;
   url?: string;
   repo?: string;
   statusPage?: string;
+  detailUrl?: string;
+  gcpServices?: string[];
 }
-
-const { title, description, status, domain, url, repo, statusPage } = Astro.props;
+const { title, description, status, tagline, domain, url, repo, statusPage, detailUrl, gcpServices = [] } = Astro.props;
 const statusLabel = { active: 'Active', paused: 'Paused', archived: 'Archived' }[status];
 ---
 <article class="card">
   <header>
-    <h3>{title}</h3>
+    <h3>{detailUrl ? <a href={detailUrl}>{title}</a> : title}</h3>
     <span class={`status status-${status}`}>{statusLabel}</span>
   </header>
+  {tagline && <p class="card-tagline">{tagline}</p>}
   <p>{description}</p>
+  {gcpServices.length > 0 && (
+    <p class="card-gcp">{gcpServices.join(' · ')}</p>
+  )}
   <footer class="links">
+    {detailUrl && <a href={detailUrl} class="more">Learn more →</a>}
     {domain && <a href={`https://${domain}`}>{domain}</a>}
     {url && !domain && <a href={url}>{url.replace(/^https?:\/\//, '')}</a>}
     {repo && <a href={repo}>GitHub</a>}
@@ -41,9 +48,11 @@ const statusLabel = { active: 'Active', paused: 'Paused', archived: 'Archived' }
     align-items: baseline;
     justify-content: space-between;
     gap: 0.75rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.35rem;
   }
   h3 { margin: 0; font-size: 1.1rem; }
+  h3 a { color: var(--fg); border-bottom: none; }
+  h3 a:hover { color: var(--accent); }
 
   .status {
     font-size: 0.75rem;
@@ -52,17 +61,22 @@ const statusLabel = { active: 'Active', paused: 'Paused', archived: 'Archived' }
     padding: 0.15em 0.5em;
     border-radius: 3px;
     font-weight: 500;
+    white-space: nowrap;
   }
   .status-active { background: var(--accent); color: white; }
   .status-paused { background: var(--bg-soft); color: var(--fg-muted); border: 1px solid var(--border); }
   .status-archived { background: var(--bg-soft); color: var(--fg-muted); border: 1px solid var(--border); }
 
+  .card-tagline { margin: 0 0 0.5rem; font-size: 0.85rem; color: var(--fg-muted); font-family: var(--font-mono); }
   p { margin: 0 0 0.75rem; font-size: 0.95rem; }
+  .card-gcp { font-size: 0.8rem; color: var(--fg-muted); font-family: var(--font-mono); margin: 0 0 0.75rem; }
 
   .links {
     display: flex;
+    flex-wrap: wrap;
     gap: 1rem;
     font-size: 0.85rem;
     font-family: var(--font-mono);
   }
+  .links .more { font-weight: 500; }
 </style>

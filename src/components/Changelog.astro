@@ -1,0 +1,42 @@
+---
+interface Entry { date: string; text: string; }
+interface Props {
+  entries?: Entry[];
+  heading?: string;
+}
+const { entries = [], heading = 'Recent changes' } = Astro.props;
+---
+{entries.length > 0 && (
+  <section>
+    <h2>{heading}</h2>
+    <ul class="changelog">
+      {entries.map((e) => (
+        <li>
+          <time>{e.date}</time>
+          <span set:html={e.text} />
+        </li>
+      ))}
+    </ul>
+  </section>
+)}
+
+<style>
+  .changelog { list-style: none; padding: 0; margin: 1rem 0; }
+  .changelog li {
+    display: grid;
+    grid-template-columns: 6.5rem 1fr;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .changelog time {
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    color: var(--fg-muted);
+    white-space: nowrap;
+  }
+  .changelog span { font-size: 0.92rem; color: var(--fg-soft); }
+  @media (max-width: 480px) {
+    .changelog li { grid-template-columns: 1fr; gap: 0.15rem; }
+  }
+</style>

@@ -7,11 +7,14 @@ interface Props {
   title: string;
   description: string;
   wide?: boolean;
+  image?: string;
+  home?: boolean;
 }
 
-const { title, description, wide = false } = Astro.props;
+const { title, description, wide = false, image = '/og-image.png', home = false } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const fullTitle = title === 'Kolosei' ? 'Kolosei — Peter Kolosei' : `${title} — Kolosei`;
+const fullTitle = home ? 'Kolosei — AI-powered Hebrew language tools' : `${title} — Kolosei`;
+const ogImage = new URL(image, Astro.site);
 ---
 <!doctype html>
 <html lang="en">
@@ -30,27 +33,37 @@ const fullTitle = title === 'Kolosei' ? 'Kolosei — Peter Kolosei' : `${title} 
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content="Kolosei" />
-    <meta name="twitter:card" content="summary" />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
     <script type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
-      '@type': 'Person',
-      name: 'Peter Kolosei',
+      '@type': 'Organization',
+      name: 'Kolosei',
       url: 'https://kolosei.com',
+      logo: 'https://kolosei.com/favicon.svg',
+      image: 'https://kolosei.com/og-image.png',
+      email: 'peter@kolosei.com',
+      description: 'Kolosei is a founder-led studio building AI-powered Hebrew language tools, with LinguistPro as its flagship. Built on Google Cloud.',
       sameAs: [
         'https://github.com/SindromRadioSpb',
         'https://osf.io/zdv9j',
       ],
-      email: 'peter@kolosei.com',
+      founder: {
+        '@type': 'Person',
+        name: 'Peter Kolosei',
+        sameAs: ['https://github.com/SindromRadioSpb'],
+      },
       knowsAbout: [
         'Hebrew language learning',
-        'Bioinformatics',
-        'Whole-genome sequencing analysis',
-        'Rare-disease genomics',
         'Natural language processing',
-        'Web development',
+        'Hebrew lexicography',
+        'Google Cloud',
+        'Gemini API',
+        'Rare-disease genomics',
       ],
     })} />
   </head>

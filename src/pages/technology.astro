@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import GcpStrip from '../components/GcpStrip.astro';
+---
+<BaseLayout
+  title="Technology"
+  wide={true}
+  description="How Kolosei uses Google Cloud — Gemini, Cloud Text-to-Speech and Cloud Translation v3 in production today, with Vertex AI, BigQuery, Cloud Storage and Document AI planned for the genomics vertical."
+>
+  <h1>Built on Google Cloud</h1>
+
+  <p class="lead">
+    AI is the core of what Kolosei ships, not a bolt-on. Two products use Google Cloud in production
+    today — and they do it under the user's own key, so we never hold a user's credentials or content
+    on our servers.
+  </p>
+
+  <GcpStrip
+    services={['Gemini API', 'Cloud Text-to-Speech', 'Cloud Translation v3']}
+    compact={true}
+  />
+
+  <h2>In production today</h2>
+  <p>Each of these is a real dependency in shipping code — the exact client library is named below.</p>
+  <table class="tbl">
+    <thead>
+      <tr><th>Google Cloud service</th><th>Where</th><th>What it does</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Gemini API</strong><br /><code>@google/generative-ai</code></td>
+        <td>LinguistPro</td>
+        <td>Morphological analysis, translation assistance and text explanation for Hebrew. Runs under a <strong>per-user API key stored in the browser only</strong> — zero server-side retention.</td>
+      </tr>
+      <tr>
+        <td><strong>Cloud Text-to-Speech</strong><br /><code>@google-cloud/text-to-speech</code></td>
+        <td>LinguistPro</td>
+        <td>Per-line Hebrew audio with niqqud-aware pronunciation, so learners hear any text they paste in.</td>
+      </tr>
+      <tr>
+        <td><strong>Cloud Translation v3</strong><br /><code>@google-cloud/translate</code> · <code>google-cloud-translate</code></td>
+        <td>LinguistPro &amp; HDLE Premium</td>
+        <td>Neural translation of Hebrew source text. The official v3 client, with budget guards and usage tracking in the desktop product.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Planned / in evaluation</h2>
+  <p>
+    Our second vertical — <a href="/products/egorgenom">EgorGenom</a>, rare-disease genomics — is where
+    we expect to scale on Google Cloud next. This is explicitly forward-looking, not yet in production.
+  </p>
+  <table class="tbl">
+    <thead>
+      <tr><th>Service</th><th>Vertical</th><th>Intended use</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><strong>Vertex AI</strong></td><td>EgorGenom · LinguistPro</td><td>Phenotype-to-gene scoring models; fine-tuned Hebrew morphology / translation models.</td></tr>
+      <tr><td><strong>BigQuery</strong></td><td>EgorGenom</td><td>Querying population-frequency datasets (gnomAD) at scale instead of static local dumps.</td></tr>
+      <tr><td><strong>Cloud Storage</strong></td><td>EgorGenom</td><td>De-identified genomic data and long-read archives.</td></tr>
+      <tr><td><strong>Document AI</strong></td><td>EgorGenom</td><td>Parsing clinical reports and lab PDFs that are currently handled manually.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Why Google Cloud</h2>
+  <p>
+    Two reasons, specifically. First, <strong>model quality for Hebrew and multilingual work</strong>:
+    Gemini handles Hebrew morphology, mixed RTL/LTR text and Hebrew↔Russian/English translation better
+    than the alternatives we tested — which matters when the whole product is about understanding a
+    morphologically rich language. Second, our architecture is <strong>offline-first and only calls the
+    cloud for heavy compute</strong> (speech synthesis, neural translation, model inference). That keeps
+    user data local by default and makes Google Cloud the natural place to run exactly the workloads that
+    genuinely need a frontier model — and the place we want to grow as usage and the genomics vertical
+    scale.
+  </p>
+
+  <h2>The privacy design</h2>
+  <p>
+    LinguistPro keeps a user's texts, audio, progress and notes in browser-local storage (OPFS + SQLite
+    WASM). When the cloud is needed, the user supplies their own Google Cloud key, held in the browser
+    only — so Kolosei never stores user credentials or content server-side, and the user's Google Cloud
+    usage is governed by their own account and Google's terms. HDLE Premium follows the same principle on
+    the desktop, encrypting credentials at rest with AES-256-GCM in the OS keyring.
+  </p>
+
+  <div class="btn-row">
+    <a href="/products/linguistpro" class="btn btn-primary">See LinguistPro</a>
+    <a href="/contact" class="btn btn-secondary">Talk to us</a>
+  </div>
+</BaseLayout>

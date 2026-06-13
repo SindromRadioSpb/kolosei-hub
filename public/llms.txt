@@ -1,42 +1,49 @@
 # Kolosei
 
-> Personal research and development hub of Peter Kolosei (Пётр Колосей). Hub for projects spanning Hebrew language tooling, parent-driven rare-disease genomics, and small-scale tools.
+> Kolosei is a founder-led studio building AI-powered Hebrew language tools, with LinguistPro as its flagship. Built on Google Cloud (Gemini, Cloud Text-to-Speech, Cloud Translation v3). A second research vertical covers parent-driven rare-disease genomics.
 
-Maintained by: Peter Kolosei <peter@kolosei.com>
+Founder: Peter Kolosei <peter@kolosei.com>
 GitHub: https://github.com/SindromRadioSpb
 OSF: https://osf.io/zdv9j (LinguistPro preregistration)
-Last updated: 2026-05-28
+Last updated: 2026-06-13
 
 ## Pages
 
-- [Home](https://kolosei.com/): overview of Peter Kolosei and featured projects
-- [Projects](https://kolosei.com/projects): full list of active and past projects
-- [About](https://kolosei.com/about): background, working style, current focus
-- [Contact](https://kolosei.com/contact): contact addresses for different purposes
+- [Home](https://kolosei.com/): studio overview, products, and Google Cloud usage
+- [Products](https://kolosei.com/products): the full product portfolio
+- [Technology](https://kolosei.com/technology): how Kolosei uses Google Cloud (in production and planned)
+- [About](https://kolosei.com/about): studio, founder, working style
+- [Contact](https://kolosei.com/contact): contact addresses by purpose
+- [Privacy](https://kolosei.com/privacy) · [Terms](https://kolosei.com/terms) · [Imprint](https://kolosei.com/imprint)
 
-## Projects
+## Products
 
-### LinguistPro
+### LinguistPro — flagship (https://linguistpro.kolosei.com)
 
-- URL: https://linguistpro.kolosei.com
-- Repo: https://github.com/SindromRadioSpb/tts-prototype-android
-- Description: Offline-first Hebrew learning workspace. PWA architecture with OPFS + SQLite WASM for local data. Google TTS / Translate / Gemini are user-provided. SRS, niqqud, transliteration, audio-anchored notes, ZIP-bundle cross-device export, full RU/EN/HE i18n with RTL.
-- Status: v3.1.0 production on Hetzner CX23 + Coolify since 2026-05-28; v3.2.0 in development (premium notes redesign, text-card system, ulpan-research mode).
-- Companion app: native Android (tts-prototype-android-v2), Kotlin/Gradle.
-- Research: preregistered ulpan-cohort study at OSF zdv9j; planned testing with 2 cohorts × 20 students.
+- Offline-first Hebrew learning workspace. PWA with OPFS + SQLite WASM for local data; the user's data never leaves their device.
+- Google Cloud in production: Gemini API (morphology + translation assistance), Cloud Text-to-Speech (Hebrew audio), Cloud Translation v3 — all under per-user keys with zero server-side retention.
+- SRS training, niqqud, transliteration, audio-anchored notes, ZIP-bundle cross-device export, full RU/EN/HE i18n with RTL.
+- v3.6 "Smart Learning Graph" in production on Hetzner CX23 + Coolify.
+- Library (https://linguistpro.kolosei.com/library.html): a corpus of classical Hebrew texts by era, translated to Russian with deep morphological analysis, drawing on Project Ben-Yehuda.
+- Research: preregistered ulpan-cohort study at OSF zdv9j; planned testing with 2 cohorts x 20 students.
 
-### EgorGenom
+### HDLE Premium — V_book (https://github.com/SindromRadioSpb/v_book)
 
-- Subdomain: egorgenom.kolosei.com (not yet deployed)
-- Description: Parent-driven whole-genome sequencing analysis for a child with suspected genetic disease. Built on nf-core/raredisease (Nextflow, WSL2 Ubuntu 24.04). Custom layers for phenotype-to-gene scoring and live-database verification (ClinVar, OMIM).
-- Status: active analysis; repository private out of clinical sensitivity.
+- Desktop Hebrew lexicography and terminology extraction (Python + PyQt6, SQLite FTS5, Stanza NLP).
+- Google Cloud in production: Cloud Translation v3 (official client) with budget guards.
+- AES-256-GCM credential encryption; portable .hdleproj project bundles. v1.0.1.
+
+### EgorGenom — research vertical
+
+- Parent-driven whole-genome sequencing analysis for a child with a suspected genetic disease. Built on nf-core/sarek and nf-core/raredisease (Nextflow, WSL2 Ubuntu 24.04).
+- Repository is private out of clinical sensitivity (contains identifiable patient data). Not a commercial product.
+- Planned Google Cloud usage: Vertex AI, BigQuery (gnomAD), Cloud Storage, Document AI.
 
 ## Working style and biases
 
 - Thorough over quick. Prefers enriching complete analyses over subjective top-N shortcuts.
-- Documentation updated in the same session as findings — stale docs are harmful in clinical context.
-- Live ClinVar / OMIM verification required for every candidate variant before integration into clinical reports.
-- Methodological strictness over cleverness. Reproducibility, versioning, changelogs.
+- Privacy-first: user data stays local; cloud is used only for heavy compute, under the user's own key.
+- Documentation updated in the same session as findings; reproducibility, versioning, changelogs.
 
 ## How to cite
 

@@ -1,40 +1,73 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import Hero from '../components/Hero.astro';
+import GcpStrip from '../components/GcpStrip.astro';
 import { getCollection } from 'astro:content';
 
 const projects = (await getCollection('projects'))
   .filter((p) => p.data.featured)
   .sort((a, b) => a.data.order - b.data.order);
+
+// Aggregate the Google Cloud services actually in production across products.
+const gcpServices = [...new Set(projects.flatMap((p) => p.data.gcpServices))];
 ---
 <BaseLayout
   title="Kolosei"
-  description="Peter Kolosei — indie researcher and developer. Hebrew NLP (LinguistPro), parent-driven rare-disease genomics (EgorGenom), and other projects."
+  home={true}
+  description="Kolosei is a founder-led studio building AI-powered Hebrew language tools. Flagship LinguistPro turns any Hebrew text into a learning workspace — Gemini and Google Cloud do the heavy compute under the learner's own key."
 >
-  <h1>Peter Kolosei</h1>
-  <p class="lead">
-    Indie researcher and developer. I work on Hebrew language tooling, parent-driven rare-disease genomics, and adjacent things that need to exist but don't yet.
-  </p>
+  <Hero
+    eyebrow="AI studio · Hebrew language tools"
+    title="AI-powered Hebrew language tools"
+    lead="Kolosei is a founder-led studio building software for learning and understanding Hebrew. Our flagship, LinguistPro, turns any Hebrew text into a line-by-line learning workspace — and Google's Gemini does the heavy lifting, under the learner's own key, while their data never leaves the device."
+    ctas={[
+      { href: '/products/linguistpro', label: 'Explore LinguistPro', primary: true },
+      { href: '/technology', label: 'Built on Google Cloud' },
+    ]}
+  />
 
   <p>
-    The hub lists my active and past projects. Each project links to its own subdomain or repository where the actual work happens. Reach me at <a href="mailto:peter@kolosei.com">peter@kolosei.com</a>.
+    Two shipping Hebrew products and one health-AI research vertical, all built and run by founder
+    <a href="/about">Peter Kolosei</a>. The work is privacy-first by design and grounded in
+    preregistered language-pedagogy research.
   </p>
 
-  <h2>Featured projects</h2>
+  <h2>Products</h2>
   <div class="grid-projects">
     {projects.map((p) => (
       <ProjectCard
         title={p.data.title}
+        tagline={p.data.tagline}
         description={p.data.description}
         status={p.data.status}
         domain={p.data.domain}
         url={p.data.url}
         repo={p.data.repo}
+        statusPage={p.data.statusPage}
+        detailUrl={p.data.detailUrl}
+        gcpServices={p.data.gcpServices}
       />
     ))}
   </div>
+  <p class="small"><a href="/products">All products →</a></p>
 
-  <p class="small">
-    <a href="/projects">All projects →</a>
-  </p>
+  <section class="band">
+    <h2>Built on Google Cloud</h2>
+    <p>
+      AI is the core of what we ship, not a bolt-on. LinguistPro and HDLE Premium use Google Cloud in
+      production today — under the user's own key, so we never hold their credentials or content.
+    </p>
+    <GcpStrip services={gcpServices} compact={false} />
+  </section>
+
+  <section class="band">
+    <h2>Why this is credible</h2>
+    <ul class="traction">
+      <li><strong>In production</strong><span>LinguistPro v3.6 runs live on Hetzner + Coolify, with public uptime monitoring.</span></li>
+      <li><strong>Real Google Cloud usage</strong><span>Gemini API, Cloud Text-to-Speech and Cloud Translation v3 — in two shipping products.</span></li>
+      <li><strong>Privacy-first architecture</strong><span>User data stays in the browser (OPFS + SQLite WASM); per-user keys mean zero server-side retention.</span></li>
+      <li><strong>Preregistered research</strong><span>An ulpan-cohort study preregistered at OSF (osf.io/zdv9j), supporting a Hebrew-pedagogy diploma.</span></li>
+    </ul>
+  </section>
 </BaseLayout>

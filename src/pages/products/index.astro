@@ -7,31 +7,36 @@ const projects = (await getCollection('projects'))
   .sort((a, b) => a.data.order - b.data.order);
 ---
 <BaseLayout
-  title="Projects"
-  description="All projects by Peter Kolosei — Hebrew NLP, rare-disease genomics, and experimental tools."
+  title="Products"
+  description="Kolosei's products — LinguistPro (Hebrew learning workspace), HDLE Premium (desktop lexicography), and EgorGenom (rare-disease genomics research)."
   wide={true}
 >
-  <h1>Projects</h1>
+  <h1>Products</h1>
   <p class="lead">
-    A list of projects I'm currently working on or have worked on, in rough order of priority.
+    Two shipping Hebrew products and one health-AI research vertical. All built and run by founder
+    Peter Kolosei, all privacy-first, all using or planned to use Google Cloud.
   </p>
 
   <div class="grid-projects">
     {projects.map((p) => (
       <ProjectCard
         title={p.data.title}
+        tagline={p.data.tagline}
         description={p.data.description}
         status={p.data.status}
         domain={p.data.domain}
         url={p.data.url}
         repo={p.data.repo}
         statusPage={p.data.statusPage}
+        detailUrl={p.data.detailUrl}
+        gcpServices={p.data.gcpServices}
       />
     ))}
   </div>
 
   <hr />
   <p class="small muted">
-    More projects to be added as they reach a state worth pointing to publicly. Smaller experiments live in <code>github.com/SindromRadioSpb</code> directly.
+    Smaller experiments live in <code>github.com/SindromRadioSpb</code> directly. New products are added
+    here as they reach a state worth pointing to publicly.
   </p>
 </BaseLayout>

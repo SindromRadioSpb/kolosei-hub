@@ -1,0 +1,22 @@
+---
+interface CTA { href: string; label: string; primary?: boolean; }
+interface Props {
+  eyebrow?: string;
+  title: string;
+  lead: string;
+  ctas?: CTA[];
+}
+const { eyebrow, title, lead, ctas = [] } = Astro.props;
+---
+<section class="hero">
+  {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+  <h1>{title}</h1>
+  <p class="lead">{lead}</p>
+  {ctas.length > 0 && (
+    <div class="btn-row">
+      {ctas.map((c) => (
+        <a href={c.href} class={`btn ${c.primary ? 'btn-primary' : 'btn-secondary'}`}>{c.label}</a>
+      ))}
+    </div>
+  )}
+</section>
