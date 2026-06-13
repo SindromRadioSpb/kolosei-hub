@@ -48,6 +48,11 @@ const ogImage = new URL(image, Astro.site);
       image: 'https://kolosei.com/og-image.png',
       email: 'peter@kolosei.com',
       description: 'Kolosei is a founder-led studio building AI-powered Hebrew language tools, with LinguistPro as its flagship. Built on Google Cloud.',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Kiryat Bialik',
+        addressCountry: 'IL',
+      },
       sameAs: [
         'https://github.com/SindromRadioSpb',
         'https://osf.io/zdv9j',
