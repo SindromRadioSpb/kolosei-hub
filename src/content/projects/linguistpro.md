@@ -33,4 +33,6 @@ Unlike textbook apps that march you through a fixed curriculum, LinguistPro is a
 
 **Status (May 2026):** v3.6 in production on Hetzner CX23 + Coolify. Ships per-user Gemini API key (stored in the browser only, zero server-side retention), an extended morphology dictionary, and a "Smart Learning Graph" that suggests connections between texts a learner already knows.
 
-**Research mode:** opt-in, cohort-based analytics with IRB-style consent, supporting a Hebrew-ulpan pedagogy diploma project. Preregistered at OSF (`osf.io/zdv9j`). Next milestone: two testing cohorts of 20 students. A companion **Library** ([linguistpro.kolosei.com/library.html](https://linguistpro.kolosei.com/library.html)) is building a corpus of classical Hebrew texts organised by era, translated to Russian with deep morphological analysis, drawing on [Project Ben-Yehuda](https://benyehuda.org/).
+**The Reading Room:** a bilingual library — the Hebrew canon with morphology on tap. It catalogues **26,000+ public-domain works** from [Project Ben-Yehuda](https://benyehuda.org/), organised by period and author, with 796 already translated (Gemini) and vocalised (Dicta niqqud) and the rest in progress — a graded path from short, high-frequency texts to the full canon. See [linguistpro.kolosei.com/library.html](https://linguistpro.kolosei.com/library.html).
+
+**Research mode:** opt-in, cohort-based analytics with IRB-style consent, supporting a Hebrew-ulpan pedagogy diploma project. Preregistered at OSF (`osf.io/zdv9j`). Next milestone: two testing cohorts of 20 students.

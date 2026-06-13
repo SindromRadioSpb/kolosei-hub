@@ -24,7 +24,7 @@ Last updated: 2026-06-13
 - Google Cloud in production: Gemini API (morphology + translation assistance), Cloud Text-to-Speech (Hebrew audio), Cloud Translation v3 — all under per-user keys with zero server-side retention.
 - SRS training, niqqud, transliteration, audio-anchored notes, ZIP-bundle cross-device export, full RU/EN/HE i18n with RTL.
 - v3.6 "Smart Learning Graph" in production on Hetzner CX23 + Coolify.
-- Library (https://linguistpro.kolosei.com/library.html): a corpus of classical Hebrew texts by era, translated to Russian with deep morphological analysis, drawing on Project Ben-Yehuda.
+- Reading Room (https://linguistpro.kolosei.com/library.html): a bilingual library — the Hebrew canon with morphology on tap. Catalogues 26,000+ public-domain works from Project Ben-Yehuda, organised by period and author (Biblical, Medieval/Golden Age of Sepharad, Haskalah, Tehiya, Mandate, Modern); 796 already translated (Gemini) + vocalised (Dicta niqqud), the rest in progress. Catalogue-driven, served-on-open, with a graded "where to start" on-ramp and on-device i+1 recommendations.
 - Research: preregistered ulpan-cohort study at OSF zdv9j; planned testing with 2 cohorts x 20 students.
 
 ### HDLE Premium — V_book (https://github.com/SindromRadioSpb/v_book)
