@@ -19,6 +19,19 @@ const d = entry!.data;
     {d.statusPage && <a href={d.statusPage} class="btn btn-secondary">Uptime status</a>}
   </div>
 
+  <video
+    class="demo-video"
+    src="/media/linguistpro-demo.mp4"
+    poster="/media/linguistpro-demo-poster.jpg"
+    autoplay
+    muted
+    loop
+    playsinline
+    controls
+    preload="metadata"
+    aria-label="LinguistPro demo — how it works, Google Cloud, and the Reading Room"
+  ></video>
+
   {d.screenshots.length > 0 && d.screenshots.map((s) => (
     <Screenshot src={s.src} alt={s.alt} />
   ))}
