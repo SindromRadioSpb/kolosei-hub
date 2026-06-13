@@ -22,6 +22,7 @@ const projects = (await getCollection('projects'))
       <ProjectCard
         title={p.data.title}
         tagline={p.data.tagline}
+        partOf={p.data.partOf}
         description={p.data.description}
         status={p.data.status}
         domain={p.data.domain}

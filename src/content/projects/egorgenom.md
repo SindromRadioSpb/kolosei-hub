@@ -8,7 +8,7 @@ publishDate: 2025-08-01
 updateDate: 2026-05-30
 detailUrl: /products/egorgenom
 featured: true
-order: 3
+order: 4
 gcpPlanned:
   - Vertex AI
   - BigQuery

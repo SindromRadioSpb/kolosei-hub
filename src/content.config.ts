@@ -17,6 +17,7 @@ const projects = defineCollection({
     order: z.number().default(100),
     // Startup-positioning fields (all optional → existing entries unaffected)
     tagline: z.string().optional(),
+    partOf: z.string().optional(),
     detailUrl: z.string().optional(),
     productType: z.enum(['product', 'research']).default('product'),
     version: z.string().optional(),

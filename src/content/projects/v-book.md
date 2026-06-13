@@ -10,7 +10,7 @@ updateDate: 2026-05-20
 repo: https://github.com/SindromRadioSpb/v_book
 detailUrl: /products/v-book
 featured: true
-order: 2
+order: 3
 gcpServices:
   - Cloud Translation v3
 gcpPlanned:

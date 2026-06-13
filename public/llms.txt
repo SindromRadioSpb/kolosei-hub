@@ -11,6 +11,7 @@ Last updated: 2026-06-13
 
 - [Home](https://kolosei.com/): studio overview, products, and Google Cloud usage
 - [Products](https://kolosei.com/products): the full product portfolio
+- [Reading Room](https://kolosei.com/products/reading-room): the LinguistPro library — 26,000+ public-domain works from Project Ben-Yehuda
 - [Technology](https://kolosei.com/technology): how Kolosei uses Google Cloud (in production and planned)
 - [About](https://kolosei.com/about): studio, founder, working style
 - [Contact](https://kolosei.com/contact): contact addresses by purpose
