@@ -21,6 +21,7 @@ Last updated: 2026-06-13
 
 ### LinguistPro — flagship (https://linguistpro.kolosei.com)
 
+- Repo: https://github.com/SindromRadioSpb/tts-prototype-android (public)
 - Offline-first Hebrew learning workspace. PWA with OPFS + SQLite WASM for local data; the user's data never leaves their device.
 - Google Cloud in production: Gemini API (morphology + translation assistance), Cloud Text-to-Speech (Hebrew audio), Cloud Translation v3 — all under per-user keys with zero server-side retention.
 - SRS training, niqqud, transliteration, audio-anchored notes, ZIP-bundle cross-device export, full RU/EN/HE i18n with RTL.

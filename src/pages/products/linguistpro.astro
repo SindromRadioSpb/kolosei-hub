@@ -16,6 +16,7 @@ const d = entry!.data;
   <div class="btn-row">
     <a href={`https://${d.domain}`} class="btn btn-primary">Open LinguistPro</a>
     <a href="https://linguistpro.kolosei.com/library.html" class="btn btn-secondary">Open the Reading Room</a>
+    {d.repo && <a href={d.repo} class="btn btn-secondary">View on GitHub</a>}
     {d.statusPage && <a href={d.statusPage} class="btn btn-secondary">Uptime status</a>}
   </div>
 

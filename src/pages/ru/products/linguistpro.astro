@@ -20,6 +20,7 @@ const changelog = [
   <div class="btn-row">
     <a href={`https://${d.domain}`} class="btn btn-primary">Открыть LinguistPro</a>
     <a href="https://linguistpro.kolosei.com/library.html" class="btn btn-secondary">Открыть Reading Room</a>
+    {d.repo && <a href={d.repo} class="btn btn-secondary">Смотреть на GitHub</a>}
     {d.statusPage && <a href={d.statusPage} class="btn btn-secondary">Статус аптайма</a>}
   </div>
 

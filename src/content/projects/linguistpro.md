@@ -10,6 +10,7 @@ version: v3.6
 publishDate: 2024-09-01
 updateDate: 2026-05-17
 domain: linguistpro.kolosei.com
+repo: https://github.com/SindromRadioSpb/tts-prototype-android
 statusPage: https://stats.uptimerobot.com/hzdU5PQBqp
 detailUrl: /products/linguistpro
 featured: true
