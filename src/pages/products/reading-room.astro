@@ -79,6 +79,50 @@ const d = entry!.data;
   </p>
   <GcpStrip services={d.gcpServices} />
 
+  <h2>What's next: from the literary canon to the working canon</h2>
+  <p class="eyebrow mono small">Planned / on the roadmap — not yet shipped</p>
+  <p>
+    The Reading Room is the same machine pointed at a fixed canon — the public-domain Hebrew
+    literature of <a href="https://benyehuda.org/">Project Ben-Yehuda</a>. We want to point that same
+    pipeline at a different kind of canon: the practical, technical knowledge a newcomer needs to
+    qualify for a skilled trade in Israel. We're calling this planned track
+    <strong>Reading Room — Trades</strong>.
+  </p>
+  <p>
+    The need is concrete. Russian-speaking <em>olim</em> (new immigrants) training for technical and
+    production professions face a double barrier — learning the trade and learning it in Hebrew at the
+    same time. There are growing vocational programs aimed at this population, including practical
+    mechanical-engineering and production tracks. <strong>Reading Room — Trades</strong> would give
+    those learners bilingual Hebrew–Russian study aids — worked problem-books with solutions — so they
+    can study the material in both languages at once, with the terminology, niqqud, audio and
+    morphology the LinguistPro engine already provides. We'd build these as study aids for learners,
+    not as any program's official materials, and we claim no affiliation, endorsement or accreditation.
+  </p>
+  <p>
+    The first intended corpus is a Hebrew–Russian <strong>"Materials Science — problem book with worked
+    solutions."</strong> The founder holds a mechanical-engineering degree and a master's, so the
+    technical source texts and solutions would be <strong>personally curated and proofread by someone
+    qualified in the field</strong> before the pipeline ever translates or vocalizes them — the same
+    honest discipline as the rest of the Reading Room, where machine output is labelled as machine
+    output and never dressed up as hand-checked. Further vocational and production-engineering subjects
+    would follow, prioritized by the courses learners actually enrol in. None of these corpora exist
+    yet; this is a roadmap direction, presented as such.
+  </p>
+  <p>
+    This is also where Google Cloud is the enabler, honestly. Today LinguistPro's runtime AI runs under
+    each user's <strong>own</strong> Google Cloud key in the browser — which funds reading, but not the
+    studio-side work of <em>generating</em> a new subject corpus. Building one is a one-time batch job
+    on our own billing account: translating, explaining, vocalizing with niqqud and synthesizing audio
+    for an entire problem-book before any learner opens it. That is exactly the heavy <strong>Gemini</strong>
+    translation and explanation and <strong>Cloud Translation v3</strong> neural translation we already
+    run in production for the literary corpus — plus the niqqud-aware <strong>Cloud Text-to-Speech</strong>
+    the LinguistPro engine already runs in production — with <strong>Vertex AI</strong> a planned next
+    step for fine-tuned Hebrew models, not something in production today. As a solo, unfunded founder,
+    the limit isn't the pipeline; it's the cost of frontier-model compute at the scale of many subjects.
+    This is the workload Google for Startups credits would move onto Kolosei's own account — turning a
+    roadmap into shipped study aids.
+  </p>
+
   <div class="btn-row">
     <a href={d.url} class="btn btn-primary">Open the Reading Room</a>
     <a href="/technology" class="btn btn-secondary">How we use Google Cloud</a>
