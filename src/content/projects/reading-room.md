@@ -3,12 +3,12 @@ title: Reading Room
 partOf: LinguistPro
 tagline: The Hebrew canon, translated
 tagline_ru: Канон иврита — в переводе
-description_ru: Двуязычная библиотека — канон иврита с морфологией по тапу. 26 000+ произведений из общественного достояния проекта Бен-Иегуда, по периодам и авторам; 796 уже готовы к чтению (перевод Gemini + никуд Dicta), остальные — в процессе. Градуированный путь от коротких текстов к полному канону.
-description: A bilingual library — the Hebrew canon with morphology on tap. 26,000+ public-domain works from Project Ben-Yehuda, organised by period and author; 796 ready to read (Gemini translation + Dicta niqqud), the rest in progress. A graded path from short texts to the full canon.
+description_ru: "Двуязычная библиотека иврита: 26 455 произведений проекта Бен-Иегуда в каталоге, 796 подготовлены для интерактивного чтения с переводом, никудом, морфологией, поиском и повторением в контексте."
+description: "A bilingual Hebrew library: 26,455 Project Ben-Yehuda works catalogued, with 796 prepared for interactive reading with translation, niqqud, morphology, search and contextual review."
 status: active
 productType: product
 publishDate: 2026-03-01
-updateDate: 2026-06-13
+updateDate: 2026-07-30
 url: https://linguistpro.kolosei.com/library.html
 detailUrl: /products/reading-room
 featured: true
@@ -18,4 +18,4 @@ gcpServices:
   - Cloud Translation v3
 ---
 
-The Reading Room turns the entire public-domain Hebrew canon into a bilingual, guided reading library where every word is analyzable — built on the open scholarship of Project Ben-Yehuda. It ships inside LinguistPro, but it is its own learning surface: where the LinguistPro editor is "bring any text," the Reading Room is "read the canon."
+The Reading Room catalogues the public-domain Hebrew canon as a guided bilingual library built on the open scholarship of Project Ben-Yehuda. Its 796 prepared works support interactive reading today; the rest remain clearly marked as awaiting processing.

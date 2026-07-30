@@ -5,14 +5,13 @@ import GcpStrip from '../components/GcpStrip.astro';
 <BaseLayout
   title="Technology"
   wide={true}
-  description="How Kolosei uses Google Cloud — Gemini, Cloud Text-to-Speech and Cloud Translation v3 in production today, with Vertex AI, BigQuery, Cloud Storage and Document AI planned for the genomics vertical."
+  description="How Kolosei combines local-first storage, deterministic Hebrew language data and opt-in Google Cloud compute in LinguistPro and HDLE Premium."
 >
   <h1>Built on Google Cloud</h1>
 
   <p class="lead">
-    AI is the core of what Kolosei ships, not a bolt-on. Two products use Google Cloud in production
-    today — and they do it under the user's own key, so we never hold a user's credentials or content
-    on our servers.
+    LinguistPro is deliberately hybrid: local-first storage and deterministic language data establish
+    the learning record; Google Cloud handles selected heavy workloads under the user's own key.
   </p>
 
   <GcpStrip
@@ -30,12 +29,12 @@ import GcpStrip from '../components/GcpStrip.astro';
       <tr>
         <td><strong>Gemini API</strong><br /><code>@google/generative-ai</code></td>
         <td>LinguistPro</td>
-        <td>Morphological analysis, translation assistance and text explanation for Hebrew. Runs under a <strong>per-user API key stored in the browser only</strong> — zero server-side retention.</td>
+        <td>Hebrew learning tables, PDF/image OCR, audio/video transcription and A1–B2 graded retelling. Runs under a <strong>per-user API key stored in the browser</strong>; the selected source is processed under the user's Google account.</td>
       </tr>
       <tr>
         <td><strong>Cloud Text-to-Speech</strong><br /><code>@google-cloud/text-to-speech</code></td>
         <td>LinguistPro</td>
-        <td>Per-line Hebrew audio with niqqud-aware pronunciation, so learners hear any text they paste in.</td>
+        <td>Niqqud-aware Hebrew audio for lines, examples and study material, with content-addressed caching.</td>
       </tr>
       <tr>
         <td><strong>Cloud Translation v3</strong><br /><code>@google-cloud/translate</code> · <code>google-cloud-translate</code></td>
@@ -44,6 +43,21 @@ import GcpStrip from '../components/GcpStrip.astro';
       </tr>
     </tbody>
   </table>
+
+  <h2>What stays deterministic and local</h2>
+  <p>
+    AI does not get authority over the learner's memory or Hebrew grammar. Browser-local OPFS + SQLite
+    WASM hold the primary workspace; FSRS-6 schedules review from an append-only event trail; a shipped
+    Pealim dataset supplies 9,279 inflection paradigms; and the morphology resolver exposes ambiguity and
+    provenance instead of asking a language model to invent a confident answer.
+  </p>
+
+  <h2>Optional server layer</h2>
+  <p>
+    Account sync, Telegram/Mini App and OAuth/MCP agent connections are separate from the local workspace.
+    Each uses explicit consent, scoped access and revocation. Connected-agent and Telegram surfaces remain
+    an owner pilot rather than generally available product features.
+  </p>
 
   <h2>Planned / in evaluation</h2>
   <p>
@@ -65,22 +79,18 @@ import GcpStrip from '../components/GcpStrip.astro';
   <h2>Why Google Cloud</h2>
   <p>
     Two reasons, specifically. First, <strong>model quality for Hebrew and multilingual work</strong>:
-    Gemini handles Hebrew morphology, mixed RTL/LTR text and Hebrew↔Russian/English translation better
-    than the alternatives we tested — which matters when the whole product is about understanding a
-    morphologically rich language. Second, our architecture is <strong>offline-first and only calls the
-    cloud for heavy compute</strong> (speech synthesis, neural translation, model inference). That keeps
-    user data local by default and makes Google Cloud the natural place to run exactly the workloads that
-    genuinely need a frontier model — and the place we want to grow as usage and the genomics vertical
-    scale.
+    Gemini handles Hebrew and mixed RTL/LTR source material well across extraction, transcription,
+    translation and controlled rewriting. The architecture calls cloud models for those bounded workloads
+    while keeping the durable workspace and deterministic learning logic local. This preserves graceful
+    degradation when a provider is unavailable and makes the cost-bearing step visible to the learner.
   </p>
 
   <h2>The privacy design</h2>
   <p>
-    LinguistPro keeps a user's texts, audio, progress and notes in browser-local storage (OPFS + SQLite
-    WASM). When the cloud is needed, the user supplies their own Google Cloud key, held in the browser
-    only — so Kolosei never stores user credentials or content server-side, and the user's Google Cloud
-    usage is governed by their own account and Google's terms. HDLE Premium follows the same principle on
-    the desktop, encrypting credentials at rest with AES-256-GCM in the OS keyring.
+    LinguistPro keeps its primary workspace in browser-local OPFS + SQLite WASM. BYOK requests are governed
+    by the user's Google account. Optional sync and integrations can create server-side learner records or
+    consented text replicas, so they are disclosed and controlled separately. See the
+    <a href="/privacy">privacy page</a> for the current data-flow summary.
   </p>
 
   <div class="btn-row">

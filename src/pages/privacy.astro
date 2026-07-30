@@ -3,34 +3,74 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 <BaseLayout
   title="Privacy"
-  description="Kolosei privacy policy — how the website and our products handle data. The short version: your data stays with you."
+  description="How Kolosei and LinguistPro handle local data, BYOK cloud processing, optional sync, Telegram, connected agents and research participation."
 >
   <h1>Privacy</h1>
   <p class="lead">
-    The short version: your data stays with you. Kolosei's products are built privacy-first, and this
-    site collects as little as possible.
+    LinguistPro is local-first. Its primary workspace stays on your device; every feature that creates a
+    server copy or gives another service access is a separate choice.
   </p>
 
   <h2>This website</h2>
   <p>
     kolosei.com is a static site. It sets no tracking cookies and runs no third-party analytics. Like any
-    web server, the hosting provider (Hetzner) records standard request logs (IP address, timestamp,
-    requested URL, user agent) for security and operations; these are not used to profile visitors.
+    web server, the hosting provider (Hetzner) records standard request logs such as IP address, time,
+    requested URL and user agent for security and operations; they are not used to profile visitors.
   </p>
 
-  <h2>LinguistPro</h2>
+  <h2>LinguistPro: the default local workspace</h2>
   <p>
-    LinguistPro stores a learner's texts, audio, progress and notes in <strong>browser-local storage</strong>
-    (OPFS + SQLite WASM). That data is not transmitted to or stored on Kolosei's servers. When a feature
-    needs cloud compute (text-to-speech, neural translation, Gemini analysis), the learner supplies their
-    <strong>own Google Cloud / Gemini API key</strong>, which is held in the browser only and never sent to
-    Kolosei. Requests made with that key are processed by Google under the user's own account and Google's
-    terms. Opt-in research mode collects cohort data only with explicit, IRB-style consent.
+    Texts, media references, notes and local learning state are stored in browser-local
+    <strong>OPFS + SQLite WASM</strong>. You can use the core Studio and Reading Room without enabling
+    an account, cloud sync, Telegram or an external agent connection.
+  </p>
+
+  <h2>BYOK cloud processing</h2>
+  <p>
+    Some actions — text-to-speech, neural translation, OCR, media transcription and graded retelling —
+    can send the source you selected to Google under your own Google Cloud or Gemini API key. The key is
+    kept in the browser and is not stored by Kolosei. Those requests are processed under your Google
+    account and Google's terms. LinguistPro shows the provider before a metered or content-bearing action.
+  </p>
+
+  <h2>Optional account and sync</h2>
+  <p>
+    If you create an account and explicitly enable sync, LinguistPro stores the learner state needed for
+    continuity across surfaces. A separate consent controls synchronization of personal texts and their
+    learning artifacts. The interface provides revocation and deletion paths; deleting a local text is
+    propagated with a tombstone so an older server copy cannot silently restore it.
+  </p>
+
+  <h2>Telegram, Mini App and connected agents</h2>
+  <p>
+    Telegram pairing is optional and requires confirmation on both sides. The bot and Mini App may process
+    your Telegram account identifier, selected learning state, challenge answers and the context required
+    for the command you invoke. Telegram also retains its own copy of messages under Telegram's policy.
+  </p>
+  <p>
+    External AI assistants connect through OAuth with named, revocable scopes. Sync consent does not by
+    itself authorize an agent to read a personal text: content access requires an additional grant. The
+    current Telegram and external-agent integrations are an owner pilot rather than generally available features.
+    Revocation stops future access, but data already delivered to an assistant may remain in that provider's
+    session or backups and must also be removed through the provider's own controls.
+  </p>
+
+  <h2>Research mode</h2>
+  <p>
+    Cohort research is separate and opt-in, with versioned IRB-style consent. The consent screen describes
+    the data collected for that study. The methodology is <a href="https://osf.io/zdv9j">preregistered at OSF</a>.
+  </p>
+
+  <h2>Export, revocation and deletion</h2>
+  <p>
+    LinguistPro provides export and account-deletion paths. Revoking a consent disables the corresponding
+    use and triggers the defined cleanup for that data class. Operational backups rotate separately; a
+    deletion journal is used so restoring an older backup does not reactivate deleted account data.
   </p>
 
   <h2>HDLE Premium</h2>
   <p>
-    HDLE Premium is a desktop application. Documents and corpora are processed locally. Any translation
+    HDLE Premium is a desktop application. Documents and corpora are processed locally. Translation
     credentials are encrypted at rest with AES-256-GCM and stored in the operating-system keyring; data is
     sent only to the translation provider the user explicitly selects.
   </p>
@@ -44,8 +84,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <h2>Contact</h2>
   <p>
-    Kolosei is operated by Peter Kolosei from Kiryat Bialik, Israel. For any privacy question or request,
-    email <a href="mailto:peter@kolosei.com">peter@kolosei.com</a>.
+    Kolosei is operated by Peter Kolosei from Kiryat Bialik, Israel. For a privacy question, export or
+    deletion request, email <a href="mailto:peter@kolosei.com">peter@kolosei.com</a>.
   </p>
-  <p class="small muted">Last updated: 13 June 2026.</p>
+  <p class="small muted">Last updated: 30 July 2026.</p>
 </BaseLayout>

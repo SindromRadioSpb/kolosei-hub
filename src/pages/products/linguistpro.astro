@@ -2,16 +2,19 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GcpStrip from '../../components/GcpStrip.astro';
 import Changelog from '../../components/Changelog.astro';
-import Screenshot from '../../components/Screenshot.astro';
+import LearningFlow from '../../components/LearningFlow.astro';
 import { getEntry } from 'astro:content';
 
 const entry = await getEntry('projects', 'linguistpro');
 const d = entry!.data;
 ---
 <BaseLayout title="LinguistPro" description={d.description} wide={true}>
-  <p class="eyebrow mono small">Flagship product · {d.version}</p>
+  <p class="eyebrow mono small">Flagship product · {d.version} series</p>
   <h1>LinguistPro</h1>
-  <p class="lead">{d.tagline} — a premium learning workstation for Hebrew, built around one idea: your data stays yours.</p>
+  <p class="lead">
+    Turn articles, documents, images, audio, video and captions into an interactive Hebrew learning
+    workspace — with niqqud, translation, audio, morphology, karaoke and review.
+  </p>
 
   <div class="btn-row">
     <a href={`https://${d.domain}`} class="btn btn-primary">Open LinguistPro</a>
@@ -19,6 +22,8 @@ const d = entry!.data;
     {d.repo && <a href={d.repo} class="btn btn-secondary">View on GitHub</a>}
     {d.statusPage && <a href={d.statusPage} class="btn btn-secondary">Uptime status</a>}
   </div>
+
+  <LearningFlow />
 
   <video
     class="demo-video"
@@ -30,57 +35,106 @@ const d = entry!.data;
     playsinline
     controls
     preload="metadata"
-    aria-label="LinguistPro demo — how it works, Google Cloud, and the Reading Room"
+    aria-label="LinguistPro demo — the Studio, Google Cloud and the Reading Room"
   ></video>
+  <p class="small muted">The short demo shows the core workspace; the capabilities below reflect the current v3.11 series.</p>
 
-  {d.screenshots.length > 0 && d.screenshots.map((s) => (
-    <Screenshot src={s.src} alt={s.alt} />
-  ))}
-
-  <h2>The problem</h2>
+  <h2>Bring the Hebrew you actually want to understand</h2>
   <p>
-    Hebrew learners face two problems at once. Textbook apps march everyone through a fixed curriculum
-    that rarely matches the text you actually want to read — a song, an article, a verse. And the apps
-    that do help typically take your texts, notes and progress onto their servers. LinguistPro solves
-    both: it works with <em>any</em> Hebrew text you give it, and it keeps everything on your device.
+    LinguistPro does not impose a fixed course. Start with a pasted passage, a public article, PDF or
+    DOCX, a photo, an audio or video file, or captions in VTT/SRT format. The Studio turns the source
+    into a line-by-line Hebrew table while preserving where each row came from.
+  </p>
+  <div class="feature-pairs">
+    <article>
+      <h3>Documents and images</h3>
+      <p>Extract the main text from an article, open DOCX locally, or use Gemini under your own key for PDF and image OCR.</p>
+    </article>
+    <article>
+      <h3>Audio, video and captions</h3>
+      <p>Transcribe uploaded media up to 3 hours / 300 MB, keep segment provenance and follow the source with karaoke-style row highlighting.</p>
+    </article>
+    <article>
+      <h3>Long material without the wall</h3>
+      <p>Long audio is processed in bounded windows and large tables render progressively, with visible warnings when timing cannot be trusted.</p>
+    </article>
+    <article>
+      <h3>Retell at your level</h3>
+      <p>Create an A1–B2 derived retelling and compare familiar-vocabulary coverage before and after. A saved original remains untouched; replacing unsaved editor text requires confirmation.</p>
+    </article>
+  </div>
+  <p class="small muted">
+    Honest limit: remote YouTube video without user-provided captions is not automatically downloaded or transcribed.
   </p>
 
-  <h2>How it works</h2>
+  <h2>Understand every word without invented certainty</h2>
   <p>
-    Paste a paragraph of Hebrew and LinguistPro turns it into a line-by-line table: niqqud (vocalization),
-    transliteration, translation and audio for each line. Work through it line by line, pull complex
-    sentences into spaced-repetition (SRS) cards, train, and track progress over time.
+    Tap a word for its lemma, part of speech, root, binyan, meaning and inflection table. A shipped
+    offline Pealim dataset covers 9,279 paradigms. Context can disambiguate homographs, while provenance
+    and confidence labels distinguish a decisive reading, a likely reading and an unresolved one.
   </p>
   <p>
-    The architecture is unusual: <strong>SQLite WASM running in browser-local OPFS</strong>. Texts, audio,
-    progress and notes live in the browser — never on someone else's server. The cloud is used only for
-    heavy compute (speech, neural translation, morphological analysis), and there the learner supplies
-    their <strong>own Google Cloud key</strong>, stored in the browser only.
+    This is a deliberate product rule: deterministic sources establish morphology; AI may explain the
+    result, but it does not silently invent a grammatical analysis.
+  </p>
+
+  <h2>Reading becomes memory</h2>
+  <p>
+    LinguistPro owns the learning loop with FSRS-6. A word saved while reading keeps its source sentence;
+    when it becomes due, it can return inside real context rather than as an isolated flashcard. Reading
+    Room and Studio share one memory trail, and Anki remains an optional companion through rich
+    <code>.apkg</code> export with audio and review read-back.
+  </p>
+  <div class="feature-pairs">
+    <article>
+      <h3>One note, two surfaces</h3>
+      <p>A saved word has one canonical personal note across Reading Room and Studio. Your wording remains distinct from the machine reference meaning.</p>
+    </article>
+    <article>
+      <h3>Portable by design</h3>
+      <p>Text-card-v2 archives preserve source, rows, segments and provenance. Account sync and library bundles provide separate continuity paths, with their scope disclosed before use.</p>
+    </article>
+  </div>
+
+  <h2>The Reading Room</h2>
+  <p>
+    The <a href="/products/reading-room">Reading Room</a> applies the same engine to the public-domain
+    Hebrew canon: <strong>26,455 works catalogued</strong> from Project Ben-Yehuda and
+    <strong>796 prepared for interactive reading</strong> today. Browse by period and author, search,
+    continue where you stopped, follow a graded on-ramp and ask for the next text just beyond your current vocabulary.
+  </p>
+  <p class="small"><a href="/products/reading-room">More about the Reading Room →</a></p>
+
+  <h2>Local-first, with explicit choices</h2>
+  <p>
+    The primary workspace runs in browser-local OPFS + SQLite WASM. BYOK compute sends a selected source
+    to the selected provider under the learner's own credentials. Optional account sync, research,
+    Telegram/Mini App and connected-agent access are separate capabilities with their own consent and
+    revocation controls — they are not implied by opening the app.
   </p>
 
   <GcpStrip services={d.gcpServices} planned={d.gcpPlanned} />
 
-  <h2>The Reading Room</h2>
-  <p>
-    LinguistPro's most ambitious surface is the <a href="/products/reading-room">Reading Room</a> — a
-    bilingual library of <strong>26,000+ public-domain Hebrew works</strong> from Project Ben-Yehuda,
-    organized by period and author, with translation and morphology on every word. Where the editor is
-    "bring any text," the Reading Room is "read the canon." It's a learning surface of its own.
-  </p>
-  <p class="small"><a href="/products/reading-room">More about the Reading Room →</a></p>
+  <div class="status-note">
+    <p class="eyebrow">Experimental integrations</p>
+    <p>
+      Consent-controlled Telegram learning and OAuth/MCP connections to external AI assistants have
+      passed owner-live validation. They remain an owner pilot, not a claim of general availability or external product validation.
+    </p>
+  </div>
 
   <h2>Research mode</h2>
   <p>
-    LinguistPro includes an opt-in, cohort-based research mode with IRB-style consent, supporting a
-    Hebrew-ulpan pedagogy diploma project. The methodology is
-    <a href="https://osf.io/zdv9j">preregistered at OSF</a>; the next milestone is two testing cohorts of
-    20 students.
+    LinguistPro includes a separate opt-in cohort research mode supporting a Hebrew-ulpan pedagogy diploma
+    project. The methodology is <a href="https://osf.io/zdv9j">preregistered at OSF</a>; participation and
+    research data collection require explicit consent.
   </p>
 
   <Changelog entries={d.changelog} />
 
   <div class="btn-row">
     <a href={`https://${d.domain}`} class="btn btn-primary">Open LinguistPro</a>
-    <a href="/technology" class="btn btn-secondary">How we use Google Cloud</a>
+    <a href="/technology" class="btn btn-secondary">How the technology fits together</a>
+    <a href="/privacy" class="btn btn-secondary">Privacy choices</a>
   </div>
 </BaseLayout>

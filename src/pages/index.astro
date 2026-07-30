@@ -15,12 +15,12 @@ const gcpServices = [...new Set(projects.flatMap((p) => p.data.gcpServices))];
 <BaseLayout
   title="Kolosei"
   home={true}
-  description="Kolosei is a founder-led studio building AI-powered Hebrew language tools. Flagship LinguistPro turns any Hebrew text into a learning workspace — Gemini and Google Cloud do the heavy compute under the learner's own key."
+  description="Kolosei builds local-first Hebrew learning tools. LinguistPro turns articles, documents, images, audio, video and captions into an interactive workspace for reading, understanding and remembering Hebrew."
 >
   <Hero
     eyebrow="AI studio · Hebrew language tools"
     title="AI-powered Hebrew language tools"
-    lead="Kolosei is a founder-led studio building software for learning and understanding Hebrew. Our flagship, LinguistPro, turns any Hebrew text into a line-by-line learning workspace — and Google's Gemini does the heavy lifting, under the learner's own key, while their data never leaves the device."
+    lead="Kolosei is a founder-led studio building software for learning and understanding Hebrew. Our flagship, LinguistPro, turns real-world sources — from articles and PDFs to audio, video and captions — into a workspace for reading, understanding and remembering."
     ctas={[
       { href: '/products/linguistpro', label: 'Explore LinguistPro', primary: true },
       { href: '/technology', label: 'Built on Google Cloud' },
@@ -54,17 +54,18 @@ const gcpServices = [...new Set(projects.flatMap((p) => p.data.gcpServices))];
   <p class="small"><a href="/products">All products →</a></p>
 
   <p class="reading-room-note small">
-    <strong>New — the Reading Room.</strong> LinguistPro now opens up the whole Hebrew canon:
-    a bilingual library of <strong>26,000+ public-domain works</strong> from Project Ben-Yehuda,
-    browsable by period and author, with translation and morphology on every word.
-    <a href="/products/reading-room">Read about it →</a>
+    <strong>New in the v3.11 series — sources become lessons.</strong> Import articles, documents,
+    photos, audio, video and captions; build a source-aware Hebrew table, follow long media with
+    karaoke and simplify a separate copy to A1–B2.
+    <a href="/products/linguistpro">See the full learning loop →</a>
   </p>
 
   <section class="band">
     <h2>Built on Google Cloud</h2>
     <p>
-      AI is the core of what we ship, not a bolt-on. LinguistPro and HDLE Premium use Google Cloud in
-      production today — under the user's own key, so we never hold their credentials or content.
+      AI is used where it adds measurable value, not as the authority for every answer. LinguistPro and
+      HDLE Premium use Google Cloud in production; LinguistPro combines that compute with deterministic
+      morphology, local storage and explicit consent for optional server features.
     </p>
     <GcpStrip services={gcpServices} compact={false} />
   </section>
@@ -72,9 +73,9 @@ const gcpServices = [...new Set(projects.flatMap((p) => p.data.gcpServices))];
   <section class="band">
     <h2>Why this is credible</h2>
     <ul class="traction">
-      <li><strong>In production</strong><span>LinguistPro v3.6 runs live on Hetzner + Coolify, with public uptime monitoring.</span></li>
+      <li><strong>In production</strong><span>The LinguistPro v3.11 series runs on Hetzner + Coolify, with public uptime monitoring.</span></li>
       <li><strong>Real Google Cloud usage</strong><span>Gemini API, Cloud Text-to-Speech and Cloud Translation v3 — in two shipping products.</span></li>
-      <li><strong>Privacy-first architecture</strong><span>User data stays in the browser (OPFS + SQLite WASM); per-user keys mean zero server-side retention.</span></li>
+      <li><strong>Local-first architecture</strong><span>The primary workspace stays in browser-local OPFS; sync, research, Telegram and agent access are separate opt-in capabilities.</span></li>
       <li><strong>Preregistered research</strong><span>An ulpan-cohort study preregistered at OSF (osf.io/zdv9j), supporting a Hebrew-pedagogy diploma.</span></li>
     </ul>
   </section>

@@ -1,0 +1,43 @@
+---
+interface Props {
+  lang?: 'en' | 'ru';
+}
+
+const { lang = 'en' } = Astro.props;
+
+const copy = {
+  en: {
+    label: 'One continuous learning loop',
+    steps: [
+      { marker: '01', title: 'Bring a source', body: 'Text, article, PDF, DOCX, photo, audio, video or captions.' },
+      { marker: '02', title: 'Make it readable', body: 'Hebrew table, niqqud, translation, audio and source-aware karaoke.' },
+      { marker: '03', title: 'Understand the words', body: 'Tap for morphology, inflection tables, context and honest confidence.' },
+      { marker: '04', title: 'Remember in context', body: 'FSRS schedules the words; Reading Room, Studio and Anki share the trail.' },
+    ],
+  },
+  ru: {
+    label: 'Один непрерывный учебный цикл',
+    steps: [
+      { marker: '01', title: 'Принесите источник', body: 'Текст, статья, PDF, DOCX, фото, аудио, видео или субтитры.' },
+      { marker: '02', title: 'Сделайте его читаемым', body: 'Таблица на иврите, никуд, перевод, аудио и караоке по источнику.' },
+      { marker: '03', title: 'Разберите слова', body: 'Морфология по тапу, таблицы форм, контекст и честная уверенность.' },
+      { marker: '04', title: 'Запомните в контексте', body: 'FSRS планирует повторения; Reading Room, Студия и Anki продолжают одну историю.' },
+    ],
+  },
+}[lang];
+---
+
+<section class="learning-flow" aria-label={copy.label}>
+  <p class="learning-flow-label">{copy.label}</p>
+  <ol>
+    {copy.steps.map((step) => (
+      <li>
+        <span class="learning-flow-marker" aria-hidden="true">{step.marker}</span>
+        <div>
+          <strong>{step.title}</strong>
+          <span>{step.body}</span>
+        </div>
+      </li>
+    ))}
+  </ol>
+</section>

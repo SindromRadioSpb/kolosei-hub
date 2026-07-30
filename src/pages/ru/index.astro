@@ -14,12 +14,12 @@ const gcpServices = [...new Set(projects.flatMap((p) => p.data.gcpServices))];
 <BaseLayout
   title="Kolosei"
   home={true}
-  description="Kolosei — студия одного основателя, создающая AI-инструменты для иврита. Флагман LinguistPro превращает любой ивритский текст в учебное пространство; тяжёлые вычисления берёт на себя Google Gemini под собственным ключом пользователя."
+  description="Kolosei создаёт local-first инструменты для изучения иврита. LinguistPro превращает статьи, документы, изображения, аудио, видео и субтитры в интерактивное пространство для чтения, понимания и запоминания."
 >
   <Hero
     eyebrow="AI-студия · инструменты для иврита"
     title="AI-инструменты для иврита"
-    lead="Kolosei — студия одного основателя, создающая софт для изучения и понимания иврита. Наш флагман LinguistPro превращает любой ивритский текст в построчное учебное пространство — а тяжёлую работу делает Google Gemini, под собственным ключом пользователя, при этом его данные никогда не покидают устройство."
+    lead="Kolosei — студия одного основателя, создающая софт для изучения и понимания иврита. Наш флагман LinguistPro превращает живые источники — от статей и PDF до аудио, видео и субтитров — в пространство для чтения, понимания и запоминания."
     ctas={[
       { href: '/ru/products/linguistpro', label: 'Открыть LinguistPro', primary: true },
       { href: '/ru/technology', label: 'Построено на Google Cloud' },
@@ -54,18 +54,18 @@ const gcpServices = [...new Set(projects.flatMap((p) => p.data.gcpServices))];
   <p class="small"><a href="/ru/products">Все продукты →</a></p>
 
   <p class="reading-room-note small">
-    <strong>Новое — Reading Room.</strong> LinguistPro открывает весь канон иврита: двуязычная
-    библиотека из <strong>26 000+ произведений общественного достояния</strong> проекта Бен-Иегуда,
-    с навигацией по периодам и авторам, с переводом и морфологией на каждом слове.
-    <a href="/ru/products/reading-room">Подробнее →</a>
+    <strong>Новое в серии v3.11 — источник становится уроком.</strong> Импортируйте статьи, документы,
+    фотографии, аудио, видео и субтитры; создавайте построчную таблицу с привязкой к источнику,
+    следите за длинными медиа в караоке и упрощайте отдельную копию до A1–B2.
+    <a href="/ru/products/linguistpro">Посмотреть весь учебный цикл →</a>
   </p>
 
   <section class="band">
     <h2>Построено на Google Cloud</h2>
     <p>
-      AI — это ядро того, что мы выпускаем, а не довесок. LinguistPro и HDLE Premium используют Google
-      Cloud уже сегодня — под собственным ключом пользователя, поэтому мы никогда не храним его учётные
-      данные и контент.
+      AI используется там, где даёт измеримую пользу, а не как авторитет для каждого ответа.
+      LinguistPro и HDLE Premium работают с Google Cloud; LinguistPro сочетает облачные вычисления с
+      детерминированной морфологией, локальным хранилищем и явным согласием для опциональных серверных функций.
     </p>
     <GcpStrip services={gcpServices} compact={false} />
   </section>
@@ -73,9 +73,9 @@ const gcpServices = [...new Set(projects.flatMap((p) => p.data.gcpServices))];
   <section class="band">
     <h2>Почему это убедительно</h2>
     <ul class="traction">
-      <li><strong>В продакшене</strong><span>LinguistPro v3.6 работает на Hetzner + Coolify, с публичным мониторингом аптайма.</span></li>
+      <li><strong>В продакшене</strong><span>Серия LinguistPro v3.11 работает на Hetzner + Coolify, с публичным мониторингом аптайма.</span></li>
       <li><strong>Реальное использование Google Cloud</strong><span>Gemini API, Cloud Text-to-Speech и Cloud Translation v3 — в двух работающих продуктах.</span></li>
-      <li><strong>Privacy-first архитектура</strong><span>Данные пользователя остаются в браузере (OPFS + SQLite WASM); ключи — у пользователя, нулевое серверное хранение.</span></li>
+      <li><strong>Local-first архитектура</strong><span>Основное рабочее пространство остаётся в OPFS браузера; sync, исследования, Telegram и доступ агента включаются отдельно.</span></li>
       <li><strong>Пререгистрированное исследование</strong><span>Когортное исследование ульпана, пререгистрированное на OSF (osf.io/zdv9j), в рамках диплома по педагогике иврита.</span></li>
     </ul>
   </section>
