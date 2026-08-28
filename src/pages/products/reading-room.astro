@@ -98,52 +98,58 @@ const d = entry!.data;
   </p>
   <GcpStrip services={d.gcpServices} />
 
-  <h2>What's next: from the literary canon to the working canon</h2>
-  <p class="eyebrow mono small">Planned / on the roadmap — not yet shipped</p>
+  <h2 id="physics-year1">The first professional corpus is live</h2>
+  <div class="status-note">
+    <p class="eyebrow">In production · 9 chapters · 74 problems</p>
+    <p>
+      <strong>“Physics — Year 1 Problem Book”</strong> is an open Hebrew–Russian study corpus for
+      first-year technical-college students. This is no longer a roadmap promise: all 74 cards are
+      available now in the Reading Room and pinned to one immutable, reviewed edition.
+    </p>
+  </div>
+
+  <div class="feature-pairs">
+    <article>
+      <h3>Read the problem at four levels</h3>
+      <p>Hebrew, Hebrew with niqqud, transliteration and Russian translation sit side by side. Tap a word to open its morphology card.</p>
+    </article>
+    <article>
+      <h3>Keep the source attached</h3>
+      <p>Each problem keeps its source PDF in a bounded in-app viewer, tied to that exact card.</p>
+    </article>
+    <article>
+      <h3>Check the answer without an early spoiler</h3>
+      <p>“Check answer” reveals the short reviewed result below the condition, after the learner has had room to solve it.</p>
+    </article>
+    <article>
+      <h3>Follow a complete exam solution</h3>
+      <p>“Understand and solve” opens a beginner bridge, Given, Find, SI conversion, physical model, base laws, formula derivation, sequential arithmetic, checks and final answer.</p>
+    </article>
+  </div>
+
   <p>
-    The Reading Room is the same machine pointed at a fixed canon — the public-domain Hebrew
-    literature of <a href="https://benyehuda.org/">Project Ben-Yehuda</a>. We want to point that same
-    pipeline at a different kind of canon: the practical, technical knowledge a newcomer needs to
-    qualify for a skilled trade in Israel. We're calling this planned track
-    <strong>Reading Room — Trades</strong>.
+    Solutions were derived afresh, checked against the answer key and handwritten work, and every
+    discovered discrepancy was resolved and recorded. Formulae use semantic subscripts and visible
+    multiplication signs, so notation does not depend on guesswork. The result is written for a
+    first-year learner who needs to reconstruct the reasoning, not merely see numbers inserted into a final formula.
   </p>
+
+  <h2>One reviewed version for the learner and a connected agent</h2>
   <p>
-    The need is concrete. Russian-speaking <em>olim</em> (new immigrants) training for technical and
-    production professions face a double barrier — learning the trade and learning it in Hebrew at the
-    same time. There are growing vocational programs aimed at this population, including practical
-    mechanical-engineering and production tracks. <strong>Reading Room — Trades</strong> would give
-    those learners bilingual Hebrew–Russian study aids — worked problem-books with solutions — so they
-    can study the material in both languages at once, with the terminology, niqqud, audio and
-    morphology the LinguistPro engine already provides. We'd build these as study aids for learners,
-    not as any program's official materials, and we claim no affiliation, endorsement or accreditation.
-  </p>
-  <p>
-    The first intended corpus is a Hebrew–Russian <strong>"Materials Science — problem book with worked
-    solutions."</strong> The founder holds a mechanical-engineering degree and a master's, so the
-    technical source texts and solutions would be <strong>personally curated and proofread by someone
-    qualified in the field</strong> before the pipeline ever translates or vocalizes them — the same
-    honest discipline as the rest of the Reading Room, where machine output is labelled as machine
-    output and never dressed up as hand-checked. Further vocational and production-engineering subjects
-    would follow, prioritized by the courses learners actually enrol in. None of these corpora exist
-    yet; this is a roadmap direction, presented as such.
-  </p>
-  <p>
-    This is also where Google Cloud is the enabler, honestly. Today LinguistPro's runtime AI runs under
-    each user's <strong>own</strong> Google Cloud key in the browser — which funds reading, but not the
-    studio-side work of <em>generating</em> a new subject corpus. Building one is a one-time batch job
-    on our own billing account: translating, explaining, vocalizing with niqqud and synthesizing audio
-    for an entire problem-book before any learner opens it. That is exactly the heavy <strong>Gemini</strong>
-    translation and explanation and <strong>Cloud Translation v3</strong> neural translation we already
-    run in production for the literary corpus — plus the niqqud-aware <strong>Cloud Text-to-Speech</strong>
-    the LinguistPro engine already runs in production — with <strong>Vertex AI</strong> a planned next
-    step for fine-tuned Hebrew models, not something in production today. As a solo, unfunded founder,
-    the limit isn't the pipeline; it's the cost of frontier-model compute at the scale of many subjects.
-    This is the workload Google for Startups credits would move onto Kolosei's own account — turning a
-    roadmap into shipped study aids.
+    The interface and read-only agent access use the same material, pinned to the exact edition, item
+    and SHA-256. With explicit consent, a connected AI assistant can therefore explain the approved
+    walkthrough instead of improvising, without receiving notes, grades or learning history. The agent
+    route remains a closed owner pilot, not a claim of general MCP availability.
   </p>
 
   <div class="btn-row">
-    <a href={d.url} class="btn btn-primary">Open the Reading Room</a>
+    <a href="https://linguistpro.kolosei.com/library.html?public_corpus=physics-year1-problems" class="btn btn-primary">Open the Physics problem book</a>
+    <a href={d.url} class="btn btn-secondary">All Reading Room corpora</a>
     <a href="/technology" class="btn btn-secondary">How we use Google Cloud</a>
   </div>
+
+  <p class="small muted">
+    This is an independent study aid for learners; Kolosei claims no affiliation, endorsement or accreditation by a college or the original problem-book publisher. Further technical subjects remain on the roadmap.
+  </p>
+
 </BaseLayout>

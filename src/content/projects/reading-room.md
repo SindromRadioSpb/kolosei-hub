@@ -3,12 +3,12 @@ title: Reading Room
 partOf: LinguistPro
 tagline: The Hebrew canon, translated
 tagline_ru: Канон иврита — в переводе
-description_ru: "Двуязычная библиотека иврита: 26 455 произведений проекта Бен-Иегуда в каталоге, 796 подготовлены для интерактивного чтения с переводом, никудом, морфологией, поиском и повторением в контексте."
-description: "A bilingual Hebrew library: 26,455 Project Ben-Yehuda works catalogued, with 796 prepared for interactive reading with translation, niqqud, morphology, search and contextual review."
+description_ru: "Двуязычная библиотека иврита: 26 455 произведений проекта Бен-Иегуда в каталоге, 796 подготовлены для интерактивного чтения; отдельный открытый корпус физики содержит 74 проверенные задачи с ответами и полными решениями."
+description: "A bilingual Hebrew library: 26,455 Project Ben-Yehuda works catalogued, 796 prepared for interactive reading, plus an open Physics corpus with 74 reviewed problems, answers and full solutions."
 status: active
 productType: product
 publishDate: 2026-03-01
-updateDate: 2026-07-30
+updateDate: 2026-08-29
 url: https://linguistpro.kolosei.com/library.html
 detailUrl: /products/reading-room
 featured: true
