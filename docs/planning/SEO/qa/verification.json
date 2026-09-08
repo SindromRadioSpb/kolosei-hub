@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-09-08T00:45:13.298Z",
+  "status": "PASS",
+  "viewportCases": [
+    {
+      "width": 1440,
+      "status": "PASS",
+      "checks": "Headings, local links, anchors, tables, reflow, TOC, persistent checklist, font size, clipboard or fallback, skip link"
+    },
+    {
+      "width": 380,
+      "status": "PASS",
+      "checks": "Headings, local links, anchors, tables, reflow, TOC, persistent checklist, font size, clipboard or fallback, skip link"
+    }
+  ],
+  "errors": [],
+  "externalRequests": [],
+  "print": "PASS: print styles, hidden navigation, 19 tables fit",
+  "noJavaScript": "PASS: all content and native TOC remain available"
+}
