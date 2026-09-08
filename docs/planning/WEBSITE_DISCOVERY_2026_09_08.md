@@ -37,7 +37,7 @@ Submit sitemap in existing verified Google Search Console and Bing Webmaster Too
 
 ## Verification ledger
 
-Implemented; local build, 1633 static checks and 48 desktop/mobile browser cases pass. Initial local Lighthouse reports 100 in all four categories. Production verification follows. Durable results and screenshots: docs/research/website-discovery/2026-09-08/. Reproduce with npm run build and the site verification script added in this change.
+Released as `d40754a060e20714fb828ba342de58d1becc48fc`; Cloudflare Pages completed successfully. Build and 1633 static checks pass. Local and production browser runs each pass 48 desktop/mobile cases plus interaction checks. Production verification matches 45 resources byte-for-byte and passes five repeat probes. Mobile Lighthouse on production: performance 98, accessibility 100, best practices 100, SEO 100; LCP 1.8s, CLS 0, TBT 0ms. These are synthetic measurements. IndexNow received 34 canonical URLs with HTTP 202 (key validation pending); indexing is not asserted. Durable results and screenshots: docs/research/website-discovery/2026-09-08/release-report.md. Search Console/Bing account work and 28/56-day observation remain external follow-up.
 
 ## Deployment discovery correction
 

@@ -1,0 +1,369 @@
+{
+  "checkedAt": "2026-09-08T00:11:00.510Z",
+  "origin": "https://kolosei.com",
+  "status": "PASS",
+  "resources": [
+    {
+      "route": "/about/",
+      "status": 200,
+      "sha256": "ce49e970b0d3f5f160463508dbfff53ad3df011aff7ab7a37955964e84339064",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/agents/",
+      "status": 200,
+      "sha256": "735a762a1e87257e62f4f17681b16b2fa7f13fc9a6672fba5ca6412837b8a9e9",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/contact/",
+      "status": 200,
+      "sha256": "6ae77c2ceff79073acbaa1258fe1eb28cfc7de22490497a02280ec7d582bf9c8",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/guides/hebrew-reading/",
+      "status": 200,
+      "sha256": "850670f042400efd6668bf5b9829e12c9c5569692193176bd2a404e65909cf4b",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/guides/hebrew-through-songs/",
+      "status": 200,
+      "sha256": "50ee6cb495dfa4520379cbf46c2080a95a6b1f489f65ded9429750cd255baad0",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/guides/",
+      "status": 200,
+      "sha256": "e672ad7a403272501bbf0fe5bca8ad05bc9ecf40b648b13dcae4c3b21bb60314",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/guides/technical-hebrew/",
+      "status": 200,
+      "sha256": "e36f4a5146b420c515365decca51967c6444689aeffba5facb805b9035807a6e",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/imprint/",
+      "status": 200,
+      "sha256": "8114c2bb19a0db24f48f942f315a55666c4dd464c2a74eb5e750b98bfa38c2b9",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/",
+      "status": 200,
+      "sha256": "2521188ccebc2b1694794e2671fd79dab5de9633b533003eebe250f87ca56c0d",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/privacy/",
+      "status": 200,
+      "sha256": "95937cb92e8807d3497aac43c90261c3a3f54c3bc3f749708d4b85e18c0b4de7",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/products/egorgenom/",
+      "status": 200,
+      "sha256": "058a61e0506420282ca876517730897dadd72d5139b1069e464a099d7bf13931",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/products/",
+      "status": 200,
+      "sha256": "89e508c3cbbd14be32dac157ba554e21d69a851abfd72e31aaec222d07ecbeb6",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/products/linguistpro/",
+      "status": 200,
+      "sha256": "b6f73b34eb48713adc47a6c4bffbe0bbc953cd8fa0f7ba35a390bff019035041",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/products/reading-room/",
+      "status": 200,
+      "sha256": "5cdbdafff7f308eabd9fae4831b0c1447edd44ae0557d9639a49ec49d9a16476",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/products/v-book/",
+      "status": 200,
+      "sha256": "0c4982aefe42ea3d5f3bd3de607a6299b2015404b595a2b0b17a135ea9cac9d7",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/ru/about/",
+      "status": 200,
+      "sha256": "90e2055cfc348c105a4b40e95b54df5bfa8ad33e454a004b5a25bf80707428e2",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/ru/agents/",
+      "status": 200,
+      "sha256": "b7fd97b216a6700aa3426bb5f215a64fff86ae06a16bfa7ac853266a92f637be",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/ru/contact/",
+      "status": 200,
+      "sha256": "425fb31cb23e7f77d612a8b42b629be370125b43a6240f81cbac7d6221dcc543",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/ru/guides/hebrew-reading/",
+      "status": 200,
+      "sha256": "de2d8b1b004f03a3b7540e0926e74e3ad7ea43a13f60c1204a4b592d7a63828c",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/ru/guides/hebrew-through-songs/",
+      "status": 200,
+      "sha256": "28ec315af33d3b7d3a50e35e7ed3814bf3729b0da240e8bed510d7b864aa32f4",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/ru/guides/",
+      "status": 200,
+      "sha256": "1f4dc64fe50fe0cfd12bbd70c83e8a8589de598434bb2a7ed870b64451067bc4",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/ru/guides/technical-hebrew/",
+      "status": 200,
+      "sha256": "538cdd83a4f1481182740fe466e4f66186e774083c6a4d022f0287311e180ce8",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/ru/imprint/",
+      "status": 200,
+      "sha256": "2367e8ef83e12b3a6845ef2e1b1b2685013b1fe9f276a0a534c11bc00a7dd104",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/ru/",
+      "status": 200,
+      "sha256": "5c27eea952b170b18b68d7178d8515f7e2f8d3367381218ec1716c6862e696ad",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/ru/privacy/",
+      "status": 200,
+      "sha256": "f33e4ed59616f45e837488b38ba673e55909f397f5858a67883f394707edf979",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/ru/products/egorgenom/",
+      "status": 200,
+      "sha256": "1d8406eabe879ab323e666ef05af233bfe69db1951d39a109c134a3c6ed360a9",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/ru/products/",
+      "status": 200,
+      "sha256": "267fcca93e154e8e954d1def0ac28f448ccdab153cf6958686f957cfa8c21d24",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/ru/products/linguistpro/",
+      "status": 200,
+      "sha256": "a870c061a3131b9143befef84e8283b0149f97716f3d123ae12378f0adf3872f",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/ru/products/reading-room/",
+      "status": 200,
+      "sha256": "aceee3e1460d488b8dceaffe5711ff6bc8388869edd6981f264c74e079dd7833",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/ru/products/v-book/",
+      "status": 200,
+      "sha256": "30756705759d00d606cb11665d723729ff8ec6368e1a898469a1a8ce4a49fcd7",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/ru/technology/",
+      "status": 200,
+      "sha256": "0d901ba3a8fc122cba4fcdb6e3bcd30c38cce971e8da5aa0dad81f861c953081",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/ru/terms/",
+      "status": 200,
+      "sha256": "960028d8cd694a2aba374a30821a7afe9ff18a18230609988da15868642d71c7",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/technology/",
+      "status": 200,
+      "sha256": "35e19443fd69b0886ad9fa597b2bd762168c71fcae7f958f8b1b4b1bfd3d8c46",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/terms/",
+      "status": 200,
+      "sha256": "8e21158b983127018d73ade639173793eeceb9ecef69f6c5c31a0947a1bdafd8",
+      "contentType": "text/html; charset=utf-8"
+    },
+    {
+      "route": "/facts/linguistpro.json",
+      "status": 200,
+      "sha256": "393160c9a0e610ce6bc9dd87796a2675d7ec2f1d915d63954c9c8a84476b6a10",
+      "contentType": "application/json"
+    },
+    {
+      "route": "/llms.txt",
+      "status": 200,
+      "sha256": "7cf7ed56d2af41df31386306496e3a7633edec7f03eb80f73e1388dc6adc09c2",
+      "contentType": "text/plain; charset=utf-8"
+    },
+    {
+      "route": "/llms-full.txt",
+      "status": 200,
+      "sha256": "c1def0cb0a97a0c8480bf564af25b00a475b5f523cfe451a4ba938aee43d38d2",
+      "contentType": "text/plain; charset=utf-8"
+    },
+    {
+      "route": "/robots.txt",
+      "status": 200,
+      "sha256": "7b70eea4ad3bd5eccc1d26f92dd6bc6f31274c27d6f76b9e3467ad39e7a3ac9a",
+      "contentType": "text/plain; charset=utf-8"
+    },
+    {
+      "route": "/sitemap-index.xml",
+      "status": 200,
+      "sha256": "047530e9c93dd44f5ea94667940a4b626da6aec7e2651a0b21fb437aa27e459e",
+      "contentType": "application/xml"
+    },
+    {
+      "route": "/sitemap-0.xml",
+      "status": 200,
+      "sha256": "25af2eb82d14e37ea803cc4eee7e69c1adf484f681362fa1572354f70f033782",
+      "contentType": "application/xml"
+    },
+    {
+      "route": "/og/linguistpro-en.png",
+      "status": 200,
+      "sha256": "28463ebe2748aa3c0e8b45a29c8f30567f5fce5dc47d310a70646fceb87f6db7",
+      "contentType": "image/png"
+    },
+    {
+      "route": "/og/linguistpro-ru.png",
+      "status": 200,
+      "sha256": "0aa1f1be6861edb8b47e1fd5a9e3e13ef665ff42b353bf3cf13e96e63778b487",
+      "contentType": "image/png"
+    },
+    {
+      "route": "/img/reading-room-current.png",
+      "status": 200,
+      "sha256": "5b42e88179b19c9dea01599d8c6551a31307550f49f74495920b3534a317c3c4",
+      "contentType": "image/png"
+    },
+    {
+      "route": "/9bb44c39ae4ff85e023296be35664ef4.txt",
+      "status": 200,
+      "sha256": "09d8148438e643c5c1a1ace2dbf929fffb5f83682669a9260f3389b6d7fdf5af",
+      "contentType": "text/plain; charset=utf-8"
+    },
+    {
+      "route": "/_astro/BaseLayout.AhtdMjn-.css",
+      "status": 200,
+      "sha256": "817caa9bbac5ee49e34fd3dee1540e4877e54ae2679759cba4e16ff178e8b152",
+      "contentType": "text/css; charset=utf-8"
+    }
+  ],
+  "repeatProbes": [
+    {
+      "probe": 1,
+      "checkedAt": "2026-09-08T00:11:02.474Z",
+      "results": [
+        {
+          "route": "/ru/",
+          "status": 200,
+          "sha256": "5c27eea952b170b18b68d7178d8515f7e2f8d3367381218ec1716c6862e696ad",
+          "contentType": "text/html; charset=utf-8"
+        },
+        {
+          "route": "/facts/linguistpro.json",
+          "status": 200,
+          "sha256": "393160c9a0e610ce6bc9dd87796a2675d7ec2f1d915d63954c9c8a84476b6a10",
+          "contentType": "application/json"
+        }
+      ]
+    },
+    {
+      "probe": 2,
+      "checkedAt": "2026-09-08T00:11:02.577Z",
+      "results": [
+        {
+          "route": "/ru/",
+          "status": 200,
+          "sha256": "5c27eea952b170b18b68d7178d8515f7e2f8d3367381218ec1716c6862e696ad",
+          "contentType": "text/html; charset=utf-8"
+        },
+        {
+          "route": "/facts/linguistpro.json",
+          "status": 200,
+          "sha256": "393160c9a0e610ce6bc9dd87796a2675d7ec2f1d915d63954c9c8a84476b6a10",
+          "contentType": "application/json"
+        }
+      ]
+    },
+    {
+      "probe": 3,
+      "checkedAt": "2026-09-08T00:11:02.680Z",
+      "results": [
+        {
+          "route": "/ru/",
+          "status": 200,
+          "sha256": "5c27eea952b170b18b68d7178d8515f7e2f8d3367381218ec1716c6862e696ad",
+          "contentType": "text/html; charset=utf-8"
+        },
+        {
+          "route": "/facts/linguistpro.json",
+          "status": 200,
+          "sha256": "393160c9a0e610ce6bc9dd87796a2675d7ec2f1d915d63954c9c8a84476b6a10",
+          "contentType": "application/json"
+        }
+      ]
+    },
+    {
+      "probe": 4,
+      "checkedAt": "2026-09-08T00:11:02.784Z",
+      "results": [
+        {
+          "route": "/ru/",
+          "status": 200,
+          "sha256": "5c27eea952b170b18b68d7178d8515f7e2f8d3367381218ec1716c6862e696ad",
+          "contentType": "text/html; charset=utf-8"
+        },
+        {
+          "route": "/facts/linguistpro.json",
+          "status": 200,
+          "sha256": "393160c9a0e610ce6bc9dd87796a2675d7ec2f1d915d63954c9c8a84476b6a10",
+          "contentType": "application/json"
+        }
+      ]
+    },
+    {
+      "probe": 5,
+      "checkedAt": "2026-09-08T00:11:02.885Z",
+      "results": [
+        {
+          "route": "/ru/",
+          "status": 200,
+          "sha256": "5c27eea952b170b18b68d7178d8515f7e2f8d3367381218ec1716c6862e696ad",
+          "contentType": "text/html; charset=utf-8"
+        },
+        {
+          "route": "/facts/linguistpro.json",
+          "status": 200,
+          "sha256": "393160c9a0e610ce6bc9dd87796a2675d7ec2f1d915d63954c9c8a84476b6a10",
+          "contentType": "application/json"
+        }
+      ]
+    }
+  ]
+}

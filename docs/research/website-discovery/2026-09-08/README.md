@@ -21,6 +21,7 @@ npm run verify -- --output=docs/research/website-discovery/2026-09-08/static-rep
 npm run preview -- --host 127.0.0.1 --port 4322
 npm run verify:browser -- --base=http://127.0.0.1:4322 --output=docs/research/website-discovery/2026-09-08/local
 npm run verify:browser -- --base=https://kolosei.com --output=docs/research/website-discovery/2026-09-08/production
+node scripts/verify-production.mjs
 ```
 
 Browser checks use installed Google Chrome through Playwright, in temporary contexts. They never use the owner's browser profile or write learner state to a server. The static verifier checks rendered outputs, internal links/assets/anchors, reciprocal language alternates, graph consistency, sitemap and reference parity. These are technical tests, not proof of search rank or physical-device accessibility acceptance.
@@ -31,6 +32,8 @@ Browser checks use installed Google Chrome through Playwright, in temporary cont
 - `local/`, `production/`: automated browser evidence and full-page desktop/380px screenshots; dark-mode variants are included.
 - `lighthouse-*.json`: synthetic Lighthouse measurements, not field Core Web Vitals.
 - `release-report.md`: final implementation, deployment and verification evidence.
+- `production-http.json`: SHA-256 equality for 34 pages and 11 resources, with five repeated page/facts probes.
+- `deployment.json`, `npm-audit.json`, `indexnow-receipt.json`: successful Cloudflare check, dependency audit and search-notification receipt.
 - Public `public/og/linguistpro-{en,ru}.png`: code-native social images; reproduce with `npm run images:social`.
 
 Review the screenshots and release report. Do not edit generated reports or screenshots as if they were source content. Factual changes belong in `src/data/linguistpro.ts`, with fresh source checks; guide edits belong in `src/data/guides.ts`.
