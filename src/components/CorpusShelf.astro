@@ -1,0 +1,20 @@
+---
+import { facts, corpora, corpusUrl, localPath } from '../data/linguistpro';
+const { lang = 'en' } = Astro.props as { lang: 'en' | 'ru' };
+const ru = lang === 'ru';
+---
+<section class="collection-section" id="collections" aria-labelledby="collections-title">
+  <div class="section-intro"><h2 id="collections-title">{ru ? 'Выберите то, что хочется понять' : 'Find something you want to understand'}</h2>
+  <p>{ru ? 'Песня для удовольствия. Задача для учёбы. Литература для настоящего чтения.' : 'A song for the pleasure of it. A problem for your studies. Literature for the joy of reading.'}</p></div>
+  <div class="corpus-shelf">
+    {corpora.map((c, i) => <article class={`corpus-book book-${i}`}>
+      <div class="book-cover" aria-hidden="true"><span lang={i === 0 ? 'he' : undefined}>{c.mark}</span><small>LinguistPro</small></div>
+      <p class="collection-count">{c.count} {c.kind[lang]}</p><h3>{c.title[lang]}</h3><p>{c.description[lang]}</p>
+      <a href={corpusUrl(c.slug)}>{ru ? 'Открыть коллекцию' : 'Open collection'}</a>
+    </article>)}
+  </div>
+  <div class="literature-line"><div><h3>{ru ? 'Литература Бен-Иегуды' : 'The Ben-Yehuda literary collection'}</h3>
+    <p>{new Intl.NumberFormat(lang).format(facts.catalogued)} {ru ? 'записей в каталоге' : 'catalog entries'}; {facts.prepared} {ru ? 'отмечены как подготовленные. Выбирайте по автору, эпохе и доступной поддержке чтения.' : 'marked as prepared. Browse by author, period and available reading support.'}</p></div>
+    <a class="btn btn-secondary" href={localPath(lang, '/products/reading-room')}>{ru ? 'О читальном зале' : 'Explore the Reading Room'}</a></div>
+  <p class="small muted">{ru ? 'Состав проверен' : 'Collection snapshot checked'} <time datetime={facts.reviewed}>{facts.reviewed}</time>. {ru ? 'Подготовка текста, озвучка и права на использование различаются; смотрите статус и источник в карточке.' : 'Text preparation, audio and reuse rights vary; check each item’s status and source.'}</p>
+</section>

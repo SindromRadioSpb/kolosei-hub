@@ -1,4 +1,13 @@
 User-agent: *
 Allow: /
 
+# Public information discovery. These groups do not grant application or corpus rights.
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+Allow: /
+
 Sitemap: https://kolosei.com/sitemap-index.xml

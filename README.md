@@ -1,43 +1,31 @@
-# Astro Starter Kit: Minimal
+# Kolosei public website
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Bilingual Astro static site at https://kolosei.com/ presenting LinguistPro Studio, Reading Room and the Kolosei portfolio.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Development
 
-## 🚀 Project Structure
+Node >=22.12.0. `npm ci`, then `npm run dev`. Build with `npm run build`.
 
-Inside of your Astro project, you'll see the following folders and files:
+- `npm run verify`: verify generated HTML, links, metadata, language pairs, sitemap and public reference parity.
+- `npm run preview -- --host 127.0.0.1 --port 4322`: serve the build locally.
+- `npm run verify:browser`: desktop/mobile interactions and screenshots using installed Chrome.
+- `npm run images:social`: reproduce the checked-in social preview images using local typography.
+- `npx astro preview stop`: stop the detached preview server.
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## Content and agent reference
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+- `src/data/linguistpro.ts`: reviewed capabilities, collection facts, access boundaries and FAQs. Verify source URLs and date before changing facts.
+- `src/data/guides.ts`: practical EN/RU learning guides.
+- `src/data/agent-reference.ts`: JSON and Markdown projections from those same facts.
+- `/agents/`, `/ru/agents/`, `/llms.txt`, `/llms-full.txt`, `/facts/linguistpro.json`: public read-only reference. This is not public MCP onboarding.
+- `src/data/structured-data.ts`: canonical website, organization, application and breadcrumb graph.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+Page URLs use trailing slashes to match production directory hosting; file URLs retain their extensions. The sitemap excludes legacy redirect routes. Do not invent prices, endorsements, ratings or general availability of pilot integrations.
 
-Any static assets, like images, can be placed in the `public/` directory.
+## Release
 
-## 🧞 Commands
+`main` is deployed through the existing Cloudflare Pages Git integration. Commit only task-related files; this checkout also contains unrelated local documents. After push, verify actual production HTML/assets/reference files and repeat browser checks. A build or successful push is not deployment verification.
 
-All commands are run from the root of the project, from a terminal:
+The September refresh plan and evidence live in `docs/planning/WEBSITE_DISCOVERY_2026_09_08.md` and `docs/research/website-discovery/2026-09-08/`. Never commit local operational credentials or unrelated runbooks.
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+After a verified release, `node scripts/submit-indexnow.mjs` previews a bounded sitemap notification; `--apply` verifies live facts and the public domain file before notifying IndexNow. Receipt does not establish indexing or rank.

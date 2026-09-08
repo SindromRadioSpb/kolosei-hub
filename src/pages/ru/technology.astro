@@ -20,29 +20,29 @@ import GcpStrip from '../../components/GcpStrip.astro';
   />
 
   <h2>В продакшене сегодня</h2>
-  <p>Каждый пункт — реальная зависимость в работающем коде; точная клиентская библиотека названа ниже.</p>
-  <table class="tbl">
+  <p>Выбранные облачные маршруты используют эти сервисы; браузер и локальное учебное ядро выполняют отдельные задачи.</p>
+  <div class="reference-table-wrap"><table class="tbl">
     <thead>
       <tr><th>Сервис Google Cloud</th><th>Где</th><th>Что делает</th></tr>
     </thead>
     <tbody>
       <tr>
-        <td><strong>Gemini API</strong><br /><code>@google/generative-ai</code></td>
+        <td><strong>Gemini API</strong></td>
         <td>LinguistPro</td>
         <td>Учебные таблицы на иврите, OCR PDF/изображений, распознавание аудио/видео и градуированный пересказ A1–B2. Работает под <strong>ключом пользователя, хранимым в браузере</strong>; выбранный источник обрабатывается под его аккаунтом Google.</td>
       </tr>
       <tr>
-        <td><strong>Cloud Text-to-Speech</strong><br /><code>@google-cloud/text-to-speech</code></td>
+        <td><strong>Cloud Text-to-Speech</strong></td>
         <td>LinguistPro</td>
         <td>Аудио на иврите с учётом никуда для строк, примеров и учебных материалов, с content-addressed кешированием.</td>
       </tr>
       <tr>
-        <td><strong>Cloud Translation v3</strong><br /><code>@google-cloud/translate</code> · <code>google-cloud-translate</code></td>
+        <td><strong>Cloud Translation v3</strong></td>
         <td>LinguistPro и HDLE Premium</td>
         <td>Нейросетевой перевод исходного ивритского текста. Официальный клиент v3, с бюджет-гардами и учётом расхода в десктоп-продукте.</td>
       </tr>
     </tbody>
-  </table>
+  </table></div>
 
   <h2>Что остаётся детерминированным и локальным</h2>
   <p>
@@ -65,7 +65,7 @@ import GcpStrip from '../../components/GcpStrip.astro';
     это место, где мы рассчитываем масштабироваться на Google Cloud дальше. Это явно про будущее, а не
     про продакшен сегодня.
   </p>
-  <table class="tbl">
+  <div class="reference-table-wrap"><table class="tbl">
     <thead>
       <tr><th>Сервис</th><th>Вертикаль</th><th>Предполагаемое применение</th></tr>
     </thead>
@@ -75,11 +75,11 @@ import GcpStrip from '../../components/GcpStrip.astro';
       <tr><td><strong>Cloud Storage</strong></td><td>EgorGenom</td><td>Обезличенные геномные данные и архивы длинных прочтений.</td></tr>
       <tr><td><strong>Document AI</strong></td><td>EgorGenom</td><td>Разбор клинических отчётов и лабораторных PDF, которые сейчас обрабатываются вручную.</td></tr>
     </tbody>
-  </table>
+  </table></div>
 
   <h2>Почему именно Google Cloud</h2>
   <p>
-    Две причины, конкретно. Первая — <strong>качество моделей для иврита и многоязычной работы</strong>:
+    Для выбранных задач важна <strong>качество моделей для иврита и многоязычной работы</strong>:
     Gemini хорошо работает с ивритом и смешанным RTL/LTR-материалом при извлечении, распознавании,
     переводе и контролируемом пересказе. Архитектура вызывает облачные модели для этих ограниченных задач,
     оставляя долговечное пространство и детерминированную учебную логику локально. Так продукт честно

@@ -1,7 +1,8 @@
 ---
+import { localPath } from '../data/linguistpro';
 const year = new Date().getFullYear();
 const lang = (Astro.currentLocale ?? 'en') as 'en' | 'ru';
-const p = (href: string) => (lang === 'ru' ? '/ru' + href : href);
+const p = (href: string) => localPath(lang, href);
 const labels = {
   en: { technology: 'Technology', privacy: 'Privacy', terms: 'Terms', imprint: 'Imprint' },
   ru: { technology: 'Технологии', privacy: 'Конфиденциальность', terms: 'Условия', imprint: 'Импринт' },
@@ -13,6 +14,10 @@ const labels = {
       © {year} Kolosei · <a href="mailto:peter@kolosei.com">peter@kolosei.com</a> · <a href="https://github.com/SindromRadioSpb" rel="me">GitHub</a>
     </p>
     <p class="foot-links muted">
+      <a href={p('/agents')}>{lang === 'ru' ? 'Справка для ИИ' : 'AI reference'}</a>
+      <a href="/llms.txt">llms.txt</a>
+      <a href={p('/about')}>{lang === 'ru' ? 'О студии' : 'About'}</a>
+      <a href={p('/contact')}>{lang === 'ru' ? 'Контакты' : 'Contact'}</a>
       <a href={p('/technology')}>{labels.technology}</a>
       <a href={p('/privacy')}>{labels.privacy}</a>
       <a href={p('/terms')}>{labels.terms}</a>

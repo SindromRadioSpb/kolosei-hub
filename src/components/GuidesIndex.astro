@@ -1,0 +1,11 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { guides } from '../data/guides';
+import { localPath } from '../data/linguistpro';
+const { lang = 'en' } = Astro.props as { lang: 'en' | 'ru' };
+const ru = lang === 'ru';
+---
+<BaseLayout title={ru ? 'Практика иврита — чтение, песни и технические задачи' : 'Hebrew learning guides — reading, songs and technical problems'} description={ru ? 'Практические сценарии LinguistPro: как читать с огласовками, учить слова по песням и разбирать задачи на техническом иврите.' : 'Practical LinguistPro workflows: read with niqqud, learn vocabulary through songs and understand problems in technical Hebrew.'}>
+  <h1>{ru ? 'Иврит в деле' : 'Put your Hebrew to work'}</h1><p class="lead">{ru ? 'Выберите задачу для следующего занятия. В каждом руководстве — конкретные шаги и материал, на котором можно попробовать.' : 'Choose a purpose for your next session. Each guide gives you practical steps and a place to try them.'}</p>
+  {guides.map(g => <article class="band"><h2><a href={localPath(lang, `/guides/${g.slug}`)}>{g.title[lang]}</a></h2><p>{g.description[lang]}</p></article>)}
+</BaseLayout>

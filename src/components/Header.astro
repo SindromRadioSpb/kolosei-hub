@@ -1,32 +1,32 @@
 ---
+import { localPath } from '../data/linguistpro';
 const lang = (Astro.currentLocale ?? 'en') as 'en' | 'ru';
 const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
 // Path without the locale prefix, used to build the EN/RU counterparts.
-const basePath = pathname.startsWith('/ru') ? (pathname.slice(3) || '/') : pathname;
-const enUrl = basePath;
-const ruUrl = basePath === '/' ? '/ru' : '/ru' + basePath;
+const basePath = (pathname === '/ru' || pathname.startsWith('/ru/')) ? (pathname.slice(3) || '/') : pathname;
+const enUrl = localPath('en', basePath);
+const ruUrl = localPath('ru', basePath);
 // Localize an EN href for the current locale.
-const p = (href: string) => (lang === 'ru' ? (href === '/' ? '/ru' : '/ru' + href) : href);
+const p = (href: string) => localPath(lang, href);
 
 const labels = {
-  en: { home: 'Home', products: 'Products', technology: 'Technology', about: 'About', contact: 'Contact' },
-  ru: { home: 'Главная', products: 'Продукты', technology: 'Технологии', about: 'О студии', contact: 'Контакты' },
+  en: { home: 'Home', products: 'Products', technology: 'Technology', about: 'About', contact: 'Contact', studio: 'Studio', room: 'Reading Room', guides: 'Guides', agents: 'For AI' },
+  ru: { home: 'Главная', products: 'Продукты', technology: 'Технологии', about: 'О студии', contact: 'Контакты', studio: 'Студия', room: 'Читальный зал', guides: 'Практика', agents: 'Для ИИ' },
 }[lang];
 const links = [
-  { key: 'home', href: '/' },
-  { key: 'products', href: '/products' },
-  { key: 'technology', href: '/technology' },
-  { key: 'about', href: '/about' },
-  { key: 'contact', href: '/contact' },
+  { key: 'studio', href: '/products/linguistpro' },
+  { key: 'room', href: '/products/reading-room' },
+  { key: 'guides', href: '/guides' },
+  { key: 'agents', href: '/agents' },
 ] as const;
 const isActive = (href: string) => {
-  const target = p(href);
-  if (href === '/') return pathname === p('/');
+  const target = p(href).replace(/\/$/, '') || '/';
+  if (href === '/') return pathname === target;
   return pathname === target || pathname.startsWith(`${target}/`);
 };
 ---
 <header>
-  <nav>
+  <nav aria-label={lang === 'ru' ? 'Основная навигация' : 'Main navigation'}>
     <a href={p('/')} class="brand">
       <svg class="brand-mark" width="26" height="26" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
         <defs>
@@ -41,13 +41,13 @@ const isActive = (href: string) => {
       <span>Kolosei</span>
     </a>
     <ul>
-      {links.filter((l) => l.href !== '/').map((l) => (
+      {links.map((l) => (
         <li><a href={p(l.href)} aria-current={isActive(l.href) ? 'page' : undefined}>{labels[l.key]}</a></li>
       ))}
-      <li class="lang-switch" aria-label="Language">
-        <a href={enUrl} aria-current={lang === 'en' ? 'page' : undefined} hreflang="en">EN</a><span aria-hidden="true">·</span><a href={ruUrl} aria-current={lang === 'ru' ? 'page' : undefined} hreflang="ru">RU</a>
-      </li>
     </ul>
+    <div class="lang-switch" aria-label={lang === 'ru' ? 'Язык сайта' : 'Site language'}>
+      <a href={enUrl} aria-current={lang === 'en' ? 'page' : undefined} hreflang="en">EN</a><span aria-hidden="true">·</span><a href={ruUrl} aria-current={lang === 'ru' ? 'page' : undefined} hreflang="ru">RU</a>
+    </div>
   </nav>
 </header>
 
@@ -66,6 +66,7 @@ const isActive = (href: string) => {
     gap: 1.5rem;
   }
   .brand {
+    margin-right: auto;
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
@@ -80,7 +81,7 @@ const isActive = (href: string) => {
     list-style: none;
     display: flex;
     align-items: center;
-    gap: 1.25rem;
+    gap: 1rem;
     padding: 0;
     margin: 0;
   }
@@ -100,7 +101,15 @@ const isActive = (href: string) => {
     padding-left: 0.5rem;
     border-left: 1px solid var(--border);
   }
+  nav { flex-wrap: wrap; }
+  ul { flex-wrap: wrap; }
+  ul a { display: inline-block; padding: .45rem 0; }
   .lang-switch span { color: var(--fg-muted); }
   .lang-switch a { color: var(--fg-muted); }
   .lang-switch a[aria-current='page'] { color: var(--accent); font-weight: 600; }
+  .lang-switch a { display: inline-block; padding: .45rem .1rem; }
+  @media (max-width: 600px) {
+    nav > ul { order: 2; width: 100%; gap: .9rem; }
+    .lang-switch { order: 1; }
+  }
 </style>

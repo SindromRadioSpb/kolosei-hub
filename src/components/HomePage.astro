@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ReadingSample from './ReadingSample.astro';
+import CorpusShelf from './CorpusShelf.astro';
+import Questions from './Questions.astro';
+import { facts, capabilities, localPath } from '../data/linguistpro';
+const { lang = 'en' } = Astro.props as { lang: 'en' | 'ru' };
+const ru = lang === 'ru';
+const p = (path: string) => localPath(lang, path);
+---
+<BaseLayout title={ru ? 'Иврит через чтение и песни — LinguistPro' : 'Learn Hebrew through reading and songs — LinguistPro'} description={ru ? 'Изучайте иврит в LinguistPro: готовые тексты, песни и задачники, Студия для ваших материалов, перевод, огласовки и повторение слов в контексте.' : 'Learn Hebrew with LinguistPro: prepared texts, songs and problem books, a Studio for your own materials, niqqud, translation and contextual word review.'} wide product>
+  <section class="reading-hero">
+    <div class="hero-copy"><p class="product-signature">LinguistPro <span>{ru ? 'от Kolosei' : 'by Kolosei'}</span></p>
+    <h1>{ru ? 'Иврит, который хочется читать.' : 'Hebrew you want to keep reading.'}</h1>
+    <p class="lead">{ru ? 'От первой понятной строки до любимой песни и сложной задачи. Читайте, слушайте, разбирайте слова — и возвращайте их в память.' : 'From a first understood sentence to a favourite song and a challenging problem. Read, listen, explore a word — then make it part of your vocabulary.'}</p>
+    <div class="btn-row"><a class="btn btn-primary" href={facts.room}>{ru ? 'Начать с готового текста' : 'Start with a prepared text'}</a><a class="btn btn-secondary" href={facts.studio}>{ru ? 'Добавить свой материал' : 'Bring your own material'}</a></div>
+    <p class="hero-note">{ru ? 'В браузере, на компьютере и телефоне. Готовые публичные тексты — без своего API-ключа.' : 'In your browser, on desktop and phone. Read prepared public texts without your own API key.'}</p></div>
+    <ReadingSample lang={lang} />
+  </section>
+  <section class="two-paths" aria-label={ru ? 'Два входа в LinguistPro' : 'Two ways into LinguistPro'}>
+    <article><p class="path-label">{ru ? 'У вас уже есть материал' : 'You have something in mind'}</p><h2>{ru ? 'Создайте его в Студии' : 'Make it yours in the Studio'}</h2><p>{ru ? 'Статья, PDF, фотография или запись превращаются в построчный учебный текст. Перевод, огласовки, аудио и разбор слов остаются рядом с источником.' : 'Turn an article, PDF, photo or recording into a line-by-line learning text. Keep translation, niqqud, audio and word explanations beside the source.'}</p><a href={p('/products/linguistpro')}>{ru ? 'Как работает Студия' : 'How the Studio works'}</a></article>
+    <article><p class="path-label">{ru ? 'Хочется открыть что-то новое' : 'You want something worth discovering'}</p><h2>{ru ? 'Выберите в Читальном зале' : 'Find it in the Reading Room'}</h2><p>{ru ? 'Начните с литературы, песни или учебной задачи. Открывайте подсказки, отмечайте слова и продолжайте чтение с того места, где остановились.' : 'Begin with literature, a song or a study problem. Reveal support, save words and continue from where you stopped.'}</p><a href={p('/products/reading-room')}>{ru ? 'Что можно читать' : 'What you can read'}</a></article>
+  </section>
+  <CorpusShelf lang={lang} />
+  <section class="method-section"><div class="section-intro"><h2>{ru ? 'Прочитанное остаётся с вами' : 'What you read stays with you'}</h2><p>{ru ? 'Один путь от живого предложения к пониманию и повторению.' : 'One connected path from a real sentence to understanding and review.'}</p></div>
+    <div class="feature-pairs">{capabilities.slice(1, 5).map(c => <article><h3>{c.title[lang]}</h3><p>{c.text[lang]}</p></article>)}</div>
+  </section>
+  <section class="guide-links"><h2>{ru ? 'Идеи для следующего занятия' : 'Make your next session count'}</h2><a href={p('/guides/hebrew-through-songs')}>{ru ? 'Как учить иврит по песням' : 'Learn Hebrew through songs'}</a><a href={p('/guides/technical-hebrew')}>{ru ? 'Как разбирать технический иврит' : 'Read technical Hebrew with confidence'}</a><a href={p('/guides/hebrew-reading')}>{ru ? 'Как читать иврит с переводом и огласовками' : 'Read Hebrew with niqqud and translation'}</a></section>
+  <Questions lang={lang} />
+  <section class="agent-invitation"><h2>{ru ? 'Изучаете LinguistPro с ИИ-ассистентом?' : 'Exploring LinguistPro with an AI assistant?'}</h2><p>{ru ? 'Открытая справка собирает возможности, источники и границы доступа. Её можно передать ассистенту, чтобы обсуждать продукт на основе проверяемых фактов.' : 'Our public reference brings together capabilities, sources and access boundaries. Share it with an assistant to discuss the product using checkable facts.'}</p><a href={p('/agents')}>{ru ? 'Справка для людей и агентов' : 'Reference for people and agents'}</a></section>
+  <section class="founder-line"><h2>{ru ? 'Сделано в Kolosei' : 'Built at Kolosei'}</h2><p>{ru ? 'Независимая студия Петра Колосея. Мы соединяем инструменты иврита, работу с источниками и внимательный подход к учебным данным.' : 'An independent studio run by Peter Kolosei. We bring together Hebrew language tools, source-grounded materials and care for learning data.'}</p><div class="inline-links"><a href={p('/about')}>{ru ? 'О студии' : 'About the studio'}</a><a href={p('/products')}>{ru ? 'Другие проекты' : 'Other projects'}</a><a href={p('/contact')}>{ru ? 'Связаться' : 'Get in touch'}</a></div></section>
+</BaseLayout>

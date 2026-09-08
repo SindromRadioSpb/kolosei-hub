@@ -1,0 +1,14 @@
+---
+const { lang = 'en' } = Astro.props;
+const ru = lang === 'ru';
+---
+<figure class="reading-sample">
+  <figcaption>{ru ? 'Иврит становится понятнее' : 'A little more Hebrew becomes yours'}</figcaption>
+  <p class="hebrew-line" lang="he" dir="rtl">כָּל יוֹם אֲנִי קוֹרֵא<br />מַשֶּׁהוּ חָדָשׁ.</p>
+  <details class="sample-help">
+    <summary>{ru ? 'Открыть перевод и произношение' : 'Reveal meaning and pronunciation'}</summary>
+    <div><p>{ru ? 'Каждый день я читаю что-то новое.' : 'Every day I read something new.'}</p>
+    <p class="pronunciation" lang="en">Kol yom ani kore mashehu khadash.</p></div>
+  </details>
+  <p class="sample-caption">{ru ? 'Пример учебного чтения. Подсказки открываются по желанию.' : 'An illustrative reading sample. Open the help when you need it.'}</p>
+</figure>

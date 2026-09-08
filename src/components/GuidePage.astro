@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { guides } from '../data/guides';
+import { facts, localPath, corpusUrl } from '../data/linguistpro';
+const { lang = 'en', guide } = Astro.props as { lang: 'en' | 'ru'; guide: typeof guides[number] };
+const ru = lang === 'ru', p = (path: string) => localPath(lang, path);
+---
+<BaseLayout title={guide.title[lang]} description={guide.description[lang]}>
+  <nav class="breadcrumbs" aria-label={ru ? 'Путь к странице' : 'Breadcrumb'}><a href={p('/')}>Kolosei</a> / <a href={p('/guides')}>{ru ? 'Практика' : 'Guides'}</a></nav>
+  <article><h1>{guide.title[lang]}</h1><p class="lead">{guide.intro[lang]}</p>
+  <p class="source-note">{ru ? 'Редакция Kolosei. Обновлено' : 'By Kolosei. Updated'} <time datetime={facts.reviewed}>{facts.reviewed}</time>.</p>
+  {guide.sections.map((s, i) => <section id={`step-${i + 1}`}><h2>{s.title[lang]}</h2><p>{s.text[lang]}</p></section>)}
+  <h2>{ru ? 'Попробуйте на одном материале' : 'Try it with one material'}</h2><ol class="guide-steps">{guide.steps[lang].map(step => <li>{step}</li>)}</ol>
+  <div class="btn-row"><a class="btn btn-primary" href={guide.target === 'room' ? facts.room : corpusUrl(guide.target)}>{ru ? 'Открыть материал в Зале' : 'Open the Reading Room collection'}</a>{guide.slug === 'technical-hebrew' && <a class="btn btn-secondary" href={corpusUrl('materials-science-year1-problem-book-2')}>{ru ? 'Задачи по материаловедению' : 'Materials-science problems'}</a>}</div>
+  <h2>{ru ? 'Что учитывать' : 'What to keep in mind'}</h2><p>{guide.limit[lang]}</p>
+  <p><a href={p('/products/reading-room')}>{ru ? 'Возможности и состав Читального зала' : 'Reading Room capabilities and collections'}</a>. <a href={p('/agents#sources')}>{ru ? 'Источники описания продукта' : 'Sources for product information'}</a>.</p>
+  </article>
+  <section class="guide-links"><h2>{ru ? 'Продолжить практику' : 'Continue your practice'}</h2>{guides.filter(g => g.slug !== guide.slug).map(g => <a href={p(`/guides/${g.slug}`)}>{g.title[lang]}</a>)}<a href={p('/products/linguistpro')}>{ru ? 'Подготовить собственный текст в Студии' : 'Prepare your own text in the Studio'}</a></section>
+</BaseLayout>

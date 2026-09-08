@@ -20,29 +20,29 @@ import GcpStrip from '../components/GcpStrip.astro';
   />
 
   <h2>In production today</h2>
-  <p>Each of these is a real dependency in shipping code — the exact client library is named below.</p>
-  <table class="tbl">
+  <p>Selected cloud processing routes use these services; the browser and the local learning core have separate responsibilities.</p>
+  <div class="reference-table-wrap"><table class="tbl">
     <thead>
       <tr><th>Google Cloud service</th><th>Where</th><th>What it does</th></tr>
     </thead>
     <tbody>
       <tr>
-        <td><strong>Gemini API</strong><br /><code>@google/generative-ai</code></td>
+        <td><strong>Gemini API</strong></td>
         <td>LinguistPro</td>
         <td>Hebrew learning tables, PDF/image OCR, audio/video transcription and A1–B2 graded retelling. Runs under a <strong>per-user API key stored in the browser</strong>; the selected source is processed under the user's Google account.</td>
       </tr>
       <tr>
-        <td><strong>Cloud Text-to-Speech</strong><br /><code>@google-cloud/text-to-speech</code></td>
+        <td><strong>Cloud Text-to-Speech</strong></td>
         <td>LinguistPro</td>
         <td>Niqqud-aware Hebrew audio for lines, examples and study material, with content-addressed caching.</td>
       </tr>
       <tr>
-        <td><strong>Cloud Translation v3</strong><br /><code>@google-cloud/translate</code> · <code>google-cloud-translate</code></td>
+        <td><strong>Cloud Translation v3</strong></td>
         <td>LinguistPro &amp; HDLE Premium</td>
         <td>Neural translation of Hebrew source text. The official v3 client, with budget guards and usage tracking in the desktop product.</td>
       </tr>
     </tbody>
-  </table>
+  </table></div>
 
   <h2>What stays deterministic and local</h2>
   <p>
@@ -64,7 +64,7 @@ import GcpStrip from '../components/GcpStrip.astro';
     Our second vertical — <a href="/products/egorgenom">EgorGenom</a>, rare-disease genomics — is where
     we expect to scale on Google Cloud next. This is explicitly forward-looking, not yet in production.
   </p>
-  <table class="tbl">
+  <div class="reference-table-wrap"><table class="tbl">
     <thead>
       <tr><th>Service</th><th>Vertical</th><th>Intended use</th></tr>
     </thead>
@@ -74,11 +74,11 @@ import GcpStrip from '../components/GcpStrip.astro';
       <tr><td><strong>Cloud Storage</strong></td><td>EgorGenom</td><td>De-identified genomic data and long-read archives.</td></tr>
       <tr><td><strong>Document AI</strong></td><td>EgorGenom</td><td>Parsing clinical reports and lab PDFs that are currently handled manually.</td></tr>
     </tbody>
-  </table>
+  </table></div>
 
   <h2>Why Google Cloud</h2>
   <p>
-    Two reasons, specifically. First, <strong>model quality for Hebrew and multilingual work</strong>:
+    For selected workloads, <strong>model quality for Hebrew and multilingual work</strong>:
     Gemini handles Hebrew and mixed RTL/LTR source material well across extraction, transcription,
     translation and controlled rewriting. The architecture calls cloud models for those bounded workloads
     while keeping the durable workspace and deterministic learning logic local. This preserves graceful

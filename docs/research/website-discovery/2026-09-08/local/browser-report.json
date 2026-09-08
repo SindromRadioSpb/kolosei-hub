@@ -1,0 +1,345 @@
+{
+  "base": "http://127.0.0.1:4322",
+  "checkedAt": "2026-09-08T00:05:37.530Z",
+  "status": "PASS",
+  "cases": [
+    {
+      "route": "/",
+      "width": 1440,
+      "status": "PASS",
+      "viewport": 1440,
+      "content": 1440
+    },
+    {
+      "route": "/products/linguistpro/",
+      "width": 1440,
+      "status": "PASS",
+      "viewport": 1440,
+      "content": 1440
+    },
+    {
+      "route": "/products/reading-room/",
+      "width": 1440,
+      "status": "PASS",
+      "viewport": 1440,
+      "content": 1440
+    },
+    {
+      "route": "/agents/",
+      "width": 1440,
+      "status": "PASS",
+      "viewport": 1440,
+      "content": 1440
+    },
+    {
+      "route": "/guides/",
+      "width": 1440,
+      "status": "PASS",
+      "viewport": 1440,
+      "content": 1440
+    },
+    {
+      "route": "/guides/hebrew-reading/",
+      "width": 1440,
+      "status": "PASS",
+      "viewport": 1440,
+      "content": 1440
+    },
+    {
+      "route": "/guides/hebrew-through-songs/",
+      "width": 1440,
+      "status": "PASS",
+      "viewport": 1440,
+      "content": 1440
+    },
+    {
+      "route": "/guides/technical-hebrew/",
+      "width": 1440,
+      "status": "PASS",
+      "viewport": 1440,
+      "content": 1440
+    },
+    {
+      "route": "/about/",
+      "width": 1440,
+      "status": "PASS",
+      "viewport": 1440,
+      "content": 1440
+    },
+    {
+      "route": "/technology/",
+      "width": 1440,
+      "status": "PASS",
+      "viewport": 1440,
+      "content": 1440
+    },
+    {
+      "route": "/products/",
+      "width": 1440,
+      "status": "PASS",
+      "viewport": 1440,
+      "content": 1440
+    },
+    {
+      "route": "/privacy/",
+      "width": 1440,
+      "status": "PASS",
+      "viewport": 1440,
+      "content": 1440
+    },
+    {
+      "route": "/ru/",
+      "width": 1440,
+      "status": "PASS",
+      "viewport": 1440,
+      "content": 1440
+    },
+    {
+      "route": "/ru/products/linguistpro/",
+      "width": 1440,
+      "status": "PASS",
+      "viewport": 1440,
+      "content": 1440
+    },
+    {
+      "route": "/ru/products/reading-room/",
+      "width": 1440,
+      "status": "PASS",
+      "viewport": 1440,
+      "content": 1440
+    },
+    {
+      "route": "/ru/agents/",
+      "width": 1440,
+      "status": "PASS",
+      "viewport": 1440,
+      "content": 1440
+    },
+    {
+      "route": "/ru/guides/",
+      "width": 1440,
+      "status": "PASS",
+      "viewport": 1440,
+      "content": 1440
+    },
+    {
+      "route": "/ru/guides/hebrew-reading/",
+      "width": 1440,
+      "status": "PASS",
+      "viewport": 1440,
+      "content": 1440
+    },
+    {
+      "route": "/ru/guides/hebrew-through-songs/",
+      "width": 1440,
+      "status": "PASS",
+      "viewport": 1440,
+      "content": 1440
+    },
+    {
+      "route": "/ru/guides/technical-hebrew/",
+      "width": 1440,
+      "status": "PASS",
+      "viewport": 1440,
+      "content": 1440
+    },
+    {
+      "route": "/ru/about/",
+      "width": 1440,
+      "status": "PASS",
+      "viewport": 1440,
+      "content": 1440
+    },
+    {
+      "route": "/ru/technology/",
+      "width": 1440,
+      "status": "PASS",
+      "viewport": 1440,
+      "content": 1440
+    },
+    {
+      "route": "/ru/products/",
+      "width": 1440,
+      "status": "PASS",
+      "viewport": 1440,
+      "content": 1440
+    },
+    {
+      "route": "/ru/privacy/",
+      "width": 1440,
+      "status": "PASS",
+      "viewport": 1440,
+      "content": 1440
+    },
+    {
+      "route": "/",
+      "width": 380,
+      "status": "PASS",
+      "viewport": 380,
+      "content": 380
+    },
+    {
+      "route": "/products/linguistpro/",
+      "width": 380,
+      "status": "PASS",
+      "viewport": 380,
+      "content": 380
+    },
+    {
+      "route": "/products/reading-room/",
+      "width": 380,
+      "status": "PASS",
+      "viewport": 380,
+      "content": 380
+    },
+    {
+      "route": "/agents/",
+      "width": 380,
+      "status": "PASS",
+      "viewport": 380,
+      "content": 380
+    },
+    {
+      "route": "/guides/",
+      "width": 380,
+      "status": "PASS",
+      "viewport": 380,
+      "content": 380
+    },
+    {
+      "route": "/guides/hebrew-reading/",
+      "width": 380,
+      "status": "PASS",
+      "viewport": 380,
+      "content": 380
+    },
+    {
+      "route": "/guides/hebrew-through-songs/",
+      "width": 380,
+      "status": "PASS",
+      "viewport": 380,
+      "content": 380
+    },
+    {
+      "route": "/guides/technical-hebrew/",
+      "width": 380,
+      "status": "PASS",
+      "viewport": 380,
+      "content": 380
+    },
+    {
+      "route": "/about/",
+      "width": 380,
+      "status": "PASS",
+      "viewport": 380,
+      "content": 380
+    },
+    {
+      "route": "/technology/",
+      "width": 380,
+      "status": "PASS",
+      "viewport": 380,
+      "content": 380
+    },
+    {
+      "route": "/products/",
+      "width": 380,
+      "status": "PASS",
+      "viewport": 380,
+      "content": 380
+    },
+    {
+      "route": "/privacy/",
+      "width": 380,
+      "status": "PASS",
+      "viewport": 380,
+      "content": 380
+    },
+    {
+      "route": "/ru/",
+      "width": 380,
+      "status": "PASS",
+      "viewport": 380,
+      "content": 380
+    },
+    {
+      "route": "/ru/products/linguistpro/",
+      "width": 380,
+      "status": "PASS",
+      "viewport": 380,
+      "content": 380
+    },
+    {
+      "route": "/ru/products/reading-room/",
+      "width": 380,
+      "status": "PASS",
+      "viewport": 380,
+      "content": 380
+    },
+    {
+      "route": "/ru/agents/",
+      "width": 380,
+      "status": "PASS",
+      "viewport": 380,
+      "content": 380
+    },
+    {
+      "route": "/ru/guides/",
+      "width": 380,
+      "status": "PASS",
+      "viewport": 380,
+      "content": 380
+    },
+    {
+      "route": "/ru/guides/hebrew-reading/",
+      "width": 380,
+      "status": "PASS",
+      "viewport": 380,
+      "content": 380
+    },
+    {
+      "route": "/ru/guides/hebrew-through-songs/",
+      "width": 380,
+      "status": "PASS",
+      "viewport": 380,
+      "content": 380
+    },
+    {
+      "route": "/ru/guides/technical-hebrew/",
+      "width": 380,
+      "status": "PASS",
+      "viewport": 380,
+      "content": 380
+    },
+    {
+      "route": "/ru/about/",
+      "width": 380,
+      "status": "PASS",
+      "viewport": 380,
+      "content": 380
+    },
+    {
+      "route": "/ru/technology/",
+      "width": 380,
+      "status": "PASS",
+      "viewport": 380,
+      "content": 380
+    },
+    {
+      "route": "/ru/products/",
+      "width": 380,
+      "status": "PASS",
+      "viewport": 380,
+      "content": 380
+    },
+    {
+      "route": "/ru/privacy/",
+      "width": 380,
+      "status": "PASS",
+      "viewport": 380,
+      "content": 380
+    }
+  ],
+  "errors": [],
+  "interactions": "PASS: keyboard disclosure, FAQ, video disclosure, skip link, agent navigation, language switch, no-JS, dark mode, 320px reflow"
+}

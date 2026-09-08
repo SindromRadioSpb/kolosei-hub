@@ -15,17 +15,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <p>
     Today that's two shipping Hebrew products and one health-AI research vertical. The thesis across all
-    of them is the same: keep the user's data with the user, use the cloud only for heavy compute, and
-    let a frontier model — Google's Gemini — do the work that genuinely needs one.
+    of them is the same: keep the primary workspace local, make cloud processing and optional
+    synchronization explicit, and use language models for selected tasks.
   </p>
 
   <h2>What we build</h2>
   <p>
     <strong><a href="/products/linguistpro">LinguistPro</a></strong> is our flagship — an offline-first
     Hebrew learning workspace. Its architecture is unusual: SQLite WASM running in browser-local OPFS, so
-    the app delivers server-scale functionality without ever holding user data on a server. Gemini, Cloud
-    Text-to-Speech and Cloud Translation run under the learner's own key. It's preparing for ulpan-cohort
-    testing as part of a Hebrew-pedagogy diploma project.
+    the primary workspace stays on the device. Optional account sync and connected agents can process consented data on a server. Gemini, Cloud
+    Text-to-Speech and Cloud Translation run under the learner's own key. The separate research methodology is preregistered; this is not evidence of measured learning outcomes.
   </p>
   <p>
     <strong><a href="/products/v-book">HDLE Premium</a></strong> shares that Hebrew-NLP core but targets

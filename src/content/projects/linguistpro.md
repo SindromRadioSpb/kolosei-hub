@@ -8,7 +8,7 @@ status: active
 productType: product
 version: v3.11
 publishDate: 2024-09-01
-updateDate: 2026-08-29
+updateDate: 2026-09-08
 domain: linguistpro.kolosei.com
 repo: https://github.com/SindromRadioSpb/tts-prototype-android
 statusPage: https://stats.uptimerobot.com/hzdU5PQBqp
@@ -22,6 +22,8 @@ gcpServices:
 gcpPlanned:
   - Vertex AI
 changelog:
+  - date: "2026-09-08"
+    text: "Updated public reference: Study Songs and Materials Science collections, shared discovery, recorded vocabulary familiarity and derived Obsidian study packages."
   - date: "2026-08-29"
     text: "The open Physics — Year 1 Problem Book is live in the Reading Room: 9 chapters, 74 bilingual cards, reviewed answers and complete exam-format solutions."
   - date: "2026-07-30"
@@ -38,8 +40,8 @@ A premium learning workstation for Hebrew, built around one idea: **start with t
 
 Unlike textbook apps that march everyone through one curriculum, LinguistPro works with real sources: paste text, fetch an article, open a document or photo, or bring audio, video and captions. It creates a line-by-line workspace with niqqud, translation, audio, morphology and source-aware review.
 
-**Status (August 2026):** the v3.11 series is in production on Hetzner + Coolify. The shipped product includes multimodal Studio import, the Reading Room, honest morphology, FSRS-6 retention, the reviewed 74-problem Physics corpus and optional consent-controlled account and agent surfaces.
+**Status (September 2026):** the v3.11 series is in production on Hetzner + Coolify. The shipped product includes multimodal Studio import, the Reading Room, honest morphology, FSRS-6 retention, the reviewed 74-problem Physics corpus and optional consent-controlled account and agent surfaces.
 
-**The Reading Room:** a bilingual library with **26,455 public-domain works** from [Project Ben-Yehuda](https://benyehuda.org/) catalogued by period and author. Of those, 796 are prepared for interactive reading with translation, Dicta niqqud, morphology and provenance; the rest are clearly marked as awaiting processing. See [linguistpro.kolosei.com/library.html](https://linguistpro.kolosei.com/library.html).
+**The Reading Room:** literature from Project Ben-Yehuda, Study Songs, Physics and Materials Science, sharing morphology and contextual review with the Studio. The dated public counts and sources are maintained in `src/data/linguistpro.ts` and rendered on the product and reference pages.
 
-**Research mode:** opt-in, cohort-based analytics with IRB-style consent, supporting a Hebrew-ulpan pedagogy diploma project. Preregistered at OSF (`osf.io/zdv9j`). Next milestone: two testing cohorts of 20 students.
+**Research mode:** opt-in, cohort-based analytics with IRB-style consent, supporting a Hebrew-ulpan pedagogy diploma project. Preregistered at OSF (`osf.io/zdv9j`). Preregistration does not establish measured learning effectiveness.

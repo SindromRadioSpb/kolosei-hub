@@ -9,10 +9,17 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "verify": "node scripts/verify-site.mjs",
+    "verify:browser": "node scripts/browser-smoke.mjs",
+    "images:social": "node scripts/generate-social-images.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
-    "astro": "^6.3.7"
+    "astro": "7.3.1"
+  },
+  "devDependencies": {
+    "parse5": "7.3.0",
+    "playwright": "1.60.0"
   }
 }

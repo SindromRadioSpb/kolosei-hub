@@ -6,7 +6,7 @@ import { getEntry } from 'astro:content';
 const entry = await getEntry('projects', 'egorgenom');
 const d = entry!.data;
 ---
-<BaseLayout title="EgorGenom" description={d.description_ru} wide={true}>
+<BaseLayout title="EgorGenom — исследовательский проект" description={d.description_ru} wide={true}>
   <p class="eyebrow mono small">Исследовательская вертикаль · health-AI</p>
   <h1>EgorGenom</h1>
   <p class="lead">{d.tagline_ru}. Это исследование, удерживаемое на уровне клинических стандартов, — а не коммерческий продукт.</p>

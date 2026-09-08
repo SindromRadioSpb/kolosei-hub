@@ -2,6 +2,7 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
+import { structuredData } from '../data/structured-data';
 
 interface Props {
   title: string;
@@ -9,19 +10,22 @@ interface Props {
   wide?: boolean;
   image?: string;
   home?: boolean;
+  product?: boolean;
+  noindex?: boolean;
 }
 
-const { title, description, wide = false, image = '/og-image.png', home = false } = Astro.props;
+const { title, description, wide = false, image, product = false, noindex = false } = Astro.props;
 const lang = (Astro.currentLocale ?? 'en') as 'en' | 'ru';
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-const ogImage = new URL(image, Astro.site);
-const homeTitle = { en: 'Kolosei — AI-powered Hebrew language tools', ru: 'Kolosei — AI-инструменты для иврита' }[lang];
-const fullTitle = home ? homeTitle : `${title} — Kolosei`;
+const canonicalPath = Astro.url.pathname.replace(/\/$/, '') + '/';
+const canonicalURL = new URL(canonicalPath, Astro.site);
+const isLinguistPro = /^\/(ru\/)?(products\/(linguistpro|reading-room)\/|agents\/|guides\/.*)?$/.test(canonicalPath);
+const ogImage = new URL(image ?? (isLinguistPro ? `/og/linguistpro-${lang}.png` : '/og-image.png'), Astro.site);
+const fullTitle = `${title} — Kolosei`;
 // hreflang alternates (path stripped of the /ru locale prefix)
 const pathNoSlash = Astro.url.pathname.replace(/\/$/, '') || '/';
-const basePath = pathNoSlash.startsWith('/ru') ? (pathNoSlash.slice(3) || '/') : pathNoSlash;
-const enHref = new URL(basePath, Astro.site);
-const ruHref = new URL(basePath === '/' ? '/ru' : '/ru' + basePath, Astro.site);
+const basePath = (pathNoSlash === '/ru' || pathNoSlash.startsWith('/ru/')) ? (pathNoSlash.slice(3) || '/') : pathNoSlash;
+const enHref = new URL(basePath === '/' ? '/' : basePath + '/', Astro.site);
+const ruHref = new URL(basePath === '/' ? '/ru/' : '/ru' + basePath + '/', Astro.site);
 ---
 <!doctype html>
 <html lang={lang}>
@@ -29,6 +33,9 @@ const ruHref = new URL(basePath === '/' ? '/ru' : '/ru' + basePath, Astro.site);
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="robots" content={noindex ? 'noindex, follow' : 'index, follow, max-image-preview:large'} />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LinguistPro reference index" />
+    <link rel="alternate" type="application/json" href="/facts/linguistpro.json" title="LinguistPro public facts" />
     <meta name="generator" content={Astro.generator} />
 
     <title>{fullTitle}</title>
@@ -45,47 +52,20 @@ const ruHref = new URL(basePath === '/' ? '/ru' : '/ru' + basePath, Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content="Kolosei" />
     <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={isLinguistPro ? (lang === 'ru' ? 'LinguistPro — чтение, понимание и повторение иврита' : 'LinguistPro — read, understand and remember Hebrew') : 'Kolosei'} />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
 
-    <script type="application/ld+json" set:html={JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'Organization',
-      name: 'Kolosei',
-      url: 'https://kolosei.com',
-      logo: 'https://kolosei.com/favicon.svg',
-      image: 'https://kolosei.com/og-image.png',
-      email: 'peter@kolosei.com',
-      description: 'Kolosei is a founder-led studio building AI-powered Hebrew language tools, with LinguistPro as its flagship. Built on Google Cloud.',
-      address: {
-        '@type': 'PostalAddress',
-        addressLocality: 'Kiryat Bialik',
-        addressCountry: 'IL',
-      },
-      sameAs: [
-        'https://github.com/SindromRadioSpb',
-        'https://osf.io/zdv9j',
-      ],
-      founder: {
-        '@type': 'Person',
-        name: 'Peter Kolosei',
-        sameAs: ['https://github.com/SindromRadioSpb'],
-      },
-      knowsAbout: [
-        'Hebrew language learning',
-        'Natural language processing',
-        'Hebrew lexicography',
-        'Google Cloud',
-        'Gemini API',
-        'Rare-disease genomics',
-      ],
-    })} />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData({ title: fullTitle, description, path: canonicalPath, lang, product })).replace(/</g, '\\u003c')} />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">{lang === 'ru' ? 'К содержанию' : 'Skip to content'}</a>
     <Header />
-    <main class={wide ? 'wide' : ''}>
+    <main id="main-content" tabindex="-1" class={wide ? 'wide' : ''}>
       <slot />
     </main>
     <Footer />

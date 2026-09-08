@@ -1,10 +1,11 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
+import { facts } from './src/data/linguistpro.ts';
 
 export default defineConfig({
   site: 'https://kolosei.com',
-  trailingSlash: 'never',
+  trailingSlash: 'always',
   build: {
     format: 'directory',
   },
@@ -19,6 +20,11 @@ export default defineConfig({
   },
   integrations: [
     sitemap({
+      filter: (page) => !/\/(?:ru\/)?projects\/?$/.test(new URL(page).pathname),
+      serialize: (item) => {
+        if (/^\/(ru\/)?(products\/(linguistpro|reading-room)\/|agents\/|guides\/.*|about\/|privacy\/|technology\/)?$/.test(new URL(item.url).pathname)) item.lastmod = new Date(facts.reviewed);
+        return item;
+      },
       i18n: {
         defaultLocale: 'en',
         locales: { en: 'en', ru: 'ru' },

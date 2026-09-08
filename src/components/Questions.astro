@@ -1,0 +1,8 @@
+---
+import { faqs } from '../data/linguistpro';
+const { lang = 'en' } = Astro.props as { lang: 'en' | 'ru' };
+---
+<section class="questions" aria-labelledby="questions-title">
+  <h2 id="questions-title">{lang === 'ru' ? 'Перед первым чтением' : 'Before your first read'}</h2>
+  {faqs.map((f) => <details><summary>{f.q[lang]}</summary><p>{f.a[lang]}</p></details>)}
+</section>
