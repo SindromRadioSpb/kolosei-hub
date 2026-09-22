@@ -1,8 +1,8 @@
 # Kolosei HTTP activity — source migration
 
 Current status: permission blocker resolved with explicit owner approval.
-Real API returns 2327; UI/privacy switch passed local verification, release pending. Historical
-staging and blocker evidence below is retained, not the current blocker state.
+Real API returns 2327; UI/privacy switch is released and production-verified.
+Historical staging and blocker evidence below is retained, not the current state.
 
 ## Approved direction
 
@@ -122,3 +122,25 @@ unique-count summation and no pageview fallback.
 - Legacy schema-1 endpoint remains unchanged for compatibility; public component
   requests only schema-2 domain aggregate once per page load. Privacy RU/EN and
   README describe the changed source, scope, rounding and complete-day window.
+
+### Production closure, 2026-09-22
+
+- Runtime commit `dbb50ac1fac0a250fce6eabb579e8a67cbfd4e81`; Cloudflare Pages
+  production deployment `b2f783ad-ebd5-4cfc-829a-fb07c3e6d3e5`. Owner dashboard
+  identifies that commit as active Production. Main and origin/main synchronized.
+- `node scripts/verify-activity-production.mjs` PASS at 13:00:48.499Z. Six EN/RU
+  home/guide/privacy HTML documents match the local build (normalizing only
+  optional beacon injection and inter-tag whitespace); CSS bytes match.
+  Three no-cache v2 probes all return available / 2327 / source-scoped 30-day
+  window; arbitrary hostname/days query parameters cannot change that scope.
+- Production Chrome: RU home at 380 CSS px, RU songs guide at 768, EN home at
+  1440 show available / approximately 2.33k. Qualifier visible, no horizontal
+  overflow, exactly one existing Cloudflare beacon per page. Captured console
+  errors empty. The normal page-load checks may contribute to existing analytics;
+  no synthetic production traffic or learning operations were generated.
+- Viewport overrides reset; local fixture server stopped. Owner token secret was
+  never retrieved; only the explicitly approved single-zone read right changed.
+- Documentation/privacy complete. Evidence-only follow-up commit does not change
+  runtime sources. Physical-device and assistive-technology acceptance remain
+  outside this browser/HTTP evidence. Exact human/bot split and indexing remain
+  unmeasured; do not derive them by subtracting browser pageviews from visitors.
