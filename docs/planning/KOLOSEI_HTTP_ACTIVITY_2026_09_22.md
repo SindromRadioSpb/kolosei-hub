@@ -1,5 +1,14 @@
 # Kolosei HTTP activity — source migration
 
+Owner copy refinement: heading becomes «Уникальные посетители Kolosei.com» /
+“Unique visitors to Kolosei.com”. Visible definition ends after proxied subdomains;
+remove the final “not people/pageviews” sentence from the banner only. The IP/bot
+qualification, source, period, calculation and full privacy explanation remain.
+Copy-only checks passed: 20 activity tests, 34-page build, 1633 static checks;
+browser review at 380px, 768px and desktop, no horizontal overflow. Privacy-page
+counter names aligned in RU/EN; full explanation retained. Production verification
+follows this scoped commit; no analytics setting change.
+
 Current status: permission blocker resolved with explicit owner approval.
 Real API returns 2327; UI/privacy switch is released and production-verified.
 Historical staging and blocker evidence below is retained, not the current state.

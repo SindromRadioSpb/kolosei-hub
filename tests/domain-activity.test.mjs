@@ -75,6 +75,10 @@ test('domain UI validates metric, scope, complete-day bounds and freshness; neve
   assert.equal(activityView(data, 'ru', now + 900001).state, 'unavailable');
   assert.match(activityCopy.ru.definition, /по IP.*автоматический.*поддомены/);
   assert.match(activityCopy.en.definition, /IP-based.*automated.*subdomains/);
+  assert.equal(activityCopy.ru.title, 'Уникальные посетители Kolosei.com');
+  assert.equal(activityCopy.en.title, 'Unique visitors to Kolosei.com');
+  assert.equal(activityCopy.ru.definition, 'Учёт по IP, включая автоматический трафик и проксируемые поддомены kolosei.com.');
+  assert.equal(activityCopy.en.definition, 'IP-based, including automated traffic and proxied kolosei.com subdomains.');
 });
 
 test('banner and privacy copy use the domain metric, with visible caveats and no second collector', async () => {

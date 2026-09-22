@@ -1,11 +1,11 @@
 export const activityCopy = {
-  ru: { title: 'Активность Kolosei', period: 'уникальные посетители по Cloudflare',
+  ru: { title: 'Уникальные посетители Kolosei.com', period: 'уникальные посетители по Cloudflare',
     window: 'За 30 завершённых дней · UTC', loading: 'Загрузка…', unavailable: 'Данные временно недоступны', noJs: 'Для счётчика нужен JavaScript',
-    definition: 'Учёт по IP, включая автоматический трафик и проксируемые поддомены kolosei.com. Не число людей и не просмотры.',
+    definition: 'Учёт по IP, включая автоматический трафик и проксируемые поддомены kolosei.com.',
     detail: 'Показатель Unique Visitors из HTTP-аналитики Cloudflare за 30 завершённых суток UTC, по методике источника. Не подтверждает индексацию. Кэш до 15 минут; текущие сутки не включены. ≈ обозначает округление числа.' },
-  en: { title: 'Kolosei activity', period: 'unique visitors reported by Cloudflare',
+  en: { title: 'Unique visitors to Kolosei.com', period: 'unique visitors reported by Cloudflare',
     window: 'Over 30 complete days · UTC', loading: 'Loading…', unavailable: 'Data temporarily unavailable', noJs: 'The counter requires JavaScript',
-    definition: 'IP-based, including automated traffic and proxied kolosei.com subdomains. Not a people or pageview count.',
+    definition: 'IP-based, including automated traffic and proxied kolosei.com subdomains.',
     detail: 'Cloudflare HTTP Traffic Unique Visitors over 30 complete UTC days, using the source methodology. Not proof of indexing. Cached for up to 15 minutes; today is excluded. ≈ indicates a rounded number.' },
 };
 
