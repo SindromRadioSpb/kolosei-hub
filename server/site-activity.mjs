@@ -40,7 +40,9 @@ export function parseAggregate(body) {
   return { pageviews: Math.round(count), estimated: avg.sampleInterval > 1 };
 }
 
-export function createActivityHandler({ fetcher = fetch, now = Date.now, cache, timeout = CONFIG.timeout, reportError = () => {} } = {}) {
+export function createActivityHandler({ fetcher = fetch, now = Date.now, cache, timeout = CONFIG.timeout, reportError = () => {},
+  queryBuilder = buildQuery, parser = parseAggregate, schemaVersion = 1,
+  metadata = { source: SOURCE, hostname: CONFIG.hostname }, cacheKey = CACHE_KEY } = {}) {
   let local;
   let pending;
   const headers = {
@@ -51,21 +53,22 @@ export function createActivityHandler({ fetcher = fetch, now = Date.now, cache, 
   const response = (payload, ttl) => new Response(JSON.stringify(payload), {
     headers: { ...headers, 'Cache-Control': `public, max-age=${ttl}` },
   });
-  const valid = (value) => value?.schemaVersion === 1 &&
+  const valid = (value) => value?.schemaVersion === schemaVersion &&
+    Object.entries(metadata).every(([key, expected]) => value[key] === expected) &&
     ['available', 'unavailable'].includes(value.state) && Date.parse(value.expiresAt) > now();
 
   async function load(env) {
     if (local && valid(local)) return local;
     try {
-      const saved = await cache?.match(CACHE_KEY);
+      const saved = await cache?.match(cacheKey);
       if (saved) {
         const value = await saved.json();
         if (valid(value)) { local = value; return value; }
       }
     } catch { /* Cache failure must not break the site. */ }
     const fetchedAt = now();
-    const range = buildQuery(fetchedAt);
-    const base = { schemaVersion: 1, source: SOURCE, hostname: CONFIG.hostname,
+    const range = queryBuilder(fetchedAt);
+    const base = { schemaVersion, ...metadata,
       period: { days: CONFIG.days, start: range.start, end: range.end, timeZone: 'UTC' },
       fetchedAt: new Date(fetchedAt).toISOString() };
     let payload;
@@ -92,7 +95,7 @@ export function createActivityHandler({ fetcher = fetch, now = Date.now, cache, 
             const message = decoded.errors.map(error => String(error?.message ?? 'query_error')).join('; ');
             throw new Error(`graphql: ${message.replaceAll(token, '[redacted]').replace(/[a-zA-Z0-9_-]{32,}/g, '[redacted]').slice(0, 400)}`);
           }
-          return parseAggregate(decoded);
+          return parser(decoded);
         })(),
         new Promise((_, reject) => { timer = setTimeout(() => { controller.abort(); reject(new Error('timeout')); }, timeout); }),
       ]);
@@ -105,7 +108,7 @@ export function createActivityHandler({ fetcher = fetch, now = Date.now, cache, 
     const ttl = payload.state === 'available' ? CONFIG.ttl : CONFIG.errorTtl;
     payload.expiresAt = new Date(fetchedAt + ttl * 1000).toISOString();
     local = payload;
-    try { await cache?.put(CACHE_KEY, response(payload, ttl)); } catch { /* Best effort. */ }
+    try { await cache?.put(cacheKey, response(payload, ttl)); } catch { /* Best effort. */ }
     return payload;
   }
 

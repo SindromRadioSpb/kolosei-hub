@@ -1,5 +1,5 @@
 {
   "version": 1,
-  "include": ["/api/site-activity"],
+  "include": ["/api/site-activity", "/api/domain-activity"],
   "exclude": []
 }

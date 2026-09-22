@@ -143,7 +143,7 @@ test('localized UI distinguishes count, zero, estimate, expired and unavailable 
 });
 
 test('only aggregate API invokes Functions; component adds no collector or storage', async () => {
-  assert.deepEqual(JSON.parse(await readFile(new URL('../public/_routes.json', import.meta.url))), { version: 1, include: ['/api/site-activity'], exclude: [] });
+  assert.deepEqual(JSON.parse(await readFile(new URL('../public/_routes.json', import.meta.url))), { version: 1, include: ['/api/site-activity', '/api/domain-activity'], exclude: [] });
   const component = await readFile(new URL('../src/components/SiteActivity.astro', import.meta.url), 'utf8');
   assert.ok(!/localStorage|sessionStorage|document\.cookie|sendBeacon|setInterval/.test(component));
   assert.ok(component.includes("fetch('/api/site-activity'"));
