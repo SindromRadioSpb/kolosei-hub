@@ -37,6 +37,7 @@ test('public result is allowlisted; upstream is fixed and receives only server t
     calls++;
     assert.equal(url, 'https://api.cloudflare.com/client/v4/graphql');
     assert.equal(options.headers.Authorization, 'Bearer test-secret-never-public');
+    assert.equal(options.redirect, 'manual', 'Cloudflare Workers supports manual, not error');
     assert.deepEqual(Object.keys(options.headers).sort(), ['Authorization', 'Content-Type']);
     assert.ok(!options.body.includes('evil'));
     return Response.json(body());
@@ -79,6 +80,17 @@ test('owner diagnostics redact credentials and never appear in the public respon
   assert.ok(messages[0].includes('[redacted]'));
   assert.ok(!messages[0].includes('test-secret-never-public'));
   assert.ok(!text.includes('query rejected'));
+});
+
+test('upstream redirects are rejected without following or disclosing credentials', async () => {
+  let calls = 0;
+  const handle = createActivityHandler({ now: () => timestamp, fetcher: async (_, options) => {
+    calls++;
+    assert.equal(options.redirect, 'manual');
+    return new Response(null, { status: 302, headers: { Location: 'https://example.invalid/' } });
+  } });
+  assert.equal((await (await handle(context())).json()).state, 'unavailable');
+  assert.equal(calls, 1);
 });
 
 test('coalesces concurrent callers, caches success, and refreshes after expiry', async () => {

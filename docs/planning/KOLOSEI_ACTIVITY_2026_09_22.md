@@ -34,6 +34,10 @@ No Cloudflare analytics API token is currently available in the process environm
 - Function packaging: Wrangler 4.136.2 `pages functions build` PASS (compatibility date 2026-05-24 matches Pages).
 - Deployment: ready for controlled Git deployment; NOT yet verified live. Since a Pages production secret is available only to a deployed Function, validate the real query immediately using `node scripts/verify-activity-production.mjs`; source errors display unavailable, never zero. Do not describe the release as complete until it passes.
 
+### Production compatibility correction
+
+Initial deployment `c1d4e52` correctly returned unavailable, not zero. Redacted owner-only diagnostic logs (`b552d33`) identified an actual Workers runtime incompatibility: `fetch` does not accept `redirect: 'error'`. Corrected to `manual`; non-2xx (including redirects) is rejected, preserving the no-credential-forwarding boundary. Added explicit redirect-mode and 302 regression checks. No token recreation or permission expansion was needed. Node-only mocks and a successful Worker compilation did not establish runtime compatibility; production validation remains mandatory.
+
 ## Primary references
 
 - https://developers.cloudflare.com/analytics/graphql-api/

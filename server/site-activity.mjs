@@ -77,7 +77,9 @@ export function createActivityHandler({ fetcher = fetch, now = Date.now, cache, 
       const result = await Promise.race([
         (async () => {
           const upstream = await fetcher('https://api.cloudflare.com/client/v4/graphql', {
-            method: 'POST', redirect: 'error', signal: controller.signal,
+            // Workers supports manual/follow, not the Node/browser "error" mode.
+            // A redirect is rejected below as non-2xx, so credentials never follow it.
+            method: 'POST', redirect: 'manual', signal: controller.signal,
             headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
             body: JSON.stringify({ query: range.query }),
           });
