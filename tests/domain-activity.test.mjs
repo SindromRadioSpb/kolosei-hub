@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { buildDomainQuery, parseDomainAggregate, createDomainActivityHandler, ZONE } from '../server/domain-activity.mjs';
+import { activityView, activityCopy } from '../src/data/domain-activity.mjs';
 
 const now = Date.parse('2026-09-22T12:00:00Z');
 const body = count => ({ data: { viewer: { zones: [{ total: [{ uniq: { uniques: count } }] }] } } });
@@ -55,4 +56,22 @@ test('v1 cache never supplies v2, and v2 traffic remains coalesced and cached', 
   assert.equal(calls, 1);
   assert.ok(keys.every(key => key.includes('domain-activity?internal-cache=v2')));
   assert.equal((await responses[0].json()).schemaVersion, 2);
+});
+
+test('domain UI validates metric, scope, complete-day bounds and freshness; never interprets v1 pageviews as visitors', async () => {
+  const data = await (await createDomainActivityHandler({ now: () => now, fetcher: async () => Response.json(body(2330)) })(context)).json();
+  assert.equal(activityView(data, 'ru', now).state, 'available');
+  assert.match(activityView(data, 'ru', now).value, /^≈ 2,33\sтыс\./);
+  assert.equal(activityView(data, 'en', now).value, '≈ 2.33K');
+  assert.equal(activityView({ ...data, uniqueVisitors: 0 }, 'ru', now).value, '0');
+  for (const invalid of [null, {}, { ...data, schemaVersion: 1 }, { ...data, state: 'unavailable' },
+    { ...data, uniqueVisitors: '2330' }, { ...data, scope: 'hostname' }, { ...data, metric: 'pageviews' },
+    { ...data, period: { ...data.period, days: 7 } }, { ...data, expiresAt: data.fetchedAt },
+    { ...data, period: { ...data.period, start: '2026-08-23T01:00:00Z', end: '2026-09-22T01:00:00Z' } },
+    { ...data, fetchedAt: '2026-09-23T00:00:00Z', expiresAt: '2026-09-23T00:15:00Z' }]) {
+    assert.equal(activityView(invalid, 'ru', now).state, 'unavailable');
+  }
+  assert.equal(activityView(data, 'ru', now + 900001).state, 'unavailable');
+  assert.match(activityCopy.ru.definition, /по IP.*автоматический.*поддомены/);
+  assert.match(activityCopy.en.definition, /IP-based.*automated.*subdomains/);
 });

@@ -48,3 +48,34 @@ behavior; cache namespace and source metadata are isolated. Automated gates:
 4.136.2 Functions compilation PASS, diff check PASS. Live verification pending.
 2.33k remains dashboard evidence, not an API result or fixture. This backend-only
 stage is deployable without switching the banner or expanding token privileges.
+
+### Live gate: explicit permission blocker
+
+Backend commit `2343b52ca65142a70b7b2951622e30f4197c142c` deployed successfully as
+Pages `8d939afd-7f68-4bd3-ae44-5fef378b0da6` (31 seconds). Production v2 request
+at 2026-09-22T12:46:17.632Z returns `unavailable`, no count. Authenticated Function
+diagnostics identify the exact rejection: missing
+`com.cloudflare.api.account.zone.analytics.read` for this zone. Token identity was
+redacted; no secret value was read. Log stream paused after diagnosis.
+
+Required next authority: add **Zone / Analytics / Read** to the existing
+`kolosei-public-activity` token, **Include / Specific zone / kolosei.com** only.
+Retain existing Account Analytics Read while the v1 banner remains active. No DNS,
+edit, all-zones, billing or global-key permission is needed. Do not apply this
+security-sensitive expansion without owner confirmation. Editing the existing
+token's permission may avoid replacing the encrypted Pages secret.
+
+Prepared (not wired into the public banner): bilingual v2 formatting/copy and
+strict UI schema/time/scope validation in `src/data/domain-activity.mjs`.
+19/19 deterministic tests PASS including rejection of old pageview payloads as
+visitors, legitimate zero, rounded thousands and stale/malformed results.
+Public banner is deliberately still v1. No evidence yet proves availability of
+the 30-day dataset, aggregate value, interval deduplication or dashboard parity.
+After permission, refresh the source after its 60-second negative cache expires,
+resolve any remaining source limits, then perform the UI/privacy release gates.
+
+Regression proof at 2026-09-22T12:47:25.654Z: production verifier PASS for six
+EN/RU home/guide/privacy HTML files and CSS byte parity; three no-cache v1 reads
+remain available (90 sampled pageviews). Backend staging has not changed the
+public metric. The following copy/tests/documentation commit has no active UI or
+Function-runtime change; responsive acceptance of the future UI remains pending.

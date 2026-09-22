@@ -24,6 +24,13 @@ Page URLs use trailing slashes to match production directory hosting; file URLs 
 
 ## Public activity counter
 
+Migration status (2026-09-22): the public banner below is still the Web Analytics
+version. An isolated `/api/domain-activity` schema-2 backend for zone-wide HTTP
+Unique Visitors has been deployed, but Cloudflare rejects the existing token's
+missing Zone Analytics Read permission. It returns unavailable, never an invented
+count. Do not switch the banner until owner-approved access and live data parity
+pass. Plan/status: `docs/planning/KOLOSEI_HTTP_ACTIVITY_2026_09_22.md`.
+
 `SiteActivity.astro` reads `/api/site-activity`, a Cloudflare Pages Function backed by the existing Web Analytics collector. It publishes only the 30-day pageview aggregate for the exact hostname `kolosei.com`, excluding recognized bots and all subdomains. It is not a unique-visitor, online-user or indexing counter. Sampled estimates have a `≈` prefix.
 
 The owner-managed **Production secret** `CLOUDFLARE_ANALYTICS_TOKEN` needs **Account → Account Analytics → Read**, restricted to this account. Never use a `PUBLIC_` environment variable or put the token in Git, HTML or chat. Rotate by replacing the encrypted Pages secret, deploying and verifying `/api/site-activity`, then revoking the old token. Revocation/source errors show unavailable rather than zero. No new subscription or second beacon is needed.
