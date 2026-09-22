@@ -70,6 +70,17 @@ test('timeout aborts upstream and returns a bounded unavailable result', async (
   assert.equal(signal.aborted, true);
 });
 
+test('owner diagnostics redact credentials and never appear in the public response', async () => {
+  const messages = [];
+  const handle = createActivityHandler({ now: () => timestamp, reportError: value => messages.push(value),
+    fetcher: async () => Response.json({ errors: [{ message: 'query rejected test-secret-never-public' }] }) });
+  const text = await (await handle(context())).text();
+  assert.equal(messages.length, 1);
+  assert.ok(messages[0].includes('[redacted]'));
+  assert.ok(!messages[0].includes('test-secret-never-public'));
+  assert.ok(!text.includes('query rejected'));
+});
+
 test('coalesces concurrent callers, caches success, and refreshes after expiry', async () => {
   let clock = timestamp, calls = 0;
   const handle = createActivityHandler({ now: () => clock, fetcher: async () => { calls++; return Response.json(body()); } });

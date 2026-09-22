@@ -40,7 +40,7 @@ export function parseAggregate(body) {
   return { pageviews: Math.round(count), estimated: avg.sampleInterval > 1 };
 }
 
-export function createActivityHandler({ fetcher = fetch, now = Date.now, cache, timeout = CONFIG.timeout } = {}) {
+export function createActivityHandler({ fetcher = fetch, now = Date.now, cache, timeout = CONFIG.timeout, reportError = () => {} } = {}) {
   let local;
   let pending;
   const headers = {
@@ -81,15 +81,22 @@ export function createActivityHandler({ fetcher = fetch, now = Date.now, cache, 
             headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
             body: JSON.stringify({ query: range.query }),
           });
-          if (!upstream.ok) throw new Error('http');
+          if (!upstream.ok) throw new Error(`http_${upstream.status}`);
           const raw = await upstream.text();
           if (raw.length > 65536) throw new Error('size');
-          return parseAggregate(JSON.parse(raw));
+          const decoded = JSON.parse(raw);
+          if (Array.isArray(decoded?.errors) && decoded.errors.length) {
+            // Cloudflare query diagnostics stay in the owner's Function logs, never in the public response.
+            const message = decoded.errors.map(error => String(error?.message ?? 'query_error')).join('; ');
+            throw new Error(`graphql: ${message.replaceAll(token, '[redacted]').replace(/[a-zA-Z0-9_-]{32,}/g, '[redacted]').slice(0, 400)}`);
+          }
+          return parseAggregate(decoded);
         })(),
         new Promise((_, reject) => { timer = setTimeout(() => { controller.abort(); reject(new Error('timeout')); }, timeout); }),
       ]);
       payload = { ...base, state: 'available', ...result };
-    } catch {
+    } catch (error) {
+      try { reportError(String(error?.message ?? 'source').replaceAll(env?.CLOUDFLARE_ANALYTICS_TOKEN || '\u0000', '[redacted]').slice(0, 500)); } catch { /* Diagnostics cannot affect the response. */ }
       // No raw upstream body, credentials or diagnostic detail is public.
       payload = { ...base, state: 'unavailable' };
     } finally { clearTimeout(timer); }
