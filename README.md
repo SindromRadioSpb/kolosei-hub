@@ -22,7 +22,17 @@ Node >=22.12.0. `npm ci`, then `npm run dev`. Build with `npm run build`.
 
 Page URLs use trailing slashes to match production directory hosting; file URLs retain their extensions. The sitemap excludes legacy redirect routes. Do not invent prices, endorsements, ratings or general availability of pilot integrations.
 
-## Release
+## Public activity counter
+
+`SiteActivity.astro` reads `/api/site-activity`, a Cloudflare Pages Function backed by the existing Web Analytics collector. It publishes only the 30-day pageview aggregate for the exact hostname `kolosei.com`, excluding recognized bots and all subdomains. It is not a unique-visitor, online-user or indexing counter. Sampled estimates have a `≈` prefix.
+
+The owner-managed **Production secret** `CLOUDFLARE_ANALYTICS_TOKEN` needs **Account → Account Analytics → Read**, restricted to this account. Never use a `PUBLIC_` environment variable or put the token in Git, HTML or chat. Rotate by replacing the encrypted Pages secret, deploying and verifying `/api/site-activity`, then revoking the old token. Revocation/source errors show unavailable rather than zero. No new subscription or second beacon is needed.
+
+The aggregate is cached up to 15 minutes per edge location (errors: 60 seconds), with a 5-second upstream timeout and concurrent-request coalescing per isolate. Each page load makes one same-origin read; existing open pages do not poll. The UTC window ends at the previous quarter-hour minus five minutes for ingestion, and is exactly 30 days long. Empty successful groups are zero; errors/malformed data are unavailable. `public/_routes.json` limits Function invocation to this endpoint. Raw analytics is not copied to a new database; caches retain only aggregates. Cloudflare's own data lifecycle remains controlled by Cloudflare, not this counter.
+
+Checks: `npm run test:activity`, `npm run build`, `npm run verify`. `node scripts/preview-activity.mjs` serves **local-only synthetic fixtures** at port 4322; `?activityFixture=zero|unavailable|estimated|loading`, `?activityTheme=dark`, and `/__activity-test/no-js`. Never use fixture counts as production evidence. Implementation and evidence: `docs/planning/KOLOSEI_ACTIVITY_2026_09_22.md`.
+
+## Deployment
 
 `main` is deployed through the existing Cloudflare Pages Git integration. Commit only task-related files; this checkout also contains unrelated local documents. After push, verify actual production HTML/assets/reference files and repeat browser checks. A build or successful push is not deployment verification.
 

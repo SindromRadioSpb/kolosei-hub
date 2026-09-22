@@ -1,0 +1,52 @@
+---
+import { activityCopy } from '../data/site-activity.mjs';
+const lang = (Astro.currentLocale ?? 'en') as 'en' | 'ru';
+const copy = activityCopy[lang];
+---
+<section class="site-activity" aria-labelledby="site-activity-title" data-activity-lang={lang} data-state="loading">
+  <div class="activity-inner">
+    <h2 id="site-activity-title">{copy.title}</h2>
+    <div class="activity-metric" title={copy.definition}>
+      <p class="activity-value" role="status" aria-live="polite" aria-atomic="true">{copy.loading}</p>
+      <p class="activity-period">{copy.period}</p>
+      <span class="activity-description">{copy.definition}</span>
+      <noscript><p>{copy.noJs}</p><style>.activity-value { display: none !important; }</style></noscript>
+    </div>
+  </div>
+</section>
+<script>
+  import { activityView, activityCopy } from '../data/site-activity.mjs';
+  const root = document.querySelector<HTMLElement>('[data-activity-lang]');
+  const value = root?.querySelector<HTMLElement>('.activity-value');
+  if (root && value) {
+    const lang = root.dataset.activityLang === 'ru' ? 'ru' : 'en';
+    const controller = new AbortController();
+    const timer = window.setTimeout(() => controller.abort(), 7000);
+    const finish = (data: unknown) => {
+      const view = activityView(data, lang);
+      root.dataset.state = view.state;
+      value.textContent = view.value;
+    };
+    fetch('/api/site-activity', { signal: controller.signal, credentials: 'omit' })
+      .then(response => { if (!response.ok) throw new Error('unavailable'); return response.json(); })
+      .then(finish)
+      .catch(() => { root.dataset.state = 'unavailable'; value.textContent = activityCopy[lang].unavailable; })
+      .finally(() => window.clearTimeout(timer));
+  }
+</script>
+<style>
+  .site-activity { max-width: var(--max-width-wide); margin: 4rem auto -2rem; padding: 0 1.25rem; }
+  .activity-inner { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; padding: 1.35rem 1.5rem; border-block: 1px solid var(--border); background: var(--bg-soft); }
+  h2 { margin: 0; font-size: 1.05rem; font-weight: 600; color: var(--fg); }
+  .activity-metric { text-align: right; min-width: 0; }
+  p { margin: 0; }
+  .activity-value { color: var(--fg-soft); font-size: .95rem; line-height: 1.35; min-height: 2.4rem; display: flex; align-items: center; justify-content: flex-end; overflow-wrap: anywhere; }
+  [data-state="available"] .activity-value { color: var(--accent); font-size: 2rem; font-weight: 650; font-variant-numeric: tabular-nums; letter-spacing: -.025em; }
+  .activity-period { color: var(--fg-soft); font-size: .85rem; }
+  .activity-description { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  @media (max-width: 540px) {
+    .activity-inner { align-items: flex-start; flex-direction: column; gap: .7rem; padding: 1.2rem; }
+    .activity-metric { text-align: left; }
+    .activity-value { justify-content: flex-start; }
+  }
+</style>
