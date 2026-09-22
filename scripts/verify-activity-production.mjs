@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
-import { activityView } from '../src/data/site-activity.mjs';
+import { activityView } from '../src/data/domain-activity.mjs';
 
 const origin = 'https://kolosei.com';
 const get = async path => {
@@ -32,14 +32,15 @@ for (const asset of assets) {
 }
 const probes = [];
 for (let i = 0; i < 3; i++) {
-  const response = await get('/api/site-activity');
+  const response = await get('/api/domain-activity');
   const data = await response.json();
   assert.equal(activityView(data).state, 'available', 'live aggregate must be available, not a fabricated zero/fallback');
-  assert.deepEqual(Object.keys(data).sort(), ['estimated', 'expiresAt', 'fetchedAt', 'hostname', 'pageviews', 'period', 'schemaVersion', 'source', 'state']);
+  assert.deepEqual(Object.keys(data).sort(), ['aggregation', 'domain', 'expiresAt', 'fetchedAt', 'metric', 'period', 'periodKind', 'schemaVersion', 'scope', 'source', 'state', 'uniqueVisitors']);
   assert.equal(response.headers.get('x-robots-tag'), 'noindex');
   probes.push(data);
 }
-const alternative = await (await get('/api/site-activity?hostname=linguistpro.kolosei.com&days=1')).json();
-assert.equal(alternative.hostname, 'kolosei.com');
+const alternative = await (await get('/api/domain-activity?hostname=linguistpro.kolosei.com&days=1')).json();
+assert.equal(alternative.domain, 'kolosei.com');
+assert.equal(alternative.scope, 'zone');
 assert.equal(alternative.period.days, 30);
 console.log(JSON.stringify({ status: 'PASS', checkedAt: new Date().toISOString(), pages, assets: [...assets], probes }, null, 2));

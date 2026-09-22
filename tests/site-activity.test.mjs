@@ -146,7 +146,7 @@ test('only aggregate API invokes Functions; component adds no collector or stora
   assert.deepEqual(JSON.parse(await readFile(new URL('../public/_routes.json', import.meta.url))), { version: 1, include: ['/api/site-activity', '/api/domain-activity'], exclude: [] });
   const component = await readFile(new URL('../src/components/SiteActivity.astro', import.meta.url), 'utf8');
   assert.ok(!/localStorage|sessionStorage|document\.cookie|sendBeacon|setInterval/.test(component));
-  assert.ok(component.includes("fetch('/api/site-activity'"));
+  assert.ok(component.includes("fetch('/api/domain-activity'"));
   assert.ok(component.includes('aria-live="polite"'));
   assert.ok(component.includes('display: none !important'), 'no-JS loading must override scoped flex styling');
 });

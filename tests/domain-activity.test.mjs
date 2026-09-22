@@ -1,5 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
 import { buildDomainQuery, parseDomainAggregate, createDomainActivityHandler, ZONE } from '../server/domain-activity.mjs';
 import { activityView, activityCopy } from '../src/data/domain-activity.mjs';
 
@@ -74,4 +75,20 @@ test('domain UI validates metric, scope, complete-day bounds and freshness; neve
   assert.equal(activityView(data, 'ru', now + 900001).state, 'unavailable');
   assert.match(activityCopy.ru.definition, /по IP.*автоматический.*поддомены/);
   assert.match(activityCopy.en.definition, /IP-based.*automated.*subdomains/);
+});
+
+test('banner and privacy copy use the domain metric, with visible caveats and no second collector', async () => {
+  const component = await readFile(new URL('../src/components/SiteActivity.astro', import.meta.url), 'utf8');
+  assert.ok(component.includes("from '../data/domain-activity.mjs'"));
+  assert.ok(component.includes("fetch('/api/domain-activity'"));
+  assert.ok(component.includes('{copy.definition}'));
+  assert.ok(component.includes('{copy.window}'));
+  assert.ok(!component.includes('clip-path: inset(50%)'));
+  assert.ok(!/localStorage|document\.cookie|sendBeacon|setInterval/.test(component));
+  for (const path of ['../src/pages/privacy.astro', '../src/pages/ru/privacy.astro']) {
+    const privacy = await readFile(new URL(path, import.meta.url), 'utf8');
+    assert.match(privacy, /Unique Visitors/);
+    assert.match(privacy, /UTC/);
+    assert.match(privacy, /IP/);
+  }
 });

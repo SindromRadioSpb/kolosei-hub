@@ -1,5 +1,10 @@
 # Активность Kolosei — implementation packet
 
+Historical v1 release report. The owner subsequently approved migration of the
+banner to Cloudflare HTTP Traffic Unique Visitors. Current scope/status:
+`KOLOSEI_HTTP_ACTIVITY_2026_09_22.md`. The v1 endpoint's pageview meaning remains
+unchanged; never interpret its 90-pageview snapshot as HTTP unique visitors.
+
 ## Approved scope
 
 Compact bilingual block before the shared footer: «Активность Kolosei» / “Kolosei activity”, pageviews for the last 30 days. No site-update date, detail link, online indicator, people count or indexing claim. Entire exact hostname `kolosei.com`, all paths and languages; LinguistPro and other subdomains excluded. Existing Cloudflare Web Analytics collector only; no extra beacon, Umami or subscription.

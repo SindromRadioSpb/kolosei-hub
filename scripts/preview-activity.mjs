@@ -4,7 +4,7 @@
 import { createServer } from 'node:http';
 import { readFile } from 'node:fs/promises';
 import { resolve, extname, sep } from 'node:path';
-import { buildQuery } from '../server/site-activity.mjs';
+import { buildDomainQuery } from '../server/domain-activity.mjs';
 
 const root = resolve('dist');
 const types = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript', '.css': 'text/css', '.json': 'application/json', '.svg': 'image/svg+xml', '.png': 'image/png', '.webp': 'image/webp', '.jpg': 'image/jpeg', '.xml': 'application/xml', '.txt': 'text/plain' };
@@ -14,13 +14,14 @@ createServer(async (req, res) => {
     res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
     res.end('<!doctype html><html lang="en"><title>Local no-JavaScript fixture</title><iframe title="Sandboxed site without scripts" sandbox="allow-same-origin" src="/ru/" style="width:100%;height:95vh;border:0"></iframe></html>'); return;
   }
-  if (url.pathname === '/api/site-activity') {
+  if (url.pathname === '/api/domain-activity') {
     const fixture = new URL(req.headers.referer || '/', url).searchParams.get('activityFixture');
     if (fixture === 'loading') { const timer = setTimeout(() => res.end('{}'), 10000); res.on('close', () => clearTimeout(timer)); return; }
-    const now = Date.now(), { start, end } = buildQuery(now);
-    const data = { schemaVersion: 1, state: 'available', source: 'cloudflare-web-analytics', hostname: 'kolosei.com', pageviews: fixture === 'zero' ? 0 : 1234,
-      estimated: fixture === 'estimated', period: { days: 30, start, end, timeZone: 'UTC' }, fetchedAt: new Date(now).toISOString(), expiresAt: new Date(now + 900000).toISOString() };
-    if (fixture === 'unavailable') { data.state = 'unavailable'; delete data.pageviews; }
+    const now = Date.now(), { start, end } = buildDomainQuery(now);
+    const data = { schemaVersion: 2, state: 'available', source: 'cloudflare-http-traffic', domain: 'kolosei.com', scope: 'zone',
+      metric: 'unique-visitors', aggregation: 'source-period-aggregate', periodKind: 'complete-utc-days', uniqueVisitors: fixture === 'zero' ? 0 : 1234,
+      period: { days: 30, start, end, timeZone: 'UTC' }, fetchedAt: new Date(now).toISOString(), expiresAt: new Date(now + 900000).toISOString() };
+    if (fixture === 'unavailable') { data.state = 'unavailable'; delete data.uniqueVisitors; }
     res.writeHead(200, { 'Content-Type': 'application/json', 'Cache-Control': 'no-store' }); res.end(JSON.stringify(data)); return;
   }
   try {

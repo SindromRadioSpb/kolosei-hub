@@ -1,5 +1,9 @@
 # Kolosei HTTP activity — source migration
 
+Current status: permission blocker resolved with explicit owner approval.
+Real API returns 2327; UI/privacy switch passed local verification, release pending. Historical
+staging and blocker evidence below is retained, not the current blocker state.
+
 ## Approved direction
 
 Replace the browser-pageview banner with Cloudflare HTTP Traffic Unique Visitors,
@@ -79,3 +83,42 @@ EN/RU home/guide/privacy HTML files and CSS byte parity; three no-cache v1 reads
 remain available (90 sampled pageviews). Backend staging has not changed the
 public metric. The following copy/tests/documentation commit has no active UI or
 Function-runtime change; responsive acceptance of the future UI remains pending.
+
+### Permission and source verification
+
+Owner explicitly approved adding Zone Analytics Read. Updated the existing token
+via Cloudflare UI, preserving Account Analytics Read and restricting the added
+permission to Include / Specific zone / kolosei.com. Summary displayed only the
+account read and kolosei.com Analytics Read; saved token inventory confirms one
+account / one zone. No new credential, secret disclosure or replacement, edit
+permission, other token, subscription or DNS change.
+
+Real production API at 2026-09-22T12:52:46.330Z: available, uniqueVisitors=2327,
+window [2026-08-23T00:00:00Z, 2026-09-22T00:00:00Z), expires 13:07:46.330Z.
+This rounds to 2.33k, consistent with the owner dashboard's displayed 2.33k.
+Exact parity for a matched custom dashboard interval is not claimed: the UI's
+rolling period and this completed-day window differ. Provider deduplication
+internals are not independently established. Public wording attributes Unique
+Visitors to Cloudflare, explicitly IP-based, including automated traffic and
+proxied subdomains, not people or pageviews. Application code performs no daily
+unique-count summation and no pageview fallback.
+
+### UI release gates
+
+- 20/20 deterministic tests PASS, including visible qualifier and privacy parity.
+- Astro build PASS; 34 pages / 1633 static checks PASS; Wrangler 4.136.2 Functions
+  compilation PASS; diff whitespace check PASS.
+- CUA browser: nine rounded/zero/unavailable cases at actual 380, 768, 1440 CSS px
+  PASS with no horizontal overflow and visible qualifiers. Browser's existing
+  zoom required viewport dimensions to be adjusted; actual innerWidth verified.
+- Mobile/desktop light and intermediate forced-dark built-CSS screenshots reviewed.
+  Minimum inspected text contrast light 5.10:1, dark 9.39:1. Keyboard skip link
+  reaches main-content; footer focus remains visible. No new interactive controls.
+- Loading fixture becomes unavailable; no-JS sandbox hides loading and displays
+  the fallback plus definition. Fixtures (1234) are local-only, never live data.
+- Skill a11y-debugging guided semantic/focus/contrast checks through the authorized
+  CUA browser. No Lighthouse score, physical-device or screen-reader acceptance
+  is claimed. Production UI/asset verification follows deployment.
+- Legacy schema-1 endpoint remains unchanged for compatibility; public component
+  requests only schema-2 domain aggregate once per page load. Privacy RU/EN and
+  README describe the changed source, scope, rounding and complete-day window.
