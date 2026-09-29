@@ -2,13 +2,13 @@
 title: LinguistPro
 tagline: Turn real-world Hebrew into a learning workspace
 tagline_ru: Превращайте живой иврит в учебное пространство
-description_ru: Local-first среда для изучения иврита — превращает статьи, документы, фото, аудио, видео и субтитры в построчные учебные материалы с никудом, переводом, аудио, морфологией и повторением.
-description: A local-first Hebrew learning workspace that turns articles, documents, images, audio, video and captions into line-by-line study material with niqqud, translation, audio, morphology and review.
+description_ru: Среда для изучения иврита со Студией для собственных источников, Читальным залом и Медиатекой для видео и живой речи. Перевод, огласовки, разбор слов и повторение остаются рядом с материалом.
+description: A Hebrew learning workspace with a Studio for your sources, a Reading Room and a Mediatheque for video and real speech. Translation, niqqud, word explanations and review stay beside the material.
 status: active
 productType: product
 version: v3.11
 publishDate: 2024-09-01
-updateDate: 2026-09-08
+updateDate: 2026-09-29
 domain: linguistpro.kolosei.com
 repo: https://github.com/SindromRadioSpb/tts-prototype-android
 statusPage: https://stats.uptimerobot.com/hzdU5PQBqp
@@ -22,6 +22,8 @@ gcpServices:
 gcpPlanned:
   - Vertex AI
 changelog:
+  - date: "2026-09-29"
+    text: "Added the public Mediatheque: topics, episode collections and video-based study, alongside personal organization of saved material."
   - date: "2026-09-08"
     text: "Updated public reference: Study Songs and Materials Science collections, shared discovery, recorded vocabulary familiarity and derived Obsidian study packages."
   - date: "2026-08-29"

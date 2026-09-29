@@ -1,11 +1,13 @@
 /** Reviewed public facts. All public projections import this file; update only after source checks. */
 export const facts = {
-  reviewed: '2026-09-08',
-  productSource: 'f9b8eb954d22c3c53f13e88e3e988045b3201320',
+  reviewed: '2026-09-29',
+  productSource: '390486d354372336d512537ed93d434906a5235c',
   name: 'LinguistPro',
   publisher: 'Kolosei',
   studio: 'https://linguistpro.kolosei.com/',
   room: 'https://linguistpro.kolosei.com/library.html',
+  mediatheque: 'https://linguistpro.kolosei.com/mediatheque.html',
+  mediathequeSource: 'https://linguistpro.kolosei.com/api/mediatheque',
   repository: 'https://github.com/SindromRadioSpb/tts-prototype-android',
   catalogSource: 'https://linguistpro.kolosei.com/data/benyehuda/corpus-catalog-v7.json',
   publicationSource: 'https://linguistpro.kolosei.com/api/public-corpora',
@@ -14,8 +16,8 @@ export const facts = {
   agentAccess: 'owner-pilot',
   publicMcpSignup: false,
   summary: {
-    en: 'LinguistPro is a Hebrew learning workspace by Kolosei. The Studio turns your own sources into bilingual study materials. The Reading Room offers literature, songs and technical problem books, with word explanations and contextual review.',
-    ru: 'LinguistPro — среда для изучения иврита от Kolosei. Студия превращает ваши источники в двуязычные учебные материалы. Читальный зал предлагает литературу, песни и технические задачники с разбором слов и повторением в контексте.',
+    en: 'LinguistPro is a Hebrew learning workspace by Kolosei. The Studio turns your own sources into bilingual study materials. The Reading Room offers literature, songs and technical problem books. The Mediatheque brings video and spoken Hebrew into the same learning path, with word explanations and contextual review.',
+    ru: 'LinguistPro — среда для изучения иврита от Kolosei. Студия превращает ваши источники в двуязычные учебные материалы. Читальный зал предлагает литературу, песни и технические задачники. Медиатека добавляет видео и живую речь к тому же учебному пути — с разбором слов и повторением в контексте.',
   },
   boundaries: {
     en: 'The core workspace stores learning data in the browser. Cloud processing requires the selected provider and credentials; optional account sync and connected agents have separate consent. Prepared catalog entries do not guarantee every enrichment or audio asset. MCP remains an authenticated owner pilot; public reference files do not grant tool access or redistribution rights.',
@@ -51,7 +53,7 @@ export const capabilities = [
 ] as const;
 
 export const faqs = [
-  { q: { en: 'Where should I start?', ru: 'С чего начать?' }, a: { en: 'Open the Reading Room if you want a prepared text or song. Open the Studio if you already have an article, document or recording you want to understand. Both use the same word notes and review system.', ru: 'Откройте Читальный зал, если хотите готовый текст или песню. Выберите Студию, если у вас уже есть статья, документ или запись. Заметки слов и система повторения у них общие.' } },
+  { q: { en: 'Where should I start?', ru: 'С чего начать?' }, a: { en: 'Open the Reading Room for a prepared text or song, the Mediatheque for video and spoken Hebrew, or the Studio to prepare your own source. Word notes and review connect the three.', ru: 'Откройте Читальный зал для готового текста или песни, Медиатеку для видео и живой речи либо Студию для собственного источника. Заметки слов и повторение связывают все три раздела.' } },
   { q: { en: 'Do I need an API key?', ru: 'Нужен ли мне API-ключ?' }, a: { en: 'You do not need your own provider key to browse published collections or read their prepared text and available cached audio. Creating new translations, OCR, transcription or fresh cloud audio can require your own key and provider charges. Availability is shown in the app.', ru: 'Для просмотра открытых коллекций, подготовленных текстов и доступного готового аудио собственный ключ провайдера не нужен. Новый перевод, OCR, распознавание речи или новая облачная озвучка могут требовать ваш ключ и оплату провайдеру. Доступность показана в приложении.' } },
   { q: { en: 'Can a beginner use it?', ru: 'Подойдёт ли начинающему?' }, a: { en: 'Niqqud, transliteration and Russian translation help with early reading. Start with short prepared material. Literary texts vary in period and difficulty; the whole catalog is not a beginner course. The Studio can create a separate A1–B2 retelling of a source.', ru: 'Огласовки, транслитерация и русский перевод помогают на первых шагах. Начните с короткого подготовленного материала. Литературные тексты различаются эпохой и сложностью; весь каталог не является курсом для начинающих. В Студии можно создать отдельный пересказ источника уровня A1–B2.' } },
   { q: { en: 'What works offline?', ru: 'Что работает без интернета?' }, a: { en: 'Previously loaded material, the installed offline dictionary and local study data support offline work. First downloads, uncached media, cloud generation, account sync and external assistants need a connection. Export backups before clearing browser data.', ru: 'Ранее загруженные материалы, установленный офлайн-словарь и локальная учебная база поддерживают работу без интернета. Первая загрузка, несохранённые медиа, облачная генерация, синхронизация и внешние ассистенты требуют сети. Перед очисткой данных браузера экспортируйте резервную копию.' } },

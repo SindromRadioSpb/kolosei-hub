@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Screenshot from './Screenshot.astro';
+import { facts, localPath } from '../data/linguistpro';
+const { lang = 'en' } = Astro.props as { lang: 'en' | 'ru' };
+const ru = lang === 'ru';
+const p = (path: string) => localPath(lang, path);
+---
+<BaseLayout title={ru ? 'Медиатека LinguistPro — учите иврит по видео и живой речи' : 'LinguistPro Mediatheque — learn Hebrew with video and real speech'} description={ru ? 'Смотрите и разбирайте иврит в интервью, новостных сюжетах и видео на интересные вам темы. Темы, подборки, субтитры, перевод и повторение слов в Медиатеке LinguistPro.' : 'Explore Hebrew interviews, news and videos on subjects that matter to you. Topics, collections, captions, translation and word review in the LinguistPro Mediatheque.'} wide product>
+  <nav class="breadcrumbs" aria-label={ru ? 'Путь к странице' : 'Breadcrumb'}><a href={p('/')}>Kolosei</a> / <a href={p('/products')}>{ru ? 'Продукты' : 'Products'}</a> / {ru ? 'Медиатека' : 'Mediatheque'}</nav>
+  <div class="product-opening">
+    <p class="product-signature">LinguistPro <span>{ru ? 'Медиатека' : 'Mediatheque'}</span></p>
+    <h1>{ru ? 'Понимайте иврит вокруг вас.' : 'Understand the Hebrew around you.'}</h1>
+    <p class="lead">{ru ? 'Интервью, новости, разговоры и сюжеты о том, что происходит сейчас. Медиатека помогает войти в живую языковую среду: смотрите, слушайте и разбирайте речь в собственном темпе.' : 'Interviews, news, conversations and stories about what is happening now. The Mediatheque helps you enter a living language: watch, listen and work through real speech at your own pace.'}</p>
+    <div class="btn-row"><a class="btn btn-primary" href={facts.mediatheque}>{ru ? 'Открыть Медиатеку' : 'Open the Mediatheque'}</a><a class="btn btn-secondary" href={p('/products/linguistpro')}>{ru ? 'Создать свой материал' : 'Make your own material'}</a></div>
+  </div>
+  <Screenshot src="/img/mediatheque-current.webp" width={1360} height={950} alt={ru ? 'Публичная Медиатека LinguistPro: поиск, вкладки тем и подборок, карточки опубликованных видео с переводом.' : 'LinguistPro public Mediatheque in Russian: search, topic and collection tabs, and published video cards with translation.'} caption={ru ? 'Публичная Медиатека LinguistPro. Снимок действующего приложения, сентябрь 2026.' : 'The public LinguistPro Mediatheque. Captured from the live application in September 2026.'} />
+  <section class="method-section"><div class="section-intro"><h2>{ru ? 'От интереса к пониманию' : 'From curiosity to understanding'}</h2><p>{ru ? 'Выбирайте материалы по темам и подборкам, а не по учебному расписанию.' : 'Choose by topic and collection, following your interests.'}</p></div>
+    <div class="feature-pairs">
+      <article><h3>{ru ? 'Будьте в разговоре' : 'Stay in the conversation'}</h3><p>{ru ? 'Актуальные видео помогают понимать общественную и повседневную жизнь на иврите. Для человека, недавно переехавшего в Израиль, это способ выйти за пределы информационного вакуума.' : 'Current video can help you follow public and everyday life in Hebrew. For someone new to Israel, it can open a window beyond the language barrier.'}</p></article>
+      <article><h3>{ru ? 'Находите свою тему' : 'Follow your interests'}</h3><p>{ru ? 'Публичные материалы собраны по темам, каналам и подборкам выпусков. Ищите передачу или сюжет, к которому захочется вернуться.' : 'Public materials are organized by topics, channels and episode collections. Find a programme or story worth coming back to.'}</p></article>
+      <article><h3>{ru ? 'Смотрите с опорой на текст' : 'Watch with the text beside you'}</h3><p>{ru ? 'В подготовленных материалах видео связано с учебными строками, переводом и доступными субтитрами. Надёжные временные метки позволяют возвращаться к нужной реплике.' : 'Prepared materials connect video to study lines, translation and available captions. Reliable timing lets you return to the line you want to hear again.'}</p></article>
+      <article><h3>{ru ? 'Сохраняйте слова в контексте' : 'Keep words in context'}</h3><p>{ru ? 'Разбирайте незнакомые слова и сохраняйте их вместе с фразой, в которой они встретились. Заметки и повторение общие со Студией и Читальным залом.' : 'Explore unfamiliar words and save them with the line where you met them. Notes and review are shared with the Studio and Reading Room.'}</p></article>
+    </div>
+  </section>
+  <div class="product-body">
+    <h2>{ru ? 'Фильм тоже может стать учебным материалом' : 'A film can become study material too'}</h2>
+    <p>{ru ? 'Если у вас есть доступный для использования видеофайл с ивритской звуковой дорожкой и субтитры на иврите и русском, их можно подготовить в Студии как учебный материал. Сохранённый материал затем можно организовать в личной Медиатеке.' : 'If you have a video file you may use, with a Hebrew audio track and Hebrew and Russian captions, you can prepare it as study material in the Studio. You can then organize the saved material in your personal Mediatheque.'}</p>
+    <p>{ru ? 'Воспроизведение и подсветка строк зависят от доступности самого видео и точности субтитров. Медиатека не предоставляет доступ к фильмам и не копирует произвольные ролики с YouTube.' : 'Playback and line highlighting depend on access to the video and accurate caption timing. The Mediatheque does not provide films or copy arbitrary YouTube videos.'}</p>
+    <h2>{ru ? 'Открытый каталог и ваши материалы' : 'A public catalog and your own materials'}</h2>
+    <p>{ru ? 'Публичная витрина показывает опубликованные учебные материалы. Личная Медиатека помогает разложить сохранённое по своим темам и подборкам. Содержимое и доступность конкретного материала проверяйте в его карточке.' : 'The public view shows published study materials. Your personal Mediatheque lets you organize saved work into your own topics and collections. Check each item for its content and availability.'}</p>
+    <div class="inline-links"><a href={p('/products/reading-room')}>{ru ? 'Читальный зал' : 'Reading Room'}</a><a href={p('/products/linguistpro')}>{ru ? 'Как работает Студия' : 'How the Studio works'}</a><a href={p('/privacy')}>{ru ? 'Данные и конфиденциальность' : 'Data and privacy'}</a></div>
+  </div>
+  <section class="agent-invitation"><h2>{ru ? 'Выберите то, что хочется понять' : 'Start with something you want to understand'}</h2><p>{ru ? 'Откройте тему, выберите выпуск и пройдите несколько реплик вместе с видео.' : 'Open a topic, choose an episode and follow a few lines alongside the video.'}</p><div class="btn-row"><a class="btn btn-primary" href={facts.mediatheque}>{ru ? 'Смотреть материалы' : 'Browse the videos'}</a></div></section>
+  <p class="source-note">{ru ? 'Сведения проверены' : 'Information reviewed'} <time datetime={facts.reviewed}>{facts.reviewed}</time>. <a href={facts.mediathequeSource}>{ru ? 'Публичный каталог Медиатеки' : 'Public Mediatheque catalog'}</a>.</p>
+</BaseLayout>

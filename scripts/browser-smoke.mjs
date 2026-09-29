@@ -9,10 +9,12 @@ const output = resolve(arg('output', 'docs/research/website-discovery/2026-09-08
 await mkdir(output, { recursive: true });
 const browser = await chromium.launch({ channel: 'chrome', headless: true });
 const report = { base, checkedAt: new Date().toISOString(), status: 'RUNNING', cases: [], errors: [] };
-const paths = ['/', '/products/linguistpro/', '/products/reading-room/', '/agents/', '/guides/', '/guides/hebrew-reading/', '/guides/hebrew-through-songs/', '/guides/technical-hebrew/', '/about/', '/technology/', '/products/', '/privacy/'];
+const paths = ['/', '/products/linguistpro/', '/products/reading-room/', '/products/mediatheque/', '/agents/', '/guides/', '/guides/hebrew-reading/', '/guides/hebrew-through-songs/', '/guides/technical-hebrew/', '/about/', '/technology/', '/products/', '/privacy/'];
 try {
   for (const width of [1440, 380]) {
     const context = await browser.newContext({ viewport: { width, height: 960 }, colorScheme: 'light', reducedMotion: 'reduce' });
+    // The domain-activity endpoint is supplied by production, not Astro preview.
+    await context.route('**/api/domain-activity', route => route.fulfill({ status: 200, contentType: 'application/json', body: '{}' }));
     const page = await context.newPage();
     let failures = [];
     page.on('pageerror', e => failures.push(e.message));
@@ -60,7 +62,13 @@ try {
           await page.waitForFunction(() => { const img = document.querySelector('.interface-preview img'); return img?.complete && img.naturalWidth > 0; });
           await page.locator('.interface-preview summary').click();
         }
-        if (['/', '/products/linguistpro/', '/products/reading-room/', '/agents/', '/guides/hebrew-reading/'].includes(path)) {
+        if (path === '/products/mediatheque/') {
+          const img = page.locator('.shot img');
+          await img.scrollIntoViewIfNeeded();
+          await page.waitForFunction(() => { const img = document.querySelector('.shot img'); return img?.complete && img.naturalWidth > 0; });
+          assert.ok((await img.getAttribute('alt')).length > 40);
+        }
+        if (['/', '/products/linguistpro/', '/products/reading-room/', '/products/mediatheque/', '/agents/', '/guides/hebrew-reading/'].includes(path)) {
           await page.evaluate(() => window.scrollTo(0, 0));
           const name = `${lang}-${path === '/' ? 'home' : path.slice(1,-1).replaceAll('/', '-')}-${width}`;
           await page.screenshot({ path: `${output}/${name}.png`, fullPage: true });
@@ -97,7 +105,7 @@ try {
   // Dark mode and zoom/reflow of affected surfaces.
   const dark = await browser.newContext({ colorScheme: 'dark', viewport: { width: 380, height: 844 } });
   const darkPage = await dark.newPage();
-  for (const path of ['/ru/', '/ru/products/reading-room/', '/ru/agents/']) {
+  for (const path of ['/ru/', '/ru/products/reading-room/', '/ru/products/mediatheque/', '/ru/agents/']) {
     await darkPage.goto(base + path);
     await darkPage.screenshot({ path: `${output}/dark-${path.replaceAll('/', '-')}.png`, fullPage: true });
     assert.ok(await darkPage.evaluate(() => document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1));

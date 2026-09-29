@@ -8,7 +8,7 @@ export function structuredData({ title, description, path, lang, product = false
     { '@type': 'WebSite', '@id': site + '/#website', name: 'Kolosei', alternateName: 'Kolosei — LinguistPro', url: site + '/', publisher: { '@id': site + '/#organization' }, inLanguage: ['en', 'ru'] },
     { '@type': 'WebPage', '@id': url + '#webpage', url, name: title, description, inLanguage: lang, isPartOf: { '@id': site + '/#website' }, publisher: { '@id': site + '/#organization' }, ...(product ? { about: { '@id': site + '/#linguistpro' } } : {}) },
   ];
-  if (product) graph.push({ '@type': 'SoftwareApplication', '@id': site + '/#linguistpro', name: 'LinguistPro', alternateName: 'LinguistPro by Kolosei', url: facts.studio, description: facts.summary[lang as 'en' | 'ru'], applicationCategory: 'EducationalApplication', operatingSystem: 'Web browser', publisher: { '@id': site + '/#organization' }, featureList: ['Hebrew study tables', 'Niqqud and Russian translation', 'Contextual word review with FSRS-6', 'Studio and Reading Room'], sameAs: [facts.repository] });
+  if (product) graph.push({ '@type': 'SoftwareApplication', '@id': site + '/#linguistpro', name: 'LinguistPro', alternateName: 'LinguistPro by Kolosei', url: facts.studio, description: facts.summary[lang as 'en' | 'ru'], applicationCategory: 'EducationalApplication', operatingSystem: 'Web browser', publisher: { '@id': site + '/#organization' }, featureList: ['Hebrew study tables', 'Niqqud and Russian translation', 'Contextual word review with FSRS-6', 'Studio, Reading Room and Mediatheque'], sameAs: [facts.repository] });
   if (path !== '/' && path !== '/ru/') {
     const localizedHome = lang === 'ru' ? '/ru/' : '/';
     graph.push({ '@type': 'BreadcrumbList', '@id': url + '#breadcrumb', itemListElement: [

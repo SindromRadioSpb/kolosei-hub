@@ -10,12 +10,13 @@ const ruUrl = localPath('ru', basePath);
 const p = (href: string) => localPath(lang, href);
 
 const labels = {
-  en: { home: 'Home', products: 'Products', technology: 'Technology', about: 'About', contact: 'Contact', studio: 'Studio', room: 'Reading Room', guides: 'Guides', agents: 'For AI' },
-  ru: { home: 'Главная', products: 'Продукты', technology: 'Технологии', about: 'О студии', contact: 'Контакты', studio: 'Студия', room: 'Читальный зал', guides: 'Практика', agents: 'Для ИИ' },
+  en: { home: 'Home', products: 'Products', technology: 'Technology', about: 'About', contact: 'Contact', studio: 'Studio', room: 'Reading Room', media: 'Mediatheque', guides: 'Guides', agents: 'For AI' },
+  ru: { home: 'Главная', products: 'Продукты', technology: 'Технологии', about: 'О студии', contact: 'Контакты', studio: 'Студия', room: 'Читальный зал', media: 'Медиатека', guides: 'Практика', agents: 'Для ИИ' },
 }[lang];
 const links = [
   { key: 'studio', href: '/products/linguistpro' },
   { key: 'room', href: '/products/reading-room' },
+  { key: 'media', href: '/products/mediatheque' },
   { key: 'guides', href: '/guides' },
   { key: 'agents', href: '/agents' },
 ] as const;

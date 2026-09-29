@@ -10,6 +10,7 @@ Reviewed: ${facts.reviewed}. Founder: Peter Kolosei. Contact: peter@kolosei.com.
 
 - [LinguistPro Studio](https://kolosei.com/products/linguistpro/): import, bilingual study tables, morphology, review and export.
 - [Reading Room](https://kolosei.com/products/reading-room/): literature, Study Songs, Physics and Materials Science.
+- [Mediatheque](https://kolosei.com/products/mediatheque/): video, spoken Hebrew, topics and episode collections.
 - [Practical guides](https://kolosei.com/guides/): reading Hebrew, learning with songs and technical Hebrew.
 - [Russian website](https://kolosei.com/ru/): equivalent Russian product information.
 

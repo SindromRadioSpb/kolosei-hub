@@ -50,6 +50,7 @@ main { overflow-wrap: break-word; }
 .sample-help .pronunciation { font-size: .8rem; }
 .reading-sample .sample-caption { color: #53697c; font-size: .73rem; text-align: left; margin: 1rem 0 0; }
 .two-paths { display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: 3rem; padding: 2.5rem 0; border-block: 1px solid var(--border); }
+.three-paths { grid-template-columns: repeat(3,minmax(0,1fr)); gap: 2rem; }
 .two-paths h2 { margin: .5rem 0 1rem; font-size: 1.7rem; }
 .path-label { color: var(--accent); font-size: .86rem; }
 .two-paths p { max-width: 53ch; }
@@ -95,6 +96,7 @@ main { overflow-wrap: break-word; }
 .guide-steps li { padding: .65rem 0 .65rem .4rem; }
 .guide-steps strong { color: var(--fg); }
 @media (max-width: 820px) {
+  .three-paths { grid-template-columns: repeat(2,minmax(0,1fr)); }
   .reading-hero { grid-template-columns: 1fr; gap: 2rem; padding-top: 1.2rem; }
   .reading-hero h1 { max-width: 17ch; }
   .reading-sample { max-width: 530px; width: 100%; justify-self: center; }
@@ -103,7 +105,7 @@ main { overflow-wrap: break-word; }
   .literature-line { align-items: start; flex-direction: column; gap: 1rem; }
 }
 @media (max-width: 600px) {
-  .two-paths, .corpus-shelf { grid-template-columns: 1fr; gap: 2.2rem; }
+  .two-paths, .three-paths, .corpus-shelf { grid-template-columns: 1fr; gap: 2.2rem; }
   .corpus-book { display: grid; grid-template-columns: 100px minmax(0,1fr); gap: 0 1.15rem; }
   .corpus-book .book-cover { grid-row: 1 / 5; height: 158px; padding: .6rem; border-left-width: 5px; }
   .corpus-book .book-cover > span { font-size: 2rem; }

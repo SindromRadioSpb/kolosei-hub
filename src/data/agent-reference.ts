@@ -7,14 +7,14 @@ export const publicFacts = {
   name: facts.name,
   publisher: facts.publisher,
   description: facts.summary,
-  entry_points: { studio: facts.studio, reading_room: facts.room, website_en: 'https://kolosei.com/', website_ru: 'https://kolosei.com/ru/' },
+  entry_points: { studio: facts.studio, reading_room: facts.room, mediatheque: facts.mediatheque, website_en: 'https://kolosei.com/', website_ru: 'https://kolosei.com/ru/' },
   capabilities,
   catalog: { name: 'Project Ben-Yehuda catalog', entries: facts.catalogued, marked_prepared: facts.prepared, source: facts.catalogSource, count_semantics: 'Catalog preparation flag; not verification of every derivative or audio asset.' },
   public_corpora: corpora.map(c => ({ slug: c.slug, title: c.title, item_count: c.count, edition_id: c.edition, description: c.description, url: corpusUrl(c.slug) })),
   agent_access: { status: facts.agentAccess, public_self_service_mcp_signup: facts.publicMcpSignup, public_reference_requires_authentication: false, mcp_requires_authentication_and_authorization: true, compatibility: 'Owner-reported Hermes acceptance only; general OpenAI, Gemini, Claude or other client support is not asserted.', rights: 'Public metadata does not grant permission to redistribute source texts, recordings or derivatives. Check per-item rights and the connected tool authorization.' },
   boundaries: facts.boundaries,
   frequently_asked_questions: faqs,
-  sources: [facts.catalogSource, facts.publicationSource, facts.repository + '/tree/' + facts.productSource, 'https://kolosei.com/privacy/'],
+  sources: [facts.catalogSource, facts.publicationSource, facts.mediathequeSource, facts.repository + '/tree/' + facts.productSource, 'https://kolosei.com/privacy/'],
 };
 
 export function referenceMarkdown() {
@@ -31,6 +31,7 @@ Structured facts: https://kolosei.com/facts/linguistpro.json
 
 - Studio: ${facts.studio}
 - Reading Room: ${facts.room}
+- Mediatheque: ${facts.mediatheque}
 - English website: https://kolosei.com/
 - Russian website: https://kolosei.com/ru/
 
@@ -64,6 +65,7 @@ Cite the relevant product page for product claims, the dated public facts for th
 
 - https://kolosei.com/products/linguistpro/
 - https://kolosei.com/products/reading-room/
+- https://kolosei.com/products/mediatheque/
 - https://kolosei.com/guides/hebrew-reading/
 - https://kolosei.com/guides/hebrew-through-songs/
 - https://kolosei.com/guides/technical-hebrew/
