@@ -22,6 +22,12 @@ for (const file of files.filter(f => f.endsWith('.html'))) {
   const nodes = await document(rel);
   const route = '/' + rel.replace(/index\.html$/, '');
   if (/\/(?:ru\/)?projects\/$/.test(route)) continue; // Existing legacy redirect pages.
+  if (route.startsWith('/play/')) { // Standalone lesson players: not search pages; their landing pages carry SEO.
+    const robots = nodes.find(n => n.tagName === 'meta' && attr(n, 'name') === 'robots');
+    check(/noindex/.test(attr(robots, 'content') || ''), `${route}: player must be noindex`);
+    check(nodes.some(n => n.tagName === 'html' && attr(n, 'lang')), `${route}: player without lang`);
+    continue;
+  }
   routes.push(route);
   const tag = name => nodes.filter(n => n.tagName === name);
   const links = tag('link');

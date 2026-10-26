@@ -1,0 +1,100 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Changelog from './Changelog.astro';
+import Screenshot from './Screenshot.astro';
+import { getEntry } from 'astro:content';
+import { instructor as I } from '../data/solidworks-instructor';
+import { localPath } from '../data/linguistpro';
+
+const { lang = 'en' } = Astro.props as { lang: 'en' | 'ru' };
+const ru = lang === 'ru';
+const p = (path: string) => localPath(lang, path);
+const t = (en: string, r: string) => (ru ? r : en);
+const d = (await getEntry('projects', 'solidworks-instructor'))!.data;
+const changelog = ru ? I.changelogRu : d.changelog;
+---
+<BaseLayout title={t('Instructor for SOLIDWORKS — interactive CAD lessons inside SOLIDWORKS', 'Инструктор для SOLIDWORKS — интерактивные уроки внутри SOLIDWORKS')} description={ru ? d.description_ru! : d.description} wide image={`/og/solidworks-instructor-${lang}.png`}>
+  <nav class="breadcrumbs" aria-label={t('Breadcrumb', 'Путь к странице')}><a href={p('/')}>Kolosei</a> / <a href={p('/products')}>{t('Products', 'Продукты')}</a> / {t('Instructor for SOLIDWORKS', 'Инструктор для SOLIDWORKS')}</nav>
+  <div class="product-opening">
+    <p class="eyebrow mono small">{t('Prototype · engineering education', 'Прототип · инженерное обучение')}</p>
+    <h1>{t('Instructor for SOLIDWORKS', 'Инструктор для SOLIDWORKS')}</h1>
+    <p class="lead">{t('Learn 3D modelling where the work happens. The instructor shows where to click, watches the model and confirms each step only when the geometry is right.', 'Учитесь 3D-моделированию там, где идёт работа. Инструктор показывает, куда нажать, следит за моделью и засчитывает шаг, только когда геометрия действительно верна.')}</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href={p(I.lessonPage)}>{t('Try the lesson “Bolt M8×40”', 'Пройти урок «Болт М8×40»')}</a>
+      <a class="btn btn-secondary" href="#roadmap">{t('Development plan', 'План развития')}</a>
+    </div>
+  </div>
+
+  <Screenshot src={I.img.addin} width={1920} height={1032} alt={t('SOLIDWORKS 2026 with the instructor panel on the right: lesson “Bolt M8×40”, current step, hint and skip buttons, list of six blocks.', 'SOLIDWORKS 2026 с панелью инструктора справа: урок «Болт М8×40», текущий шаг, кнопки подсказки и пропуска, список из шести блоков.')} caption={t('The instructor runs as a task-pane tab inside SOLIDWORKS 2026 (Russian interface). Captured on the development machine, October 2026.', 'Инструктор работает вкладкой панели задач внутри SOLIDWORKS 2026 (русский интерфейс). Снимок с рабочей машины, октябрь 2026.')} />
+
+  <div class="product-body">
+    <h2>{t('Why an instructor inside the CAD system', 'Зачем инструктор внутри CAD-системы')}</h2>
+    <p>{t('A video course shows how someone else builds a part. A beginner then switches windows, loses the place and cannot tell whether the result matches. The instructor removes that gap: the lesson lives next to the model, points at the real button or field and checks the actual feature tree, not a screenshot.', 'Видеокурс показывает, как деталь строит кто-то другой. Новичок переключается между окнами, теряет место и не может понять, совпал ли результат. Инструктор убирает этот разрыв: урок находится рядом с моделью, указывает на настоящую кнопку или поле и проверяет реальное дерево построения, а не картинку.')}</p>
+    <p>{t('If something is off, it says what exactly: “depth is 35 mm, the lesson needs 40 — edit the feature”. Steps that are already done in the model are credited automatically, so the learner is never forced to repeat the path click by click.', 'Если что-то не так, он объясняет, что именно: «глубина 35 мм, а нужна 40 — отредактируйте элемент». Шаги, которые уже выполнены в модели, засчитываются сами — ученика не заставляют повторять путь щелчок за щелчком.')}</p>
+
+    <h2>{t('How it works', 'Как это устроено')}</h2>
+    <table class="tbl">
+      <thead><tr><th>{t('Part', 'Часть')}</th><th>{t('What it does', 'Что делает')}</th></tr></thead>
+      <tbody>
+        <tr><td><strong>{t('Instructor add-in', 'Надстройка-инструктор')}</strong></td><td>{t('C#/.NET add-in in the SOLIDWORKS task pane: step panel, highlighting of ribbon buttons, menu items and PropertyManager fields, “Guided” and “On your own” modes, a “Report a problem” button that saves a screenshot and the step journal locally.', 'Надстройка на C#/.NET во вкладке панели задач SOLIDWORKS: панель шагов, подсветка кнопок ленты, пунктов меню и полей PropertyManager, режимы «Повторяй» и «Самостоятельно», кнопка «Сообщить о проблеме», которая сохраняет снимок экрана и журнал шагов на компьютере.')}</td></tr>
+        <tr><td><strong>{t('Model checks', 'Проверки модели')}</strong></td><td>{t('Through the SOLIDWORKS API: sketch plane and entities, “fully defined” status, open panel and its values, feature type and parameters (depth, end condition, draft, radius, thread size), assemblies (components, mates) and drawings (views, annotations).', 'Через API SOLIDWORKS: плоскость и элементы эскиза, статус «Определен», открытая панель и её значения, тип и параметры операции (глубина, условие, уклон, радиус, размер резьбы), сборки (компоненты, сопряжения) и чертежи (виды, аннотации).')}</td></tr>
+        <tr><td><strong>{t('Lesson generator', 'Генератор уроков')}</strong></td><td>{t('Reads a finished .SLDPRT — sketches, dimensions, features — and replays the build in SOLIDWORKS, capturing what the learner sees before every action. Every number in the steps comes from the model, not typed by hand.', 'Читает готовую деталь .SLDPRT — эскизы, размеры, операции — и проигрывает построение в SOLIDWORKS, снимая то, что ученик видит перед каждым действием. Все числа в шагах взяты из модели, а не набраны вручную.')}</td></tr>
+        <tr><td><strong>{t('Robot learner', 'Робот-ученик')}</strong></td><td>{t('Passes lessons through the API and UI Automation and reports steps that were done but not credited — regressions are caught before a person sees them.', 'Проходит уроки через API и UI Automation и сообщает о шагах, которые выполнены, но не засчитаны, — регрессии ловятся до того, как их увидит человек.')}</td></tr>
+        <tr><td><strong>{t('Browser lesson', 'Веб-урок')}</strong></td><td>{t('The same lesson file in a browser: frames of real SOLIDWORKS, clicks on the frame, value input and a 3D target for each block. No installation and no SOLIDWORKS licence needed.', 'Тот же файл урока в браузере: кадры настоящего SOLIDWORKS, щелчки по кадру, ввод значений и 3D-цель каждого блока. Без установки и без лицензии SOLIDWORKS.')}</td></tr>
+      </tbody>
+    </table>
+
+    <h2>{t('Current state', 'Текущее состояние')}</h2>
+    <p>{t('Honest status as of', 'Состояние на')} <time datetime={I.reviewed}>{I.reviewed}</time>{t('. Only one lesson has passed a full manual check; everything else is a verified draft.', '. Полную ручную проверку прошёл один урок; остальное — проверенный роботом черновик.')}</p>
+    <div class="reference-table-wrap"><table class="tbl">
+      <thead><tr><th>{t('Item', 'Что')}</th><th>{t('Status', 'Статус')}</th></tr></thead>
+      <tbody>
+        <tr><td><a href={p(I.lessonPage)}>{t('Lesson “Bolt M8×40 (ISO 4014)”', 'Урок «Болт М8×40 (ISO 4014)»')}</a></td><td>{t(`${I.bolt.steps} steps in ${I.bolt.blocks} blocks. Passed manually end to end in the add-in; published as a browser lesson.`, `${I.bolt.steps} шаг в ${I.bolt.blocks} блоках. Пройден вручную от начала до конца в надстройке; опубликован как веб-урок.`)}</td></tr>
+        <tr><td>{t('Beginner curriculum (draft)', 'Курс для начинающих (черновик)')}</td><td>{t(`${I.course.lessons} lessons, ${I.course.steps} steps, ${I.course.checked} with automatic checks: sketches, features, patterns, sweeps and lofts, assemblies, drawings. The robot ran every lesson: ${I.robot.ok} steps credited, ${I.robot.show} explanation steps, ${I.robot.manual} beyond the robot (mouse picks on faces), ${I.robot.fail} failure. Manual review is in progress section by section.`, `${I.course.lessons} уроков, ${I.course.steps} шагов, из них ${I.course.checked} с автоматической проверкой: эскизы, элементы, массивы, по траектории и по сечениям, сборки, чертежи. Робот прошёл все уроки: ${I.robot.ok} шага засчитаны, ${I.robot.show} — пояснения, ${I.robot.manual} — вне возможностей робота (выбор граней мышью), ${I.robot.fail} сбой. Ручная проверка идёт по разделам.`)}</td></tr>
+        <tr><td>{t('Platform', 'Платформа')}</td><td>{t('SOLIDWORKS 2026 SP4.1 on Windows, Russian interface. Other versions and the English interface are not yet verified.', 'SOLIDWORKS 2026 SP4.1 под Windows, русский интерфейс. Другие версии и английский интерфейс пока не проверены.')}</td></tr>
+        <tr><td>{t('Availability', 'Доступность')}</td><td>{t('The browser lesson is open to everyone. The add-in has no public installer yet; pilot access on request.', 'Веб-урок открыт всем. У надстройки пока нет публичного установщика; доступ для пилота — по запросу.')}</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="roadmap">{t('Development plan', 'План развития')}</h2>
+    <ol class="roadmap">
+      {I.roadmap.map((r) => (
+        <li class={`rm rm-${r.state}`}>
+          <p class="rm-state mono small">{ru ? r.stateRu : r.stateEn}</p>
+          <h3>{ru ? r.titleRu : r.titleEn}</h3>
+          <p>{ru ? r.textRu : r.textEn}</p>
+        </li>
+      ))}
+    </ol>
+    <p class="small muted">{t('The plan sets order, not dates. A stage starts when the previous one passes its checks.', 'План задаёт порядок, а не сроки. Следующий этап начинается, когда предыдущий прошёл свои проверки.')}</p>
+
+    <h2>{t('Data and boundaries', 'Данные и границы')}</h2>
+    <p>{t('The add-in works on the learner’s computer and does not send anything over the network: the step journal and problem reports are saved locally. Course files open as copies, the originals are not modified. The browser lesson stores only the current step and mode in the browser.', 'Надстройка работает на компьютере ученика и ничего не передаёт по сети: журнал шагов и отчёты о проблемах сохраняются локально. Файлы уроков открываются копиями, оригиналы не меняются. Веб-урок хранит в браузере только текущий шаг и режим.')}</p>
+    <p>{t('SOLIDWORKS is not included: the add-in needs a licensed SOLIDWORKS installation. SOLIDWORKS is a registered trademark of Dassault Systèmes SolidWorks Corporation; Kolosei is an independent developer and is not affiliated with or endorsed by Dassault Systèmes.', 'SOLIDWORKS в поставку не входит: надстройке нужна лицензионная установка SOLIDWORKS. SOLIDWORKS — зарегистрированный товарный знак Dassault Systèmes SolidWorks Corporation; Kolosei — независимый разработчик, не связанный с Dassault Systèmes и не одобренный ею.')}</p>
+  </div>
+
+  <Changelog entries={changelog} heading={t('Recent changes', 'Последние изменения')} />
+
+  <section class="agent-invitation">
+    <h2>{t('Teach or learn SOLIDWORKS?', 'Преподаёте или изучаете SOLIDWORKS?')}</h2>
+    <p>{t('Start with the browser lesson. If you want the instructor inside your SOLIDWORKS — for yourself, a class or a training centre — write to us about a pilot.', 'Начните с веб-урока. Если хотите инструктор внутри своего SOLIDWORKS — для себя, группы или учебного центра, — напишите нам о пилоте.')}</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href={p(I.lessonPage)}>{t('Open the lesson', 'Открыть урок')}</a>
+      <a class="btn btn-secondary" href="mailto:peter@kolosei.com?subject=Instructor%20for%20SOLIDWORKS%20pilot">{t('Ask about a pilot', 'Запросить пилот')}</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .roadmap { list-style: none; padding: 0; margin: 1.5rem 0 1rem; display: grid; gap: 0; }
+  .rm { position: relative; padding: 0 0 1.4rem 1.6rem; border-left: 2px solid var(--border); margin: 0; }
+  .rm::before { content: ''; position: absolute; left: -7px; top: .35rem; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--border); }
+  .rm-done::before { background: var(--accent); border-color: var(--accent); }
+  .rm-now::before { background: var(--bg); border-color: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 22%, transparent); }
+  .rm-done { border-left-color: var(--accent); }
+  .rm h3 { margin: .1rem 0 .4rem; }
+  .rm p { margin: 0; }
+  .rm-state { color: var(--fg-muted); text-transform: uppercase; letter-spacing: .06em; font-size: .75rem; }
+  .rm-done .rm-state, .rm-now .rm-state { color: var(--accent); }
+  .rm:last-child { padding-bottom: .2rem; }
+</style>

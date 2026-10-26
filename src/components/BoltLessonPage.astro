@@ -1,0 +1,91 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { instructor as I } from '../data/solidworks-instructor';
+import { localPath } from '../data/linguistpro';
+import lesson from '../../public/play/solidworks-instructor/bolt-m8x40/lesson.json';
+
+const { lang = 'en' } = Astro.props as { lang: 'en' | 'ru' };
+const ru = lang === 'ru';
+const p = (path: string) => localPath(lang, path);
+const t = (en: string, r: string) => (ru ? r : en);
+
+// What each block teaches. Titles in Russian come from the lesson file itself.
+const BLOCKS: Record<string, { en: string; learnEn: string; learnRu: string }> = {
+  b1: { en: 'Shank Ø8 × 40', learnEn: 'Sketch on the Right plane, circle from the origin, Smart Dimension, Extruded Boss/Base.', learnRu: 'Эскиз на плоскости «Справа», окружность из исходной точки, автоматическое нанесение размеров, вытянутая бобышка.' },
+  b2: { en: 'Cosmetic thread M8', learnEn: 'Insert → Annotations → Cosmetic Thread: ISO standard, size, blind length; document option for shaded threads.', learnRu: 'Вставка → Примечания → Условное изображение резьбы: стандарт ISO, размер, длина; настройка закрашенной резьбы в свойствах документа.' },
+  b3: { en: 'Head: hexagon S13 × 5.3', learnEn: 'Sketch on a face, Polygon with an inscribed circle, across-flats dimension, a Vertical relation for a fully defined sketch.', learnRu: 'Эскиз на грани, многоугольник по вписанной окружности, размер под ключ, взаимосвязь «Вертикальный» — эскиз полностью определён.' },
+  b4: { en: 'Head chamfer: cut with 60° draft', learnEn: 'Extruded Cut “Through All” with Flip side to cut and a draft angle — the classic chamfer of a bolt head.', learnRu: 'Вытянутый вырез «Насквозь» с «Переставить сторону» и уклоном — классическая фаска головки болта.' },
+  b5: { en: 'Fillet R0.5', learnEn: 'Fillet on the edge under the head.', learnRu: 'Скругление кромки под головкой.' },
+  b6: { en: 'Chamfer 1.6 × 45° at the shank end', learnEn: 'Chamfer from the Fillet drop-down, angle-distance type.', learnRu: 'Фаска из списка под «Скруглением», тип «Угол-расстояние».' },
+};
+const blocks = lesson.blocks.map((b: { id: string; title: string }) => ({
+  ...b, title: ru ? b.title : BLOCKS[b.id]?.en ?? b.title,
+  learn: ru ? BLOCKS[b.id]?.learnRu : BLOCKS[b.id]?.learnEn,
+  steps: lesson.steps.filter((s: { block: string }) => s.block === b.id).length,
+}));
+const steps = lesson.steps.length;
+const version = lesson.sw_version.replace('SOLIDWORKS ', '');
+---
+<BaseLayout title={t('Bolt M8×40 — interactive SOLIDWORKS lesson in the browser', 'Болт М8×40 — интерактивный урок SOLIDWORKS в браузере')} description={t(`Build an ISO 4014 hex bolt step by step on frames of real SOLIDWORKS: ${steps} steps, ${blocks.length} blocks, three modes — watch, guided and test. Free, no installation.`, `Постройте шестигранный болт ISO 4014 шаг за шагом на кадрах настоящего SOLIDWORKS: ${steps} шаг, ${blocks.length} блоков, три режима — показ, повтор и проверка. Бесплатно, без установки.`)} wide image={`/og/solidworks-instructor-${lang}.png`}>
+  <nav class="breadcrumbs" aria-label={t('Breadcrumb', 'Путь к странице')}><a href={p('/')}>Kolosei</a> / <a href={p('/products')}>{t('Products', 'Продукты')}</a> / <a href={p('/products/solidworks-instructor')}>{t('Instructor for SOLIDWORKS', 'Инструктор для SOLIDWORKS')}</a> / {t('Bolt M8×40', 'Болт М8×40')}</nav>
+  <div class="product-opening">
+    <p class="eyebrow mono small">{t(`Lesson 1 · ${steps} steps · ${blocks.length} blocks`, `Урок 1 · ${steps} шаг · ${blocks.length} блоков`)}</p>
+    <h1>{t('Bolt M8×40 in SOLIDWORKS', 'Болт М8×40 в SOLIDWORKS')}</h1>
+    <p class="lead">{t('Build a hex bolt to ISO 4014 — from the shank sketch to the end chamfer — right in your browser, clicking on frames of real SOLIDWORKS.', 'Постройте шестигранный болт по ISO 4014 — от эскиза стержня до фаски на конце — прямо в браузере, щёлкая по кадрам настоящего SOLIDWORKS.')}</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href={I.player}>{t('Start the lesson', 'Начать урок')}</a>
+      <a class="btn btn-secondary" href={p('/products/solidworks-instructor')}>{t('About the instructor', 'Об инструкторе')}</a>
+    </div>
+    {!ru && <p class="small muted lang-note">The lesson uses the Russian SOLIDWORKS interface: button and menu names are shown in Russian, exactly as on screen.</p>}
+  </div>
+
+  <a class="lesson-preview" href={I.player} aria-label={t('Open the lesson player', 'Открыть плеер урока')}>
+    <img src={I.img.step} width="1920" height="1032" alt={t('Lesson frame: SOLIDWORKS with the hexagon head sketch; the next button to press is outlined in orange.', 'Кадр урока: SOLIDWORKS с эскизом шестигранника головки; следующая кнопка обведена оранжевым.')} />
+    <span class="mono small">{t('Frame from the lesson · click to start', 'Кадр урока · нажмите, чтобы начать')}</span>
+  </a>
+
+  <div class="product-body">
+    <h2>{t('What you will build', 'Что вы построите')}</h2>
+    <ol class="lesson-blocks">
+      {blocks.map((b, i) => (
+        <li>
+          <h3><span class="mono">{i + 1}</span> {b.title} <span class="small muted">· {t(`${b.steps} steps`, `${b.steps} шаг.`)}</span></h3>
+          <p>{b.learn}</p>
+        </li>
+      ))}
+    </ol>
+
+    <h2>{t('How to take the lesson', 'Как проходить урок')}</h2>
+    <table class="tbl">
+      <tbody>
+        <tr><td><strong>{t('Watch', 'Покажи')}</strong></td><td>{t('The cursor performs every action; you follow the sequence.', 'Курсор сам выполняет каждое действие — вы следите за последовательностью.')}</td></tr>
+        <tr><td><strong>{t('Guided', 'Повторяй')}</strong></td><td>{t('Click on the frame where you would click in SOLIDWORKS. The right area is outlined; values are typed into the field that appears.', 'Щёлкайте по кадру там, где щёлкнули бы в SOLIDWORKS. Нужная область обведена; значения вводятся в появившееся поле.')}</td></tr>
+        <tr><td><strong>{t('Test', 'Проверка')}</strong></td><td>{t('No highlighting. After two misses the hint appears. Time, misses and hints are counted.', 'Без подсветки. После двух промахов появится подсказка. Считаются время, промахи и подсказки.')}</td></tr>
+      </tbody>
+    </table>
+    <p>{t('On a phone, use “Zoom” to enlarge the frame around the target. The 3D view shows the goal of each block and can be rotated.', 'На телефоне включите «Лупу» — кадр увеличится вокруг цели. 3D-окно показывает цель каждого блока, его можно вращать.')}</p>
+
+    <h2>{t('The same lesson inside SOLIDWORKS', 'Тот же урок — внутри SOLIDWORKS')}</h2>
+    <p>{t('The browser lesson and the instructor add-in read one lesson file. In SOLIDWORKS you build the real part: the instructor highlights the button, then checks the plane, the sketch, its dimensions and the feature parameters before moving on.', 'Веб-урок и надстройка-инструктор читают один файл урока. В SOLIDWORKS вы строите настоящую деталь: инструктор подсвечивает кнопку, затем проверяет плоскость, эскиз, его размеры и параметры операции и только после этого идёт дальше.')}</p>
+    <p class="source-note">{t(`Frames captured in ${version} (Russian interface) on`, `Кадры сняты в ${version} (русский интерфейс)`)} <time datetime={I.reviewed}>{I.reviewed}</time>{t('. Every value in the steps is read from the finished part.', '. Все значения в шагах прочитаны из готовой детали.')}</p>
+  </div>
+
+  <section class="agent-invitation">
+    <h2>{t('Ready?', 'Готовы?')}</h2>
+    <p>{t('About 70 short actions. Progress is kept in this browser, so you can stop and come back.', 'Около 70 коротких действий. Прогресс сохраняется в этом браузере — можно остановиться и вернуться.')}</p>
+    <div class="btn-row"><a class="btn btn-primary" href={I.player}>{t('Start the lesson', 'Начать урок')}</a></div>
+  </section>
+</BaseLayout>
+
+<style>
+  .lang-note { margin-top: 1rem; max-width: 60ch; }
+  .lesson-preview { display: block; margin: 1rem 0 0; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--bg-soft); }
+  .lesson-preview:hover { border-color: var(--accent); }
+  .lesson-preview img { display: block; width: 100%; height: auto; }
+  .lesson-preview span { display: block; padding: .55rem .9rem; color: var(--fg-muted); }
+  .lesson-blocks { list-style: none; padding: 0; margin: 1rem 0; }
+  .lesson-blocks li { padding: .2rem 0 .9rem; border-bottom: 1px solid var(--border); margin: 0 0 .9rem; }
+  .lesson-blocks h3 { margin: .2rem 0 .35rem; }
+  .lesson-blocks h3 .mono { color: var(--accent); margin-right: .35rem; }
+  .lesson-blocks p { margin: 0; }
+</style>
