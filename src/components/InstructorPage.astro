@@ -21,6 +21,7 @@ const changelog = ru ? I.changelogRu : d.changelog;
     <p class="lead">{t('Learn 3D modelling where the work happens. The instructor shows where to click, watches the model and confirms each step only when the geometry is right.', 'Учитесь 3D-моделированию там, где идёт работа. Инструктор показывает, куда нажать, следит за моделью и засчитывает шаг, только когда геометрия действительно верна.')}</p>
     <div class="btn-row">
       <a class="btn btn-primary" href={p(I.lessonPage)}>{t('Try the lesson “Bolt M8×40”', 'Пройти урок «Болт М8×40»')}</a>
+      <a class="btn btn-secondary" href={p(I.bracketPage)}>{t('Try “Lesson 3. Bracket”', 'Пройти «Урок 3. Кронштейн»')}</a>
       <a class="btn btn-secondary" href="#roadmap">{t('Development plan', 'План развития')}</a>
     </div>
   </div>
@@ -45,14 +46,15 @@ const changelog = ru ? I.changelogRu : d.changelog;
     </table>
 
     <h2>{t('Current state', 'Текущее состояние')}</h2>
-    <p>{t('Honest status as of', 'Состояние на')} <time datetime={I.reviewed}>{I.reviewed}</time>{t('. Only one lesson has passed a full manual check; everything else is a verified draft.', '. Полную ручную проверку прошёл один урок; остальное — проверенный роботом черновик.')}</p>
+    <p>{t('Honest status as of', 'Состояние на')} <time datetime={I.statusReviewed}>{I.statusReviewed}</time>{t('. Only one lesson has passed a full manual check; everything else is a verified draft.', '. Полную ручную проверку прошёл один урок; остальное — проверенный черновик.')}</p>
     <div class="reference-table-wrap"><table class="tbl">
       <thead><tr><th>{t('Item', 'Что')}</th><th>{t('Status', 'Статус')}</th></tr></thead>
       <tbody>
         <tr><td><a href={p(I.lessonPage)}>{t('Lesson “Bolt M8×40 (ISO 4014)”', 'Урок «Болт М8×40 (ISO 4014)»')}</a></td><td>{t(`${I.bolt.steps} steps in ${I.bolt.blocks} blocks. Passed manually end to end in the add-in; published as a browser lesson.`, `${I.bolt.steps} шаг в ${I.bolt.blocks} блоках. Пройден вручную от начала до конца в надстройке; опубликован как веб-урок.`)}</td></tr>
+        <tr><td><a href={p(I.bracketPage)}>{t('Lesson 3. Bracket', 'Урок 3. Кронштейн')}</a></td><td>{t('A browser exercise based on a complete construction recording. The updated add-in lesson has API and regression checks; its full manual replay is pending.', 'Браузерный урок по полной записи построения. Обновлённый урок в надстройке проверен через API и регрессии; полный повторный проход вручную ещё предстоит.')}</td></tr>
         <tr><td>{t('Beginner curriculum (draft)', 'Курс для начинающих (черновик)')}</td><td>{t(`${I.course.lessons} lessons, ${I.course.steps} steps, ${I.course.checked} with automatic checks: sketches, features, patterns, sweeps and lofts, assemblies, drawings. The robot ran every lesson: ${I.robot.ok} steps credited, ${I.robot.show} explanation steps, ${I.robot.manual} beyond the robot (mouse picks on faces), ${I.robot.fail} failure. Manual review is in progress section by section.`, `${I.course.lessons} уроков, ${I.course.steps} шагов, из них ${I.course.checked} с автоматической проверкой: эскизы, элементы, массивы, по траектории и по сечениям, сборки, чертежи. Робот прошёл все уроки: ${I.robot.ok} шага засчитаны, ${I.robot.show} — пояснения, ${I.robot.manual} — вне возможностей робота (выбор граней мышью), ${I.robot.fail} сбой. Ручная проверка идёт по разделам.`)}</td></tr>
         <tr><td>{t('Platform', 'Платформа')}</td><td>{t('SOLIDWORKS 2026 SP4.1 on Windows, Russian interface. Other versions and the English interface are not yet verified.', 'SOLIDWORKS 2026 SP4.1 под Windows, русский интерфейс. Другие версии и английский интерфейс пока не проверены.')}</td></tr>
-        <tr><td>{t('Availability', 'Доступность')}</td><td>{t('The browser lesson is open to everyone. The add-in has no public installer yet; pilot access on request.', 'Веб-урок открыт всем. У надстройки пока нет публичного установщика; доступ для пилота — по запросу.')}</td></tr>
+        <tr><td>{t('Availability', 'Доступность')}</td><td>{t('The browser lessons are open to everyone. The add-in has no public installer yet; pilot access on request.', 'Веб-уроки открыты всем. У надстройки пока нет публичного установщика; доступ для пилота — по запросу.')}</td></tr>
       </tbody>
     </table></div>
 

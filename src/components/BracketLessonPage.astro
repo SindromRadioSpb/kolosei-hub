@@ -1,0 +1,57 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { instructor as I } from '../data/solidworks-instructor';
+import { localPath } from '../data/linguistpro';
+import lesson from '../../public/play/solidworks-instructor/bracket/lesson.json';
+
+const { lang = 'en' } = Astro.props as { lang: 'en' | 'ru' };
+const ru = lang === 'ru';
+const p = (path: string) => localPath(lang, path);
+const t = (en: string, r: string) => ru ? r : en;
+const names: Record<string, { en: string; enText: string; ruText: string }> = {
+  base: { en: 'Base, symmetry and holes', enText: 'A centred sketch, symmetric holes, sketch fillets and an extruded base.', ruText: 'Прямоугольник из центра, симметричные отверстия, скругления эскиза и вытягивание основания.' },
+  tower: { en: 'Post profile and revolve', enText: 'A stepped sketch with dimensions and a full revolution around the axis.', ruText: 'Ступенчатый профиль с размерами и вращение вокруг оси на полный оборот.' },
+  cut: { en: 'Side cut with an arc and chord', enText: 'An arc and chord on the flange, followed by an extruded cut.', ruText: 'Дуга и хорда на фланце, затем вытянутый вырез.' },
+  rib: { en: 'Rib and result', enText: 'A line on the Front plane and a symmetric rib joining the post and base.', ruText: 'Линия на плоскости «Спереди» и симметричное ребро между стойкой и основанием.' },
+};
+const blocks = lesson.blocks.map(b => ({...b, title: ru ? b.title : names[b.id].en,
+  description: ru ? names[b.id].ruText : names[b.id].enText,
+  count: lesson.steps.filter(s => s.block === b.id).length}));
+---
+<BaseLayout title={t('Lesson 3. Bracket — interactive SOLIDWORKS lesson', 'Урок 3. Кронштейн — интерактивный урок SOLIDWORKS')} description={t(`Build a bracket in your browser using ${lesson.steps.length} actions on recorded SOLIDWORKS frames.`, `Постройте кронштейн в браузере: ${lesson.steps.length} действий на кадрах записи SOLIDWORKS.`)} wide image={`/og/solidworks-instructor-${lang}.png`}>
+  <nav class="breadcrumbs" aria-label={t('Breadcrumb', 'Путь к странице')}><a href={p('/')}>Kolosei</a> / <a href={p('/products')}>{t('Products', 'Продукты')}</a> / <a href={p('/products/solidworks-instructor')}>{t('Instructor for SOLIDWORKS', 'Инструктор для SOLIDWORKS')}</a> / {t('Lesson 3. Bracket', 'Урок 3. Кронштейн')}</nav>
+  <div class="product-opening">
+    <p class="eyebrow mono small">{t(`Lesson 3 · ${lesson.steps.length} actions · ${blocks.length} blocks`, `Урок 3 · ${lesson.steps.length} действий · ${blocks.length} раздела`)}</p>
+    <h1>{t('Lesson 3. Bracket', 'Урок 3. Кронштейн')}</h1>
+    <p class="lead">{t('Follow a complete bracket construction, from the base sketch to the reinforcing rib, on frames recorded in SOLIDWORKS.', 'Пройдите построение кронштейна от эскиза основания до ребра жёсткости на кадрах записи SOLIDWORKS.')}</p>
+    <div class="btn-row"><a class="btn btn-primary" href={I.bracketPlayer}>{t('Start the lesson', 'Начать урок')}</a><a class="btn btn-secondary" href={p('/products/solidworks-instructor')}>{t('About the instructor', 'Об инструкторе')}</a></div>
+    {!ru && <p class="small muted">The player uses the Russian SOLIDWORKS interface and Russian instructions.</p>}
+  </div>
+  <a class="lesson-preview" href={I.bracketPlayer} aria-label={t('Open the lesson player', 'Открыть плеер урока')}><img src="/play/solidworks-instructor/bracket/assets/shots/final.webp" width="1528" height="1032" alt={t('Finished bracket with mounting holes, post and reinforcing rib.', 'Готовый кронштейн с крепёжными отверстиями, стойкой и ребром.')} /><span class="mono small">{t('Finished part · click to start', 'Готовая деталь · нажмите, чтобы начать')}</span></a>
+  <div class="product-body">
+    <h2>{t('What you will build', 'Что вы построите')}</h2>
+    <ol class="lesson-blocks">{blocks.map((b,i)=><li><h3><span class="mono">{i+1}</span> {b.title} <span class="small muted">· {t(`${b.count} actions`, `${b.count} действий`)}</span></h3><p>{b.description}</p></li>)}</ol>
+    <h2>{t('How to take the lesson', 'Как проходить урок')}</h2>
+    <table class="tbl"><tbody>
+      <tr><td><strong>{t('Watch', 'Покажи')}</strong></td><td>{t('Watch the cursor perform the actions.', 'Курсор показывает последовательность действий.')}</td></tr>
+      <tr><td><strong>{t('Guided', 'Повторяй')}</strong></td><td>{t('Click the highlighted area and enter dimensions.', 'Нажимайте на подсвеченные области и вводите размеры.')}</td></tr>
+      <tr><td><strong>{t('Test', 'Проверка')}</strong></td><td>{t('Try without highlighting; a hint appears after two misses.', 'Попробуйте без подсветки; после двух промахов появится подсказка.')}</td></tr>
+    </tbody></table>
+    <p>{t('Zoom helps on a phone. Rotate the 3D view to inspect the goal of each block. Progress is saved in this browser.', 'На телефоне используйте «Лупу». Цель каждого раздела можно рассмотреть в 3D. Прогресс сохраняется в браузере.')}</p>
+    <h2>{t('The lesson inside SOLIDWORKS', 'Урок внутри SOLIDWORKS')}</h2>
+    <p>{t('The browser exercise uses selected frames from the recording. The add-in provides a more detailed route and checks the real model as you build it; the two versions have different numbers of steps.', 'В браузере вы работаете с отобранными кадрами записи. Надстройка содержит более подробный маршрут и проверяет реальную модель во время построения; число шагов в двух версиях различается.')}</p>
+    <p>{t('The updated add-in lesson has passed API and regression checks; a full manual replay of the revised route is still pending.', 'Обновлённый урок в надстройке прошёл проверки через API и регрессии; полный повторный проход вручную ещё предстоит.')}</p>
+  </div>
+  <section class="agent-invitation"><h2>{t('Ready?', 'Готовы?')}</h2><p>{t('Start in your browser; no installation is required.', 'Начните прямо в браузере — установка не требуется.')}</p><div class="btn-row"><a class="btn btn-primary" href={I.bracketPlayer}>{t('Start the lesson', 'Начать урок')}</a></div></section>
+</BaseLayout>
+<style>
+  .lesson-preview { display: block; margin: 1rem 0 0; border: 1px solid var(--border); border-radius: 10px; overflow: hidden; background: var(--bg-soft); }
+  .lesson-preview:hover { border-color: var(--accent); }
+  .lesson-preview img { display: block; width: 100%; height: auto; }
+  .lesson-preview span { display: block; padding: .55rem .9rem; color: var(--fg-muted); }
+  .lesson-blocks { list-style: none; padding: 0; margin: 1rem 0; }
+  .lesson-blocks li { padding: .2rem 0 .9rem; border-bottom: 1px solid var(--border); margin: 0 0 .9rem; }
+  .lesson-blocks h3 { margin: .2rem 0 .35rem; }
+  .lesson-blocks h3 .mono { color: var(--accent); margin-right: .35rem; }
+  .lesson-blocks p { margin: 0; }
+</style>

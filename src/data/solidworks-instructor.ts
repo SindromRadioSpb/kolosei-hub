@@ -2,8 +2,11 @@
 // (docs/course/README.md, docs/course/robot-report.md, web/lesson.json); update them together with `reviewed`.
 export const instructor = {
   reviewed: '2026-10-26',
+  statusReviewed: '2026-10-27',
   lessonPage: '/products/solidworks-instructor/bolt-m8x40',
   player: '/play/solidworks-instructor/bolt-m8x40/',
+  bracketPage: '/products/solidworks-instructor/bracket',
+  bracketPlayer: '/play/solidworks-instructor/bracket/',
   img: {
     addin: '/img/solidworks-instructor/addin-panel.webp',
     final: '/img/solidworks-instructor/bolt-final.webp',
@@ -13,6 +16,7 @@ export const instructor = {
   course: { lessons: 175, steps: 1312, checked: 532 },
   robot: { ok: 342, show: 734, manual: 144, fail: 1 },
   changelogRu: [
+    { date: '2026-10-27', text: 'Добавлен браузерный урок «Урок 3. Кронштейн» по полной записи построения; подробный вариант Инструктора проходит повторную проверку.' },
     { date: '2026-10-26', text: 'Урок «Болт М8×40» переснят в SOLIDWORKS 2026 SP4.1 на чистой модели и опубликован как веб-урок.' },
     { date: '2026-10-25', text: 'Надстройка на C# внутри SOLIDWORKS; генератор уроков и робот-ученик; 175 черновых уроков курса для начинающих.' },
     { date: '2026-10-24', text: 'Первый прототип: урок «Болт М8×40», сгенерированный из готовой детали, веб-плеер и живой инструктор.' },
