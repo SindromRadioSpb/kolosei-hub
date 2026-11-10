@@ -1,0 +1,88 @@
+name: IndexNow public delta
+on:
+  check_run:
+    types: [completed]
+  workflow_dispatch:
+    inputs:
+      bootstrap:
+        description: 'One-time reviewed baseline recovery (never automatic)'
+        type: boolean
+        required: true
+        default: false
+permissions:
+  contents: read
+  checks: read
+  actions: read
+concurrency:
+  group: kolosei-production-indexnow
+  cancel-in-progress: false
+jobs:
+  notify:
+    if: >-
+      github.repository == 'SindromRadioSpb/kolosei-hub' &&
+      (github.event_name == 'workflow_dispatch' ||
+      (github.event.check_run.app.id == 85455 && github.event.check_run.name == 'Cloudflare Pages' && github.event.check_run.conclusion == 'success'))
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GH_TOKEN: ${{ github.token }}
+      BOOTSTRAP: ${{ inputs.bootstrap }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Verify real current production check
+        id: production
+        run: python scripts/indexnow/ci_state.py guard
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ steps.production.outputs.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.14.0'
+          cache: npm
+      - run: npm ci
+      - run: npm run build && npm run verify
+      - name: Test notification guards
+        working-directory: scripts/indexnow
+        run: python -m unittest discover -q
+      - name: Restore durable state (never silently initialize)
+        run: python scripts/indexnow/ci_state.py restore
+      - name: Prepare verified delta without notification
+        run: >-
+          python scripts/indexnow/indexnow_delta.py --config scripts/indexnow.json
+          --state-dir .indexnow-state --expected-dist dist --apply --prepare-only
+          --intent-id '${{ github.run_id }}-${{ github.run_attempt }}'
+      # Durable write-ahead intent MUST succeed before any POST. A crash later leaves
+      # pending.json in this immutable artifact, and the next run refuses to retry.
+      - name: Save durable pre-send intent
+        uses: actions/upload-artifact@v4
+        with:
+          name: indexnow-intent-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .indexnow-state/
+          include-hidden-files: true
+          retention-days: 90
+          if-no-files-found: error
+      - name: Recheck main did not advance
+        env:
+          EXPECTED_SHA: ${{ steps.production.outputs.sha }}
+        run: python scripts/indexnow/ci_state.py guard
+      - name: Notify only prepared public delta
+        run: >-
+          python scripts/indexnow/indexnow_delta.py --config scripts/indexnow.json
+          --state-dir .indexnow-state --expected-dist dist --apply
+          --intent-id '${{ github.run_id }}-${{ github.run_attempt }}'
+      - name: Save final state and receipts
+        if: always() && hashFiles('.indexnow-state/manifest.json') != ''
+        uses: actions/upload-artifact@v4
+        with:
+          name: indexnow-state-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .indexnow-state/
+          include-hidden-files: true
+          retention-days: 90
+          if-no-files-found: error
