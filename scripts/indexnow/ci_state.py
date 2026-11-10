@@ -25,6 +25,20 @@ def guard():
     if expected and expected!=head: raise RuntimeError('main advanced during verification')
     with open(os.environ['GITHUB_OUTPUT'],'a') as out: out.write('sha='+head+'\n')
     print('Verified Cloudflare production check for main '+head)
+def artifact_order(a):
+    # GitHub artifact IDs are sharded, not chronological. Prefer creation time.
+    m=re.fullmatch(r'indexnow-(state|intent)-(\d+)-(\d+)',a['name'])
+    if not m or int(m[2])!=int(a['workflow_run']['id']) or not a.get('created_at'):
+        raise RuntimeError('Invalid durable artifact identity/timestamp')
+    return (a['created_at'], 1 if m[1]=='state' else 0)
+
+def ordered_artifacts(values):
+    values=sorted(values,key=artifact_order,reverse=True)
+    for a,b in zip(values,values[1:]):
+        if a['created_at']==b['created_at'] and a['name'].split('-')[2:]!=b['name'].split('-')[2:]:
+            raise RuntimeError('Ambiguous cross-run artifact chronology')
+    return values
+
 def restore():
     target=Path('.indexnow-state'); target.mkdir(exist_ok=True)
     artifacts=[]
@@ -33,7 +47,7 @@ def restore():
         artifacts.extend(a for a in values if a['name'].startswith(('indexnow-state-','indexnow-intent-')))
         if len(values)<100: break
     candidates=[]
-    for a in sorted(artifacts,key=lambda x:x['id'],reverse=True):
+    for a in ordered_artifacts(artifacts):
         run=api(f'repos/{REPO}/actions/runs/'+str(a['workflow_run']['id']))
         if run['path']==WORKFLOW and run['head_branch']=='main' and run['event'] in ('check_run','workflow_dispatch') and int(run['id'])!=int(os.environ['GITHUB_RUN_ID']):
             candidates.append(a); break

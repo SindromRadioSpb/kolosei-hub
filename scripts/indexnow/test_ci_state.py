@@ -23,7 +23,7 @@ class GuardTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             old=os.getcwd();os.chdir(d)
             try:
-                a={'id':20,'name':'indexnow-intent-2-1','workflow_run':{'id':2},'expired':kind=='expired'}
+                a={'id':20,'name':'indexnow-intent-2-1','workflow_run':{'id':2},'created_at':'2026-11-10T17:13:15Z','expired':kind=='expired'}
                 data=io.BytesIO()
                 with zipfile.ZipFile(data,'w') as z:
                     z.writestr('manifest.json','{}');z.writestr('pending.json','{}')
@@ -33,6 +33,14 @@ class GuardTests(unittest.TestCase):
                 with patch.dict(os.environ,{'GITHUB_RUN_ID':'3','GITHUB_EVENT_NAME':'check_run'},clear=True),patch.object(c,'api',api),patch.object(c.subprocess,'check_output',return_value=data.getvalue()):
                     with self.assertRaises(RuntimeError):c.restore()
             finally:os.chdir(old)
+    def test_artifact_ids_not_chronological(self):
+        intent={'id':99,'name':'indexnow-intent-2-1','workflow_run':{'id':2},'created_at':'2026-11-10T17:13:15Z'}
+        final={'id':20,'name':'indexnow-state-2-1','workflow_run':{'id':2},'created_at':'2026-11-10T17:13:20Z'}
+        self.assertEqual(c.ordered_artifacts([intent,final])[0]['id'],20)
+        final['created_at']=intent['created_at']
+        self.assertEqual(c.ordered_artifacts([intent,final])[0]['id'],20)
+        final['name']='indexnow-state-3-1'; final['workflow_run']['id']=3
+        with self.assertRaises(RuntimeError):c.ordered_artifacts([intent,final])
     def test_missing(self):self.restore_case('missing')
     def test_expired(self):self.restore_case('expired')
     def test_pending_intent(self):self.restore_case('pending')
