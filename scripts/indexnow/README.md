@@ -28,3 +28,8 @@ python scripts/indexnow/indexnow_delta.py --config scripts/indexnow.json --state
 Dry-run is default. `--initialize` makes a checked local baseline without POST. `--apply` submits a reviewed delta using existing config. CI uses `--prepare-only` + `--intent-id` to enforce durable write-ahead intent. Normal page removals require absence from sitemap and HTTP404/410; redirects/noindex changes require review. More than 25 changed URLs or more than 100 sitemap URLs fail closed pending explicit review.
 
 Stable hash covers page title, main editorial text/links, description/OpenGraph/hreflang metadata and JSON-LD. Dynamic visitor counters/footer/scripts are intentionally excluded. CSS-only changes do not trigger IndexNow. Review this policy if a new component stores substantive content outside main.
+
+## Setup verification record
+
+The workflow was installed through PR #1 on 2026-11-10 after 22 unit tests, a 42-page build and 2097 site verification checks passed. The initial live-to-build comparison had zero changed URLs, so the eight earlier manual notifications must not be replayed. Activation is complete only after a successful Cloudflare production check, explicit baseline bootstrap and a successful check_run-triggered execution restoring durable state.
+
