@@ -1,0 +1,176 @@
+{
+  "schema": 1,
+  "host": "kolosei.com",
+  "updatedAt": "2026-11-10T16:40:47.159983+00:00",
+  "reason": "verified baseline; not a notification receipt",
+  "pages": {
+    "https://kolosei.com/": {
+      "sha256": "66898ee15d63782aa7063e84e7e74d261dea9363daf9aa9d92715d1fb1e0a33c",
+      "title": "Learn Hebrew through reading, video and real speech — LinguistPro — Kolosei"
+    },
+    "https://kolosei.com/about/": {
+      "sha256": "dd50a797175fdd76c32dfbdf24042023b8a8dc14d8f9ed095c3407f84aecc250",
+      "title": "About — Kolosei"
+    },
+    "https://kolosei.com/agents/": {
+      "sha256": "6d804a27b413b1708b43291fc8661d26614542d34f3a2d2873210bc5866859bf",
+      "title": "LinguistPro for AI assistants and agents — facts and access — Kolosei"
+    },
+    "https://kolosei.com/contact/": {
+      "sha256": "7f67781d4335e1a799dfa669a4d8ca0dd51e9746f8e96d84c41a2eee6abd784c",
+      "title": "Contact — Kolosei"
+    },
+    "https://kolosei.com/guides/": {
+      "sha256": "03b5c9d871bb1efaacd95c8e1110f62cba9f9f0efcd61b01ce4c0e8c5cd92e04",
+      "title": "Hebrew learning guides — reading, songs and technical problems — Kolosei"
+    },
+    "https://kolosei.com/guides/hebrew-reading/": {
+      "sha256": "fbe85f1cdb57cfe962a095dae4c48aa77289033c05e6bd9a9d055a34d1ff9de0",
+      "title": "Read Hebrew with niqqud and Russian translation — Kolosei"
+    },
+    "https://kolosei.com/guides/hebrew-through-songs/": {
+      "sha256": "37db595776edf4f5e879672c5e68516bbf1775b28b3bfad7de76145b1dc65e92",
+      "title": "Learn Hebrew through songs, one verse at a time — Kolosei"
+    },
+    "https://kolosei.com/guides/technical-hebrew/": {
+      "sha256": "39fba1d01efa76567d4c218aa01e7553270863c69376d89f4321b82c16a2bbe7",
+      "title": "Understand technical Hebrew through worked problems — Kolosei"
+    },
+    "https://kolosei.com/imprint/": {
+      "sha256": "f706c1738debe7991950754d2ab5f9f506da6b981ec9acb89dac2506d701e370",
+      "title": "Imprint — Kolosei"
+    },
+    "https://kolosei.com/privacy/": {
+      "sha256": "46862d25b5779f0f2f026761a80ef9ea6632479cc0df4f71d216f5613e020be7",
+      "title": "Privacy — Kolosei"
+    },
+    "https://kolosei.com/products/": {
+      "sha256": "c91201e46f6b934a6f7cea1eb0fe7b936947591026b0f6ed2fe9fe4117b9878c",
+      "title": "Products — Kolosei"
+    },
+    "https://kolosei.com/products/egorgenom/": {
+      "sha256": "45bed6d21d2a6c886cd177cc6dd75847a8c9443c56aced2ab743dc51e7056974",
+      "title": "EgorGenom — Kolosei"
+    },
+    "https://kolosei.com/products/linguistpro/": {
+      "sha256": "65ce4bc17a98bec44868231978fcf846812ca50f0ad0d0d2fe8a420cb585c7f6",
+      "title": "LinguistPro Studio — turn your sources into Hebrew study materials — Kolosei"
+    },
+    "https://kolosei.com/products/mediatheque/": {
+      "sha256": "e6c32d4878421fa618f5e585e0830d4dc0e3fa0db547d63b4c7593be3f9eb0ee",
+      "title": "LinguistPro Mediatheque — learn Hebrew with video and real speech — Kolosei"
+    },
+    "https://kolosei.com/products/reading-room/": {
+      "sha256": "e90ef402e54aa32e2cfcd7193eeb9cb2d32afc018e09decbcb8999ee9ee51ee1",
+      "title": "Hebrew Reading Room — literature, songs and bilingual problem books — Kolosei"
+    },
+    "https://kolosei.com/products/solidworks-instructor/": {
+      "sha256": "a6e5c20a0913dc564a06cb4b43ee75ee2dcfa0e45e6bc2d428250b5573c83ecb",
+      "title": "Instructor for SOLIDWORKS — interactive CAD lessons inside SOLIDWORKS — Kolosei"
+    },
+    "https://kolosei.com/products/solidworks-instructor/bolt-m8x40/": {
+      "sha256": "97a553d83b5e1819bb42bf55b6a662259c6918c5c4fd0230fda22fd8ae950e5d",
+      "title": "Bolt M8×40 — interactive SOLIDWORKS lesson in the browser — Kolosei"
+    },
+    "https://kolosei.com/products/solidworks-instructor/bracket/": {
+      "sha256": "7dd88578b4073e68b4476b6b03bfb3c8ae9f9da3474a5cae32d3ad9131c1f374",
+      "title": "Lesson 3. Bracket — interactive SOLIDWORKS lesson — Kolosei"
+    },
+    "https://kolosei.com/products/v-book/": {
+      "sha256": "69a009607ab47530b29dfa7d32a179abb886df136f1e99a654d4eebf36489df0",
+      "title": "HDLE Premium — Kolosei"
+    },
+    "https://kolosei.com/ru/": {
+      "sha256": "81155cf723d67f303707c5818bbb493a5675902692738b15a822e1a99eb6631e",
+      "title": "Иврит через чтение, видео и живую речь — LinguistPro — Kolosei"
+    },
+    "https://kolosei.com/ru/about/": {
+      "sha256": "ef3256a062323e1eb4a81244fd0ad925b6d4cecfdb5081faf408e71d42e99138",
+      "title": "О студии — Kolosei"
+    },
+    "https://kolosei.com/ru/agents/": {
+      "sha256": "1a98fb3becc1921185e903bf5ffedea65336946f0382bee6aed4940bf77b0391",
+      "title": "LinguistPro для ИИ и агентов — факты и доступ — Kolosei"
+    },
+    "https://kolosei.com/ru/contact/": {
+      "sha256": "99ec5a4168a2b9fc7fd64d3d97fd6492921ae32267506e1b488eb684e4c86cc0",
+      "title": "Контакты — Kolosei"
+    },
+    "https://kolosei.com/ru/guides/": {
+      "sha256": "5704362be1c429795598e6ac2b2a6b4d091a518eb0bb51b6d908cba3fdbb1ac5",
+      "title": "Практика иврита — чтение, песни и технические задачи — Kolosei"
+    },
+    "https://kolosei.com/ru/guides/hebrew-reading/": {
+      "sha256": "39efde77068319b946f3dbc13205ab225ddf8767add1c4fe55e081243dfb4563",
+      "title": "Как читать иврит с огласовками и русским переводом — Kolosei"
+    },
+    "https://kolosei.com/ru/guides/hebrew-through-songs/": {
+      "sha256": "42bb268c178b62a79a58a9975ff02335c34ada1515de869410b0144bde1bf509",
+      "title": "Как учить иврит по песням: от куплета к пониманию — Kolosei"
+    },
+    "https://kolosei.com/ru/guides/technical-hebrew/": {
+      "sha256": "46d31ff4b879f0f7baaeea64b6c47e544c5b55af7121fb8e48df5fafdf148271",
+      "title": "Технический иврит через задачи по физике и материаловедению — Kolosei"
+    },
+    "https://kolosei.com/ru/imprint/": {
+      "sha256": "47485edf56466c26a5615084f9a25788c2bbb63512407df40b96460615c67a9d",
+      "title": "Импринт — Kolosei"
+    },
+    "https://kolosei.com/ru/privacy/": {
+      "sha256": "118908d90c36c716ae2138e38f048a48b3896c1ab37741b321c317beb3e4ed8b",
+      "title": "Конфиденциальность — Kolosei"
+    },
+    "https://kolosei.com/ru/products/": {
+      "sha256": "914e8393a563d3a4a286b75c261bacaf58cd9ef9152a20829bd201988fe639f1",
+      "title": "Продукты — Kolosei"
+    },
+    "https://kolosei.com/ru/products/egorgenom/": {
+      "sha256": "78233f3a0e17a3cd025b6e7ae0895554cd4bdbf83954ab25fdd3a973dd8b1b0c",
+      "title": "EgorGenom — исследовательский проект — Kolosei"
+    },
+    "https://kolosei.com/ru/products/linguistpro/": {
+      "sha256": "06554ca74f61a4b3529a5a5102b246c536f3ebef9c94c82bd351cb0da20d5dd0",
+      "title": "Студия LinguistPro — ваши материалы для изучения иврита — Kolosei"
+    },
+    "https://kolosei.com/ru/products/mediatheque/": {
+      "sha256": "3bca14b06c53ed9a95ca879e87adc113d196d5a8be7af69396b75c9aeefaf8ac",
+      "title": "Медиатека LinguistPro — учите иврит по видео и живой речи — Kolosei"
+    },
+    "https://kolosei.com/ru/products/reading-room/": {
+      "sha256": "da6c68b3bfada21d0e1fb8ae6065789ffb229f4cedc8fa29de108249a043184a",
+      "title": "Читальный зал — иврит с переводом, песнями и задачниками — Kolosei"
+    },
+    "https://kolosei.com/ru/products/solidworks-instructor/": {
+      "sha256": "79b6c6614ec17d9cfd56acb3ab3fb464fc001d4ae424ab0ccb5071c8ea02f7c1",
+      "title": "Инструктор для SOLIDWORKS — интерактивные уроки внутри SOLIDWORKS — Kolosei"
+    },
+    "https://kolosei.com/ru/products/solidworks-instructor/bolt-m8x40/": {
+      "sha256": "5cd03560748ea090e62e4ba19713f4d057e574a992deba3458b7a58c73335e87",
+      "title": "Болт М8×40 — интерактивный урок SOLIDWORKS в браузере — Kolosei"
+    },
+    "https://kolosei.com/ru/products/solidworks-instructor/bracket/": {
+      "sha256": "c90c5c0a578f3778d678e9de435de9121c5dfcc9b5735e6e410abc3ff829c372",
+      "title": "Урок 3. Кронштейн — интерактивный урок SOLIDWORKS — Kolosei"
+    },
+    "https://kolosei.com/ru/products/v-book/": {
+      "sha256": "09ec1197757fdb9f82fc204c7f133489c95524b725852f23ff0d0583e7131312",
+      "title": "HDLE Premium — настольная лексикография иврита — Kolosei"
+    },
+    "https://kolosei.com/ru/technology/": {
+      "sha256": "330ca097462867fb3233837b87389e86bc2c6a9a047f6d99c8410ae96ea35a37",
+      "title": "Технологии — Kolosei"
+    },
+    "https://kolosei.com/ru/terms/": {
+      "sha256": "81cc6c54cc188389bca2d758989481e26ea999a7aff6de0dae083754138b3790",
+      "title": "Условия — Kolosei"
+    },
+    "https://kolosei.com/technology/": {
+      "sha256": "eb246a3e2af7b3cb1a0dbd41f681f652d9a3135d90a5dbdaebd603066f2e8792",
+      "title": "Technology — Kolosei"
+    },
+    "https://kolosei.com/terms/": {
+      "sha256": "89a22235dae02a94ad5c27d2b4099bd13265b533d6b34e3b01e2762be68abf07",
+      "title": "Terms — Kolosei"
+    }
+  }
+}
