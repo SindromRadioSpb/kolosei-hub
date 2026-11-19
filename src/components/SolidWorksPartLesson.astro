@@ -1,0 +1,73 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { localPath } from '../data/linguistpro';
+import lesson from '../data/solidworks-part-30-10.json';
+
+const { lang = 'ru' } = Astro.props as { lang: 'ru' | 'en' };
+const ru = lang === 'ru';
+const product = localPath(lang, '/products/solidworks-instructor');
+const title = ru ? 'Деталь с четырьмя отверстиями M16' : 'Part with four M16 holes';
+const description = ru
+  ? 'Практика в SOLIDWORKS. Постройте основание и выступы, задайте четыре отверстия M16 по сетке, добавьте скругления и фаски.'
+  : 'A SOLIDWORKS practice lesson on a base, two bosses, four M16 holes, fillets and chamfers.';
+const media = '/media/solidworks-part-30-10';
+---
+<BaseLayout title={title} description={description} wide image={media + '/finished.webp'}>
+  <nav class="breadcrumbs" aria-label={ru ? 'Путь к странице' : 'Breadcrumb'}>
+    <a href={localPath(lang, '/')}>Kolosei</a> / <a href={product}>{ru ? 'Инструктор для SOLIDWORKS' : 'Instructor for SOLIDWORKS'}</a> / {title}
+  </nav>
+  <div class="product-opening lesson-opening">
+    <div>
+      <h1>{title}</h1>
+      <p class="lead">{description}</p>
+      {ru ? (
+        <p>Откройте SOLIDWORKS и выберите в Инструкторе урок «30.10 и 06.11 — построение детали». На этой странице можно сверять действия и параметры по ходу работы.</p>
+      ) : (
+        <p>The steps and screenshots below use the Russian SOLIDWORKS interface.</p>
+      )}
+      <a class="btn btn-primary" href="#lesson">{ru ? 'Перейти к построению' : 'View the procedure'}</a>
+    </div>
+    <img src={media + '/finished.webp'} width="697" height="680" alt={ru ? 'Готовая деталь с двумя продолговатыми выступами' : 'Finished part with two oblong bosses'} />
+  </div>
+  <div class="product-body" id="lesson" lang="ru">
+    <h2>Порядок построения</h2>
+    <p>Раскройте нужный раздел. Кадры показывают, куда нажать на отдельных этапах.</p>
+    {lesson.map(block => (
+      <details id={block.id} class="lesson-block">
+        <summary><strong>{block.title}</strong></summary>
+        <ol>
+          {block.steps.map(step => (
+            <li>
+              {step.text}
+              {step.image && (
+                <figure>
+                  <a href={media + '/' + step.image.file + '.webp'}>
+                    <img src={media + '/' + step.image.file + '.webp'} alt={step.image.alt} width="1516" height="1005" loading="lazy" />
+                  </a>
+                  <figcaption>{step.image.alt}</figcaption>
+                </figure>
+              )}
+            </li>
+          ))}
+        </ol>
+      </details>
+    ))}
+  </div>
+</BaseLayout>
+<style>
+  .lesson-opening {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, .75fr);
+    align-items: center;
+    gap: clamp(1rem, 4vw, 3rem);
+  }
+  .lesson-opening img, figure img { display: block; width: 100%; height: auto; border-radius: .5rem; }
+  .lesson-block { border-bottom: 1px solid var(--border); }
+  .lesson-block summary { padding: .9rem 0; cursor: pointer; }
+  .lesson-block li + li { margin-top: .55rem; }
+  figure { margin: 1rem 0; }
+  figcaption { color: var(--fg-muted); margin-top: .45rem; font-size: .9rem; }
+  @media (max-width: 700px) {
+    .lesson-opening { grid-template-columns: 1fr; }
+  }
+</style>
