@@ -16,20 +16,68 @@ $("frame").style.setProperty("--lesson-screen", `${W} / ${H}`);
 if (L.sw_version) $("swver").textContent = L.sw_version;
 if (/^https?:\/\/[^/]+\/products\//.test(document.referrer)) $("home").href = `/products/solidworks-instructor/${lessonId}/`;
 const blocks = L.blocks, bIndex = Object.fromEntries(blocks.map((b, i) => [b.id, i]));
+const chapters = blocks.map(block => {
+  const start = L.steps.findIndex(step => step.block === block.id);
+  const length = L.steps.filter(step => step.block === block.id).length;
+  return {start, end:start + length};
+});
 const store = { get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
                 set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} } };
+const progressKey = lessonId + ".progress." + (L.revision || 1);
+const numberInRange = (v, max) => Number.isInteger(v) && v >= 0 && v <= max ? v : 0;
+const blankRun = () => ({confirmed:0, cursor:0, errors:0, hints:0});
+const runs = {};
+for (const mode of ["guide", "test"]) {
+  const prior = store.get(progressKey + "." + mode, {});
+  const confirmed = numberInRange(prior.confirmed, N);
+  runs[mode] = {confirmed, cursor:Math.min(numberInRange(prior.cursor, N-1), confirmed),
+               errors:numberInRange(prior.errors, Number.MAX_SAFE_INTEGER), hints:numberInRange(prior.hints, Number.MAX_SAFE_INTEGER)};
+}
 
 const S = { idx: store.get(lessonId + ".idx", 0), mode: store.get(lessonId + ".mode", "guide"), misses: 0, revealed: false,
             err: 0, hints: 0, t0: Date.now(), done: false, zoom: store.get(lessonId + ".zoom", innerWidth < 900),
-            playing: true, timer: null, advanceTimer: null };
+            playing: true, timer: null, advanceTimer: null, frameReady: !staged, imageToken: 0 };
+if (!["guide", "watch", "test"].includes(S.mode)) S.mode = "guide";
+if (staged && S.mode !== "watch") S.idx = runs[S.mode].cursor;
 if (S.idx >= N) S.idx = 0;
+
+function persist() {
+  if (staged && S.mode !== "watch") {
+    const run = runs[S.mode];
+    run.cursor = S.idx;
+    store.set(progressKey + "." + S.mode, run);
+  } else store.set(lessonId + ".idx", S.idx);
+}
+
+function updateStats() {
+  if (!staged) return;
+  const demo = S.mode === "watch";
+  const run = runs[S.mode];
+  const stats = $("s-err").closest(".stats");
+  stats.hidden = demo;
+  if (demo) {
+    $("restart").hidden = true;
+    return;
+  }
+  $("s-time").textContent = String(run.confirmed);
+  $("s-err").textContent = String(run.errors);
+  $("s-hint").textContent = String(run.hints);
+  $("restart").hidden = run.confirmed + run.errors + run.hints === 0 || S.done;
+}
+
+function confirmCurrent() {
+  if (!staged || S.mode === "watch") return;
+  if (runs[S.mode].confirmed === S.idx) runs[S.mode].confirmed++;
+  persist();
+  updateStats();
+}
 
 /* ---------- маршрут ---------- */
 blocks.forEach((b, i) => {
   const btn = document.createElement("button");
   btn.innerHTML = `<i class="fill"></i><span>${i + 1} · ${b.title}</span>`;
   btn.title = b.title;
-  btn.onclick = () => go(L.steps.findIndex((s) => s.block === b.id));
+  btn.onclick = () => go(chapters[i].start);
   $("route").append(btn);
 });
 
@@ -73,6 +121,19 @@ function applyZoom() {
 }
 if (staged) window.addEventListener("resize", applyZoom);
 
+function fitDesktopFrame() {
+  if (!staged || innerWidth < 981) return;
+  const wrap = $("frame").closest(".stagewrap");
+  const top = wrap.getBoundingClientRect().top + scrollY;
+  const available = Math.max(265, innerHeight - top - wrap.querySelector(".stagebar").offsetHeight - 32);
+  $("frame").style.setProperty("--frame-max-width", `${available * W / H}px`);
+  if (S.frameReady && !S.done) applyZoom();
+}
+if (staged) {
+  window.addEventListener("resize", fitDesktopFrame);
+  document.fonts?.ready.then(fitDesktopFrame);
+}
+
 /* ---------- 3D ---------- */
 let show3D = () => {};
 (async () => {
@@ -94,7 +155,11 @@ let show3D = () => {};
     controls.addEventListener("start", () => (controls.autoRotate = false));
     const steel = new THREE.MeshStandardMaterial({ color: 0xb9c0c6, metalness: 0.55, roughness: 0.38 });
     const loader = new GLTFLoader(); const cache = {}; let current = null, currentUrl = null, wanted = "";
-    const size = () => { const w = host.clientWidth, h = host.clientHeight; renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix(); };
+    const size = () => {
+      const w = host.clientWidth, h = host.clientHeight;
+      if (!w || !h) return;
+      renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix();
+    };
     new ResizeObserver(size).observe(host); size();
     // Модель хранится как glTF JSON со встроенным буфером (data: URI). Загружать data: напрямую
     // запрещает политика безопасности, поэтому собираем из неё GLB в памяти и разбираем без сети.
@@ -187,6 +252,14 @@ function menuSVG(m) {
 }
 function drawOverlay() {
   const st = L.steps[S.idx]; let s = "";
+  if (staged && st.selection && !S.done) {
+    const [x1,y1,x2,y2] = st.selection;
+    s += `<line class="selection-mark" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" />`;
+  }
+  if (staged && st.kind === "input" && !S.done) {
+    const [x,y,r,b] = st.rect;
+    s += `<rect class="answer-mask" x="${x+3}" y="${y+3}" width="${r-x-6}" height="${b-y-6}" rx="2" />`;
+  }
   if (st && st.menu && !S.done) s += menuSVG(st.menu);
   if (st && st.ghost && !S.done) {
     const g = st.ghost, p0 = [g.c[0] + (g.p[0] - g.c[0]) * 0.55, g.c[1] + (g.p[1] - g.c[1]) * 0.55];
@@ -196,7 +269,7 @@ function drawOverlay() {
 }
 $("frame").addEventListener("pointermove", (e) => {
   const st = L.steps[S.idx];
-  if (!st || S.mode === "watch" || S.done || S.advanceTimer !== null) return;
+  if (!st || !S.frameReady || S.mode === "watch" || S.done || S.advanceTimer !== null) return;
   if (st.kind === "hover" && e.pointerType === "mouse") {
     const [x, y] = toImg(e);
     if (hit(st.rect, x, y)) { ripple(x, y, true); success(); }
@@ -211,7 +284,51 @@ function updateViewer() {
   const bi = bIndex[L.steps[S.idx].block];
   if (!staged) { show3D(blocks[bi].model, `после блока ${bi + 1}`); return; }
   const completed = outcomes[S.idx];
-  show3D(completed?.model, completed?.model ? "вращайте деталь" : "эскиз виден в рабочем окне");
+  const model = S.frameReady ? completed?.model : null;
+  $("model-card").hidden = !model;
+  $("model-title").textContent = S.mode === "watch" ? "Геометрия на этом этапе" : "Подтверждённая геометрия";
+  show3D(model, model ? "Поверните деталь мышью" : "");
+}
+
+function loadFrame(url, alt, ready) {
+  const img = $("shot");
+  if (!staged) { img.src = url; img.alt = alt; ready(); return; }
+  const token = ++S.imageToken;
+  const frame = $("frame");
+  const retry = $("frame-retry");
+  S.frameReady = false;
+  frame.dataset.ready = "false";
+  frame.setAttribute("aria-busy", "true");
+  $("frame-status").hidden = false;
+  $("frame-status-text").textContent = "Загружается кадр";
+  retry.hidden = true;
+  $("skip").disabled = true;
+  $("hint").disabled = true;
+  $("hot").hidden = true;
+  $("pop").hidden = true;
+  $("layer").querySelectorAll(".ripple").forEach(el => el.remove());
+  img.src = url;
+  img.alt = alt;
+  img.decode().then(() => {
+    if (token !== S.imageToken) return;
+    S.frameReady = true;
+    frame.dataset.ready = "true";
+    frame.setAttribute("aria-busy", "false");
+    $("frame-status").hidden = true;
+    $("skip").disabled = false;
+    $("hint").disabled = false;
+    ready();
+  }).catch(() => {
+    if (token !== S.imageToken) return;
+    frame.setAttribute("aria-busy", "false");
+    $("frame-status-text").textContent = "Кадр не загрузился";
+    retry.hidden = false;
+    retry.onclick = () => {
+      const fresh = new URL(url, location);
+      fresh.searchParams.set("retry", String(Date.now()));
+      loadFrame(fresh.href, alt, ready);
+    };
+  });
 }
 
 function configureViews(st) {
@@ -225,8 +342,7 @@ function configureViews(st) {
     button.textContent = view.name;
     button.setAttribute("aria-pressed", String(i === 0));
     button.onclick = () => {
-      $("shot").src = view.shot;
-      $("shot").alt = `${st.title}. ${view.name}.`;
+      loadFrame(view.shot, `${st.title}. ${view.name}.`, updateViewer);
       for (const peer of host.children) peer.setAttribute("aria-pressed", String(peer === button));
     };
     host.append(button);
@@ -236,8 +352,7 @@ function configureViews(st) {
 function render() {
   const st = L.steps[S.idx], bi = bIndex[st.block], b = blocks[bi];
   const result = st.kind === "result";
-  $("shot").src = st.shot;
-  $("shot").alt = result ? st.title : "Кадр окна SOLIDWORKS для текущего шага";
+  const alt = result ? st.title : "Кадр окна SOLIDWORKS для текущего шага";
   $("frame").classList.toggle("result", result);
   configureViews(st);
   const nx = L.steps[S.idx + 1]; if (nx) new Image().src = nx.shot;
@@ -245,41 +360,66 @@ function render() {
   $("blockname").textContent = `${bi + 1}. ${b.title}`;
   $("kind").textContent = KIND[st.kind] || st.kind;
   $("title").textContent = st.title;
-  $("text").textContent = st.text;
-  const showVal = st.value != null && S.mode !== "test";
+  $("text").textContent = S.mode === "test" && st.testText ? st.testText : st.text;
+  if (staged) {
+    if ($("viewer").dataset.model !== outcomes[S.idx]?.model) $("model-card").hidden = true;
+    $("context").textContent = st.context || "";
+    $("context").hidden = !st.context;
+    $("preview").textContent = st.preview || "";
+    $("preview").hidden = !st.preview;
+    $("mode-help").textContent = S.mode === "watch"
+      ? "Демонстрация. Откройте любой этап и остановитесь на его результате."
+      : S.mode === "test" ? "Выполняйте действия самостоятельно. При необходимости откройте подсказку."
+      : "Выполняйте команды по подсветке. Откройте «Покажи», чтобы посмотреть любой этап.";
+  }
+  const showVal = !staged && st.value != null && S.mode !== "test";
   $("val").hidden = !showVal; if (showVal) $("val").textContent = "Значение: " + fmtVal(st.value);
   $("msg").textContent = ""; $("msg").className = "msg";
   S.misses = 0; S.revealed = false; ghostP = null; drawOverlay();
   if (st.rect) place($("hot"), st.rect);
-  $("hot").hidden = result || S.mode === "test";
+  $("hot").hidden = true;
   $("cursor").toggleAttribute("hidden", result || S.mode !== "watch");
-  // поле ввода
-  const pop = $("pop");
-  if (st.kind === "input" && S.mode !== "watch") {
-    pop.hidden = false; $("popin").value = "";
-    const p = pct(st.rect); pop.style.left = Math.min(p.left, 72) + "%"; pop.style.top = Math.min(p.top + p.h + 1.2, 88) + "%";
-    $("popin").placeholder = typeof st.value === "number" ? "число" : "текст";
-    $("popin").inputMode = typeof st.value === "number" ? "decimal" : "text";
-    setTimeout(() => $("popin").focus({ preventScroll: true }), 60);
-  } else pop.hidden = true;
+  $("pop").hidden = true;
   // маршрут
   [...$("route").children].forEach((el, i) => {
-    const steps = L.steps.filter((s) => s.block === blocks[i].id), first = L.steps.indexOf(steps[0]);
-    const doneN = Math.max(0, Math.min(steps.length, S.idx - first));
-    el.querySelector(".fill").style.width = (doneN / steps.length * 100) + "%";
-    el.classList.toggle("done", doneN === steps.length); el.classList.toggle("cur", i === bi);
+    const {start, end} = chapters[i];
+    const run = runs[S.mode];
+    const confirmed = staged ? (run?.confirmed || 0) : S.idx;
+    const doneN = Math.max(0, Math.min(end - start, confirmed - start));
+    el.querySelector(".fill").style.width = (doneN / (end - start) * 100) + "%";
+    el.classList.toggle("done", doneN === end - start); el.classList.toggle("cur", i === bi);
+    el.disabled = staged && S.mode !== "watch" && start > confirmed;
+    if (i === bi) el.setAttribute("aria-current", "step");
+    else el.removeAttribute("aria-current");
   });
   $("back").disabled = S.idx === 0;
   $("hint").hidden = result || S.mode === "watch";
   $("skip").textContent = result ? (S.idx === N - 1 ? "Завершить →" : "Продолжить →") : S.mode === "watch" ? "Дальше →" : "Пропустить →";
+  $("skip").hidden = staged && !result && S.mode !== "watch";
   $("hint-line").textContent = result ? "Осмотрите результат перед следующим этапом." : S.mode === "watch" ? "Смотрите: курсор показывает каждое действие." :
     S.mode === "test" ? "Подсветки нет. Ошиблись дважды — появится подсказка." : "Кликайте по подсвеченной области — как в SOLIDWORKS.";
   $("play").hidden = result || S.mode !== "watch";
   $("zoom").hidden = result;
-  applyZoom();
-  updateViewer();
-  store.set(lessonId + ".idx", S.idx);
-  if (!result && S.mode === "watch") demo();
+  updateStats();
+  persist();
+  fitDesktopFrame();
+  loadFrame(st.shot, alt, () => {
+    $("hot").hidden = result || S.mode !== "guide";
+    if (!staged && S.mode === "watch") $("hot").hidden = false;
+    if (st.kind === "input" && S.mode !== "watch") {
+      const input = $("popin");
+      $("pop").hidden = false; input.value = "";
+      input.placeholder = st.unit || (typeof st.value === "number" ? "число" : "текст");
+      input.inputMode = typeof st.value === "number" ? "decimal" : "text";
+      const p = pct(st.rect);
+      $("pop").style.left = Math.min(p.left, 72) + "%";
+      $("pop").style.top = Math.min(p.top + p.h + 1.2, 88) + "%";
+      input.focus({preventScroll:true});
+    }
+    applyZoom();
+    updateViewer();
+    if (!result && S.mode === "watch") demo();
+  });
 }
 const fmtVal = (v) => typeof v === "number" ? String(+v.toFixed(3)).replace(".", ",") : `«${v}»`;
 
@@ -290,17 +430,26 @@ function ripple(x, y, ok) {
   $("layer").append(r); setTimeout(() => r.remove(), 600);
 }
 function success(text) {
+  confirmCurrent();
   $("msg").textContent = text || "Верно"; $("msg").className = "msg ok";
   $("hot").hidden = true; $("pop").hidden = true;
   S.advanceTimer = setTimeout(next, 420);
 }
 function miss(text) {
-  S.misses++; S.err++; $("s-err").textContent = S.err;
+  S.misses++;
+  const run = runs[S.mode];
+  if (staged) run.errors++;
+  else { S.err++; $("s-err").textContent = S.err; }
   $("msg").textContent = text; $("msg").className = "msg bad";
-  if (S.mode === "test" && S.misses >= 2 && !S.revealed) { S.revealed = true; S.hints++; $("s-hint").textContent = S.hints; $("hot").hidden = false; }
+  if (S.mode === "test" && S.misses >= 2 && !S.revealed) {
+    S.revealed = true; $("hot").hidden = false;
+    if (staged) run.hints++;
+    else { S.hints++; $("s-hint").textContent = S.hints; }
+  }
+  if (staged) { persist(); updateStats(); }
 }
 $("frame").addEventListener("click", (e) => {
-  if (S.mode === "watch" || S.done || S.advanceTimer !== null) return;
+  if (!S.frameReady || S.mode === "watch" || S.done || S.advanceTimer !== null) return;
   if (e.target.closest(".pop")) return;
   const st = L.steps[S.idx], [x, y] = toImg(e);
   if (!st.rect) return;
@@ -308,18 +457,29 @@ $("frame").addEventListener("click", (e) => {
     if (hit(st.rect, x, y, 14)) { $("popin").focus(); return; }
     ripple(x, y, false); miss("Здесь нужно ввести значение — поле под подсветкой."); return;
   }
-  if (hit(st.rect, x, y)) { ripple(x, y, true); success(); }
-  else { ripple(x, y, false); miss("Мимо. " + (S.mode === "guide" ? "Нужная область подсвечена оранжевым." : "Перечитайте задание слева.")); }
+  if (hit(st.rect, x, y)) {
+    if (staged && st.modifier && !e.getModifierState(st.modifier)) {
+      const key = st.modifier === "Control" ? "Ctrl" : st.modifier;
+      ripple(x, y, false); miss(`Удерживайте ${key} при щелчке.`);
+      return;
+    }
+    ripple(x, y, true); success();
+  } else {
+    ripple(x, y, false);
+    miss(S.mode === "guide" ? "Выберите область в оранжевой рамке." : "Сверьтесь с заданием справа или откройте подсказку.");
+  }
 });
 $("pop").addEventListener("submit", (e) => {
   e.preventDefault();
   const st = L.steps[S.idx], raw = $("popin").value.trim();
-  if (!raw || st.kind !== "input" || S.advanceTimer !== null) return;
+  if (!S.frameReady || S.mode === "watch" || !raw || st.kind !== "input" || S.advanceTimer !== null) return;
   let ok;
   if (typeof st.value === "number") {
-    const normalized = raw.replace(",", ".");
+    const typed = staged && st.unit && raw.toLowerCase().endsWith(st.unit)
+      ? raw.slice(0, -st.unit.length).trim() : raw;
+    const normalized = typed.replace(",", ".");
     const number = staged ? Number(normalized) : parseFloat(normalized);
-    ok = (!staged || /^[-+]?\d+(?:[.,]\d+)?$/.test(raw)) && Math.abs(number - st.value) < 1e-3;
+    ok = (!staged || /^[-+]?\d+(?:[.,]\d+)?$/.test(typed)) && Math.abs(number - st.value) < 1e-3;
   }
   else { const a = raw.toLowerCase(), b = String(st.value).toLowerCase(); ok = a.length >= 4 && (b.startsWith(a) || a.startsWith(b)); }
   if (ok) success("Верно: " + fmtVal(st.value));
@@ -330,6 +490,8 @@ $("pop").addEventListener("submit", (e) => {
 function demo() {
   clearTimeout(S.timer);
   const st = L.steps[S.idx], c = $("cursor");
+  if (!S.frameReady || S.done || !st.rect) return;
+  const token = S.imageToken;
   c.removeAttribute("hidden");
   if (!S.playing) return;
   const [cx, cy] = center(st.rect);
@@ -344,12 +506,12 @@ function demo() {
         if (staged) applyZoom();
         const txt = typeof st.value === "number" ? String(+st.value.toFixed(3)) : String(st.value);
         let i = 0;
-        const type = () => { if (!S.playing || S.mode !== "watch") return; $("popin").value = txt.slice(0, ++i);
+        const type = () => { if (!S.playing || S.mode !== "watch" || S.imageToken !== token) return; $("popin").value = txt.slice(0, ++i);
           S.timer = setTimeout(i < txt.length ? type : () => { pop.hidden = true; next(); }, i < txt.length ? 70 : 900); };
         type();
       } else if (st.ghost) {
         const t0 = performance.now(), [gx, gy] = st.ghost.c;
-        const grow = (t) => { if (!S.playing || S.mode !== "watch") return;
+        const grow = (t) => { if (!S.playing || S.mode !== "watch" || S.imageToken !== token) return;
           const k = Math.min(1, (t - t0) / 900); ghostP = [gx + (cx * W - gx) * k, gy + (cy * H - gy) * k]; drawOverlay();
           if (k < 1) requestAnimationFrame(grow); else S.timer = setTimeout(next, 700); };
         requestAnimationFrame(grow);
@@ -361,6 +523,7 @@ $("play").onclick = () => { S.playing = !S.playing; $("play").textContent = S.pl
 
 /* ---------- навигация ---------- */
 function go(i) {
+  if (staged && S.mode !== "watch" && i > runs[S.mode].confirmed) return;
   clearTimeout(S.timer);
   clearTimeout(S.advanceTimer); S.advanceTimer = null;
   if (i >= N) return finish();
@@ -368,16 +531,34 @@ function go(i) {
 }
 function next() { go(S.idx + 1); }
 function finish() {
+  if (staged) S.idx = N - 1;
   S.done = true; clearTimeout(S.timer); $("cursor").setAttribute("hidden", ""); $("pop").hidden = true; $("hot").hidden = true;
-  $("shot").src = L.final.shot; $("layer").style.transform = ""; $("ov").innerHTML = "";
-  $("shot").alt = L.final.title || "Готовый кронштейн";
+  $("layer").style.transform = ""; $("ov").innerHTML = "";
   if (staged) configureViews(L.steps[N - 1]);
-  [...$("route").children].forEach((el) => { el.classList.add("done"); el.classList.remove("cur"); el.querySelector(".fill").style.width = "100%"; });
+  const demonstrated = staged && S.mode === "watch";
+  [...$("route").children].forEach((el) => {
+    el.classList.toggle("done", !demonstrated); el.classList.remove("cur");
+    el.querySelector(".fill").style.width = demonstrated ? "0%" : "100%";
+    el.removeAttribute("aria-current");
+  });
   $("blockname").textContent = "Готово"; $("kind").textContent = "Итог";
-  $("title").textContent = L.final.title || "Кронштейн построен";
-  $("text").textContent = `Вы прошли ${N} шагов. Промахов: ${S.err}, подсказок: ${S.hints}. Попробуйте режим «Проверка» — без подсветки.`;
+  $("title").textContent = demonstrated ? "Итог демонстрации" : L.final.title || "Кронштейн построен";
+  const run = runs[S.mode];
+  $("text").textContent = staged
+    ? demonstrated ? "Вы открыли итоговую геометрию. Выберите «Повторяй», чтобы выполнить действия по подсветке."
+      : `Подтверждены ${N} шагов в ${blocks.length} этапах. Промахи — ${run.errors}. Подсказки — ${run.hints}.`
+    : `Вы прошли ${N} шагов. Промахов: ${S.err}, подсказок: ${S.hints}. Попробуйте режим «Проверка» — без подсветки.`;
   $("val").hidden = true;
   if (staged) {
+    $("context").hidden = true;
+    $("preview").hidden = true;
+    $("model-card").hidden = false;
+    $("back").disabled = false;
+    $("hint").hidden = true;
+    $("play").hidden = true;
+    $("zoom").hidden = true;
+    $("mode-help").textContent = demonstrated ? "Демонстрация" : "Сохранённый результат";
+    $("hint-line").textContent = "Осмотрите деталь или начните новое прохождение.";
     const backLink = document.createElement("a");
     backLink.href = $("home").href;
     backLink.textContent = "Вернуться к странице урока";
@@ -386,14 +567,36 @@ function finish() {
     $("msg").innerHTML = '<div class="finish-links"><a href="/ru/products/solidworks-instructor/">Тот же урок внутри SOLIDWORKS</a><a href="mailto:peter@kolosei.com?subject=%D0%A3%D1%80%D0%BE%D0%BA%20%C2%AB%D0%9A%D1%80%D0%BE%D0%BD%D1%88%D1%82%D0%B5%D0%B9%D0%BD%C2%BB">Написать отзыв</a></div>';
   }
   $("stepcount").textContent = `${N} / ${N}`;
-  if (staged) $("skip").textContent = "Начать заново";
-  updateViewer();
-  store.set(lessonId + ".idx", 0);
+  if (staged) {
+    $("skip").hidden = false;
+    $("skip").textContent = "Начать заново";
+    updateStats();
+    persist();
+  } else store.set(lessonId + ".idx", 0);
+  $("frame").classList.add("result");
+  loadFrame(L.final.shot, L.final.title || "Готовая деталь", updateViewer);
 }
-$("back").onclick = () => go(S.idx - 1);
-$("skip").onclick = () => (S.done ? go(0) : next());
+
+function restart() {
+  if (staged && S.mode !== "watch") runs[S.mode] = blankRun();
+  go(0);
+}
+if (staged) $("restart").onclick = restart;
+$("back").onclick = () => go(S.done && staged ? S.idx : S.idx - 1);
+$("skip").onclick = () => {
+  if (!S.frameReady) return;
+  if (S.done) { restart(); return; }
+  if (staged && S.mode !== "watch") {
+    if (L.steps[S.idx].kind !== "result") return;
+    confirmCurrent();
+  }
+  next();
+};
 $("hint").onclick = () => {
-  S.hints++; $("s-hint").textContent = S.hints; S.revealed = true; $("hot").hidden = false;
+  if (!S.frameReady) return;
+  if (staged) { runs[S.mode].hints++; persist(); updateStats(); }
+  else { S.hints++; $("s-hint").textContent = S.hints; }
+  S.revealed = true; $("hot").hidden = false;
   const st = L.steps[S.idx]; $("msg").className = "msg";
   $("msg").textContent = st.value != null ? "Нужное значение: " + fmtVal(st.value) : "Нужная область подсвечена.";
 };
@@ -404,13 +607,22 @@ document.querySelectorAll(".modes button").forEach((b) => b.onclick = () => {
   S.mode = b.dataset.mode; store.set(lessonId + ".mode", S.mode);
   document.querySelectorAll(".modes button").forEach((x) => x.setAttribute("aria-pressed", x === b));
   S.playing = true; $("play").textContent = "Пауза";
-  if (S.done) go(0); else render();
+  if (staged) {
+    const run = runs[S.mode];
+    S.done = false;
+    if (run) S.idx = run.cursor;
+    if (run?.confirmed === N) { finish(); return; }
+    render();
+  } else if (S.done) go(0); else render();
 });
 document.querySelectorAll(".modes button").forEach((x) => x.setAttribute("aria-pressed", x.dataset.mode === S.mode));
 $("cursor").toggleAttribute("hidden", S.mode !== "watch");
 document.addEventListener("keydown", (e) => {
   if (e.target.tagName === "INPUT") return;
-  if (e.key === "ArrowRight") next(); if (e.key === "ArrowLeft") go(S.idx - 1);
+  if (!S.frameReady) return;
+  if (e.key === "ArrowRight" && (!staged || S.mode === "watch" || S.idx < runs[S.mode].confirmed)) next();
+  if (e.key === "ArrowLeft") go(S.idx - 1);
 });
-setInterval(() => { if (S.done) return; const s = Math.floor((Date.now() - S.t0) / 1000); $("s-time").textContent = `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`; }, 1000);
-render();
+if (!staged) setInterval(() => { if (S.done) return; const s = Math.floor((Date.now() - S.t0) / 1000); $("s-time").textContent = `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`; }, 1000);
+if (staged && runs[S.mode]?.confirmed === N) finish();
+else render();
