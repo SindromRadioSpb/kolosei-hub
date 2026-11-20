@@ -1,0 +1,3872 @@
+{
+  "id": "part-m16",
+  "title": "Деталь с четырьмя отверстиями M16",
+  "sw_version": "SOLIDWORKS 2026 SP4.1",
+  "screen": {
+    "w": 1562,
+    "h": 1006
+  },
+  "blocks": [
+    {
+      "id": "outline",
+      "title": "Оси и контур"
+    },
+    {
+      "id": "base-sketch",
+      "title": "Размеры основания"
+    },
+    {
+      "id": "base",
+      "title": "Основание 10 мм"
+    },
+    {
+      "id": "boss-sketch",
+      "title": "Эскиз выступов"
+    },
+    {
+      "id": "bosses",
+      "title": "Выступы 50 мм"
+    },
+    {
+      "id": "grid",
+      "title": "Сетка 54 × 26"
+    },
+    {
+      "id": "holes",
+      "title": "Четыре M16"
+    },
+    {
+      "id": "roots",
+      "title": "R4 у выступов"
+    },
+    {
+      "id": "rim",
+      "title": "R4 по контуру"
+    },
+    {
+      "id": "mount",
+      "title": "Фаски Ø18"
+    },
+    {
+      "id": "thread",
+      "title": "Фаски M16"
+    }
+  ],
+  "steps": [
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-002.webp",
+      "rect": [
+        126,
+        342,
+        179,
+        375
+      ],
+      "title": "Пустая деталь уже открыта",
+      "text": "Выберите плоскость «Сверху».",
+      "native_hint": 2
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-003.webp",
+      "rect": [
+        3,
+        33,
+        54,
+        96
+      ],
+      "title": "Нажмите «Эскиз»",
+      "text": "Работайте в виде, перпендикулярном плоскости.",
+      "native_hint": 3
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-004.webp",
+      "rect": [
+        165,
+        34,
+        200,
+        67
+      ],
+      "title": "Нажмите «Линия» на вкладке «Эскиз»",
+      "text": "",
+      "native_hint": 4
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-005.webp",
+      "rect": [
+        113,
+        458,
+        312,
+        487
+      ],
+      "title": "Включите флажок «Вспомогательная геометрия»",
+      "text": "",
+      "native_hint": 5
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-006.webp",
+      "rect": [
+        113,
+        503,
+        312,
+        532
+      ],
+      "title": "Снимите флажок «Линия средней точки»",
+      "text": "",
+      "native_hint": 6
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-007.webp",
+      "rect": [
+        921,
+        162,
+        964,
+        205
+      ],
+      "title": "Щёлкните верхнюю точку вертикальной вспомогательной линии",
+      "text": "",
+      "native_hint": 7
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-008.webp",
+      "rect": [
+        920,
+        853,
+        965,
+        898
+      ],
+      "title": "Щёлкните нижнюю точку",
+      "text": "Линия проходит через начало координат.",
+      "native_hint": 8
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-009.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Нажмите зелёную галочку, чтобы подтвердить построенные отрезки",
+      "text": "",
+      "native_hint": 9
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-010.webp",
+      "rect": [
+        78,
+        214,
+        115,
+        251
+      ],
+      "title": "Если инструмент «Линия» остался открыт, нажмите зелёную галочку ещё раз",
+      "text": "",
+      "native_hint": 10
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-011.webp",
+      "rect": [
+        166,
+        35,
+        199,
+        66
+      ],
+      "title": "Нажмите «Линия» на вкладке «Эскиз»",
+      "text": "",
+      "native_hint": 11
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-012.webp",
+      "rect": [
+        113,
+        458,
+        312,
+        487
+      ],
+      "title": "Включите флажок «Вспомогательная геометрия»",
+      "text": "",
+      "native_hint": 12
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-013.webp",
+      "rect": [
+        113,
+        503,
+        312,
+        532
+      ],
+      "title": "Снимите флажок «Линия средней точки»",
+      "text": "",
+      "native_hint": 13
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-014.webp",
+      "rect": [
+        569,
+        527,
+        612,
+        570
+      ],
+      "title": "Щёлкните левую точку горизонтальной вспомогательной линии",
+      "text": "",
+      "native_hint": 14
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-015.webp",
+      "rect": [
+        1268,
+        526,
+        1313,
+        571
+      ],
+      "title": "Щёлкните правую точку",
+      "text": "Линия проходит через начало координат.",
+      "native_hint": 15
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-016.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Нажмите зелёную галочку, чтобы подтвердить построенные отрезки",
+      "text": "",
+      "native_hint": 16
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-017.webp",
+      "rect": [
+        78,
+        214,
+        115,
+        251
+      ],
+      "title": "Если инструмент «Линия» остался открыт, нажмите зелёную галочку ещё раз",
+      "text": "",
+      "native_hint": 17
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-018.webp",
+      "rect": [
+        165,
+        34,
+        200,
+        67
+      ],
+      "title": "Нажмите «Линия» на вкладке «Эскиз»",
+      "text": "",
+      "native_hint": 18
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-021.webp",
+      "rect": [
+        116,
+        458,
+        304,
+        486
+      ],
+      "title": "Проверьте, что «Вспомогательная геометрия» выключена",
+      "text": "Щёлкните по этому полю.",
+      "native_hint": 19
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-021.webp",
+      "rect": [
+        116,
+        503,
+        304,
+        530
+      ],
+      "title": "Проверьте, что «Линия средней точки» выключена",
+      "text": "Щёлкните по этому полю.",
+      "native_hint": 20
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-021.webp",
+      "rect": [
+        920,
+        200,
+        965,
+        245
+      ],
+      "title": "Щёлкните верхнюю вершину на вертикальной оси",
+      "text": "",
+      "native_hint": 21
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-022.webp",
+      "rect": [
+        735,
+        291,
+        780,
+        336
+      ],
+      "title": "Щёлкните левое плечо, чтобы закончить наклонный отрезок",
+      "text": "",
+      "native_hint": 22
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-023.webp",
+      "rect": [
+        736,
+        527,
+        779,
+        570
+      ],
+      "title": "Щёлкните точку прямо под плечом на горизонтальной оси",
+      "text": "",
+      "native_hint": 23
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-024.webp",
+      "rect": [
+        78,
+        214,
+        115,
+        251
+      ],
+      "title": "Нажмите зелёную галочку, чтобы подтвердить построенные отрезки",
+      "text": "",
+      "native_hint": 24
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-025.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Если инструмент «Линия» остался открыт, нажмите зелёную галочку ещё раз",
+      "text": "",
+      "native_hint": 25
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-026.webp",
+      "rect": [
+        1217,
+        397,
+        1262,
+        442
+      ],
+      "title": "Щёлкните подсвеченное пустое место, чтобы снять выделение",
+      "text": "",
+      "native_hint": 26
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-027.webp",
+      "rect": [
+        882,
+        225,
+        917,
+        260
+      ],
+      "title": "Щёлкните левый верхний наклонный отрезок",
+      "text": "",
+      "native_hint": 27
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-028.webp",
+      "rect": [
+        739,
+        475,
+        776,
+        512
+      ],
+      "title": "Удерживая Ctrl, щёлкните левую вертикальную сторону",
+      "text": "",
+      "native_hint": 28
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-029.webp",
+      "rect": [
+        619,
+        35,
+        817,
+        64
+      ],
+      "title": "Откройте «Зеркально отразить объекты»",
+      "text": "",
+      "native_hint": 29
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-030.webp",
+      "rect": [
+        114,
+        548,
+        313,
+        584
+      ],
+      "title": "Щёлкните список под надписью «Зеркально относительно»",
+      "text": "",
+      "native_hint": 30
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-031.webp",
+      "rect": [
+        925,
+        699,
+        960,
+        734
+      ],
+      "title": "Щёлкните вертикальную вспомогательную ось по подсветке",
+      "text": "",
+      "native_hint": 31
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-032.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Нажмите зелёную галочку",
+      "text": "SolidWorks создаст зеркальную копию.",
+      "native_hint": 32
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-033.webp",
+      "rect": [
+        924,
+        377,
+        961,
+        414
+      ],
+      "title": "Щёлкните подсвеченное пустое место, чтобы снять выделение",
+      "text": "",
+      "native_hint": 33
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-034.webp",
+      "rect": [
+        856,
+        238,
+        891,
+        273
+      ],
+      "title": "Щёлкните левый верхний наклонный отрезок",
+      "text": "",
+      "native_hint": 34
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-035.webp",
+      "rect": [
+        739,
+        475,
+        776,
+        512
+      ],
+      "title": "Удерживая Ctrl, щёлкните левую вертикальную сторону",
+      "text": "",
+      "native_hint": 35
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-036.webp",
+      "rect": [
+        993,
+        238,
+        1028,
+        273
+      ],
+      "title": "Удерживая Ctrl, щёлкните правый верхний наклонный отрезок",
+      "text": "",
+      "native_hint": 36
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-037.webp",
+      "rect": [
+        1108,
+        475,
+        1145,
+        512
+      ],
+      "title": "Удерживая Ctrl, щёлкните правую вертикальную сторону",
+      "text": "",
+      "native_hint": 37
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-038.webp",
+      "rect": [
+        619,
+        35,
+        817,
+        64
+      ],
+      "title": "Откройте «Зеркально отразить объекты»",
+      "text": "",
+      "native_hint": 38
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-039.webp",
+      "rect": [
+        115,
+        581,
+        312,
+        615
+      ],
+      "title": "Щёлкните список под надписью «Зеркально относительно»",
+      "text": "",
+      "native_hint": 39
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-040.webp",
+      "rect": [
+        831,
+        530,
+        868,
+        567
+      ],
+      "title": "Щёлкните горизонтальную вспомогательную ось по подсветке",
+      "text": "",
+      "native_hint": 40
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-041.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Нажмите зелёную галочку",
+      "text": "SolidWorks создаст зеркальную копию.",
+      "native_hint": 41
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-042.webp",
+      "rect": [
+        206,
+        34,
+        242,
+        67
+      ],
+      "title": "Нажмите «Окружность»",
+      "text": "",
+      "native_hint": 42
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-043.webp",
+      "rect": [
+        920,
+        315,
+        965,
+        360
+      ],
+      "title": "Щёлкните подсвеченный центр верхней окружности на вертикальной оси",
+      "text": "",
+      "native_hint": 43
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-044.webp",
+      "rect": [
+        968,
+        301,
+        1013,
+        346
+      ],
+      "title": "Щёлкните вторую подсвеченную точку, чтобы закончить окружность",
+      "text": "",
+      "native_hint": 44
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-045.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Нажмите зелёную галочку, чтобы закрыть инструмент",
+      "text": "",
+      "native_hint": 45
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-046.webp",
+      "rect": [
+        1217,
+        397,
+        1262,
+        442
+      ],
+      "title": "Щёлкните подсвеченное пустое место, чтобы снять выделение",
+      "text": "",
+      "native_hint": 46
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-047.webp",
+      "rect": [
+        966,
+        290,
+        1001,
+        325
+      ],
+      "title": "Щёлкните кромку верхней окружности",
+      "text": "",
+      "native_hint": 47
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-048.webp",
+      "rect": [
+        619,
+        35,
+        817,
+        64
+      ],
+      "title": "Откройте «Зеркально отразить объекты»",
+      "text": "",
+      "native_hint": 48
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-049.webp",
+      "rect": [
+        114,
+        541,
+        313,
+        577
+      ],
+      "title": "Щёлкните список под надписью «Зеркально относительно»",
+      "text": "",
+      "native_hint": 49
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-050.webp",
+      "rect": [
+        831,
+        530,
+        868,
+        567
+      ],
+      "title": "Щёлкните горизонтальную вспомогательную ось по подсветке",
+      "text": "",
+      "native_hint": 50
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "shot": "assets/shots/step-051.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Нажмите зелёную галочку",
+      "text": "SolidWorks создаст зеркальную копию.",
+      "native_hint": 51
+    },
+    {
+      "block": "outline",
+      "kind": "result",
+      "title": "Контур и две окружности",
+      "text": "Виден замкнутый контур, две оси и зеркальная пара окружностей.",
+      "shot": "assets/shots/outline.webp",
+      "model": null
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-052.webp",
+      "rect": [
+        45,
+        34,
+        173,
+        95
+      ],
+      "title": "Включите «Автоматическое нанесение размеров», если инструмент ещё не включён",
+      "text": "",
+      "native_hint": 52
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-053.webp",
+      "rect": [
+        975,
+        319,
+        1010,
+        354
+      ],
+      "title": "Щёлкните подсвеченную кромку верхней окружности",
+      "text": "",
+      "native_hint": 53
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-054.webp",
+      "rect": [
+        1005,
+        332,
+        1048,
+        375
+      ],
+      "title": "Щёлкните подсвеченное место надписи размера",
+      "text": "",
+      "native_hint": 54
+    },
+    {
+      "block": "base-sketch",
+      "kind": "input",
+      "shot": "assets/shots/step-055.webp",
+      "rect": [
+        1028,
+        257,
+        1218,
+        291
+      ],
+      "title": "Введите значение",
+      "text": "Введите 18 мм и нажмите Enter.",
+      "native_hint": 55,
+      "value": 18.0
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-056.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Нажмите подсвеченную зелёную галочку, чтобы закончить нанесение этого размера",
+      "text": "",
+      "native_hint": 56
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-057.webp",
+      "rect": [
+        44,
+        33,
+        174,
+        96
+      ],
+      "title": "Включите «Автоматическое нанесение размеров», если инструмент ещё не включён",
+      "text": "",
+      "native_hint": 57
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-058.webp",
+      "rect": [
+        925,
+        319,
+        960,
+        354
+      ],
+      "title": "Щёлкните центр верхней окружности",
+      "text": "",
+      "native_hint": 58
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-059.webp",
+      "rect": [
+        924,
+        741,
+        961,
+        778
+      ],
+      "title": "Щёлкните центр нижней окружности",
+      "text": "",
+      "native_hint": 59
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-060.webp",
+      "rect": [
+        578,
+        527,
+        621,
+        570
+      ],
+      "title": "Щёлкните подсвеченное место надписи размера",
+      "text": "",
+      "native_hint": 60
+    },
+    {
+      "block": "base-sketch",
+      "kind": "input",
+      "shot": "assets/shots/step-061.webp",
+      "rect": [
+        603,
+        465,
+        791,
+        497
+      ],
+      "title": "Введите значение",
+      "text": "Введите 81,5 мм и нажмите Enter.",
+      "native_hint": 61,
+      "value": 81.5
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-062.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Нажмите подсвеченную зелёную галочку, чтобы закончить нанесение этого размера",
+      "text": "",
+      "native_hint": 62
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-063.webp",
+      "rect": [
+        45,
+        34,
+        173,
+        95
+      ],
+      "title": "Включите «Автоматическое нанесение размеров», если инструмент ещё не включён",
+      "text": "",
+      "native_hint": 63
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-064.webp",
+      "rect": [
+        1041,
+        261,
+        1076,
+        296
+      ],
+      "title": "Щёлкните верхний правый наклонный отрезок",
+      "text": "",
+      "native_hint": 64
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-065.webp",
+      "rect": [
+        1041,
+        800,
+        1076,
+        835
+      ],
+      "title": "Щёлкните нижний правый наклонный отрезок",
+      "text": "",
+      "native_hint": 65
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-066.webp",
+      "rect": [
+        1351,
+        526,
+        1396,
+        571
+      ],
+      "title": "Щёлкните подсвеченное место надписи размера",
+      "text": "",
+      "native_hint": 66
+    },
+    {
+      "block": "base-sketch",
+      "kind": "input",
+      "shot": "assets/shots/step-067.webp",
+      "rect": [
+        1188,
+        460,
+        1376,
+        492
+      ],
+      "title": "Введите значение",
+      "text": "Введите 60° и нажмите Enter.",
+      "native_hint": 67,
+      "value": 60.0
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-068.webp",
+      "rect": [
+        78,
+        214,
+        115,
+        251
+      ],
+      "title": "Нажмите подсвеченную зелёную галочку, чтобы закончить нанесение этого размера",
+      "text": "",
+      "native_hint": 68
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-069.webp",
+      "rect": [
+        45,
+        34,
+        173,
+        95
+      ],
+      "title": "Включите «Автоматическое нанесение размеров», если инструмент ещё не включён",
+      "text": "",
+      "native_hint": 69
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-070.webp",
+      "rect": [
+        745,
+        471,
+        782,
+        508
+      ],
+      "title": "Щёлкните левый вертикальный отрезок",
+      "text": "",
+      "native_hint": 70
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-071.webp",
+      "rect": [
+        1103,
+        472,
+        1138,
+        507
+      ],
+      "title": "Щёлкните правый вертикальный отрезок",
+      "text": "",
+      "native_hint": 71
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-072.webp",
+      "rect": [
+        920,
+        138,
+        965,
+        183
+      ],
+      "title": "Щёлкните подсвеченное место надписи размера",
+      "text": "",
+      "native_hint": 72
+    },
+    {
+      "block": "base-sketch",
+      "kind": "input",
+      "shot": "assets/shots/step-073.webp",
+      "rect": [
+        977,
+        243,
+        1165,
+        275
+      ],
+      "title": "Введите значение",
+      "text": "Введите 80 мм и нажмите Enter.",
+      "native_hint": 73,
+      "value": 80.0
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-074.webp",
+      "rect": [
+        78,
+        214,
+        115,
+        251
+      ],
+      "title": "Нажмите подсвеченную зелёную галочку, чтобы закончить нанесение этого размера",
+      "text": "",
+      "native_hint": 74
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-075.webp",
+      "rect": [
+        247,
+        87,
+        281,
+        115
+      ],
+      "title": "Нажмите «Скругление эскиза»",
+      "text": "",
+      "native_hint": 75
+    },
+    {
+      "block": "base-sketch",
+      "kind": "input",
+      "shot": "assets/shots/step-076.webp",
+      "rect": [
+        114,
+        420,
+        297,
+        456
+      ],
+      "title": "Введите значение",
+      "text": "Введите 16 мм в поле радиуса и подтвердите ввод.",
+      "native_hint": 76,
+      "value": 16.0
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-078.webp",
+      "rect": [
+        116,
+        452,
+        304,
+        480
+      ],
+      "title": "Проверьте флажок «Сохранить взаимосвязи углов»",
+      "text": "Щёлкните по этому полю.",
+      "native_hint": 77
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-078.webp",
+      "rect": [
+        824,
+        255,
+        860,
+        291
+      ],
+      "title": "Щёлкните левую наклонную сторону около верхнего угла",
+      "text": "",
+      "native_hint": 78
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-078.webp",
+      "rect": [
+        1022,
+        255,
+        1058,
+        291
+      ],
+      "title": "Щёлкните правую наклонную сторону того же угла",
+      "text": "",
+      "native_hint": 79
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-080.webp",
+      "rect": [
+        975,
+        819,
+        1020,
+        864
+      ],
+      "title": "Щёлкните правую наклонную сторону около нижнего угла",
+      "text": "",
+      "native_hint": 80
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-081.webp",
+      "rect": [
+        890,
+        834,
+        933,
+        877
+      ],
+      "title": "Щёлкните левую наклонную сторону того же угла",
+      "text": "",
+      "native_hint": 81
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-082.webp",
+      "rect": [
+        78,
+        214,
+        115,
+        251
+      ],
+      "title": "Нажмите зелёную галочку, чтобы создать скругления",
+      "text": "",
+      "native_hint": 82
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-083.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Если панель скругления осталась открыта, нажмите зелёную галочку ещё раз",
+      "text": "",
+      "native_hint": 83
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-084.webp",
+      "rect": [
+        247,
+        87,
+        281,
+        115
+      ],
+      "title": "Нажмите «Скругление эскиза»",
+      "text": "",
+      "native_hint": 84
+    },
+    {
+      "block": "base-sketch",
+      "kind": "input",
+      "shot": "assets/shots/step-085.webp",
+      "rect": [
+        114,
+        420,
+        297,
+        456
+      ],
+      "title": "Введите значение",
+      "text": "Введите 10 мм в поле радиуса и подтвердите ввод.",
+      "native_hint": 85,
+      "value": 10.0
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-087.webp",
+      "rect": [
+        116,
+        452,
+        304,
+        480
+      ],
+      "title": "Проверьте флажок «Сохранить взаимосвязи углов»",
+      "text": "Щёлкните по этому полю.",
+      "native_hint": 86
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-087.webp",
+      "rect": [
+        699,
+        478,
+        736,
+        515
+      ],
+      "title": "Щёлкните вертикальную сторону левого верхнего угла",
+      "text": "Если SolidWorks предупредит об изменении связей, дождитесь подсветки кнопки подтверждения.",
+      "native_hint": 87
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-087.webp",
+      "rect": [
+        788,
+        283,
+        828,
+        323
+      ],
+      "title": "Щёлкните наклонную сторону левого верхнего угла",
+      "text": "",
+      "native_hint": 88
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-088.webp",
+      "rect": [
+        970,
+        540,
+        1049,
+        574
+      ],
+      "title": "Подтвердите предупреждение",
+      "text": "Нажмите «Да», чтобы применить скругление."
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-089.webp",
+      "rect": [
+        1148,
+        478,
+        1185,
+        515
+      ],
+      "title": "Щёлкните вертикальную сторону правого верхнего угла",
+      "text": "Если SolidWorks предупредит об изменении связей, дождитесь подсветки кнопки подтверждения.",
+      "native_hint": 89
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-089.webp",
+      "rect": [
+        1054,
+        283,
+        1094,
+        323
+      ],
+      "title": "Щёлкните наклонную сторону правого верхнего угла",
+      "text": "",
+      "native_hint": 90
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-090.webp",
+      "rect": [
+        969,
+        539,
+        1050,
+        575
+      ],
+      "title": "Подтвердите предупреждение",
+      "text": "Нажмите «Да», чтобы применить скругление."
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-091.webp",
+      "rect": [
+        1149,
+        479,
+        1184,
+        514
+      ],
+      "title": "Щёлкните вертикальную сторону правого нижнего угла",
+      "text": "Если SolidWorks предупредит об изменении связей, дождитесь подсветки кнопки подтверждения.",
+      "native_hint": 91
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-091.webp",
+      "rect": [
+        1054,
+        771,
+        1094,
+        811
+      ],
+      "title": "Щёлкните наклонную сторону правого нижнего угла",
+      "text": "",
+      "native_hint": 92
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-092.webp",
+      "rect": [
+        969,
+        539,
+        1050,
+        575
+      ],
+      "title": "Подтвердите предупреждение",
+      "text": "Нажмите «Да», чтобы применить скругление."
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-093.webp",
+      "rect": [
+        700,
+        479,
+        735,
+        514
+      ],
+      "title": "Щёлкните вертикальную сторону левого нижнего угла",
+      "text": "Если SolidWorks предупредит об изменении связей, дождитесь подсветки кнопки подтверждения.",
+      "native_hint": 93
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-093.webp",
+      "rect": [
+        788,
+        771,
+        828,
+        811
+      ],
+      "title": "Щёлкните наклонную сторону левого нижнего угла",
+      "text": "",
+      "native_hint": 94
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-094.webp",
+      "rect": [
+        970,
+        540,
+        1049,
+        574
+      ],
+      "title": "Подтвердите предупреждение",
+      "text": "Нажмите «Да», чтобы применить скругление."
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-095.webp",
+      "rect": [
+        78,
+        214,
+        115,
+        251
+      ],
+      "title": "Нажмите зелёную галочку, чтобы создать скругления",
+      "text": "",
+      "native_hint": 95
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-096.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Если панель скругления осталась открыта, нажмите зелёную галочку ещё раз",
+      "text": "",
+      "native_hint": 96
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-097.webp",
+      "rect": [
+        45,
+        34,
+        80,
+        69
+      ],
+      "title": "Включите «Автоматическое нанесение размеров», если инструмент ещё не включён",
+      "text": "",
+      "native_hint": 97
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-098.webp",
+      "rect": [
+        924,
+        217,
+        961,
+        254
+      ],
+      "title": "Удерживая Shift, щёлкните верхнюю крайнюю точку дуги R16",
+      "text": "",
+      "native_hint": 98
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-099.webp",
+      "rect": [
+        925,
+        843,
+        960,
+        878
+      ],
+      "title": "Удерживая Shift, щёлкните нижнюю крайнюю точку дуги R16",
+      "text": "",
+      "native_hint": 99
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-100.webp",
+      "rect": [
+        516,
+        526,
+        561,
+        571
+      ],
+      "title": "Щёлкните подсвеченное место надписи размера",
+      "text": "",
+      "native_hint": 100
+    },
+    {
+      "block": "base-sketch",
+      "kind": "input",
+      "shot": "assets/shots/step-101.webp",
+      "rect": [
+        541,
+        458,
+        731,
+        492
+      ],
+      "title": "Введите значение",
+      "text": "Введите 113,5 мм и нажмите Enter.",
+      "native_hint": 101,
+      "value": 113.5
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-102.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Нажмите подсвеченную зелёную галочку, чтобы закончить нанесение этого размера",
+      "text": "",
+      "native_hint": 102
+    },
+    {
+      "block": "base-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-105.webp",
+      "rect": [
+        4,
+        35,
+        47,
+        96
+      ],
+      "title": "Выйдите из эскиза",
+      "text": "Если результат уже верен, Инструктор зачтёт его независимо от порядка кликов.",
+      "native_hint": 104
+    },
+    {
+      "block": "base-sketch",
+      "kind": "result",
+      "title": "Эскиз основания готов",
+      "text": "Проверьте габарит 113,5 мм, окружности Ø18 и скругления R16 и R10.",
+      "shot": "assets/shots/base-sketch.webp",
+      "model": null
+    },
+    {
+      "block": "base",
+      "kind": "click",
+      "shot": "assets/shots/step-105.webp",
+      "rect": [
+        3,
+        180,
+        76,
+        208
+      ],
+      "title": "Откройте вкладку «Элементы», если она ещё не открыта",
+      "text": "",
+      "native_hint": 105
+    },
+    {
+      "block": "base",
+      "kind": "click",
+      "shot": "assets/shots/step-106.webp",
+      "rect": [
+        8,
+        34,
+        133,
+        95
+      ],
+      "title": "Нажмите «Вытянутая бобышка/основание», чтобы вытянуть готовый эскиз",
+      "text": "",
+      "native_hint": 106
+    },
+    {
+      "block": "base",
+      "kind": "input",
+      "shot": "assets/shots/step-108.webp",
+      "rect": [
+        117,
+        412,
+        291,
+        444
+      ],
+      "title": "Введите значение",
+      "text": "Щёлкните подсвеченное поле глубины. Выделите его значение введите 10 мм и подтвердите ввод.",
+      "native_hint": 107,
+      "value": 10.0
+    },
+    {
+      "block": "base",
+      "kind": "click",
+      "shot": "assets/shots/step-108.webp",
+      "rect": [
+        78,
+        214,
+        115,
+        251
+      ],
+      "title": "Нажмите зелёную галочку",
+      "text": "Инструктор проверит основание толщиной 10 мм.",
+      "native_hint": 108
+    },
+    {
+      "block": "base",
+      "kind": "result",
+      "title": "Основание вытянуто",
+      "text": "Появилось основание толщиной 10 мм с двумя сквозными отверстиями Ø18.",
+      "shot": "assets/shots/base.webp",
+      "model": "assets/models/01.gltf.json"
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-109.webp",
+      "rect": [
+        915,
+        462,
+        958,
+        505
+      ],
+      "title": "Щёлкните верхнюю плоскую грань основания по подсветке",
+      "text": "",
+      "native_hint": 109
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-110.webp",
+      "rect": [
+        69,
+        113,
+        135,
+        143
+      ],
+      "title": "Откройте вкладку «Эскиз», если она ещё не открыта",
+      "text": "",
+      "native_hint": 110
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-111.webp",
+      "rect": [
+        3,
+        33,
+        54,
+        96
+      ],
+      "title": "Нажмите «Эскиз», чтобы открыть эскиз на верхней грани",
+      "text": "",
+      "native_hint": 111
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-112.webp",
+      "rect": [
+        166,
+        35,
+        199,
+        66
+      ],
+      "title": "Нажмите «Линия» на вкладке «Эскиз»",
+      "text": "",
+      "native_hint": 112
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-113.webp",
+      "rect": [
+        113,
+        458,
+        312,
+        487
+      ],
+      "title": "Включите флажок «Вспомогательная геометрия»",
+      "text": "",
+      "native_hint": 113
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-115.webp",
+      "rect": [
+        115,
+        503,
+        305,
+        530
+      ],
+      "title": "Проверьте, что «Линия средней точки» выключена",
+      "text": "Щёлкните по этому полю.",
+      "native_hint": 114
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-115.webp",
+      "rect": [
+        921,
+        170,
+        964,
+        213
+      ],
+      "title": "Щёлкните верхнюю точку вертикальной оси в крайней точке основания",
+      "text": "",
+      "native_hint": 115
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-116.webp",
+      "rect": [
+        921,
+        883,
+        964,
+        926
+      ],
+      "title": "Щёлкните нижнюю точку оси в крайней точке основания",
+      "text": "",
+      "native_hint": 116
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-117.webp",
+      "rect": [
+        78,
+        214,
+        115,
+        251
+      ],
+      "title": "Нажмите зелёную галочку, чтобы подтвердить построенные отрезки",
+      "text": "",
+      "native_hint": 117
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-118.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Если инструмент «Линия» остался открыт, нажмите зелёную галочку ещё раз",
+      "text": "",
+      "native_hint": 118
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-119.webp",
+      "rect": [
+        206,
+        60,
+        242,
+        92
+      ],
+      "title": "Нажмите «Дуга» на вкладке «Эскиз»",
+      "text": "",
+      "native_hint": 119
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-120.webp",
+      "rect": [
+        85,
+        276,
+        144,
+        335
+      ],
+      "title": "Если включён другой тип дуги, нажмите первый значок «Дуга по центру»",
+      "text": "",
+      "native_hint": 120
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-121.webp",
+      "rect": [
+        750,
+        436,
+        793,
+        479
+      ],
+      "title": "Щёлкните подсвеченный центр верхней дуги левого выступа",
+      "text": "",
+      "native_hint": 121
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-122.webp",
+      "rect": [
+        692,
+        435,
+        737,
+        480
+      ],
+      "title": "Щёлкните левый конец дуги",
+      "text": "",
+      "native_hint": 122
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "hover",
+      "shot": "assets/shots/step-123.webp",
+      "rect": [
+        750,
+        379,
+        793,
+        422
+      ],
+      "title": "Проведите указатель через верхнюю точку, чтобы дуга пошла вверх",
+      "text": "На сенсорном экране коснитесь точки.",
+      "native_hint": 123
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-124.webp",
+      "rect": [
+        807,
+        435,
+        852,
+        480
+      ],
+      "title": "Щёлкните правый конец дуги",
+      "text": "",
+      "native_hint": 124
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-125.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Нажмите зелёную галочку, чтобы закрыть инструмент дуги",
+      "text": "",
+      "native_hint": 125
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-126.webp",
+      "rect": [
+        165,
+        34,
+        200,
+        67
+      ],
+      "title": "Нажмите «Линия» на вкладке «Эскиз»",
+      "text": "",
+      "native_hint": 126
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-127.webp",
+      "rect": [
+        114,
+        459,
+        311,
+        486
+      ],
+      "title": "Включите флажок «Вспомогательная геометрия»",
+      "text": "",
+      "native_hint": 127
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-129.webp",
+      "rect": [
+        115,
+        503,
+        305,
+        530
+      ],
+      "title": "Проверьте, что «Линия средней точки» выключена",
+      "text": "Щёлкните по этому полю.",
+      "native_hint": 128
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-129.webp",
+      "rect": [
+        668,
+        526,
+        713,
+        571
+      ],
+      "title": "Щёлкните левую точку горизонтальной оси на боковой стороне основания",
+      "text": "",
+      "native_hint": 129
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-130.webp",
+      "rect": [
+        1172,
+        527,
+        1215,
+        570
+      ],
+      "title": "Щёлкните правую точку оси на противоположной стороне основания",
+      "text": "",
+      "native_hint": 130
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-131.webp",
+      "rect": [
+        78,
+        214,
+        115,
+        251
+      ],
+      "title": "Нажмите зелёную галочку, чтобы подтвердить построенные отрезки",
+      "text": "",
+      "native_hint": 131
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-132.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Если инструмент «Линия» остался открыт, нажмите зелёную галочку ещё раз",
+      "text": "",
+      "native_hint": 132
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-133.webp",
+      "rect": [
+        165,
+        34,
+        200,
+        67
+      ],
+      "title": "Нажмите «Линия» на вкладке «Эскиз»",
+      "text": "",
+      "native_hint": 133
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-136.webp",
+      "rect": [
+        115,
+        458,
+        305,
+        486
+      ],
+      "title": "Проверьте, что «Вспомогательная геометрия» выключена",
+      "text": "Щёлкните по этому полю.",
+      "native_hint": 134
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-136.webp",
+      "rect": [
+        115,
+        503,
+        305,
+        530
+      ],
+      "title": "Проверьте, что «Линия средней точки» выключена",
+      "text": "Щёлкните по этому полю.",
+      "native_hint": 135
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-136.webp",
+      "rect": [
+        692,
+        435,
+        737,
+        480
+      ],
+      "title": "Щёлкните подсвеченный конец дуги",
+      "text": "",
+      "native_hint": 136
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-137.webp",
+      "rect": [
+        693,
+        527,
+        736,
+        570
+      ],
+      "title": "Щёлкните точку на горизонтальной оси прямо под концом дуги",
+      "text": "",
+      "native_hint": 137
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-138.webp",
+      "rect": [
+        78,
+        214,
+        115,
+        251
+      ],
+      "title": "Нажмите зелёную галочку, чтобы подтвердить построенные отрезки",
+      "text": "",
+      "native_hint": 138
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-139.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Если инструмент «Линия» остался открыт, нажмите зелёную галочку ещё раз",
+      "text": "",
+      "native_hint": 139
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-140.webp",
+      "rect": [
+        165,
+        34,
+        200,
+        67
+      ],
+      "title": "Нажмите «Линия» на вкладке «Эскиз»",
+      "text": "",
+      "native_hint": 140
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-143.webp",
+      "rect": [
+        115,
+        458,
+        305,
+        486
+      ],
+      "title": "Проверьте, что «Вспомогательная геометрия» выключена",
+      "text": "Щёлкните по этому полю.",
+      "native_hint": 141
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-143.webp",
+      "rect": [
+        115,
+        503,
+        305,
+        530
+      ],
+      "title": "Проверьте, что «Линия средней точки» выключена",
+      "text": "Щёлкните по этому полю.",
+      "native_hint": 142
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-143.webp",
+      "rect": [
+        808,
+        436,
+        851,
+        479
+      ],
+      "title": "Щёлкните подсвеченный конец дуги",
+      "text": "",
+      "native_hint": 143
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-144.webp",
+      "rect": [
+        807,
+        526,
+        852,
+        571
+      ],
+      "title": "Щёлкните точку на горизонтальной оси прямо под концом дуги",
+      "text": "",
+      "native_hint": 144
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-145.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Нажмите зелёную галочку, чтобы подтвердить построенные отрезки",
+      "text": "",
+      "native_hint": 145
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-146.webp",
+      "rect": [
+        78,
+        214,
+        115,
+        251
+      ],
+      "title": "Если инструмент «Линия» остался открыт, нажмите зелёную галочку ещё раз",
+      "text": "",
+      "native_hint": 146
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-147.webp",
+      "rect": [
+        1430,
+        306,
+        1473,
+        349
+      ],
+      "title": "Щёлкните подсвеченное пустое место, чтобы снять выделение",
+      "text": "",
+      "native_hint": 147
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-148.webp",
+      "rect": [
+        753,
+        381,
+        790,
+        418
+      ],
+      "title": "Щёлкните верхнюю дугу",
+      "text": "",
+      "native_hint": 148
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-149.webp",
+      "rect": [
+        697,
+        509,
+        732,
+        544
+      ],
+      "title": "Удерживая Ctrl, щёлкните левую вертикальную сторону",
+      "text": "",
+      "native_hint": 149
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-150.webp",
+      "rect": [
+        810,
+        508,
+        847,
+        545
+      ],
+      "title": "Удерживая Ctrl, щёлкните правую вертикальную сторону",
+      "text": "",
+      "native_hint": 150
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-151.webp",
+      "rect": [
+        619,
+        35,
+        817,
+        64
+      ],
+      "title": "Откройте «Зеркально отразить объекты»",
+      "text": "",
+      "native_hint": 151
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-152.webp",
+      "rect": [
+        114,
+        564,
+        313,
+        600
+      ],
+      "title": "Щёлкните список под надписью «Зеркально относительно»",
+      "text": "",
+      "native_hint": 152
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-153.webp",
+      "rect": [
+        1059,
+        530,
+        1096,
+        567
+      ],
+      "title": "Щёлкните горизонтальную ось по подсветке",
+      "text": "",
+      "native_hint": 153
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-154.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Нажмите зелёную галочку",
+      "text": "SolidWorks создаст зеркальную копию.",
+      "native_hint": 154
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-155.webp",
+      "rect": [
+        45,
+        34,
+        173,
+        95
+      ],
+      "title": "Включите «Автоматическое нанесение размеров», если инструмент ещё не включён",
+      "text": "",
+      "native_hint": 155
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-156.webp",
+      "rect": [
+        816,
+        678,
+        853,
+        715
+      ],
+      "title": "Щёлкните подсвеченную нижнюю дугу, чтобы задать размер обоим зеркальным полукругам",
+      "text": "",
+      "native_hint": 156
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-157.webp",
+      "rect": [
+        637,
+        527,
+        680,
+        570
+      ],
+      "title": "Разместите размер полукругов в подсвеченном месте",
+      "text": "",
+      "native_hint": 157
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "input",
+      "shot": "assets/shots/step-158.webp",
+      "rect": [
+        691,
+        460,
+        881,
+        494
+      ],
+      "title": "Введите значение",
+      "text": "Введите 12 мм и нажмите Enter. Это радиус для диаметра 24 мм.",
+      "native_hint": 158,
+      "value": 12.0
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-159.webp",
+      "rect": [
+        143,
+        250,
+        221,
+        282
+      ],
+      "title": "Откройте вкладку «Выноски» в панели размера",
+      "text": "",
+      "native_hint": 159
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-160.webp",
+      "rect": [
+        147,
+        381,
+        184,
+        418
+      ],
+      "title": "Нажмите «Диаметр»",
+      "text": "В эскизе появится обозначение Ø24.",
+      "native_hint": 160
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-161.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Нажмите подсвеченную зелёную галочку, чтобы закончить нанесение этого размера",
+      "text": "",
+      "native_hint": 161
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-162.webp",
+      "rect": [
+        44,
+        33,
+        174,
+        96
+      ],
+      "title": "Включите «Автоматическое нанесение размеров», если инструмент ещё не включён",
+      "text": "",
+      "native_hint": 162
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-163.webp",
+      "rect": [
+        835,
+        439,
+        870,
+        474
+      ],
+      "title": "Щёлкните подсвеченный центр верхнего полукруга",
+      "text": "",
+      "native_hint": 163
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-164.webp",
+      "rect": [
+        834,
+        621,
+        871,
+        658
+      ],
+      "title": "Щёлкните подсвеченный центр нижнего полукруга",
+      "text": "",
+      "native_hint": 164
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-165.webp",
+      "rect": [
+        637,
+        527,
+        680,
+        570
+      ],
+      "title": "Разместите вертикальный размер слева от профиля",
+      "text": "",
+      "native_hint": 165
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "input",
+      "shot": "assets/shots/step-166.webp",
+      "rect": [
+        661,
+        471,
+        849,
+        503
+      ],
+      "title": "Введите значение",
+      "text": "Введите 36 мм и нажмите Enter. Вместе с Ø24 этот размер задаёт полную длину 60 мм.",
+      "native_hint": 166,
+      "value": 36.0
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-167.webp",
+      "rect": [
+        78,
+        214,
+        115,
+        251
+      ],
+      "title": "Нажмите подсвеченную зелёную галочку, чтобы закончить нанесение этого размера",
+      "text": "",
+      "native_hint": 167
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-169.webp",
+      "rect": [
+        1350,
+        368,
+        1394,
+        412
+      ],
+      "title": "Щёлкните подсвеченное пустое место, чтобы снять выделение",
+      "text": "",
+      "native_hint": 168
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-169.webp",
+      "rect": [
+        834,
+        341,
+        871,
+        378
+      ],
+      "title": "Щёлкните верхнюю дугу",
+      "text": "",
+      "native_hint": 169
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-170.webp",
+      "rect": [
+        835,
+        719,
+        870,
+        754
+      ],
+      "title": "Удерживая Ctrl, щёлкните нижнюю дугу",
+      "text": "",
+      "native_hint": 170
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-171.webp",
+      "rect": [
+        759,
+        500,
+        796,
+        537
+      ],
+      "title": "Удерживая Ctrl, щёлкните левую сторону",
+      "text": "",
+      "native_hint": 171
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-172.webp",
+      "rect": [
+        911,
+        501,
+        946,
+        536
+      ],
+      "title": "Удерживая Ctrl, щёлкните правую сторону",
+      "text": "",
+      "native_hint": 172
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-173.webp",
+      "rect": [
+        618,
+        34,
+        818,
+        65
+      ],
+      "title": "Откройте «Зеркально отразить объекты»",
+      "text": "",
+      "native_hint": 173
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-174.webp",
+      "rect": [
+        115,
+        581,
+        312,
+        615
+      ],
+      "title": "Щёлкните список под надписью «Зеркально относительно»",
+      "text": "",
+      "native_hint": 174
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-175.webp",
+      "rect": [
+        986,
+        722,
+        1023,
+        759
+      ],
+      "title": "Щёлкните вертикальную ось по подсветке",
+      "text": "",
+      "native_hint": 175
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-176.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Нажмите зелёную галочку",
+      "text": "SolidWorks создаст зеркальную копию.",
+      "native_hint": 176
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-177.webp",
+      "rect": [
+        44,
+        33,
+        174,
+        96
+      ],
+      "title": "Включите «Автоматическое нанесение размеров», если инструмент ещё не включён",
+      "text": "",
+      "native_hint": 177
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-178.webp",
+      "rect": [
+        911,
+        501,
+        946,
+        536
+      ],
+      "title": "Щёлкните внутреннюю сторону левого выступа",
+      "text": "",
+      "native_hint": 178
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-179.webp",
+      "rect": [
+        1063,
+        559,
+        1100,
+        596
+      ],
+      "title": "Щёлкните внутреннюю сторону правого выступа",
+      "text": "",
+      "native_hint": 179
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-180.webp",
+      "rect": [
+        983,
+        747,
+        1026,
+        790
+      ],
+      "title": "Щёлкните подсвеченное место надписи размера",
+      "text": "",
+      "native_hint": 180
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "input",
+      "shot": "assets/shots/step-181.webp",
+      "rect": [
+        1039,
+        693,
+        1227,
+        725
+      ],
+      "title": "Введите значение",
+      "text": "Введите 30 мм и нажмите Enter.",
+      "native_hint": 181,
+      "value": 30.0
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-182.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Нажмите подсвеченную зелёную галочку, чтобы закончить нанесение этого размера",
+      "text": "",
+      "native_hint": 182
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "click",
+      "shot": "assets/shots/step-184.webp",
+      "rect": [
+        4,
+        35,
+        47,
+        96
+      ],
+      "title": "Убедитесь, что оба профиля чёрные",
+      "text": "Если они синие, проверьте симметрию и размеры Ø24, 36 и 30 мм. Выйдите из эскиза.",
+      "native_hint": 183
+    },
+    {
+      "block": "boss-sketch",
+      "kind": "result",
+      "title": "Два одинаковых профиля",
+      "text": "Ø24 и 36 мм между центрами задают длину 60 мм. Между профилями остаётся 30 мм.",
+      "shot": "assets/shots/boss-sketch.webp",
+      "model": "assets/models/01.gltf.json"
+    },
+    {
+      "block": "bosses",
+      "kind": "click",
+      "shot": "assets/shots/step-184.webp",
+      "rect": [
+        3,
+        114,
+        76,
+        142
+      ],
+      "title": "Откройте вкладку «Элементы», если она ещё не открыта",
+      "text": "",
+      "native_hint": 184
+    },
+    {
+      "block": "bosses",
+      "kind": "click",
+      "shot": "assets/shots/step-185.webp",
+      "rect": [
+        7,
+        33,
+        134,
+        96
+      ],
+      "title": "Нажмите «Вытянутая бобышка/основание»",
+      "text": "",
+      "native_hint": 185
+    },
+    {
+      "block": "bosses",
+      "kind": "input",
+      "shot": "assets/shots/step-186.webp",
+      "rect": [
+        118,
+        412,
+        298,
+        444
+      ],
+      "title": "Введите значение",
+      "text": "Щёлкните поле глубины, замените значение на 50 мм и подтвердите ввод.",
+      "native_hint": 186,
+      "value": 50.0
+    },
+    {
+      "block": "bosses",
+      "kind": "click",
+      "shot": "assets/shots/step-187.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Нажмите зелёную галочку",
+      "text": "Оба выступа должны объединиться с основанием.",
+      "native_hint": 187
+    },
+    {
+      "block": "bosses",
+      "kind": "result",
+      "title": "Два выступа вытянуты",
+      "text": "Каждый выступ поднят на 50 мм над основанием. Осмотрите оба торца.",
+      "shot": "assets/shots/bosses.webp",
+      "model": "assets/models/02.gltf.json"
+    },
+    {
+      "block": "grid",
+      "kind": "click",
+      "shot": "assets/shots/step-188.webp",
+      "rect": [
+        789,
+        203,
+        832,
+        246
+      ],
+      "title": "Щёлкните плоский торец левого выступа",
+      "text": "",
+      "native_hint": 188
+    },
+    {
+      "block": "grid",
+      "kind": "click",
+      "shot": "assets/shots/step-189.webp",
+      "rect": [
+        69,
+        113,
+        114,
+        148
+      ],
+      "title": "Откройте вкладку «Эскиз», если она ещё не открыта",
+      "text": "",
+      "native_hint": 189
+    },
+    {
+      "block": "grid",
+      "kind": "click",
+      "shot": "assets/shots/step-190.webp",
+      "rect": [
+        3,
+        33,
+        54,
+        96
+      ],
+      "title": "Нажмите «Эскиз», чтобы открыть эскиз на торце",
+      "text": "",
+      "native_hint": 190
+    },
+    {
+      "block": "grid",
+      "kind": "click",
+      "shot": "assets/shots/step-191.webp",
+      "rect": [
+        166,
+        61,
+        199,
+        91
+      ],
+      "title": "Нажмите значок «Прямоугольник»",
+      "text": "",
+      "native_hint": 191
+    },
+    {
+      "block": "grid",
+      "kind": "click",
+      "shot": "assets/shots/step-193.webp",
+      "rect": [
+        149,
+        280,
+        200,
+        330
+      ],
+      "title": "Если выбран другой тип, нажмите «Прямоугольник из центра»",
+      "text": "",
+      "native_hint": 192
+    },
+    {
+      "block": "grid",
+      "kind": "click",
+      "shot": "assets/shots/step-193.webp",
+      "rect": [
+        920,
+        526,
+        965,
+        571
+      ],
+      "title": "Щёлкните начало координат",
+      "text": "Здесь будет центр прямоугольника.",
+      "native_hint": 193
+    },
+    {
+      "block": "grid",
+      "kind": "click",
+      "shot": "assets/shots/step-194.webp",
+      "rect": [
+        1104,
+        412,
+        1147,
+        455
+      ],
+      "title": "Щёлкните подсвеченную точку, чтобы задать угол прямоугольника",
+      "text": "",
+      "native_hint": 194
+    },
+    {
+      "block": "grid",
+      "kind": "click",
+      "shot": "assets/shots/step-195.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Нажмите зелёную галочку, чтобы закрыть инструмент",
+      "text": "",
+      "native_hint": 195
+    },
+    {
+      "block": "grid",
+      "kind": "click",
+      "shot": "assets/shots/step-196.webp",
+      "rect": [
+        44,
+        33,
+        174,
+        96
+      ],
+      "title": "Включите «Автоматическое нанесение размеров», если инструмент ещё не включён",
+      "text": "",
+      "native_hint": 196
+    },
+    {
+      "block": "grid",
+      "kind": "click",
+      "shot": "assets/shots/step-197.webp",
+      "rect": [
+        740,
+        645,
+        777,
+        682
+      ],
+      "title": "Щёлкните левый нижний угол",
+      "text": "",
+      "native_hint": 197
+    },
+    {
+      "block": "grid",
+      "kind": "click",
+      "shot": "assets/shots/step-198.webp",
+      "rect": [
+        741,
+        415,
+        776,
+        450
+      ],
+      "title": "Щёлкните левый верхний угол",
+      "text": "",
+      "native_hint": 198
+    },
+    {
+      "block": "grid",
+      "kind": "click",
+      "shot": "assets/shots/step-199.webp",
+      "rect": [
+        618,
+        526,
+        663,
+        571
+      ],
+      "title": "Щёлкните подсвеченное место надписи размера",
+      "text": "",
+      "native_hint": 199
+    },
+    {
+      "block": "grid",
+      "kind": "input",
+      "shot": "assets/shots/step-200.webp",
+      "rect": [
+        643,
+        464,
+        833,
+        498
+      ],
+      "title": "Введите значение",
+      "text": "Введите 26 мм и нажмите Enter.",
+      "native_hint": 200,
+      "value": 26.0
+    },
+    {
+      "block": "grid",
+      "kind": "click",
+      "shot": "assets/shots/step-201.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Нажмите подсвеченную зелёную галочку, чтобы закончить нанесение этого размера",
+      "text": "",
+      "native_hint": 201
+    },
+    {
+      "block": "grid",
+      "kind": "click",
+      "shot": "assets/shots/step-202.webp",
+      "rect": [
+        44,
+        33,
+        174,
+        96
+      ],
+      "title": "Включите «Автоматическое нанесение размеров», если инструмент ещё не включён",
+      "text": "",
+      "native_hint": 202
+    },
+    {
+      "block": "grid",
+      "kind": "click",
+      "shot": "assets/shots/step-203.webp",
+      "rect": [
+        741,
+        449,
+        776,
+        484
+      ],
+      "title": "Щёлкните левый верхний угол",
+      "text": "",
+      "native_hint": 203
+    },
+    {
+      "block": "grid",
+      "kind": "click",
+      "shot": "assets/shots/step-204.webp",
+      "rect": [
+        1107,
+        448,
+        1144,
+        485
+      ],
+      "title": "Щёлкните правый верхний угол",
+      "text": "",
+      "native_hint": 204
+    },
+    {
+      "block": "grid",
+      "kind": "click",
+      "shot": "assets/shots/step-205.webp",
+      "rect": [
+        921,
+        306,
+        964,
+        349
+      ],
+      "title": "Щёлкните подсвеченное место надписи размера",
+      "text": "",
+      "native_hint": 205
+    },
+    {
+      "block": "grid",
+      "kind": "input",
+      "shot": "assets/shots/step-206.webp",
+      "rect": [
+        976,
+        251,
+        1166,
+        285
+      ],
+      "title": "Введите значение",
+      "text": "Введите 54 мм и нажмите Enter.",
+      "native_hint": 206,
+      "value": 54.0
+    },
+    {
+      "block": "grid",
+      "kind": "click",
+      "shot": "assets/shots/step-207.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Нажмите подсвеченную зелёную галочку, чтобы закончить нанесение этого размера",
+      "text": "",
+      "native_hint": 207
+    },
+    {
+      "block": "grid",
+      "kind": "click",
+      "shot": "assets/shots/step-208.webp",
+      "rect": [
+        3,
+        33,
+        54,
+        99
+      ],
+      "title": "Нажмите «Выход из эскиза»",
+      "text": "Четыре угла задают центры отверстий.",
+      "native_hint": 208
+    },
+    {
+      "block": "grid",
+      "kind": "result",
+      "title": "Сетка отверстий готова",
+      "text": "По два угла прямоугольника лежат на каждом торце. Размеры видны на эскизе.",
+      "shot": "assets/shots/grid.webp",
+      "model": "assets/models/02.gltf.json"
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "shot": "assets/shots/step-211.webp",
+      "rect": [
+        100,
+        475,
+        185,
+        502
+      ],
+      "title": "Выберите в дереве подсвеченный эскиз сетки 54 × 26 мм",
+      "text": "",
+      "native_hint": 209
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "shot": "assets/shots/step-211.webp",
+      "rect": [
+        2,
+        115,
+        73,
+        143
+      ],
+      "title": "Откройте вкладку «Элементы», если она ещё не открыта",
+      "text": "",
+      "native_hint": 210
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "shot": "assets/shots/step-211.webp",
+      "rect": [
+        555,
+        33,
+        634,
+        96
+      ],
+      "title": "Нажмите «Отверстие под крепеж», чтобы применить мастер к выбранному эскизу",
+      "text": "",
+      "native_hint": 211
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "shot": "assets/shots/step-212.webp",
+      "rect": [
+        85,
+        464,
+        144,
+        523
+      ],
+      "title": "Нажмите значок «Метчик» во втором ряду",
+      "text": "",
+      "native_hint": 212
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "shot": "assets/shots/step-212.webp",
+      "rect": [
+        87,
+        591,
+        294,
+        619
+      ],
+      "title": "Проверьте стандарт ISO в списке «Стандарт»",
+      "text": "Щёлкните по этому полю.",
+      "native_hint": 213
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "shot": "assets/shots/step-212.webp",
+      "rect": [
+        87,
+        635,
+        294,
+        665
+      ],
+      "title": "Проверьте тип «Отверстие под метчик»",
+      "text": "Щёлкните по этому полю.",
+      "native_hint": 214
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "shot": "assets/shots/step-212.webp",
+      "rect": [
+        87,
+        714,
+        294,
+        748
+      ],
+      "title": "Проверьте размер M16",
+      "text": "Щёлкните по этому полю.",
+      "native_hint": 215
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "shot": "assets/shots/step-212.webp",
+      "rect": [
+        117,
+        845,
+        290,
+        873
+      ],
+      "title": "Граничное условие",
+      "text": "Раскройте список граничного условия сверления."
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "shot": "assets/shots/step-216.webp",
+      "rect": [
+        116,
+        868,
+        293,
+        892
+      ],
+      "title": "В списке «Граничное условие» выберите «На заданное расстояние»",
+      "text": "",
+      "native_hint": 216
+    },
+    {
+      "block": "holes",
+      "kind": "input",
+      "shot": "assets/shots/step-218.webp",
+      "rect": [
+        117,
+        875,
+        252,
+        900
+      ],
+      "title": "Введите значение",
+      "text": "Укажите глубину сверления 40 мм до начала конуса.",
+      "native_hint": 217,
+      "value": 40.0
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "shot": "assets/shots/step-218.webp",
+      "rect": [
+        296,
+        715,
+        326,
+        981
+      ],
+      "title": "Щёлкните по подсвеченной части полосы прокрутки, чтобы открыть глубину резьбы и раздел «Параметры»",
+      "text": "",
+      "native_hint": 218
+    },
+    {
+      "block": "holes",
+      "kind": "input",
+      "shot": "assets/shots/step-222.webp",
+      "rect": [
+        117,
+        584,
+        249,
+        613
+      ],
+      "title": "Введите значение",
+      "text": "Укажите глубину резьбы 30 мм.",
+      "native_hint": 219,
+      "value": 30.0
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "shot": "assets/shots/step-222.webp",
+      "rect": [
+        86,
+        758,
+        276,
+        786
+      ],
+      "title": "Проверьте флажок «С требованием к резьбе»",
+      "text": "Щёлкните по этому полю.",
+      "native_hint": 220
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "shot": "assets/shots/step-222.webp",
+      "rect": [
+        86,
+        808,
+        267,
+        832
+      ],
+      "title": "Проверьте, что «Передняя зенковка» выключена для отдельной фаски",
+      "text": "Щёлкните по этому полю.",
+      "native_hint": 221
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "shot": "assets/shots/step-222.webp",
+      "rect": [
+        146,
+        250,
+        277,
+        286
+      ],
+      "title": "Откройте вкладку «Расположения»",
+      "text": "",
+      "native_hint": 222
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "shot": "assets/shots/step-223.webp",
+      "rect": [
+        84,
+        561,
+        315,
+        603
+      ],
+      "title": "Установите «Создать экземпляры в геометрии эскиза»",
+      "text": "",
+      "native_hint": 223
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "shot": "assets/shots/step-224.webp",
+      "rect": [
+        115,
+        484,
+        291,
+        535
+      ],
+      "title": "Щёлкните подсвеченный список «Пропустить экземпляры»",
+      "text": "",
+      "native_hint": 224
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "shot": "assets/shots/step-225.webp",
+      "rect": [
+        920,
+        526,
+        965,
+        571
+      ],
+      "title": "Щёлкните только центральный жёлтый экземпляр",
+      "text": "Должны остаться четыре отверстия по углам сетки.",
+      "native_hint": 225
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "shot": "assets/shots/step-226.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Нажмите зелёную галочку",
+      "text": "Проверьте по два отверстия на каждом выступе.",
+      "native_hint": 226
+    },
+    {
+      "block": "holes",
+      "kind": "result",
+      "title": "Четыре отверстия M16 готовы",
+      "text": "Два отверстия на каждом торце. Сверление 40 мм, резьба 30 мм, угол сверла 120°.",
+      "shot": "assets/shots/holes.webp",
+      "model": "assets/models/03.gltf.json"
+    },
+    {
+      "block": "roots",
+      "kind": "click",
+      "shot": "assets/shots/step-229.webp",
+      "rect": [
+        876,
+        115,
+        924,
+        150
+      ],
+      "title": "Откройте меню «Ориентация вида» над моделью",
+      "text": "",
+      "native_hint": 229
+    },
+    {
+      "block": "roots",
+      "kind": "click",
+      "shot": "assets/shots/step-230.webp",
+      "rect": [
+        989,
+        170,
+        1028,
+        207
+      ],
+      "title": "Щёлкните значок «Изометрия»",
+      "text": "",
+      "native_hint": 230
+    },
+    {
+      "block": "roots",
+      "kind": "click",
+      "shot": "assets/shots/step-231.webp",
+      "rect": [
+        860,
+        34,
+        939,
+        82
+      ],
+      "title": "Откройте «Скругление» для переходов выступов в основание",
+      "text": "",
+      "native_hint": 231
+    },
+    {
+      "block": "roots",
+      "kind": "click",
+      "shot": "assets/shots/step-232.webp",
+      "rect": [
+        114,
+        446,
+        304,
+        488
+      ],
+      "title": "Снимите флажок «Показать панель инструментов выбора»",
+      "text": "",
+      "native_hint": 232
+    },
+    {
+      "block": "roots",
+      "kind": "click",
+      "shot": "assets/shots/step-234.webp",
+      "rect": [
+        118,
+        479,
+        266,
+        505
+      ],
+      "title": "Проверьте флажок «Линии перехода»",
+      "text": "Щёлкните по этому полю.",
+      "native_hint": 233
+    },
+    {
+      "block": "roots",
+      "kind": "input",
+      "shot": "assets/shots/step-234.webp",
+      "rect": [
+        112,
+        633,
+        291,
+        665
+      ],
+      "title": "Введите значение",
+      "text": "Введите радиус 4 мм и подтвердите ввод.",
+      "native_hint": 234,
+      "value": 4.0
+    },
+    {
+      "block": "roots",
+      "kind": "click",
+      "shot": "assets/shots/step-235.webp",
+      "rect": [
+        860,
+        582,
+        905,
+        627
+      ],
+      "title": "Выберите продольное ребро левого выступа у стыка с основанием",
+      "text": "",
+      "native_hint": 235
+    },
+    {
+      "block": "roots",
+      "kind": "click",
+      "shot": "assets/shots/step-236.webp",
+      "rect": [
+        1074,
+        706,
+        1117,
+        749
+      ],
+      "title": "Добавьте продольное ребро правого выступа у стыка с основанием",
+      "text": "",
+      "native_hint": 236
+    },
+    {
+      "block": "roots",
+      "kind": "click",
+      "shot": "assets/shots/step-237.webp",
+      "rect": [
+        78,
+        214,
+        115,
+        251
+      ],
+      "title": "Нажмите зелёную галочку",
+      "text": "",
+      "native_hint": 237
+    },
+    {
+      "block": "roots",
+      "kind": "result",
+      "title": "Скругления у выступов готовы",
+      "text": "Рассмотрите светлые скруглённые переходы вокруг обоих выступов.",
+      "shot": "assets/shots/roots.webp",
+      "model": "assets/models/04.gltf.json"
+    },
+    {
+      "block": "rim",
+      "kind": "click",
+      "shot": "assets/shots/step-238.webp",
+      "rect": [
+        860,
+        34,
+        939,
+        82
+      ],
+      "title": "Снова откройте «Скругление», теперь для наружной кромки основания",
+      "text": "",
+      "native_hint": 238
+    },
+    {
+      "block": "rim",
+      "kind": "click",
+      "shot": "assets/shots/step-242.webp",
+      "rect": [
+        117,
+        450,
+        297,
+        480
+      ],
+      "title": "Проверьте, что панель инструментов выбора выключена",
+      "text": "Щёлкните по этому полю.",
+      "native_hint": 239
+    },
+    {
+      "block": "rim",
+      "kind": "click",
+      "shot": "assets/shots/step-242.webp",
+      "rect": [
+        117,
+        479,
+        266,
+        505
+      ],
+      "title": "Проверьте флажок «Линии перехода»",
+      "text": "Щёлкните по этому полю.",
+      "native_hint": 240
+    },
+    {
+      "block": "rim",
+      "kind": "input",
+      "shot": "assets/shots/step-242.webp",
+      "rect": [
+        111,
+        634,
+        292,
+        664
+      ],
+      "title": "Введите значение",
+      "text": "Введите радиус 4 мм и подтвердите ввод.",
+      "native_hint": 241,
+      "value": 4.0
+    },
+    {
+      "block": "rim",
+      "kind": "click",
+      "shot": "assets/shots/step-242.webp",
+      "rect": [
+        821,
+        773,
+        864,
+        816
+      ],
+      "title": "Выберите подсвеченное ребро по внешнему контуру верхней грани основания",
+      "text": "",
+      "native_hint": 242
+    },
+    {
+      "block": "rim",
+      "kind": "click",
+      "shot": "assets/shots/step-243.webp",
+      "rect": [
+        78,
+        214,
+        115,
+        251
+      ],
+      "title": "Нажмите зелёную галочку",
+      "text": "",
+      "native_hint": 243
+    },
+    {
+      "block": "rim",
+      "kind": "result",
+      "title": "Верхняя кромка основания скруглена",
+      "text": "На выступах сохранено первое скругление. Второе R4 проходит по внешнему контуру основания.",
+      "shot": "assets/shots/rim.webp",
+      "model": "assets/models/05.gltf.json"
+    },
+    {
+      "block": "mount",
+      "kind": "click",
+      "shot": "assets/shots/step-244.webp",
+      "rect": [
+        876,
+        115,
+        924,
+        150
+      ],
+      "title": "Откройте «Ориентация вида» над моделью",
+      "text": "",
+      "native_hint": 244
+    },
+    {
+      "block": "mount",
+      "kind": "click",
+      "shot": "assets/shots/step-245.webp",
+      "rect": [
+        903,
+        169,
+        944,
+        208
+      ],
+      "title": "Выберите вид «Сверху», чтобы были видны все шесть отверстий",
+      "text": "",
+      "native_hint": 245
+    },
+    {
+      "block": "mount",
+      "kind": "click",
+      "shot": "assets/shots/step-246.webp",
+      "rect": [
+        876,
+        88,
+        922,
+        119
+      ],
+      "title": "Откройте список под кнопкой «Скругление»",
+      "text": "",
+      "native_hint": 246
+    },
+    {
+      "block": "mount",
+      "kind": "click",
+      "shot": "assets/shots/step-247.webp",
+      "rect": [
+        863,
+        133,
+        1025,
+        171
+      ],
+      "title": "Выберите «Фаска» в открывшемся списке",
+      "text": "",
+      "native_hint": 247
+    },
+    {
+      "block": "mount",
+      "kind": "click",
+      "shot": "assets/shots/step-248.webp",
+      "rect": [
+        131,
+        275,
+        182,
+        326
+      ],
+      "title": "Выберите «Угол–расстояние»",
+      "text": "",
+      "native_hint": 248
+    },
+    {
+      "block": "mount",
+      "kind": "input",
+      "shot": "assets/shots/step-249.webp",
+      "rect": [
+        112,
+        655,
+        308,
+        687
+      ],
+      "title": "Введите значение",
+      "text": "Введите расстояние 1 мм и подтвердите ввод.",
+      "native_hint": 249,
+      "value": 1.0
+    },
+    {
+      "block": "mount",
+      "kind": "input",
+      "shot": "assets/shots/step-251.webp",
+      "rect": [
+        109,
+        686,
+        304,
+        720
+      ],
+      "title": "Введите значение",
+      "text": "Введите угол 45° и подтвердите ввод.",
+      "native_hint": 250,
+      "value": 45.0
+    },
+    {
+      "block": "mount",
+      "kind": "click",
+      "shot": "assets/shots/step-251.webp",
+      "rect": [
+        864,
+        270,
+        907,
+        313
+      ],
+      "title": "Выберите круговую кромку верхнего монтажного отверстия Ø18",
+      "text": "",
+      "native_hint": 251
+    },
+    {
+      "block": "mount",
+      "kind": "click",
+      "shot": "assets/shots/step-252.webp",
+      "rect": [
+        863,
+        782,
+        908,
+        827
+      ],
+      "title": "Добавьте круговую кромку нижнего монтажного отверстия Ø18",
+      "text": "",
+      "native_hint": 252
+    },
+    {
+      "block": "mount",
+      "kind": "click",
+      "shot": "assets/shots/step-253.webp",
+      "rect": [
+        79,
+        215,
+        114,
+        250
+      ],
+      "title": "Нажмите зелёную галочку и проверьте фаски на двух монтажных отверстиях",
+      "text": "",
+      "native_hint": 253
+    },
+    {
+      "block": "mount",
+      "kind": "result",
+      "title": "Обе монтажные фаски видны сверху",
+      "text": "На верхнем и нижнем монтажных отверстиях виден ободок фаски 1 мм × 45°.",
+      "shot": "assets/shots/mount-close.webp",
+      "model": "assets/models/06.gltf.json",
+      "views": [
+        {
+          "name": "Обе фаски крупно",
+          "shot": "assets/shots/mount-close.webp"
+        },
+        {
+          "name": "Вид сверху",
+          "shot": "assets/shots/mount.webp"
+        }
+      ]
+    },
+    {
+      "block": "thread",
+      "kind": "click",
+      "shot": "assets/shots/step-254.webp",
+      "rect": [
+        875,
+        87,
+        923,
+        120
+      ],
+      "title": "Откройте список под кнопкой «Скругление»",
+      "text": "",
+      "native_hint": 254
+    },
+    {
+      "block": "thread",
+      "kind": "click",
+      "shot": "assets/shots/step-255.webp",
+      "rect": [
+        864,
+        134,
+        1024,
+        170
+      ],
+      "title": "Выберите «Фаска» в открывшемся списке",
+      "text": "",
+      "native_hint": 255
+    },
+    {
+      "block": "thread",
+      "kind": "click",
+      "shot": "assets/shots/step-256.webp",
+      "rect": [
+        168,
+        275,
+        219,
+        326
+      ],
+      "title": "Выберите «Расстояние–расстояние»",
+      "text": "Оставьте режим «Симметричный» для одинаковых расстояний.",
+      "native_hint": 256
+    },
+    {
+      "block": "thread",
+      "kind": "input",
+      "shot": "assets/shots/step-257.webp",
+      "rect": [
+        112,
+        660,
+        308,
+        692
+      ],
+      "title": "Введите значение",
+      "text": "Введите 2 мм и подтвердите ввод. Симметричный режим задаёт фаску 2 × 2 мм.",
+      "native_hint": 257,
+      "value": 2.0
+    },
+    {
+      "block": "thread",
+      "kind": "click",
+      "shot": "assets/shots/step-258.webp",
+      "rect": [
+        706,
+        444,
+        751,
+        489
+      ],
+      "title": "Выберите подсвеченную кромку входа левого верхнего отверстия Ø14",
+      "text": "",
+      "native_hint": 258
+    },
+    {
+      "block": "thread",
+      "kind": "click",
+      "shot": "assets/shots/step-259.webp",
+      "rect": [
+        707,
+        608,
+        750,
+        651
+      ],
+      "title": "Добавьте кромку входа левого нижнего отверстия",
+      "text": "",
+      "native_hint": 259
+    },
+    {
+      "block": "thread",
+      "kind": "click",
+      "shot": "assets/shots/step-260.webp",
+      "rect": [
+        1045,
+        444,
+        1090,
+        489
+      ],
+      "title": "Добавьте кромку входа правого верхнего отверстия",
+      "text": "",
+      "native_hint": 260
+    },
+    {
+      "block": "thread",
+      "kind": "click",
+      "shot": "assets/shots/step-261.webp",
+      "rect": [
+        1046,
+        608,
+        1089,
+        651
+      ],
+      "title": "Добавьте кромку входа правого нижнего отверстия",
+      "text": "",
+      "native_hint": 261
+    },
+    {
+      "block": "thread",
+      "kind": "click",
+      "shot": "assets/shots/step-262.webp",
+      "rect": [
+        78,
+        214,
+        115,
+        251
+      ],
+      "title": "Нажмите зелёную галочку",
+      "text": "Проверьте четыре входные фаски 2 × 2 мм.",
+      "native_hint": 262
+    },
+    {
+      "block": "thread",
+      "kind": "result",
+      "title": "Четыре фаски 2 × 2 мм готовы",
+      "text": "Рассмотрите четыре скошенных входа M16. Переключитесь на вид сверху, чтобы увидеть все шесть фасок.",
+      "shot": "assets/shots/thread.webp",
+      "model": "assets/models/07.gltf.json",
+      "views": [
+        {
+          "name": "Изометрия",
+          "shot": "assets/shots/thread.webp"
+        },
+        {
+          "name": "Входы M16 крупно",
+          "shot": "assets/shots/thread-close.webp"
+        },
+        {
+          "name": "Вид сверху",
+          "shot": "assets/shots/thread-top.webp"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "shot": "assets/shots/thread.webp",
+    "model": "assets/models/07.gltf.json",
+    "title": "Деталь M16 построена"
+  }
+}

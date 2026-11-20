@@ -11,6 +11,7 @@ const description = ru
   ? 'Практика в SOLIDWORKS. Постройте основание и выступы, задайте четыре отверстия M16 по сетке, добавьте скругления и фаски.'
   : 'A SOLIDWORKS practice lesson on a base, two bosses, four M16 holes, fillets and chamfers.';
 const media = '/media/solidworks-part-30-10';
+const player = '/play/solidworks-instructor/part-m16/';
 ---
 <BaseLayout title={title} description={description} wide image={media + '/finished.webp'}>
   <nav class="breadcrumbs" aria-label={ru ? 'Путь к странице' : 'Breadcrumb'}>
@@ -21,11 +22,14 @@ const media = '/media/solidworks-part-30-10';
       <h1>{title}</h1>
       <p class="lead">{description}</p>
       {ru ? (
-        <p>Откройте SOLIDWORKS и выберите в Инструкторе урок «30.10 и 06.11 — построение детали». На этой странице можно сверять действия и параметры по ходу работы.</p>
+        <p>Пройдите построение прямо в браузере. После каждого этапа осмотрите результат. В SolidWorks этот же урок доступен в Инструкторе под названием «30.10 и 06.11 — построение детали».</p>
       ) : (
         <p>The steps and screenshots below use the Russian SOLIDWORKS interface.</p>
       )}
-      <a class="btn btn-primary" href="#lesson">{ru ? 'Перейти к построению' : 'View the procedure'}</a>
+      <div class="btn-row">
+        <a class="btn btn-primary" href={player}>{ru ? 'Пройти урок в браузере' : 'Start the browser lesson'}</a>
+        <a class="btn btn-secondary" href="#lesson">{ru ? 'Порядок построения' : 'View the procedure'}</a>
+      </div>
     </div>
     <img src={media + '/finished.webp'} width="697" height="680" alt={ru ? 'Готовая деталь с двумя продолговатыми выступами' : 'Finished part with two oblong bosses'} />
   </div>
