@@ -2519,7 +2519,7 @@
       "block": "boss-sketch",
       "kind": "result",
       "title": "Два одинаковых профиля",
-      "text": "Ø24 и 36 мм между центрами задают длину 60 мм. Между профилями остаётся 30 мм.",
+      "text": "Проверьте диаметр полукруга, расстояние между его центром и центром второго полукруга, а также зазор между профилями.",
       "shot": "assets/shots/boss-sketch-desktop.webp",
       "model": "assets/models/01.gltf.json"
     },
@@ -3194,8 +3194,18 @@
       "kind": "result",
       "title": "Скругления у выступов готовы",
       "text": "Рассмотрите светлые скруглённые переходы вокруг обоих выступов.",
-      "shot": "assets/shots/roots-desktop.webp",
-      "model": "assets/models/04.gltf.json"
+      "shot": "assets/shots/roots-detail.webp",
+      "model": "assets/models/04.gltf.json",
+      "views": [
+        {
+          "name": "Крупный план",
+          "shot": "assets/shots/roots-detail.webp"
+        },
+        {
+          "name": "Общий вид",
+          "shot": "assets/shots/roots-desktop.webp"
+        }
+      ]
     },
     {
       "block": "rim",
@@ -3262,8 +3272,18 @@
       "kind": "result",
       "title": "Верхняя кромка основания скруглена",
       "text": "На выступах сохранено первое скругление. Второе R4 проходит по внешнему контуру основания.",
-      "shot": "assets/shots/rim-desktop.webp",
-      "model": "assets/models/05.gltf.json"
+      "shot": "assets/shots/rim-detail.webp",
+      "model": "assets/models/05.gltf.json",
+      "views": [
+        {
+          "name": "Крупный план",
+          "shot": "assets/shots/rim-detail.webp"
+        },
+        {
+          "name": "Общий вид",
+          "shot": "assets/shots/rim-desktop.webp"
+        }
+      ]
     },
     {
       "block": "mount",
