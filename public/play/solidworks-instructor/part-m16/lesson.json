@@ -1555,7 +1555,7 @@
       "kind": "result",
       "title": "Основание вытянуто",
       "text": "Появилось основание толщиной 10 мм с двумя сквозными отверстиями Ø18.",
-      "shot": "assets/shots/base.webp",
+      "shot": "assets/shots/base-desktop.webp",
       "model": "assets/models/01.gltf.json"
     },
     {
@@ -2520,7 +2520,7 @@
       "kind": "result",
       "title": "Два одинаковых профиля",
       "text": "Ø24 и 36 мм между центрами задают длину 60 мм. Между профилями остаётся 30 мм.",
-      "shot": "assets/shots/boss-sketch.webp",
+      "shot": "assets/shots/boss-sketch-desktop.webp",
       "model": "assets/models/01.gltf.json"
     },
     {
@@ -2589,7 +2589,7 @@
       "kind": "result",
       "title": "Два выступа вытянуты",
       "text": "Каждый выступ поднят на 50 мм над основанием. Осмотрите оба торца.",
-      "shot": "assets/shots/bosses.webp",
+      "shot": "assets/shots/bosses-desktop.webp",
       "model": "assets/models/02.gltf.json"
     },
     {
@@ -3070,7 +3070,7 @@
       "kind": "result",
       "title": "Четыре отверстия M16 готовы",
       "text": "Два отверстия на каждом торце. Сверление 40 мм, резьба 30 мм, угол сверла 120°.",
-      "shot": "assets/shots/holes.webp",
+      "shot": "assets/shots/holes-desktop.webp",
       "model": "assets/models/03.gltf.json"
     },
     {
@@ -3194,7 +3194,7 @@
       "kind": "result",
       "title": "Скругления у выступов готовы",
       "text": "Рассмотрите светлые скруглённые переходы вокруг обоих выступов.",
-      "shot": "assets/shots/roots.webp",
+      "shot": "assets/shots/roots-desktop.webp",
       "model": "assets/models/04.gltf.json"
     },
     {
@@ -3262,7 +3262,7 @@
       "kind": "result",
       "title": "Верхняя кромка основания скруглена",
       "text": "На выступах сохранено первое скругление. Второе R4 проходит по внешнему контуру основания.",
-      "shot": "assets/shots/rim.webp",
+      "shot": "assets/shots/rim-desktop.webp",
       "model": "assets/models/05.gltf.json"
     },
     {
