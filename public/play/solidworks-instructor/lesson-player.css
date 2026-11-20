@@ -69,11 +69,11 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px s
 .frame { position: relative; width: 100%; aspect-ratio: var(--lesson-screen, 1528 / 1032); max-width: 100%; overflow: hidden; border-radius: 6px; background: #ddd; cursor: crosshair; touch-action: manipulation; }
 .frame.result { cursor: default; }
 .frame.result .layer { transform: none !important; transition: none; }
-[data-lesson="part-m16"] .route { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+:is([data-lesson="part-m16"],[data-lesson="plate-13-11"]) .route { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
 .result-views { display: flex; flex-wrap: wrap; gap: 4px; }
 .result-views[hidden] { display: none; }
 .layer { position: absolute; inset: 0; transform-origin: 0 0; transition: transform .55s cubic-bezier(.2,.7,.2,1); }
-[data-lesson="part-m16"] .layer { transition: none; }
+:is([data-lesson="part-m16"],[data-lesson="plate-13-11"]) .layer { transition: none; }
 @media (prefers-reduced-motion: reduce) { .layer, .route .fill, .cursor { transition: none !important; } }
 .layer img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; user-select: none; -webkit-user-drag: none; }
 .ov { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }
@@ -136,32 +136,32 @@ details.about ol { padding-left: 20px; margin: 8px 0; }
 .finish-links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 10px; font-size: 14px; }
 .finish-links a { color: var(--signal); }
 
-[data-lesson="part-m16"] .top { align-items: center; gap: 10px 20px; margin-bottom: 10px; }
-[data-lesson="part-m16"] .brand h1 { font-family: var(--f-body); font-size: clamp(19px, 1.55vw, 27px); }
-[data-lesson="part-m16"] .brand .sub { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 4px; }
-[data-lesson="part-m16"] #stepcount { color: var(--ink); }
+:is([data-lesson="part-m16"],[data-lesson="plate-13-11"]) .top { align-items: center; gap: 10px 20px; margin-bottom: 10px; }
+:is([data-lesson="part-m16"],[data-lesson="plate-13-11"]) .brand h1 { font-family: var(--f-body); font-size: clamp(19px, 1.55vw, 27px); }
+:is([data-lesson="part-m16"],[data-lesson="plate-13-11"]) .brand .sub { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 4px; }
+:is([data-lesson="part-m16"],[data-lesson="plate-13-11"]) #stepcount { color: var(--ink); }
 .mode-help { flex-basis: 100%; margin: 0; color: var(--muted); font-size: 13px; }
-[data-lesson="part-m16"] .route button {
+:is([data-lesson="part-m16"],[data-lesson="plate-13-11"]) .route button {
   line-height: 1.2; white-space: normal; min-height: 36px; height: auto; padding: 6px 8px;
 }
-[data-lesson="part-m16"] .route button:disabled { cursor: default; opacity: .61; }
-[data-lesson="part-m16"] .stagewrap { display: flex; flex-direction: column; }
-[data-lesson="part-m16"] .stagebar { order: -1; margin: 0 0 8px; min-height: 26px; }
-[data-lesson="part-m16"] .frame { align-self: center; }
-[data-lesson="part-m16"] .hot { animation: none; box-shadow: 0 0 0 3px var(--signal-soft); }
+:is([data-lesson="part-m16"],[data-lesson="plate-13-11"]) .route button:disabled { cursor: default; opacity: .61; }
+:is([data-lesson="part-m16"],[data-lesson="plate-13-11"]) .stagewrap { display: flex; flex-direction: column; }
+:is([data-lesson="part-m16"],[data-lesson="plate-13-11"]) .stagebar { order: -1; margin: 0 0 8px; min-height: 26px; }
+:is([data-lesson="part-m16"],[data-lesson="plate-13-11"]) .frame { align-self: center; }
+:is([data-lesson="part-m16"],[data-lesson="plate-13-11"]) .hot { animation: none; box-shadow: 0 0 0 3px var(--signal-soft); }
 .frame-status { position: absolute; inset: 0; display: grid; place-content: center; gap: 12px; text-align: center; color: #294050; background: #e4eaed; }
 .frame-status[hidden], .frame-status button[hidden], .run-progress .stats[hidden] { display: none; }
-[data-lesson="part-m16"] .frame[data-ready="false"] .layer { visibility: hidden; }
+:is([data-lesson="part-m16"],[data-lesson="plate-13-11"]) .frame[data-ready="false"] .layer { visibility: hidden; }
 .selection-mark { stroke: #0076aa; stroke-width: 3; stroke-linecap: round; vector-effect: non-scaling-stroke; }
 .answer-mask { fill: #f3f5f7; }
-[data-lesson="part-m16"] .step h2 { font-size: 20px; line-height: 1.32; text-wrap: pretty; }
-[data-lesson="part-m16"] .step-note { margin-top: 12px; }
-[data-lesson="part-m16"] .step-preview { margin-top: 12px; padding: 6px 9px; background: var(--sunken); color: var(--ink); border-radius: 5px; }
+:is([data-lesson="part-m16"],[data-lesson="plate-13-11"]) .step h2 { font-size: 20px; line-height: 1.32; text-wrap: pretty; }
+:is([data-lesson="part-m16"],[data-lesson="plate-13-11"]) .step-note { margin-top: 12px; }
+:is([data-lesson="part-m16"],[data-lesson="plate-13-11"]) .step-preview { margin-top: 12px; padding: 6px 9px; background: var(--sunken); color: var(--ink); border-radius: 5px; }
 .run-progress { padding-top: 2px; }
 .restart { display: block; margin: 9px 0 0 auto; border: 0; background: transparent; color: var(--muted); text-decoration: underline; font-size: 12px; }
 .restart[hidden] { display: none; }
-[data-lesson="part-m16"] .viewer { height: clamp(150px, 22vh, 244px); }
+:is([data-lesson="part-m16"],[data-lesson="plate-13-11"]) .viewer { height: clamp(150px, 22vh, 244px); }
 @media (min-width: 981px) {
-  [data-lesson="part-m16"] .work { grid-template-columns: minmax(0, 1fr) clamp(288px, 23vw, 365px); }
-  [data-lesson="part-m16"] .frame { width: min(100%, var(--frame-max-width, 100%)); }
+  :is([data-lesson="part-m16"],[data-lesson="plate-13-11"]) .work { grid-template-columns: minmax(0, 1fr) clamp(288px, 23vw, 365px); }
+  :is([data-lesson="part-m16"],[data-lesson="plate-13-11"]) .frame { width: min(100%, var(--frame-max-width, 100%)); }
 }

@@ -1,0 +1,2002 @@
+{
+  "id": "plate-13-11",
+  "revision": 1,
+  "title": "Плита с вырезами и условной резьбой",
+  "sw_version": "SOLIDWORKS 2026 · учебная схема",
+  "frame_label": "Учебная схема текущего шага",
+  "screen": {
+    "w": 1460,
+    "h": 900
+  },
+  "blocks": [
+    {
+      "id": "outline",
+      "title": "Контур основания"
+    },
+    {
+      "id": "base",
+      "title": "Основание"
+    },
+    {
+      "id": "holes",
+      "title": "Два глухих отверстия"
+    },
+    {
+      "id": "boss",
+      "title": "Цилиндрический выступ"
+    },
+    {
+      "id": "chamfers",
+      "title": "Две фаски"
+    },
+    {
+      "id": "last-hole",
+      "title": "Третье отверстие"
+    },
+    {
+      "id": "threads",
+      "title": "Условная резьба"
+    }
+  ],
+  "steps": [
+    {
+      "block": "outline",
+      "kind": "click",
+      "title": "Выберите плоскость «Сверху»",
+      "text": "Открыта пустая учебная деталь. Начало координат будет центром основания.",
+      "shot": "assets/shots/frame-001.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "title": "Откройте новый эскиз",
+      "text": "",
+      "shot": "assets/shots/frame-002.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "title": "Выберите прямоугольник из центра",
+      "text": "",
+      "shot": "assets/shots/frame-003.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "title": "Совместите центр с началом координат",
+      "text": "",
+      "shot": "assets/shots/frame-004.webp",
+      "rect": [
+        856,
+        483,
+        898,
+        525
+      ]
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "title": "Укажите верхний правый угол",
+      "text": "",
+      "shot": "assets/shots/frame-005.webp",
+      "rect": [
+        1256,
+        243,
+        1298,
+        285
+      ]
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "title": "Откройте нанесение размеров",
+      "text": "",
+      "shot": "assets/shots/frame-006.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "title": "Выберите геометрию для размера",
+      "text": "",
+      "shot": "assets/shots/frame-007.webp",
+      "rect": [
+        856,
+        243,
+        898,
+        285
+      ]
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "title": "Разместите размер",
+      "text": "",
+      "shot": "assets/shots/frame-008.webp",
+      "rect": [
+        856,
+        171,
+        898,
+        213
+      ]
+    },
+    {
+      "block": "outline",
+      "kind": "input",
+      "title": "Ширина основания",
+      "text": "Введите 100 мм.",
+      "shot": "assets/shots/frame-009.webp",
+      "value": 100,
+      "unit": "мм",
+      "testText": "Введите значение. Единица измерения — мм.",
+      "rect": [
+        76,
+        249,
+        274,
+        294
+      ]
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "title": "Откройте нанесение размеров",
+      "text": "",
+      "shot": "assets/shots/frame-010.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "title": "Выберите геометрию для размера",
+      "text": "",
+      "shot": "assets/shots/frame-011.webp",
+      "rect": [
+        1256,
+        483,
+        1298,
+        525
+      ]
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "title": "Разместите размер",
+      "text": "",
+      "shot": "assets/shots/frame-012.webp",
+      "rect": [
+        1368,
+        483,
+        1410,
+        525
+      ]
+    },
+    {
+      "block": "outline",
+      "kind": "input",
+      "title": "Высота основания",
+      "text": "Введите 60 мм.",
+      "shot": "assets/shots/frame-013.webp",
+      "value": 60,
+      "unit": "мм",
+      "testText": "Введите значение. Единица измерения — мм.",
+      "rect": [
+        76,
+        249,
+        274,
+        294
+      ]
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "title": "Откройте скругление эскиза",
+      "text": "",
+      "shot": "assets/shots/frame-014.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "outline",
+      "kind": "input",
+      "title": "Радиус скруглений",
+      "text": "Введите 10 мм. Этот радиус общий для четырёх углов.",
+      "shot": "assets/shots/frame-015.webp",
+      "value": 10,
+      "unit": "мм",
+      "testText": "Введите значение. Единица измерения — мм.",
+      "rect": [
+        76,
+        249,
+        274,
+        294
+      ]
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "title": "Выберите горизонтальную сторону угла",
+      "text": "",
+      "shot": "assets/shots/frame-016.webp",
+      "rect": [
+        1160,
+        243,
+        1202,
+        285
+      ]
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "title": "Выберите соседнюю вертикальную сторону",
+      "text": "",
+      "shot": "assets/shots/frame-017.webp",
+      "rect": [
+        1256,
+        331,
+        1298,
+        373
+      ]
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "title": "Выберите горизонтальную сторону угла",
+      "text": "",
+      "shot": "assets/shots/frame-018.webp",
+      "rect": [
+        552,
+        243,
+        594,
+        285
+      ]
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "title": "Выберите соседнюю вертикальную сторону",
+      "text": "",
+      "shot": "assets/shots/frame-019.webp",
+      "rect": [
+        456,
+        331,
+        498,
+        373
+      ]
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "title": "Выберите горизонтальную сторону угла",
+      "text": "",
+      "shot": "assets/shots/frame-020.webp",
+      "rect": [
+        552,
+        723,
+        594,
+        765
+      ]
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "title": "Выберите соседнюю вертикальную сторону",
+      "text": "",
+      "shot": "assets/shots/frame-021.webp",
+      "rect": [
+        456,
+        635,
+        498,
+        677
+      ]
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "title": "Выберите горизонтальную сторону угла",
+      "text": "",
+      "shot": "assets/shots/frame-022.webp",
+      "rect": [
+        1160,
+        723,
+        1202,
+        765
+      ]
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "title": "Выберите соседнюю вертикальную сторону",
+      "text": "",
+      "shot": "assets/shots/frame-023.webp",
+      "rect": [
+        1256,
+        635,
+        1298,
+        677
+      ]
+    },
+    {
+      "block": "outline",
+      "kind": "click",
+      "title": "Примените четыре скругления",
+      "text": "Жёлтые дуги показывают предпросмотр. Сохраните взаимосвязи исходных углов.",
+      "shot": "assets/shots/frame-024.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "outline",
+      "kind": "result",
+      "title": "Эскиз основания готов",
+      "text": "Проверьте ширину 100 мм, высоту 60 мм и четыре одинаковых скругления R10.",
+      "shot": "assets/shots/frame-025.webp"
+    },
+    {
+      "block": "base",
+      "kind": "click",
+      "title": "Закройте эскиз",
+      "text": "",
+      "shot": "assets/shots/frame-026.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "base",
+      "kind": "click",
+      "title": "Выберите операцию",
+      "text": "Вытяните замкнутый профиль над плоскостью «Сверху».",
+      "shot": "assets/shots/frame-027.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "base",
+      "kind": "input",
+      "title": "Глубина",
+      "text": "Введите 20 мм. Оставьте условие «На заданное расстояние».",
+      "shot": "assets/shots/frame-028.webp",
+      "value": 20,
+      "unit": "мм",
+      "testText": "Введите значение. Единица измерения — мм.",
+      "rect": [
+        76,
+        249,
+        274,
+        294
+      ]
+    },
+    {
+      "block": "base",
+      "kind": "click",
+      "title": "Подтвердите операцию",
+      "text": "Вытяните замкнутый профиль над плоскостью «Сверху».",
+      "shot": "assets/shots/frame-029.webp",
+      "preview": "Предпросмотр активной операции",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "base",
+      "kind": "result",
+      "title": "Основание вытянуто",
+      "text": "Толщина 20 мм. Верхняя грань служит опорой для оставшихся эскизов.",
+      "shot": "assets/shots/frame-030.webp",
+      "model": "assets/models/base.gltf.json"
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "title": "Выберите верхнюю грань основания",
+      "text": "",
+      "shot": "assets/shots/frame-031.webp",
+      "rect": [
+        736,
+        611,
+        778,
+        653
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "title": "Откройте эскиз на грани",
+      "text": "",
+      "shot": "assets/shots/frame-032.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "title": "Выберите вспомогательную линию",
+      "text": "",
+      "shot": "assets/shots/frame-033.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "title": "Выберите середину левой стороны",
+      "text": "",
+      "shot": "assets/shots/frame-034.webp",
+      "rect": [
+        456,
+        483,
+        498,
+        525
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "title": "Выберите середину правой стороны",
+      "text": "",
+      "shot": "assets/shots/frame-035.webp",
+      "rect": [
+        1256,
+        483,
+        1298,
+        525
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "title": "Выберите инструмент «Окружность»",
+      "text": "",
+      "shot": "assets/shots/frame-036.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "title": "Укажите центр окружности",
+      "text": "Совместите центр с горизонтальной осью.",
+      "shot": "assets/shots/frame-037.webp",
+      "rect": [
+        856,
+        483,
+        898,
+        525
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "title": "Укажите вторую точку окружности",
+      "text": "",
+      "shot": "assets/shots/frame-038.webp",
+      "rect": [
+        860,
+        463,
+        894,
+        497
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "title": "Откройте нанесение размеров",
+      "text": "",
+      "shot": "assets/shots/frame-039.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "title": "Выберите геометрию для размера",
+      "text": "",
+      "shot": "assets/shots/frame-040.webp",
+      "rect": [
+        856,
+        459,
+        898,
+        501
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "title": "Разместите размер",
+      "text": "",
+      "shot": "assets/shots/frame-041.webp",
+      "rect": [
+        912,
+        395,
+        954,
+        437
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "input",
+      "title": "Диаметр",
+      "text": "Введите 6 мм.",
+      "shot": "assets/shots/frame-042.webp",
+      "value": 6,
+      "unit": "мм",
+      "testText": "Введите значение. Единица измерения — мм.",
+      "rect": [
+        76,
+        249,
+        274,
+        294
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "title": "Выберите инструмент «Окружность»",
+      "text": "",
+      "shot": "assets/shots/frame-043.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "title": "Укажите центр окружности",
+      "text": "Совместите центр с горизонтальной осью.",
+      "shot": "assets/shots/frame-044.webp",
+      "rect": [
+        1096,
+        483,
+        1138,
+        525
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "title": "Укажите вторую точку окружности",
+      "text": "",
+      "shot": "assets/shots/frame-045.webp",
+      "rect": [
+        1100,
+        453,
+        1134,
+        487
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "title": "Откройте нанесение размеров",
+      "text": "",
+      "shot": "assets/shots/frame-046.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "title": "Выберите геометрию для размера",
+      "text": "",
+      "shot": "assets/shots/frame-047.webp",
+      "rect": [
+        1096,
+        449,
+        1138,
+        491
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "title": "Разместите размер",
+      "text": "",
+      "shot": "assets/shots/frame-048.webp",
+      "rect": [
+        1152,
+        395,
+        1194,
+        437
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "input",
+      "title": "Диаметр",
+      "text": "Введите 8,5 мм.",
+      "shot": "assets/shots/frame-049.webp",
+      "value": 8.5,
+      "unit": "мм",
+      "testText": "Введите значение. Единица измерения — мм.",
+      "rect": [
+        76,
+        249,
+        274,
+        294
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "title": "Откройте нанесение размеров",
+      "text": "Выберите центр и опору. Размещайте горизонтальный размер над контуром.",
+      "shot": "assets/shots/frame-050.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "title": "Выберите геометрию для размера",
+      "text": "",
+      "shot": "assets/shots/frame-051.webp",
+      "rect": [
+        1096,
+        483,
+        1138,
+        525
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "title": "Добавьте вторую опору",
+      "text": "Удерживайте Ctrl при щелчке.",
+      "shot": "assets/shots/frame-052.webp",
+      "modifier": "Control",
+      "rect": [
+        1256,
+        483,
+        1298,
+        525
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "title": "Разместите размер",
+      "text": "",
+      "shot": "assets/shots/frame-053.webp",
+      "rect": [
+        1176,
+        307,
+        1218,
+        349
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "input",
+      "title": "Положение центра",
+      "text": "Введите 20 мм.",
+      "shot": "assets/shots/frame-054.webp",
+      "value": 20,
+      "unit": "мм",
+      "testText": "Введите значение. Единица измерения — мм.",
+      "rect": [
+        76,
+        249,
+        274,
+        294
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "title": "Закройте эскиз",
+      "text": "",
+      "shot": "assets/shots/frame-055.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "title": "Выберите операцию",
+      "text": "Оба отверстия остаются глухими. Под ними 4 мм материала.",
+      "shot": "assets/shots/frame-056.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "input",
+      "title": "Глубина",
+      "text": "Введите 16 мм. Оставьте условие «На заданное расстояние».",
+      "shot": "assets/shots/frame-057.webp",
+      "value": 16,
+      "unit": "мм",
+      "testText": "Введите значение. Единица измерения — мм.",
+      "rect": [
+        76,
+        249,
+        274,
+        294
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "click",
+      "title": "Подтвердите операцию",
+      "text": "Оба отверстия остаются глухими. Под ними 4 мм материала.",
+      "shot": "assets/shots/frame-058.webp",
+      "preview": "Предпросмотр активной операции",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "holes",
+      "kind": "result",
+      "title": "Два отверстия готовы",
+      "text": "Ø6 расположено в центре, Ø8,5 — на расстоянии 20 мм от правого края. Оба выреза глубиной 16 мм.",
+      "shot": "assets/shots/frame-059.webp",
+      "model": "assets/models/holes.gltf.json"
+    },
+    {
+      "block": "boss",
+      "kind": "click",
+      "title": "Выберите верхнюю грань основания",
+      "text": "",
+      "shot": "assets/shots/frame-060.webp",
+      "rect": [
+        736,
+        611,
+        778,
+        653
+      ]
+    },
+    {
+      "block": "boss",
+      "kind": "click",
+      "title": "Откройте эскиз на грани",
+      "text": "",
+      "shot": "assets/shots/frame-061.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "boss",
+      "kind": "click",
+      "title": "Выберите вспомогательную линию",
+      "text": "",
+      "shot": "assets/shots/frame-062.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "boss",
+      "kind": "click",
+      "title": "Укажите середину левой стороны",
+      "text": "",
+      "shot": "assets/shots/frame-063.webp",
+      "rect": [
+        456,
+        483,
+        498,
+        525
+      ]
+    },
+    {
+      "block": "boss",
+      "kind": "click",
+      "title": "Укажите середину правой стороны",
+      "text": "",
+      "shot": "assets/shots/frame-064.webp",
+      "rect": [
+        1256,
+        483,
+        1298,
+        525
+      ]
+    },
+    {
+      "block": "boss",
+      "kind": "click",
+      "title": "Выберите инструмент «Окружность»",
+      "text": "",
+      "shot": "assets/shots/frame-065.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "boss",
+      "kind": "click",
+      "title": "Укажите центр окружности",
+      "text": "Совместите центр с горизонтальной осью.",
+      "shot": "assets/shots/frame-066.webp",
+      "rect": [
+        664,
+        483,
+        706,
+        525
+      ]
+    },
+    {
+      "block": "boss",
+      "kind": "click",
+      "title": "Укажите вторую точку окружности",
+      "text": "",
+      "shot": "assets/shots/frame-067.webp",
+      "rect": [
+        668,
+        431,
+        702,
+        465
+      ]
+    },
+    {
+      "block": "boss",
+      "kind": "click",
+      "title": "Откройте нанесение размеров",
+      "text": "",
+      "shot": "assets/shots/frame-068.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "boss",
+      "kind": "click",
+      "title": "Выберите геометрию для размера",
+      "text": "",
+      "shot": "assets/shots/frame-069.webp",
+      "rect": [
+        664,
+        427,
+        706,
+        469
+      ]
+    },
+    {
+      "block": "boss",
+      "kind": "click",
+      "title": "Разместите размер",
+      "text": "",
+      "shot": "assets/shots/frame-070.webp",
+      "rect": [
+        720,
+        395,
+        762,
+        437
+      ]
+    },
+    {
+      "block": "boss",
+      "kind": "input",
+      "title": "Диаметр",
+      "text": "Введите 14 мм.",
+      "shot": "assets/shots/frame-071.webp",
+      "value": 14,
+      "unit": "мм",
+      "testText": "Введите значение. Единица измерения — мм.",
+      "rect": [
+        76,
+        249,
+        274,
+        294
+      ]
+    },
+    {
+      "block": "boss",
+      "kind": "click",
+      "title": "Откройте нанесение размеров",
+      "text": "Выберите центр и опору. Размещайте горизонтальный размер над контуром.",
+      "shot": "assets/shots/frame-072.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "boss",
+      "kind": "click",
+      "title": "Выберите геометрию для размера",
+      "text": "",
+      "shot": "assets/shots/frame-073.webp",
+      "rect": [
+        664,
+        483,
+        706,
+        525
+      ]
+    },
+    {
+      "block": "boss",
+      "kind": "click",
+      "title": "Добавьте вторую опору",
+      "text": "Удерживайте Ctrl при щелчке.",
+      "shot": "assets/shots/frame-074.webp",
+      "modifier": "Control",
+      "rect": [
+        456,
+        483,
+        498,
+        525
+      ]
+    },
+    {
+      "block": "boss",
+      "kind": "click",
+      "title": "Разместите размер",
+      "text": "",
+      "shot": "assets/shots/frame-075.webp",
+      "rect": [
+        560,
+        307,
+        602,
+        349
+      ]
+    },
+    {
+      "block": "boss",
+      "kind": "input",
+      "title": "Положение центра",
+      "text": "Введите 26 мм.",
+      "shot": "assets/shots/frame-076.webp",
+      "value": 26,
+      "unit": "мм",
+      "testText": "Введите значение. Единица измерения — мм.",
+      "rect": [
+        76,
+        249,
+        274,
+        294
+      ]
+    },
+    {
+      "block": "boss",
+      "kind": "click",
+      "title": "Закройте эскиз",
+      "text": "",
+      "shot": "assets/shots/frame-077.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "boss",
+      "kind": "click",
+      "title": "Выберите операцию",
+      "text": "Объедините выступ с плитой. Выступ направлен вверх от выбранной грани.",
+      "shot": "assets/shots/frame-078.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "boss",
+      "kind": "input",
+      "title": "Глубина",
+      "text": "Введите 30 мм. Оставьте условие «На заданное расстояние».",
+      "shot": "assets/shots/frame-079.webp",
+      "value": 30,
+      "unit": "мм",
+      "testText": "Введите значение. Единица измерения — мм.",
+      "rect": [
+        76,
+        249,
+        274,
+        294
+      ]
+    },
+    {
+      "block": "boss",
+      "kind": "click",
+      "title": "Подтвердите операцию",
+      "text": "Объедините выступ с плитой. Выступ направлен вверх от выбранной грани.",
+      "shot": "assets/shots/frame-080.webp",
+      "preview": "Предпросмотр активной операции",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "boss",
+      "kind": "result",
+      "title": "Выступ готов",
+      "text": "Высота 30 мм, диаметр 14 мм. Ось выступа в 26 мм от левого края.",
+      "shot": "assets/shots/frame-081.webp",
+      "model": "assets/models/boss.gltf.json"
+    },
+    {
+      "block": "chamfers",
+      "kind": "click",
+      "title": "Откройте команду «Фаска»",
+      "text": "На вкладке «Элементы» команда находится в списке скругления.",
+      "shot": "assets/shots/frame-082.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "chamfers",
+      "kind": "click",
+      "title": "Выберите угол и расстояние",
+      "text": "",
+      "shot": "assets/shots/frame-083.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "chamfers",
+      "kind": "click",
+      "title": "Выберите ребро отверстия Ø8,5",
+      "text": "",
+      "shot": "assets/shots/frame-084.webp",
+      "rect": [
+        1099,
+        452,
+        1135,
+        488
+      ]
+    },
+    {
+      "block": "chamfers",
+      "kind": "input",
+      "title": "Расстояние фаски",
+      "text": "Введите 1 мм.",
+      "shot": "assets/shots/frame-085.webp",
+      "value": 1,
+      "unit": "мм",
+      "testText": "Введите значение. Единица измерения — мм.",
+      "rect": [
+        76,
+        249,
+        274,
+        294
+      ]
+    },
+    {
+      "block": "chamfers",
+      "kind": "input",
+      "title": "Угол фаски",
+      "text": "Введите 45°.",
+      "shot": "assets/shots/frame-086.webp",
+      "value": 45,
+      "unit": "°",
+      "testText": "Введите значение. Единица измерения — °.",
+      "rect": [
+        76,
+        249,
+        274,
+        294
+      ]
+    },
+    {
+      "block": "chamfers",
+      "kind": "click",
+      "title": "Примените фаску",
+      "text": "",
+      "shot": "assets/shots/frame-087.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "chamfers",
+      "kind": "click",
+      "title": "Откройте команду «Фаска»",
+      "text": "На вкладке «Элементы» команда находится в списке скругления.",
+      "shot": "assets/shots/frame-088.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "chamfers",
+      "kind": "click",
+      "title": "Выберите угол и расстояние",
+      "text": "",
+      "shot": "assets/shots/frame-089.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "chamfers",
+      "kind": "click",
+      "title": "Выберите ребро верхнего торца выступа",
+      "text": "",
+      "shot": "assets/shots/frame-090.webp",
+      "rect": [
+        667,
+        430,
+        703,
+        466
+      ]
+    },
+    {
+      "block": "chamfers",
+      "kind": "input",
+      "title": "Расстояние фаски",
+      "text": "Введите 2 мм.",
+      "shot": "assets/shots/frame-091.webp",
+      "value": 2,
+      "unit": "мм",
+      "testText": "Введите значение. Единица измерения — мм.",
+      "rect": [
+        76,
+        249,
+        274,
+        294
+      ]
+    },
+    {
+      "block": "chamfers",
+      "kind": "input",
+      "title": "Угол фаски",
+      "text": "Введите 45°.",
+      "shot": "assets/shots/frame-092.webp",
+      "value": 45,
+      "unit": "°",
+      "testText": "Введите значение. Единица измерения — °.",
+      "rect": [
+        76,
+        249,
+        274,
+        294
+      ]
+    },
+    {
+      "block": "chamfers",
+      "kind": "click",
+      "title": "Примените фаску",
+      "text": "",
+      "shot": "assets/shots/frame-093.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "chamfers",
+      "kind": "result",
+      "title": "Обе фаски видны",
+      "text": "У отверстия Ø8,5 фаска 1 мм × 45°. На торце выступа фаска 2 мм × 45°.",
+      "shot": "assets/shots/frame-094.webp",
+      "model": "assets/models/chamfers.gltf.json",
+      "views": [
+        {
+          "name": "Общий вид",
+          "shot": "assets/shots/frame-094.webp"
+        },
+        {
+          "name": "Обе фаски крупно",
+          "shot": "assets/shots/chamfers-detail.webp"
+        }
+      ]
+    },
+    {
+      "block": "last-hole",
+      "kind": "click",
+      "title": "Выберите верхнюю грань основания",
+      "text": "",
+      "shot": "assets/shots/frame-095.webp",
+      "rect": [
+        744,
+        627,
+        786,
+        669
+      ]
+    },
+    {
+      "block": "last-hole",
+      "kind": "click",
+      "title": "Откройте эскиз на грани",
+      "text": "",
+      "shot": "assets/shots/frame-096.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "last-hole",
+      "kind": "click",
+      "title": "Выберите инструмент «Окружность»",
+      "text": "",
+      "shot": "assets/shots/frame-097.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "last-hole",
+      "kind": "click",
+      "title": "Укажите центр окружности",
+      "text": "Совместите центр с горизонтальной осью.",
+      "shot": "assets/shots/frame-098.webp",
+      "rect": [
+        984,
+        483,
+        1026,
+        525
+      ]
+    },
+    {
+      "block": "last-hole",
+      "kind": "click",
+      "title": "Укажите вторую точку окружности",
+      "text": "",
+      "shot": "assets/shots/frame-099.webp",
+      "rect": [
+        988,
+        463,
+        1022,
+        497
+      ]
+    },
+    {
+      "block": "last-hole",
+      "kind": "click",
+      "title": "Откройте нанесение размеров",
+      "text": "",
+      "shot": "assets/shots/frame-100.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "last-hole",
+      "kind": "click",
+      "title": "Выберите геометрию для размера",
+      "text": "",
+      "shot": "assets/shots/frame-101.webp",
+      "rect": [
+        984,
+        459,
+        1026,
+        501
+      ]
+    },
+    {
+      "block": "last-hole",
+      "kind": "click",
+      "title": "Разместите размер",
+      "text": "",
+      "shot": "assets/shots/frame-102.webp",
+      "rect": [
+        1040,
+        395,
+        1082,
+        437
+      ]
+    },
+    {
+      "block": "last-hole",
+      "kind": "input",
+      "title": "Диаметр",
+      "text": "Введите 6 мм.",
+      "shot": "assets/shots/frame-103.webp",
+      "value": 6,
+      "unit": "мм",
+      "testText": "Введите значение. Единица измерения — мм.",
+      "rect": [
+        76,
+        249,
+        274,
+        294
+      ]
+    },
+    {
+      "block": "last-hole",
+      "kind": "click",
+      "title": "Откройте нанесение размеров",
+      "text": "Выберите центр и опору. Размещайте горизонтальный размер над контуром.",
+      "shot": "assets/shots/frame-104.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "last-hole",
+      "kind": "click",
+      "title": "Выберите геометрию для размера",
+      "text": "",
+      "shot": "assets/shots/frame-105.webp",
+      "rect": [
+        984,
+        483,
+        1026,
+        525
+      ]
+    },
+    {
+      "block": "last-hole",
+      "kind": "click",
+      "title": "Добавьте вторую опору",
+      "text": "Удерживайте Ctrl при щелчке.",
+      "shot": "assets/shots/frame-106.webp",
+      "modifier": "Control",
+      "rect": [
+        856,
+        483,
+        898,
+        525
+      ]
+    },
+    {
+      "block": "last-hole",
+      "kind": "click",
+      "title": "Разместите размер",
+      "text": "",
+      "shot": "assets/shots/frame-107.webp",
+      "rect": [
+        920,
+        307,
+        962,
+        349
+      ]
+    },
+    {
+      "block": "last-hole",
+      "kind": "input",
+      "title": "Положение центра",
+      "text": "Введите 16 мм.",
+      "shot": "assets/shots/frame-108.webp",
+      "value": 16,
+      "unit": "мм",
+      "testText": "Введите значение. Единица измерения — мм.",
+      "rect": [
+        76,
+        249,
+        274,
+        294
+      ]
+    },
+    {
+      "block": "last-hole",
+      "kind": "click",
+      "title": "Закройте эскиз",
+      "text": "",
+      "shot": "assets/shots/frame-109.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "last-hole",
+      "kind": "click",
+      "title": "Выберите операцию",
+      "text": "Операция затрагивает только третье отверстие.",
+      "shot": "assets/shots/frame-110.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "last-hole",
+      "kind": "input",
+      "title": "Глубина",
+      "text": "Введите 10 мм. Оставьте условие «На заданное расстояние».",
+      "shot": "assets/shots/frame-111.webp",
+      "value": 10,
+      "unit": "мм",
+      "testText": "Введите значение. Единица измерения — мм.",
+      "rect": [
+        76,
+        249,
+        274,
+        294
+      ]
+    },
+    {
+      "block": "last-hole",
+      "kind": "click",
+      "title": "Подтвердите операцию",
+      "text": "Операция затрагивает только третье отверстие.",
+      "shot": "assets/shots/frame-112.webp",
+      "preview": "Предпросмотр активной операции",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "last-hole",
+      "kind": "result",
+      "title": "Третье отверстие готово",
+      "text": "Ø6, центр в 16 мм вправо от начала координат. Глубина 10 мм.",
+      "shot": "assets/shots/frame-113.webp",
+      "model": "assets/models/last-hole.gltf.json"
+    },
+    {
+      "block": "threads",
+      "kind": "click",
+      "title": "Выберите опорное ребро для M7×1",
+      "text": "Без стандарта, Ø7 мм. В поле обозначения введите M7x1.",
+      "shot": "assets/shots/frame-114.webp",
+      "rect": [
+        859,
+        462,
+        895,
+        498
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "click",
+      "title": "Откройте условное изображение резьбы",
+      "text": "В SolidWorks используйте «Вставка → Примечания → Условное изображение резьбы».",
+      "shot": "assets/shots/frame-115.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "click",
+      "title": "Выберите стандарт",
+      "text": "",
+      "shot": "assets/shots/frame-116.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "input",
+      "title": "Диаметр резьбы",
+      "text": "Введите 7 мм.",
+      "shot": "assets/shots/frame-117.webp",
+      "value": 7,
+      "unit": "мм",
+      "testText": "Введите значение. Единица измерения — мм.",
+      "rect": [
+        76,
+        249,
+        274,
+        294
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "input",
+      "title": "Обозначение",
+      "text": "Введите M7x1. Используйте латинские M и x.",
+      "shot": "assets/shots/frame-118.webp",
+      "value": "M7x1",
+      "exact": true,
+      "testText": "Введите обозначение резьбы латинскими символами.",
+      "rect": [
+        76,
+        249,
+        274,
+        294
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "input",
+      "title": "Длина условной резьбы",
+      "text": "Введите 11 мм.",
+      "shot": "assets/shots/frame-119.webp",
+      "value": 11,
+      "unit": "мм",
+      "testText": "Введите значение. Единица измерения — мм.",
+      "rect": [
+        76,
+        249,
+        274,
+        294
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "click",
+      "title": "Примените обозначение резьбы",
+      "text": "Условное изображение добавляет обозначение на модели.",
+      "shot": "assets/shots/frame-120.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "click",
+      "title": "Выберите опорное ребро для M10",
+      "text": "ISO → Машинная резьба → M10. Выберите нижнее ребро фаски.",
+      "shot": "assets/shots/frame-121.webp",
+      "rect": [
+        1099,
+        452,
+        1135,
+        488
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "click",
+      "title": "Откройте условное изображение резьбы",
+      "text": "В SolidWorks используйте «Вставка → Примечания → Условное изображение резьбы».",
+      "shot": "assets/shots/frame-122.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "click",
+      "title": "Выберите стандарт",
+      "text": "",
+      "shot": "assets/shots/frame-123.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "click",
+      "title": "Выберите тип резьбы",
+      "text": "",
+      "shot": "assets/shots/frame-124.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "click",
+      "title": "Выберите размер",
+      "text": "",
+      "shot": "assets/shots/frame-125.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "click",
+      "title": "Задайте класс резьбы",
+      "text": "",
+      "shot": "assets/shots/frame-126.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "input",
+      "title": "Длина условной резьбы",
+      "text": "Введите 9 мм.",
+      "shot": "assets/shots/frame-127.webp",
+      "value": 9,
+      "unit": "мм",
+      "testText": "Введите значение. Единица измерения — мм.",
+      "rect": [
+        76,
+        249,
+        274,
+        294
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "click",
+      "title": "Примените обозначение резьбы",
+      "text": "Условное изображение добавляет обозначение на модели.",
+      "shot": "assets/shots/frame-128.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "click",
+      "title": "Выберите опорное ребро для M14",
+      "text": "ISO → Машинная резьба → M14. Выберите нижнее ребро фаски на выступе.",
+      "shot": "assets/shots/frame-129.webp",
+      "rect": [
+        667,
+        430,
+        703,
+        466
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "click",
+      "title": "Откройте условное изображение резьбы",
+      "text": "В SolidWorks используйте «Вставка → Примечания → Условное изображение резьбы».",
+      "shot": "assets/shots/frame-130.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "click",
+      "title": "Выберите стандарт",
+      "text": "",
+      "shot": "assets/shots/frame-131.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "click",
+      "title": "Выберите тип резьбы",
+      "text": "",
+      "shot": "assets/shots/frame-132.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "click",
+      "title": "Выберите размер",
+      "text": "",
+      "shot": "assets/shots/frame-133.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "click",
+      "title": "Задайте класс резьбы",
+      "text": "",
+      "shot": "assets/shots/frame-134.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "click",
+      "title": "Покажите тип в обозначении",
+      "text": "",
+      "shot": "assets/shots/frame-135.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "input",
+      "title": "Длина условной резьбы",
+      "text": "Введите 20 мм.",
+      "shot": "assets/shots/frame-136.webp",
+      "value": 20,
+      "unit": "мм",
+      "testText": "Введите значение. Единица измерения — мм.",
+      "rect": [
+        76,
+        249,
+        274,
+        294
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "click",
+      "title": "Примените обозначение резьбы",
+      "text": "Условное изображение добавляет обозначение на модели.",
+      "shot": "assets/shots/frame-137.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "click",
+      "title": "Выберите опорное ребро для M7×0,5",
+      "text": "Выберите вход третьего отверстия. Если в ISO нет M7x0.5, задайте обозначение вручную с Ø6,5 мм и классом 1B.",
+      "shot": "assets/shots/frame-138.webp",
+      "rect": [
+        987,
+        462,
+        1023,
+        498
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "click",
+      "title": "Откройте условное изображение резьбы",
+      "text": "В SolidWorks используйте «Вставка → Примечания → Условное изображение резьбы».",
+      "shot": "assets/shots/frame-139.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "click",
+      "title": "Выберите стандарт",
+      "text": "",
+      "shot": "assets/shots/frame-140.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "input",
+      "title": "Диаметр резьбы",
+      "text": "Введите 6,5 мм. Ручное обозначение сохраняет размер, когда нужного пункта нет в каталоге ISO.",
+      "shot": "assets/shots/frame-141.webp",
+      "value": 6.5,
+      "unit": "мм",
+      "testText": "Введите значение. Единица измерения — мм.",
+      "rect": [
+        76,
+        249,
+        274,
+        294
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "input",
+      "title": "Обозначение",
+      "text": "Введите M7x0.5 1B. Используйте латинские M и x.",
+      "shot": "assets/shots/frame-142.webp",
+      "value": "M7x0.5 1B",
+      "exact": true,
+      "testText": "Введите обозначение резьбы латинскими символами.",
+      "rect": [
+        76,
+        249,
+        274,
+        294
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "input",
+      "title": "Длина условной резьбы",
+      "text": "Введите 5 мм.",
+      "shot": "assets/shots/frame-143.webp",
+      "value": 5,
+      "unit": "мм",
+      "testText": "Введите значение. Единица измерения — мм.",
+      "rect": [
+        76,
+        249,
+        274,
+        294
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "click",
+      "title": "Примените обозначение резьбы",
+      "text": "Условное изображение добавляет обозначение на модели.",
+      "shot": "assets/shots/frame-144.webp",
+      "rect": [
+        55,
+        205,
+        297,
+        306
+      ]
+    },
+    {
+      "block": "threads",
+      "kind": "result",
+      "title": "Плита и четыре резьбы готовы",
+      "text": "Сверьте M7×1, M10, наружную M14 и M7×0,5. Поверните модель и осмотрите отверстия и фаски.",
+      "shot": "assets/shots/frame-145.webp",
+      "model": "assets/models/final.gltf.json",
+      "views": [
+        {
+          "name": "Изометрия",
+          "shot": "assets/shots/frame-145.webp"
+        },
+        {
+          "name": "Обозначения сверху",
+          "shot": "assets/shots/threads-top.webp"
+        }
+      ]
+    }
+  ],
+  "final": {
+    "title": "Плита построена",
+    "shot": "assets/shots/frame-145.webp",
+    "model": "assets/models/final.gltf.json"
+  }
+}

@@ -352,7 +352,7 @@ function configureViews(st) {
 function render() {
   const st = L.steps[S.idx], bi = bIndex[st.block], b = blocks[bi];
   const result = st.kind === "result";
-  const alt = result ? st.title : "Кадр окна SOLIDWORKS для текущего шага";
+  const alt = result ? st.title : L.frame_label || "Кадр окна SOLIDWORKS для текущего шага";
   $("frame").classList.toggle("result", result);
   configureViews(st);
   const nx = L.steps[S.idx + 1]; if (nx) new Image().src = nx.shot;
@@ -481,7 +481,10 @@ $("pop").addEventListener("submit", (e) => {
     const number = staged ? Number(normalized) : parseFloat(normalized);
     ok = (!staged || /^[-+]?\d+(?:[.,]\d+)?$/.test(typed)) && Math.abs(number - st.value) < 1e-3;
   }
-  else { const a = raw.toLowerCase(), b = String(st.value).toLowerCase(); ok = a.length >= 4 && (b.startsWith(a) || a.startsWith(b)); }
+  else {
+    const a = raw.toLowerCase(), b = String(st.value).toLowerCase();
+    ok = st.exact ? a === b : a.length >= 4 && (b.startsWith(a) || a.startsWith(b));
+  }
   if (ok) success("Верно: " + fmtVal(st.value));
   else miss(typeof st.value === "number" ? `Значение не совпадает с моделью. Проверьте размер.` : "Команда так не называется — попробуйте ещё раз.");
 });

@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { localPath } from '../data/linguistpro';
+import lesson from '../../public/play/solidworks-instructor/plate-13-11/lesson.json';
+
+const { lang = 'ru' } = Astro.props as { lang: 'ru' | 'en' };
+const ru = lang === 'ru';
+const path = '/play/solidworks-instructor/plate-13-11/';
+const title = ru ? 'Плита с вырезами и условной резьбой' : 'Plate with blind holes and cosmetic threads';
+const description = ru
+  ? 'Постройте плиту 100 × 60 мм с тремя глухими отверстиями, цилиндрическим выступом, фасками и четырьмя условными резьбами.'
+  : 'Build a 100 × 60 mm plate with three blind holes, a cylindrical boss, two chamfers and four cosmetic threads.';
+const home = localPath(lang, '/products/solidworks-instructor');
+const procedure = [
+  ['Постройте прямоугольник из центра на плоскости «Сверху».',
+   'Задайте 100 × 60 мм и скруглите четыре угла радиусом 10 мм.'],
+  ['Вытяните замкнутый профиль вверх на 20 мм.'],
+  ['На верхней грани постройте Ø6 мм в центре и Ø8,5 мм на расстоянии 20 мм от правого края.',
+   'Вырежьте оба отверстия на глубину 16 мм.'],
+  ['Постройте Ø14 мм на оси плиты в 26 мм от левого края.',
+   'Вытяните профиль на 30 мм и объедините с плитой.'],
+  ['На входе Ø8,5 сделайте фаску 1 мм × 45°.',
+   'На торце цилиндрического выступа сделайте фаску 2 мм × 45°.'],
+  ['На верхней грани поставьте центр в 16 мм вправо от начала координат.',
+   'Вырежьте окружность Ø6 мм на глубину 10 мм.'],
+  ['На центральном отверстии задайте M7×1 глубиной 11 мм, на правом — M10 глубиной 9 мм.',
+   'На выступе задайте наружную M14 глубиной 20 мм, на третьем отверстии — M7×0,5 глубиной 5 мм.',
+   'У правого отверстия и выступа выбирайте ребро у основания фаски.'],
+];
+---
+<BaseLayout title={title} description={description} wide image={path + lesson.final.shot}>
+  <nav class="breadcrumbs" aria-label={ru ? 'Путь к странице' : 'Breadcrumb'}>
+    <a href={localPath(lang, '/')}>Kolosei</a> /
+    <a href={home}>{ru ? 'Инструктор для SOLIDWORKS' : 'Instructor for SOLIDWORKS'}</a> / {title}
+  </nav>
+  <div class="product-opening lesson-opening">
+    <div>
+      <h1>{title}</h1>
+      <p class="lead">{description}</p>
+      <p>{ru
+        ? 'Выполняйте действия по подсветке и осматривайте модель после каждого этапа. Учебная схема показывает порядок действий, а результаты сняты в SOLIDWORKS.'
+        : 'Follow the highlighted actions and inspect each result. The interactive exercise uses Russian labels and SolidWorks captures of the completed stages.'}
+      </p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href={path}>{ru ? 'Пройти урок в браузере' : 'Start the browser lesson'}</a>
+        <a class="btn btn-secondary" href="#lesson">{ru ? 'Порядок построения' : 'View the procedure'}</a>
+      </div>
+    </div>
+    <img src={path + lesson.final.shot} width={lesson.screen.w} height={lesson.screen.h} alt={title} />
+  </div>
+  <div class="product-body" id="lesson" lang="ru">
+    <h2>Порядок построения</h2>
+    {lesson.blocks.map((block, index) => {
+      const result = lesson.steps.find(step => step.block === block.id && step.kind === 'result')!;
+      return (
+        <details id={block.id} class="lesson-block">
+          <summary><strong>{block.title}</strong></summary>
+          <ol>{procedure[index].map(text => <li>{text}</li>)}</ol>
+          <figure>
+            <img src={path + result.shot} width={lesson.screen.w} height={lesson.screen.h}
+              alt={result.title} loading="lazy" />
+            <figcaption>{result.text}</figcaption>
+          </figure>
+        </details>
+      );
+    })}
+  </div>
+</BaseLayout>
+<style>
+  .lesson-opening { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(1rem, 4vw, 3rem); }
+  .lesson-opening img, figure img { display: block; width: 100%; height: auto; border-radius: .5rem; }
+  .lesson-block { border-bottom: 1px solid var(--border); }
+  .lesson-block summary { cursor: pointer; padding: .9rem 0; }
+  figure { margin: 1rem 0; }
+  figcaption { color: var(--fg-muted); margin-top: .4rem; }
+  @media (max-width: 700px) { .lesson-opening { grid-template-columns: 1fr; } }
+</style>

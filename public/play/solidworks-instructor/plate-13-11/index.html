@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Плита с вырезами и условной резьбой — SOLIDWORKS · Kolosei</title>
+<meta name="description" content="Практический браузерный урок по глухим вырезам, фаскам и условной резьбе.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://kolosei.com/ru/products/solidworks-instructor/plate-13-11/">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=JetBrains+Mono:wght@400;600&family=Unbounded:wght@500;700&display=swap">
+<link rel="stylesheet" href="../lesson-player.css?v=plate-1">
+</head>
+<body data-lesson="plate-13-11">
+
+<header class="top">
+  <div class="brand">
+    <a class="home" id="home" href="/ru/products/solidworks-instructor/plate-13-11/">← Kolosei · Инструктор для SOLIDWORKS</a>
+    <h1>Плита с вырезами и условной резьбой</h1>
+    <div class="sub"><span id="swver">SOLIDWORKS 2026</span> <span id="stepcount">Подготовка урока</span></div>
+  </div>
+  <div class="modes" role="group" aria-label="Режим урока" aria-describedby="mode-help">
+    <button id="m-watch" data-mode="watch" aria-pressed="false">Покажи</button>
+    <button id="m-guide" data-mode="guide" aria-pressed="true">Повторяй</button>
+    <button id="m-test" data-mode="test" aria-pressed="false">Проверка</button>
+  </div>
+  <p id="mode-help" class="mode-help"></p>
+</header>
+
+<nav class="route" id="route" aria-label="Операции"></nav>
+
+<main class="work">
+  <section class="stagewrap" aria-label="Окно SOLIDWORKS">
+    <div class="frame" id="frame">
+      <div class="layer" id="layer">
+        <img id="shot" alt="Учебная схема текущего шага">
+        <svg class="ov" id="ov" viewBox="0 0 1920 1032" preserveAspectRatio="none" aria-hidden="true"></svg>
+        <div class="hot" id="hot"></div>
+        <svg class="cursor" id="cursor" viewBox="0 0 22 22" hidden><path d="M3 2l15 9-6.5 1.6L8.6 19z" fill="#fff" stroke="#111" stroke-width="1.4" stroke-linejoin="round"/></svg>
+        <form class="pop" id="pop" hidden autocomplete="off">
+          <input id="popin" inputmode="text" aria-label="Значение">
+          <button type="submit">OK</button>
+        </form>
+      </div>
+      <div class="frame-status" id="frame-status" role="status" hidden>
+        <span id="frame-status-text">Загружается кадр</span>
+        <button class="btn" id="frame-retry" hidden>Повторить загрузку</button>
+      </div>
+    </div>
+    <div class="stagebar">
+      <span id="hint-line">Выбирайте подсвеченные элементы схемы.</span>
+      <span class="sp"></span>
+      <div class="result-views" id="result-views" role="group" aria-label="Ракурс результата" hidden></div>
+      <button class="chip" id="zoom" aria-pressed="false" title="Приблизить кадр к нужной области">Лупа</button>
+      <button class="chip" id="play" hidden>Пауза</button>
+    </div>
+  </section>
+
+  <aside class="side">
+    <article class="card step" id="stepcard">
+      <div class="eyebrow"><span id="blockname">Блок</span><span id="kind" class="badge">Клик</span></div>
+      <h2 id="title">…</h2>
+      <p id="text"></p>
+      <p class="step-note" id="context" hidden></p>
+      <p class="step-preview" id="preview" hidden></p>
+      <div class="val" id="val" hidden></div>
+      <div class="msg" id="msg" role="status" aria-live="polite"></div>
+      <div class="nav">
+        <button class="btn" id="back">← Назад</button>
+        <button class="btn" id="hint">Подсказка</button>
+        <button class="btn primary" id="skip">Пропустить →</button>
+      </div>
+    </article>
+
+    <section class="card model-card" id="model-card" aria-label="Трёхмерное состояние детали" hidden>
+      <div class="eyebrow"><span id="model-title">Подтверждённая геометрия</span><span>3D</span></div>
+      <div class="viewer" id="viewer"><span class="vlabel" id="vlabel">загрузка…</span></div>
+    </section>
+    <section class="run-progress" aria-label="Прогресс попытки">
+      <div class="stats">
+        <div><b id="s-time">0</b><span>подтверждено</span></div>
+        <div><b id="s-err">0</b><span>промахов</span></div>
+        <div><b id="s-hint">0</b><span>подсказок</span></div>
+      </div>
+      <button class="restart" id="restart" hidden>Начать заново</button>
+    </section>
+  </aside>
+</main>
+
+<details class="about">
+  <summary>Как сделан этот урок</summary>
+  <p>В открытой пустой детали выберите плоскость и следуйте подсказкам. После каждого этапа остановитесь, чтобы осмотреть результат, затем нажмите «Продолжить».</p>
+  <p>Действия выполняются на учебной схеме, а результаты этапов показаны на моделях из SOLIDWORKS. В Инструкторе внутри SOLIDWORKS тот же маршрут проверяется по геометрии создаваемой детали.</p>
+  <a href="/ru/products/solidworks-instructor/">Подробнее об инструкторе</a>
+</details>
+
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+<script type="module" src="../lesson-player.js?v=plate-1"></script>
+</body>
+</html>
