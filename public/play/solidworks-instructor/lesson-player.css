@@ -69,11 +69,11 @@ button:focus-visible, input:focus-visible, select:focus-visible { outline: 2px s
 .frame { position: relative; width: 100%; aspect-ratio: var(--lesson-screen, 1528 / 1032); max-width: 100%; overflow: hidden; border-radius: 6px; background: #ddd; cursor: crosshair; touch-action: manipulation; }
 .frame.result { cursor: default; }
 .frame.result .layer { transform: none !important; transition: none; }
-.frame.numeric .layer { transition: none; }
 [data-lesson="part-m16"] .route { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
 .result-views { display: flex; flex-wrap: wrap; gap: 4px; }
 .result-views[hidden] { display: none; }
 .layer { position: absolute; inset: 0; transform-origin: 0 0; transition: transform .55s cubic-bezier(.2,.7,.2,1); }
+[data-lesson="part-m16"] .layer { transition: none; }
 @media (prefers-reduced-motion: reduce) { .layer, .route .fill, .cursor { transition: none !important; } }
 .layer img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; user-select: none; -webkit-user-drag: none; }
 .ov { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; overflow: visible; }

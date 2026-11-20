@@ -239,7 +239,6 @@ function render() {
   $("shot").src = st.shot;
   $("shot").alt = result ? st.title : "Кадр окна SOLIDWORKS для текущего шага";
   $("frame").classList.toggle("result", result);
-  $("frame").classList.toggle("numeric", staged && st.kind === "input");
   configureViews(st);
   const nx = L.steps[S.idx + 1]; if (nx) new Image().src = nx.shot;
   $("stepcount").textContent = `шаг ${S.idx + 1} / ${N}`;
